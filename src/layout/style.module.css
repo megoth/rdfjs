@@ -1,4 +1,14 @@
 .main {
-    min-height: 400px;
     margin-bottom: 1em;
 }
+
+@media all and (max-width: 1024px) {
+    .main {
+        margin: 0 12px 1em;
+    }
+
+    .footer {
+        margin: 0 12px 0.5em;
+    }
+}
+

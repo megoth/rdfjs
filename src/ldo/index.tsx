@@ -1,3 +1,7 @@
 export default function LDO() {
-    return <div>LDO</div>;
+    return (
+        <>
+            <h1 className="title">LDO (Linked Data Objects)</h1>
+        </>
+    );
 }

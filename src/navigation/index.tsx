@@ -1,5 +1,7 @@
 import {NavLink} from "react-router-dom";
 import {clsx} from "clsx";
+import Logo from "../logo";
+import {useState} from "react";
 
 type Link = {
     href: string;
@@ -23,19 +25,30 @@ const links: Array<Link> = [
 
 
 export default function Navigation() {
+    const [isActive, setIsActive] = useState<boolean>(false);
     return (
-        <nav className="navbar" role="navigation" aria-label="main navigation">
-            <div className="navbar-brand">
-                <NavLink to={"/"} className={({isActive}) => clsx("navbar-item", {
-                    "is-active": isActive
-                })}>DEMO</NavLink>
-            </div>
-            <div className="navbar-menu">
-                {links.map(({href, text}) => (
-                    <NavLink to={href} key={href} className={({isActive}) => clsx("navbar-item", {
+        <nav className="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+            <div className="container">
+                <div className="navbar-brand">
+                    <NavLink to={"/"} className="navbar-item"><Logo/></NavLink>
+                    <button className={clsx("navbar-burger", {
                         "is-active": isActive
-                    })}>{text}</NavLink>
-                ))}
+                    })} aria-label="menu" aria-expanded="false" type="button"
+                            onClick={() => setIsActive(!isActive)}>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                    </button>
+                </div>
+                <div className={clsx("navbar-menu", {
+                    "is-active": isActive
+                })}>
+                    {links.map(({href, text}) => (
+                        <NavLink to={href} key={href} className={({isActive}) => clsx("navbar-item", {
+                            "is-active": isActive
+                        })} onClick={() => setIsActive(false)}>{text}</NavLink>
+                    ))}
+                </div>
             </div>
         </nav>
     )
