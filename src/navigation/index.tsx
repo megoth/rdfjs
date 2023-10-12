@@ -34,9 +34,7 @@ export default function Navigation() {
                 {links.map(({href, text}) => (
                     <NavLink to={href} key={href} className={({isActive}) => clsx("navbar-item", {
                         "is-active": isActive
-                    })}>
-                        <a>{text}</a>
-                    </NavLink>
+                    })}>{text}</NavLink>
                 ))}
             </div>
         </nav>
