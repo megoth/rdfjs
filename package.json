@@ -17,7 +17,9 @@
     "ldo-solid-profile": "^0.0.13",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.16.0"
+    "react-hook-form": "^7.47.0",
+    "react-router-dom": "^6.16.0",
+    "use-local-storage": "^3.0.0"
   },
   "devDependencies": {
     "@mdx-js/rollup": "^2.3.0",

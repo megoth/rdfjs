@@ -10,16 +10,16 @@ type Link = {
 
 const links: Array<Link> = [
     {
-        href: "/ldo",
-        text: "LDO"
-    },
-    {
         href: "/rdflib",
         text: "rdflib"
     },
     {
         href: "/inrupt",
         text: "Inrupt"
+    },
+    {
+        href: "/ldo",
+        text: "LDO"
     },
     {
         href: "/ldo-solid-react",
