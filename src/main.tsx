@@ -4,7 +4,7 @@ import {
     createBrowserRouter,
     RouterProvider,
 } from "react-router-dom";
-import LDO from "./ldo";
+import LDOSolidReact from "./ldo-solid-react";
 import Frontpage from "./frontpage";
 import Layout from "./layout";
 import "bulma/css/bulma.min.css"
@@ -21,8 +21,8 @@ const router = createBrowserRouter([{
             element: <Frontpage/>,
         },
         {
-            path: "/ldo",
-            element: <BrowserSolidLdoProvider><LDO/></BrowserSolidLdoProvider>,
+            path: "/ldo-solid-react",
+            element: <BrowserSolidLdoProvider><LDOSolidReact/></BrowserSolidLdoProvider>,
         },
         {
             path: "/inrupt",
