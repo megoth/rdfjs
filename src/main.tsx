@@ -10,6 +10,7 @@ import Layout from "./layout";
 import "bulma/css/bulma.min.css"
 import Inrupt from "./rdflib";
 import Rdflib from "./inrupt";
+import {BrowserSolidLdoProvider} from '@ldo/solid-react';
 
 const router = createBrowserRouter([{
     path: "/",
@@ -21,7 +22,7 @@ const router = createBrowserRouter([{
         },
         {
             path: "/ldo",
-            element: <LDO/>,
+            element: <BrowserSolidLdoProvider><LDO/></BrowserSolidLdoProvider>,
         },
         {
             path: "/inrupt",
