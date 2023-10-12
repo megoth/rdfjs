@@ -8,6 +8,9 @@ import {
 import LDO from "./ldo";
 import Frontpage from "./frontpage";
 import Layout from "./layout";
+import "bulma/css/bulma.min.css"
+import Inrupt from "./rdflib";
+import Rdflib from "./inrupt";
 
 const router = createBrowserRouter([{
     path: "/",
@@ -20,6 +23,14 @@ const router = createBrowserRouter([{
         {
             path: "/ldo",
             element: <LDO/>,
+        },
+        {
+            path: "/inrupt",
+            element: <Inrupt/>,
+        },
+        {
+            path: "/rdflib",
+            element: <Rdflib/>,
         },
     ]
 }]);

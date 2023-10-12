@@ -1,4 +1,5 @@
 import {NavLink} from "react-router-dom";
+import {clsx} from "clsx";
 
 type Link = {
     href: string;
@@ -7,28 +8,37 @@ type Link = {
 
 const links: Array<Link> = [
     {
-        href: "/",
-        text: "Frontpage"
-    },
-    {
         href: "/ldo",
         text: "LDO"
+    },
+    {
+        href: "/rdflib",
+        text: "rdflib"
+    },
+    {
+        href: "/inrupt",
+        text: "Inrupt"
     },
 ]
 
 
 export default function Navigation() {
     return (
-        <nav>
-            <ul>
+        <nav className="navbar" role="navigation" aria-label="main navigation">
+            <div className="navbar-brand">
+                <NavLink to={"/"} className={({isActive}) => clsx("navbar-item", {
+                    "is-active": isActive
+                })}>DEMO</NavLink>
+            </div>
+            <div className="navbar-menu">
                 {links.map(({href, text}) => (
-                    <li key={href}>
-                        <NavLink to={href}>
-                            <a>{text}</a>
-                        </NavLink>
-                    </li>
+                    <NavLink to={href} key={href} className={({isActive}) => clsx("navbar-item", {
+                        "is-active": isActive
+                    })}>
+                        <a>{text}</a>
+                    </NavLink>
                 ))}
-            </ul>
+            </div>
         </nav>
     )
 }
