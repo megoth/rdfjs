@@ -1,23 +1,30 @@
 import {SubmitHandler, useForm} from "react-hook-form";
-import {useEffect} from "react";
-import {SolidProfile} from "ldo-solid-profile";
+import {useEffect, useState} from "react";
+import {SolidProfile, SolidProfileShapeType} from "ldo-solid-profile";
 import Loading from "../../loading";
-
-interface Props {
-    onSubmitted: (profile: SolidProfile) => Promise<void>
-    profile: SolidProfile
-}
+import useLocalStorage from "use-local-storage";
+import {PROFILE_TURTLE, PROFILE_URI, STORAGE_KEYS} from "../../constants.ts";
+import {parseRdf, toTurtle} from "ldo";
 
 interface FormData {
     name: string;
 }
 
-export default function LDODemo({ onSubmitted, profile }: Props) {
+export default function LDODemo() {
     const {
         register,
         handleSubmit,
         setValue
     } = useForm<FormData>()
+    const [profile, setProfile] = useState<SolidProfile | null>(null);
+    const [turtle, setTurtle] = useLocalStorage(STORAGE_KEYS.PROFILE, PROFILE_TURTLE);
+
+    useEffect(() => {
+        (async () => {
+            const ldoDataset = await parseRdf(turtle, {baseIri: PROFILE_URI});
+            setProfile(ldoDataset.usingType(SolidProfileShapeType).fromSubject(PROFILE_URI));
+        })();
+    }, [turtle]);
 
     useEffect(() => {
         if (!profile) return;
@@ -30,8 +37,8 @@ export default function LDODemo({ onSubmitted, profile }: Props) {
 
     const onSubmit: SubmitHandler<FormData> = async (data) => {
         profile.name = data.name;
-        await onSubmitted(profile);
-    }
+        setTurtle(await toTurtle(profile));
+    };
 
     return (
         <section className="box">
