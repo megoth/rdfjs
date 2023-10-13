@@ -1,6 +1,6 @@
 import {NavLink} from "react-router-dom";
 import {clsx} from "clsx";
-import {useState} from "react";
+import {Fragment, useState} from "react";
 import styles from "./style.module.css";
 
 
@@ -63,17 +63,15 @@ export default function Navigation() {
                     "is-active": isActive
                 })}>
                     {links.map(({text, className, children}) => (
-                        <>
+                        <Fragment key={className}>
                             <div className={clsx("navbar-item", className, styles.item, styles.groupLabel)}>{text}</div>
-                            {children.map(({href, text}) => (
-                                <NavLink to={href}
-                                         key={href}
-                                         className={({isActive}) => clsx("navbar-item", className, styles.item, {
-                                             "is-active": isActive
-                                         })}
-                                         onClick={() => setIsActive(false)}>{text}</NavLink>
-                            ))}
-                        </>
+                            {children.map(({href, text}) => <NavLink to={href}
+                                                                     key={href}
+                                                                     className={({isActive}) => clsx("navbar-item", className, styles.item, {
+                                                                         "is-active": isActive
+                                                                     })}
+                                                                     onClick={() => setIsActive(false)}>{text}</NavLink>)}
+                        </Fragment>
                     ))}
                 </div>
             </div>

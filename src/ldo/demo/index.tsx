@@ -20,10 +20,8 @@ export default function LDODemo() {
     const [turtle, setTurtle] = useLocalStorage(STORAGE_KEYS.PROFILE, PROFILE_TURTLE);
 
     useEffect(() => {
-        (async () => {
-            const ldoDataset = await parseRdf(turtle, {baseIri: PROFILE_URI});
-            setProfile(ldoDataset.usingType(SolidProfileShapeType).fromSubject(PROFILE_URI));
-        })();
+        parseRdf(turtle, {baseIri: PROFILE_URI})
+            .then((ldoDataset) => setProfile(ldoDataset.usingType(SolidProfileShapeType).fromSubject(PROFILE_URI)));
     }, [turtle]);
 
     useEffect(() => {
