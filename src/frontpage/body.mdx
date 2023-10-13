@@ -3,9 +3,18 @@ import {Link} from "react-router-dom";
 Welcome to this demo app that highlights various ways you can work with Linked Data (aka [RDF](https://www.w3.org/TR/rdf11-primer/), aka semantic data) using
 JavaScript libraries.
 
-In this demo we make use of [LDO](https://github.com/o-development/ldo/), [rdflib.js](https://github.com/linkeddata/rdflib.js/), and [Inrupt JavaScript Client Libraries](https://docs.inrupt.com/developer-tools/javascript/client-libraries/). For each
-we've implemented the same feature - a simple form that allow you to change your name in your Solid WebID profile.
-This means that they require you to authenticate with a Solid WebID.
+In this demo we make use of [LDO](https://github.com/o-development/ldo/) and
+[rdflib.js](https://github.com/linkeddata/rdflib.js/). For each we've implemented the same feature - a simple form
+that takes your name and saves it to local storage when you submit the form.
+
+
+Please click onto one of the libraries listed below to see how the feature is implemented in that library. You can also
+navigate to the libraries via the navigation at the top.
+
+- <Link to="/rdflib">rdflib.js</Link>
+- <Link to="/ldo">LDO</Link>
+
+[TBD]
 
 <div className="message is-warning">
     <div className="message-body">
@@ -15,9 +24,4 @@ This means that they require you to authenticate with a Solid WebID.
     </div>
 </div>
 
-Please click onto one of the libraries listed below to see how the feature is implemented in that library. You can also
-navigate to the libraries via the navigation at the top.
-
-- <Link to="/ldo">LDO</Link>
-- <Link to="/rdflib">rdflib.js</Link>
-- <Link to="/inrupt">Inrupt JavaScript Client Libraries</Link>
+- <Link to="/ldo-solid-react">@ldo/solid-react</Link>

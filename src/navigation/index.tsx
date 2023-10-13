@@ -14,16 +14,12 @@ const links: Array<Link> = [
         text: "rdflib"
     },
     {
-        href: "/inrupt",
-        text: "Inrupt"
-    },
-    {
         href: "/ldo",
         text: "LDO"
     },
     {
         href: "/ldo-solid-react",
-        text: "LDO (Solid React)"
+        text: "@ldo/solid-react"
     },
 ]
 
