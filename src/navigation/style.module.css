@@ -1,0 +1,42 @@
+.groupLabel {
+    border-top: solid 2px;
+    font-weight: bold;
+}
+
+@media screen and (min-width: 1024px) {
+    .item.groupLabel {
+        margin-inline-start: 1rem;
+        border-top: 0;
+        border-left: solid 2px;
+    }
+}
+
+.local.local.local {
+    background-color: #fffaeb;
+    border-color: #ffe08a;
+
+    &:is(a):hover {
+        background-color: #fdf1cb;
+    }
+
+    @media screen and (min-width: 1024px) {
+        &:is(a:active):not(:hover):not(:focus) {
+            background-color: #fdf1cb;
+        }
+    }
+}
+
+.solid.solid.solid {
+    background-color: #e7dbff;
+    border-color: #7C4DFF;
+
+    &:is(a):hover {
+        background-color: #cfbbff;
+    }
+
+    @media screen and (min-width: 1024px) {
+        &:is(a:active):not(:hover):not(:focus) {
+            background-color: #cfbbff;
+        }
+    }
+}

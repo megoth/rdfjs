@@ -1,25 +1,45 @@
 import {NavLink} from "react-router-dom";
 import {clsx} from "clsx";
 import {useState} from "react";
+import styles from "./style.module.css";
 
-type Link = {
+
+interface Link {
     href: string;
     text: string;
 }
 
-const links: Array<Link> = [
+interface Container {
+    children: Array<Link>;
+    className: string;
+    text: string;
+}
+
+const links: Array<Container> = [
     {
-        href: "/rdflib",
-        text: "rdflib"
+        text: "Local",
+        className: styles.local,
+        children: [
+            {
+                href: "/rdflib",
+                text: "rdflib"
+            },
+            {
+                href: "/ldo",
+                text: "LDO"
+            },
+        ]
     },
     {
-        href: "/ldo",
-        text: "LDO"
-    },
-    {
-        href: "/ldo-solid-react",
-        text: "@ldo/solid-react"
-    },
+        text: "Solid",
+        className: styles.solid,
+        children: [
+            {
+                href: "/ldo-solid-react",
+                text: "@ldo/solid-react"
+            },
+        ]
+    }
 ]
 
 
@@ -42,10 +62,18 @@ export default function Navigation() {
                 <div className={clsx("navbar-menu", {
                     "is-active": isActive
                 })}>
-                    {links.map(({href, text}) => (
-                        <NavLink to={href} key={href} className={({isActive}) => clsx("navbar-item", {
-                            "is-active": isActive
-                        })} onClick={() => setIsActive(false)}>{text}</NavLink>
+                    {links.map(({text, className, children}) => (
+                        <>
+                            <div className={clsx("navbar-item", className, styles.item, styles.groupLabel)}>{text}</div>
+                            {children.map(({href, text}) => (
+                                <NavLink to={href}
+                                         key={href}
+                                         className={({isActive}) => clsx("navbar-item", className, styles.item, {
+                                             "is-active": isActive
+                                         })}
+                                         onClick={() => setIsActive(false)}>{text}</NavLink>
+                            ))}
+                        </>
                     ))}
                 </div>
             </div>
