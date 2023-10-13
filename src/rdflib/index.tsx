@@ -1,3 +1,10 @@
+import RdflibDemo from "./demo";
+
 export default function Inrupt() {
-    return <div>Inrupt</div>;
+    return (
+        <>
+            <h1 className="title">rdflib.js</h1>
+            <RdflibDemo />
+        </>
+    )
 }

@@ -54,5 +54,5 @@ export default function LDODemo() {
                 </div>
             </form>
         </section>
-    )
+    );
 }

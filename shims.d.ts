@@ -3,3 +3,7 @@ declare module '*.mdx' {
     const ReactComponent: React.VFC
     export default ReactComponent
 }
+
+declare module 'solid-namespace' {
+    export default () => Record<string, (label: string) => string>;
+}
