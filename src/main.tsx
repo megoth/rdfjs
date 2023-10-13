@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import {
-    createBrowserRouter,
+    createHashRouter,
     RouterProvider,
 } from "react-router-dom";
 import LDOSolidReact from "./ldo-solid-react";
@@ -12,7 +12,7 @@ import Rdflib from "./rdflib";
 import {BrowserSolidLdoProvider} from '@ldo/solid-react';
 import LDO from "./ldo";
 
-const router = createBrowserRouter([{
+const router = createHashRouter([{
     path: "/",
     element: <Layout/>,
     children: [
