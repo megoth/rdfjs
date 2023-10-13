@@ -35,9 +35,7 @@ export default function RdflibDemo() {
     const onSubmit: SubmitHandler<FormData> = async (data) => {
         store.remove(store.match(profileNode, nameNode, null));
         store.add(st(profileNode, nameNode, lit(data.name)));
-        serialize(null, store, null, 'text/turtle', (_, result) => {
-            setTurtle(result);
-        });
+        serialize(null, store, null, 'text/turtle', (_, result) => setTurtle(result));
     };
 
     return (
