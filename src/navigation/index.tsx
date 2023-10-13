@@ -1,6 +1,5 @@
 import {NavLink} from "react-router-dom";
 import {clsx} from "clsx";
-import Logo from "../logo";
 import {useState} from "react";
 
 type Link = {
@@ -30,7 +29,7 @@ export default function Navigation() {
         <nav className="navbar is-fixed-top" role="navigation" aria-label="main navigation">
             <div className="container">
                 <div className="navbar-brand">
-                    <NavLink to={"/"} className="navbar-item"><Logo/></NavLink>
+                    <NavLink to={"/"} className="navbar-item">⛫ Home</NavLink>
                     <button className={clsx("navbar-burger", {
                         "is-active": isActive
                     })} aria-label="menu" aria-expanded="false" type="button"
