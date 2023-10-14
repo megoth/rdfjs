@@ -24,7 +24,7 @@ export default function Inrupt() {
     }
     return (
         <>
-            <h1 className="title">Inrupt</h1>
+            <h1 className="title">Inrupt’s JavaScript client libraries</h1>
             {isLoggedIn ? <>
                 <InruptDemo/>
                 <button className="button is-small" onClick={logout}>Log out</button>
