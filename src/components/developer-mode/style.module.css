@@ -1,0 +1,12 @@
+.developerMode {
+    height: 300px;
+    right: 0;
+    top: 0;
+    width: 100%;
+    flex-grow: 1;
+
+    @media screen and (min-width: 1600px) {
+        height: inherit;
+        width: auto;
+    }
+}

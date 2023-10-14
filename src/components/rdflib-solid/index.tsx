@@ -6,7 +6,7 @@ import demoCode from "./demo/index.tsx?raw";
 import IntroSection from "./intro.mdx";
 import CodeSection from "./code.mdx";
 import Content from "../content";
-import usePrism from "../../hooks/usePrism";
+import usePrism from "../../hooks/use-prism";
 import LogoutButton from "../logout-button";
 
 export default function RdflibSolid() {

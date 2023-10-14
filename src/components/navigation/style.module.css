@@ -7,6 +7,15 @@
     font-weight: bold;
 }
 
+.developerModeButton {
+    display: none;
+
+    @media screen and (min-width: 1024px) {
+        display: block;
+        align-self: center;
+    }
+}
+
 @media screen and (min-width: 1024px) {
     .item.groupLabel {
         margin-inline-start: 1rem;

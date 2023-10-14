@@ -2,6 +2,7 @@ import {NavLink} from "react-router-dom";
 import {clsx} from "clsx";
 import {Fragment, useState} from "react";
 import styles from "./style.module.css";
+import DeveloperModeButton from "../developer-mode-button";
 
 
 interface Link {
@@ -62,7 +63,7 @@ const links: Array<Container> = [
 export default function Navigation() {
     const [isActive, setIsActive] = useState<boolean>(false);
     return (
-        <nav className="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+        <nav className="navbar" role="navigation" aria-label="main navigation">
             <div className="container">
                 <div className="navbar-brand">
                     <NavLink to={"/"} className="navbar-item">⛫ Home</NavLink>
@@ -89,6 +90,9 @@ export default function Navigation() {
                                                                      onClick={() => setIsActive(false)}>{text}</NavLink>)}
                         </Fragment>
                     ))}
+                </div>
+                <div className={clsx("navbar-end", styles.developerModeButton)}>
+                    <DeveloperModeButton />
                 </div>
             </div>
         </nav>

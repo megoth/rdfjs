@@ -3,9 +3,11 @@ import {useEffect, useState} from "react";
 import {useSolidAuth} from "@ldo/solid-react";
 import Demo, {FormData} from "../../demo";
 import {NAME_NODE} from "../../../constants.ts";
+import useDeveloperMode from "../../../hooks/use-developer-mode";
 
 export default function RdflibSolidDemo() {
-    const {fetch, session} = useSolidAuth();
+    const {session, ...auth} = useSolidAuth();
+    const {fetch} = useDeveloperMode(auth.fetch);
     const [name, setName] = useState("");
     const profileNode = namedNode(session.webId!);
     const store = graph() as LiveStore;

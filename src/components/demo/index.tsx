@@ -2,7 +2,7 @@ import {SubmitHandler, useForm} from "react-hook-form";
 import {useContext, useEffect, useState} from "react";
 import NotificationContext from "../../contexts/notification";
 import Loading from "../loading";
-import usePrism from "../../hooks/usePrism";
+import usePrism from "../../hooks/use-prism";
 
 interface Props {
     name: string,
