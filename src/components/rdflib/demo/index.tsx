@@ -5,10 +5,11 @@ import namespace from "solid-namespace";
 import useLocalStorage from "use-local-storage";
 import Demo, {FormData} from "../../demo";
 
+const ns = namespace();
+const profileNode = namedNode(PROFILE_URI);
+const nameNode = namedNode(ns.foaf("name"));
+
 export default function RdflibDemo() {
-    const ns = namespace();
-    const profileNode = namedNode(PROFILE_URI);
-    const nameNode = namedNode(ns.foaf("name"));
     const store = graph();
     const [name, setName] = useState("");
     const [turtle, setTurtle] = useLocalStorage(STORAGE_KEYS.PROFILE_TURTLE, PROFILE_TURTLE);
@@ -20,7 +21,7 @@ export default function RdflibDemo() {
             const name = updatedStore?.any(profileNode, nameNode, null)?.value || "";
             setName(name);
         })
-    }, [nameNode, ns, profileNode, store, turtle]);
+    }, [store, turtle]);
 
 
     const onSubmit = async (data: FormData) => {

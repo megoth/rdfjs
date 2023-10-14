@@ -4,20 +4,21 @@ import namespace from "solid-namespace";
 import {useSolidAuth} from "@ldo/solid-react";
 import Demo, {FormData} from "../../demo";
 
+const ns = namespace();
+const nameNode = namedNode(ns.foaf("name"));
+
 export default function RdflibSolidDemo() {
     const {fetch, session} = useSolidAuth();
-    const ns = namespace();
+    const [name, setName] = useState("");
     const profileNode = namedNode(session.webId!);
-    const nameNode = namedNode(ns.foaf("name"));
     const store = graph() as LiveStore;
     new Fetcher(store, {fetch});
     new UpdateManager(store);
-    const [name, setName] = useState("");
 
     useEffect(() => {
         if (!store) return;
         store.fetcher.load(profileNode.doc()).then(() => setName(store.any(profileNode, nameNode, null)?.value || ""));
-    }, [store, nameNode, ns, profileNode]);
+    }, [store, profileNode]);
 
     const onSubmit = async (data: FormData) => {
         setName(data.name);
