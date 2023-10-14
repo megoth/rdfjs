@@ -1,13 +1,8 @@
-import {graph, lit, namedNode, parse, serialize, st} from "rdflib";
-import {PROFILE_TURTLE, PROFILE_URI, STORAGE_KEYS} from "../../../constants.ts";
+import {graph, lit, parse, serialize, st} from "rdflib";
+import {NAME_NODE, PROFILE_NODE, PROFILE_TURTLE, PROFILE_URI, STORAGE_KEYS} from "../../../constants.ts";
 import {useEffect, useState} from "react";
-import namespace from "solid-namespace";
 import useLocalStorage from "use-local-storage";
 import Demo, {FormData} from "../../demo";
-
-const ns = namespace();
-const profileNode = namedNode(PROFILE_URI);
-const nameNode = namedNode(ns.foaf("name"));
 
 export default function RdflibDemo() {
     const store = graph();
@@ -18,15 +13,15 @@ export default function RdflibDemo() {
         if (!store) return;
 
         parse(turtle, store, PROFILE_URI, "text/turtle", (_, updatedStore) => {
-            const name = updatedStore?.any(profileNode, nameNode, null)?.value || "";
+            const name = updatedStore?.any(PROFILE_NODE, NAME_NODE, null)?.value || "";
             setName(name);
         })
     }, [store, turtle]);
 
 
     const onSubmit = async (data: FormData) => {
-        store.remove(store.match(profileNode, nameNode, null));
-        store.add(st(profileNode, nameNode, lit(data.name)));
+        store.remove(store.match(PROFILE_NODE, NAME_NODE, null));
+        store.add(st(PROFILE_NODE, NAME_NODE, lit(data.name)));
         serialize(null, store, null, 'text/turtle', (_, result) => setTurtle(result));
     };
 
