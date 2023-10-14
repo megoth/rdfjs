@@ -24,7 +24,8 @@ export default function Demo({name, onSubmit}: Props) {
     useEffect(() => setValue("name", name), [name, setValue]);
 
     const onSubmitIntermediate = async (data: FormData) => {
-        notify(`NAME UPDATED: ${data.name}`);
+        if (isSyncing) return;
+        notify(<>Name updated: <strong>{data.name}</strong></>);
         setIsSyncing(true);
         await onSubmit(data);
         setIsSyncing(false);
@@ -40,7 +41,7 @@ export default function Demo({name, onSubmit}: Props) {
                     </div>
                 </div>
                 <div className="control">
-                    <button className="button is-primary">Submit</button>
+                    <button className="button is-primary" disabled={isSyncing}>Submit</button>
                 </div>
             </form>
         </section>

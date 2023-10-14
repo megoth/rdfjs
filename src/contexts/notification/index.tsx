@@ -4,7 +4,7 @@ import NotificationList from "../../components/notification-list";
 const NotificationContext = createContext<{
     hide: (id: string) => void;
     notifications: Array<NotificationModel>;
-    notify: (message: string) => void;
+    notify: (node: ReactNode) => void;
 }>({
     hide: () => undefined,
     notifications: [],
@@ -18,7 +18,7 @@ interface Props {
 
 export interface NotificationModel {
     id: string;
-    message: string;
+    message: ReactNode;
     hidden: boolean;
 }
 
@@ -36,7 +36,7 @@ export function NotificationContextProvider({children}: Props) {
         }, ...notifications.slice(index + 1)]);
     };
 
-    const notify = (message: string) => setNotifications([...notifications, {
+    const notify = (message: ReactNode) => setNotifications([...notifications, {
         id: window.crypto.randomUUID(),
         message,
         hidden: false
