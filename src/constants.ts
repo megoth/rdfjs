@@ -39,5 +39,6 @@ export const PROVIDERS: Array<Provider> = [
 ];
 
 export const STORAGE_KEYS = {
-    "PROFILE": "profileTurtle"
+    "PROFILE_TURTLE": "profileTurtle",
+    "PROFILE_JSON": "profileJSON",
 }

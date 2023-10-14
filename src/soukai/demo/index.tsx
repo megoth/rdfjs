@@ -1,9 +1,10 @@
 import {SubmitHandler, useForm} from "react-hook-form";
-import {useSolidAuth} from "@ldo/solid-react";
-import {bootSolidModels, SolidEngine, SolidModel} from 'soukai-solid';
-import {bootModels, FieldType, setEngine} from 'soukai';
 import {useEffect, useState} from "react";
+import {bootModels, FieldType, InMemoryEngine, setEngine} from "soukai";
 import Loading from "../../loading";
+import {bootSolidModels, SolidModel} from "soukai-solid";
+import useLocalStorage from "use-local-storage";
+import {STORAGE_KEYS} from "../../constants.ts";
 
 interface FormData {
     name: string;
@@ -24,23 +25,27 @@ class Person extends SolidModel {
 bootSolidModels();
 bootModels({Person});
 
-export default function SoukaiSolidDemo() {
-    const {fetch, session} = useSolidAuth();
+export default function SoukaiDemo() {
     const {
         register,
         handleSubmit,
         setValue
     } = useForm<FormData>();
     const [person, setPerson] = useState<Person | null>(null);
+    const [json, setJson] = useLocalStorage(STORAGE_KEYS.PROFILE_JSON, "");
 
-    useEffect(() => setEngine(new SolidEngine(fetch)), [fetch]);
+    useEffect(() => setEngine(new InMemoryEngine()), []);
 
     useEffect(() => {
-        Person.find(session.webId!).then((person) => {
-            setPerson(person);
-            setValue("name", person?.getAttributes().name);
-        })
-    }, [session.webId, setValue]);
+        (async () => {
+            const matchedPerson = json.length ? await Person.createFromJsonLD(JSON.parse(json)) : await Person.create({
+                id: 1,
+                name: "Soukai Test"
+            });
+            setPerson(matchedPerson);
+            setValue("name", matchedPerson.getAttributeValue("name"));
+        })();
+    }, [json, setValue]);
 
     if (!person) {
         return <Loading/>
@@ -48,8 +53,9 @@ export default function SoukaiSolidDemo() {
 
     const onSubmit: SubmitHandler<FormData> = async (data) => {
         person.setAttribute("name", data.name);
-        const savedPerson = await person.save(session.webId!);
+        const savedPerson = await person.save();
         setPerson(savedPerson);
+        setJson(JSON.stringify(savedPerson.toJsonLD()))
     };
 
     return (

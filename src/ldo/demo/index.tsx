@@ -17,7 +17,7 @@ export default function LDODemo() {
         setValue
     } = useForm<FormData>()
     const [profile, setProfile] = useState<SolidProfile | null>(null);
-    const [turtle, setTurtle] = useLocalStorage(STORAGE_KEYS.PROFILE, PROFILE_TURTLE);
+    const [turtle, setTurtle] = useLocalStorage(STORAGE_KEYS.PROFILE_TURTLE, PROFILE_TURTLE);
 
     useEffect(() => {
         parseRdf(turtle, {baseIri: PROFILE_URI})

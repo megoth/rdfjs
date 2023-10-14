@@ -28,6 +28,10 @@ const links: Array<Container> = [
                 href: "/ldo",
                 text: "LDO"
             },
+            {
+                href: "/soukai",
+                text: "Soukai"
+            },
         ]
     },
     {

@@ -19,7 +19,7 @@ export default function RdflibDemo() {
         handleSubmit,
         setValue
     } = useForm<FormData>();
-    const [turtle, setTurtle] = useLocalStorage(STORAGE_KEYS.PROFILE, PROFILE_TURTLE);
+    const [turtle, setTurtle] = useLocalStorage(STORAGE_KEYS.PROFILE_TURTLE, PROFILE_TURTLE);
 
     useEffect(() => {
         if (!store) return;
