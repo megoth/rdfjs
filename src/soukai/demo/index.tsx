@@ -4,7 +4,7 @@ import {bootModels, FieldType, InMemoryEngine, setEngine} from "soukai";
 import Loading from "../../loading";
 import {bootSolidModels, SolidModel} from "soukai-solid";
 import useLocalStorage from "use-local-storage";
-import {STORAGE_KEYS} from "../../constants.ts";
+import {PERSON_JSON, STORAGE_KEYS} from "../../constants.ts";
 
 interface FormData {
     name: string;
@@ -37,14 +37,10 @@ export default function SoukaiDemo() {
     useEffect(() => setEngine(new InMemoryEngine()), []);
 
     useEffect(() => {
-        (async () => {
-            const matchedPerson = json.length ? await Person.createFromJsonLD(JSON.parse(json)) : await Person.create({
-                id: 1,
-                name: "Soukai Test"
-            });
+        (json.length ? Person.createFromJsonLD(JSON.parse(json)) : Person.create(PERSON_JSON)).then((matchedPerson) => {
             setPerson(matchedPerson);
             setValue("name", matchedPerson.getAttributeValue("name"));
-        })();
+        });
     }, [json, setValue]);
 
     if (!person) {
@@ -53,9 +49,7 @@ export default function SoukaiDemo() {
 
     const onSubmit: SubmitHandler<FormData> = async (data) => {
         person.setAttribute("name", data.name);
-        const savedPerson = await person.save();
-        setPerson(savedPerson);
-        setJson(JSON.stringify(savedPerson.toJsonLD()))
+        setJson(JSON.stringify(person.toJsonLD()))
     };
 
     return (
