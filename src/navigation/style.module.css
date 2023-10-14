@@ -1,3 +1,7 @@
+.item.item:is(a):hover {
+    color: inherit;
+}
+
 .groupLabel {
     border-top: solid 2px;
     font-weight: bold;
@@ -20,7 +24,7 @@
     }
 
     @media screen and (min-width: 1024px) {
-        &:is(a:active):not(:hover):not(:focus) {
+        &:is(a:global(.is-active)):not(:hover) {
             background-color: #fdf1cb;
         }
     }
@@ -35,7 +39,7 @@
     }
 
     @media screen and (min-width: 1024px) {
-        &:is(a:active):not(:hover):not(:focus) {
+        &:is(a:global(.is-active)):not(:hover) {
             background-color: #cfbbff;
         }
     }
