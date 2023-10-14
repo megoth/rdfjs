@@ -18,9 +18,10 @@ export default function Demo({name, onSubmit}: Props) {
         handleSubmit,
         setValue
     } = useForm<FormData>();
-    const { notify } = useContext(NotificationContext);
+    const {notify} = useContext(NotificationContext);
     const [isSyncing, setIsSyncing] = useState(false);
 
+    useEffect(() => (window as any).Prism.highlightAll(), []);
     useEffect(() => setValue("name", name), [name, setValue]);
 
     const onSubmitIntermediate = async (data: FormData) => {
@@ -37,7 +38,8 @@ export default function Demo({name, onSubmit}: Props) {
                 <div className="field">
                     <label className="label">Name</label>
                     <div className="control">
-                        <input className="input" type="text" {...register("name", {required: true})} disabled={isSyncing} />
+                        <input className="input" type="text" {...register("name", {required: true})}
+                               disabled={isSyncing}/>
                     </div>
                 </div>
                 <div className="control">
@@ -45,5 +47,5 @@ export default function Demo({name, onSubmit}: Props) {
                 </div>
             </form>
         </section>
-    ) : <Loading />
+    ) : <Loading/>
 }
