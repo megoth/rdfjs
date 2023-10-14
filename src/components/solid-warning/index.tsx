@@ -14,8 +14,8 @@ export default function SolidWarning() {
             profile?.name ? <>
                 <div className="message is-success">
                     <div className="message-body">
-                        Thanks, {profile?.name || "Stranger"}, you're all good!
-                        (Thanks for trusting us, we won't abuse that trust.)
+                        Thank you, <strong>{profile?.name || "Stranger"}</strong>, you're all good!
+                        (Thanks for trusting us btw, we won't abuse that trust.)
                     </div>
                 </div>
                 <button className="button is-small" onClick={logout}>Log out</button>
