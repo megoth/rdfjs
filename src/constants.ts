@@ -4,6 +4,40 @@ export const PROFILE_TURTLE = `<${PROFILE_URI}> a <http://xmlns.com/foaf/0.1/Per
     <http://xmlns.com/foaf/0.1/name> "Test".
 `;
 
+interface Provider {
+    label: string;
+    logoSrc: string;
+    loginIri: string;
+    signupIri: string;
+}
+
+export const PROVIDERS: Array<Provider> = [
+    {
+        label: "Inrupt Pod Spaces",
+        logoSrc: "/logos/inrupt-ps-logo.png",
+        loginIri: "https://broker.pod.inrupt.com/",
+        signupIri: "https://signup.pod.inrupt.com/",
+    },
+    {
+        label: "solidweb.me",
+        logoSrc: "/logos/solid-emblem.svg",
+        loginIri: "https://solidweb.me",
+        signupIri: "https://solidweb.me/idp/register/",
+    },
+    {
+        label: "solidcommunity.net",
+        logoSrc: "/logos/solid-emblem.svg",
+        loginIri: "https://solidcommunity.net/",
+        signupIri: "https://solidcommunity.net/register",
+    },
+    {
+        label: "inrupt.net",
+        logoSrc: "/logos/solid-emblem.svg",
+        loginIri: "https://inrupt.net/",
+        signupIri: "https://inrupt.net/register",
+    },
+];
+
 export const STORAGE_KEYS = {
     "PROFILE": "profileTurtle"
 }
