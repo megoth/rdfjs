@@ -13,6 +13,7 @@ import {BrowserSolidLdoProvider} from '@ldo/solid-react';
 import LDO from "./ldo";
 import RdflibSolid from "./rdflib-solid";
 import Inrupt from "./inrupt";
+import SoukaiSolid from "./soukai-solid";
 
 const router = createBrowserRouter([{
     path: "/",
@@ -41,6 +42,10 @@ const router = createBrowserRouter([{
         {
             path: "/inrupt",
             element: <Inrupt/>,
+        },
+        {
+            path: "/soukai-solid",
+            element: <SoukaiSolid/>,
         },
     ]
 }]);

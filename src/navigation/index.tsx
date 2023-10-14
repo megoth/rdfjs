@@ -46,6 +46,10 @@ const links: Array<Container> = [
                 href: "/inrupt",
                 text: "Inrupt"
             },
+            {
+                href: "/soukai-solid",
+                text: "Soukai Solid"
+            },
         ]
     }
 ]
