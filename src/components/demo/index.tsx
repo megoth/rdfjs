@@ -1,6 +1,7 @@
 import {SubmitHandler, useForm} from "react-hook-form";
 import {useContext, useEffect, useState} from "react";
 import NotificationContext from "../../contexts/notification";
+import Loading from "../loading";
 
 interface Props {
     name: string,
@@ -29,7 +30,7 @@ export default function Demo({name, onSubmit}: Props) {
         setIsSyncing(false);
     }
 
-    return (
+    return name ? (
         <section className="box">
             <form onSubmit={handleSubmit(onSubmitIntermediate)}>
                 <div className="field">
@@ -43,5 +44,5 @@ export default function Demo({name, onSubmit}: Props) {
                 </div>
             </form>
         </section>
-    );
+    ) : <Loading />
 }
