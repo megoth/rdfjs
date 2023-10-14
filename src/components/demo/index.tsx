@@ -2,6 +2,7 @@ import {SubmitHandler, useForm} from "react-hook-form";
 import {useContext, useEffect, useState} from "react";
 import NotificationContext from "../../contexts/notification";
 import Loading from "../loading";
+import usePrism from "../../hooks/usePrism";
 
 interface Props {
     name: string,
@@ -13,6 +14,7 @@ export interface FormData {
 }
 
 export default function Demo({name, onSubmit}: Props) {
+    usePrism();
     const {
         register,
         handleSubmit,
@@ -21,7 +23,6 @@ export default function Demo({name, onSubmit}: Props) {
     const {notify} = useContext(NotificationContext);
     const [isSyncing, setIsSyncing] = useState(false);
 
-    useEffect(() => (window as any).Prism.highlightAll(), []);
     useEffect(() => setValue("name", name), [name, setValue]);
 
     const onSubmitIntermediate = async (data: FormData) => {
