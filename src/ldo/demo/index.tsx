@@ -1,33 +1,22 @@
-import {SubmitHandler, useForm} from "react-hook-form";
+import {SubmitHandler} from "react-hook-form";
 import {useEffect, useState} from "react";
 import {SolidProfile, SolidProfileShapeType} from "ldo-solid-profile";
 import Loading from "../../loading";
 import useLocalStorage from "use-local-storage";
 import {PROFILE_TURTLE, PROFILE_URI, STORAGE_KEYS} from "../../constants.ts";
 import {parseRdf, toTurtle} from "ldo";
-
-interface FormData {
-    name: string;
-}
+import Demo, {FormData} from "../../demo";
 
 export default function LDODemo() {
-    const {
-        register,
-        handleSubmit,
-        setValue
-    } = useForm<FormData>()
     const [profile, setProfile] = useState<SolidProfile | null>(null);
     const [turtle, setTurtle] = useLocalStorage(STORAGE_KEYS.PROFILE_TURTLE, PROFILE_TURTLE);
 
     useEffect(() => {
-        parseRdf(turtle, {baseIri: PROFILE_URI})
-            .then((ldoDataset) => setProfile(ldoDataset.usingType(SolidProfileShapeType).fromSubject(PROFILE_URI)));
+        parseRdf(turtle, {baseIRI: PROFILE_URI}).then((ldoDataset) => {
+            const foundProfile = ldoDataset.usingType(SolidProfileShapeType).fromSubject(PROFILE_URI);
+            setProfile(foundProfile);
+        });
     }, [turtle]);
-
-    useEffect(() => {
-        if (!profile) return;
-        setValue("name", profile.name || "")
-    }, [profile, setValue]);
 
     if (!profile) {
         return <Loading/>
@@ -38,19 +27,5 @@ export default function LDODemo() {
         setTurtle(await toTurtle(profile));
     };
 
-    return (
-        <section className="box">
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <div className="field">
-                    <label className="label">Name</label>
-                    <div className="control">
-                        <input className="input" type="text" {...register("name", {required: true})} />
-                    </div>
-                </div>
-                <div className="control">
-                    <button className="button is-primary">Submit</button>
-                </div>
-            </form>
-        </section>
-    );
+    return <Demo name={profile.name || ""} onSubmit={onSubmit}/>
 }
