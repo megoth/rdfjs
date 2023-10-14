@@ -11,7 +11,7 @@ interface FormData {
 export default function LDOSolidReactDemo() {
     const {session} = useSolidAuth();
     const {commitData, changeData} = useLdo();
-    const profileResource = useResource(session.webId);
+    const profileResource = useResource(session.webId, {reloadOnMount: true});
     const profile = useSubject(SolidProfileShapeType, session.webId);
     const {
         register,

@@ -35,7 +35,7 @@ const router = createBrowserRouter([{
         },
         {
             path: "/rdflib-solid",
-            element: <BrowserSolidLdoProvider><RdflibSolid/></BrowserSolidLdoProvider>,
+            element: <RdflibSolid/>,
         },
     ]
 }]);
