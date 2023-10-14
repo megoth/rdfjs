@@ -1,0 +1,22 @@
+import {Link} from "react-router-dom";
+
+<h2 className={"subtitle"}>RDF + JS + Solid = <span style={{color: "#7C4DFF"}}>&#10084;</span></h2>
+
+In the first demos we've focused on working locally in the browser by storing our data in cookies. But semantic data is
+designed to live on the web, so to not take that aspect into mind is flawed. The problem with this approach is that it
+requires us to communicate with some server, meaning the data is to be stored somewhere else than our browser. Meaning
+we need some sort of authorization on the resources involved, which in turn probably would require some authentication.
+
+Luckily, all of this is solved by using Solid! As promoted on [solidproject.org](https://solidproject.org/):
+
+<blockquote>
+    Solid is a specification that lets people store their data securely in decentralized data stores called Pods.
+    Pods are like secure personal web servers for data. When data is stored in someone's Pod, they control which
+    people and applications can access it.
+</blockquote>
+
+We've created two more demos, using rdflib.js and LDO again, but this time with Solid in mind. This means that the demos
+require you to authenticate, and the name you change is the one connected to your WebID profile.
+
+- <Link to="/rdflib-solid">rdflib.js (with Solid)</Link>
+- <Link to="/ldo-solid-react">@ldo/solid-react</Link>

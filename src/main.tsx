@@ -19,7 +19,7 @@ const router = createBrowserRouter([{
     children: [
         {
             index: true,
-            element: <Frontpage/>,
+            element: <BrowserSolidLdoProvider><Frontpage/></BrowserSolidLdoProvider>,
         },
         {
             path: "/ldo",
