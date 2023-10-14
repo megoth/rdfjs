@@ -11,6 +11,7 @@ import "bulma/css/bulma.min.css"
 import Rdflib from "./rdflib";
 import {BrowserSolidLdoProvider} from '@ldo/solid-react';
 import LDO from "./ldo";
+import RdflibSolid from "./rdflib-solid";
 
 const router = createBrowserRouter([{
     path: "/",
@@ -22,7 +23,7 @@ const router = createBrowserRouter([{
         },
         {
             path: "/ldo",
-            element: <LDO />,
+            element: <LDO/>,
         },
         {
             path: "/ldo-solid-react",
@@ -31,6 +32,10 @@ const router = createBrowserRouter([{
         {
             path: "/rdflib",
             element: <Rdflib/>,
+        },
+        {
+            path: "/rdflib-solid",
+            element: <BrowserSolidLdoProvider><RdflibSolid/></BrowserSolidLdoProvider>,
         },
     ]
 }]);

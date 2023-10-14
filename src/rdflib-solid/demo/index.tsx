@@ -1,40 +1,39 @@
 import {SubmitHandler, useForm} from "react-hook-form";
-import {graph, lit, namedNode, parse, serialize, st} from "rdflib";
-import {PROFILE_TURTLE, PROFILE_URI, STORAGE_KEYS} from "../../constants.ts";
+import {Fetcher, graph, lit, LiveStore, namedNode, st, UpdateManager} from "rdflib";
 import {useEffect} from "react";
 import namespace from "solid-namespace";
-import useLocalStorage from "use-local-storage";
+import {getDefaultSession} from "@inrupt/solid-client-authn-browser";
 
 interface FormData {
     name: string;
 }
 
-export default function RdflibDemo() {
+export default function RdflibSolidDemo() {
+    const session = getDefaultSession();
     const ns = namespace();
-    const profileNode = namedNode(PROFILE_URI);
+    const profileNode = namedNode(session.info.webId!);
     const nameNode = namedNode(ns.foaf("name"));
-    const store = graph();
+    const store = graph() as LiveStore;
+    new Fetcher(store, {fetch: session.fetch});
+    new UpdateManager(store);
     const {
         register,
         handleSubmit,
         setValue
     } = useForm<FormData>();
-    const [turtle, setTurtle] = useLocalStorage(STORAGE_KEYS.PROFILE, PROFILE_TURTLE);
 
     useEffect(() => {
         if (!store) return;
-
-        parse(turtle, store, PROFILE_URI, "text/turtle", (_, updatedStore) => {
-            const name = updatedStore?.any(profileNode, nameNode, null)?.value || "";
+        store.fetcher.load(profileNode.doc()).then(() => {
+            const name = store.any(profileNode, nameNode, null)?.value || "";
             setValue("name", name);
-        })
-    }, [nameNode, ns, profileNode, setValue, store, turtle]);
-
+        });
+    }, [store, nameNode, ns, profileNode, setValue]);
 
     const onSubmit: SubmitHandler<FormData> = async (data) => {
-        store.remove(store.match(profileNode, nameNode, null));
-        store.add(st(profileNode, nameNode, lit(data.name)));
-        serialize(null, store, null, 'text/turtle', (_, result) => setTurtle(result));
+        const ins = [st(profileNode, nameNode, lit(data.name), profileNode.doc())];
+        const del = store.statementsMatching(profileNode, nameNode, null, profileNode.doc());
+        store.updater.update(del, ins)
     };
 
     return (

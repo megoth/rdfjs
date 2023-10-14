@@ -22,7 +22,7 @@ const links: Array<Container> = [
         children: [
             {
                 href: "/rdflib",
-                text: "rdflib"
+                text: "rdflib.js"
             },
             {
                 href: "/ldo",
@@ -34,6 +34,10 @@ const links: Array<Container> = [
         text: "Solid",
         className: styles.solid,
         children: [
+            {
+                href: "/rdflib-solid",
+                text: "rdflib.js"
+            },
             {
                 href: "/ldo-solid-react",
                 text: "@ldo/solid-react"
