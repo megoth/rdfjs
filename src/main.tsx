@@ -4,17 +4,18 @@ import {
     createBrowserRouter,
     RouterProvider,
 } from "react-router-dom";
-import LDOSolidReact from "./ldo-solid-react";
-import Frontpage from "./frontpage";
-import Layout from "./layout";
+import LDOSolidReact from "./components/ldo-solid-react";
+import Frontpage from "./components/frontpage";
+import Layout from "./components/layout";
 import "bulma/css/bulma.min.css"
-import Rdflib from "./rdflib";
+import Rdflib from "./components/rdflib";
 import {BrowserSolidLdoProvider} from '@ldo/solid-react';
-import LDO from "./ldo";
-import RdflibSolid from "./rdflib-solid";
-import Inrupt from "./inrupt";
-import SoukaiSolid from "./soukai-solid";
-import Soukai from "./soukai";
+import LDO from "./components/ldo";
+import RdflibSolid from "./components/rdflib-solid";
+import Inrupt from "./components/inrupt";
+import SoukaiSolid from "./components/soukai-solid";
+import Soukai from "./components/soukai";
+import {NotificationContextProvider} from "./contexts/notification";
 
 const router = createBrowserRouter([{
     path: "/",
@@ -58,7 +59,9 @@ const router = createBrowserRouter([{
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
         <BrowserSolidLdoProvider>
-            <RouterProvider router={router}/>
+            <NotificationContextProvider>
+                <RouterProvider router={router}/>
+            </NotificationContextProvider>
         </BrowserSolidLdoProvider>
     </React.StrictMode>,
 )

@@ -3,7 +3,7 @@ import {useEffect, useState} from "react";
 import {SolidProfile, SolidProfileShapeType} from "ldo-solid-profile";
 import Loading from "../../loading";
 import useLocalStorage from "use-local-storage";
-import {PROFILE_TURTLE, PROFILE_URI, STORAGE_KEYS} from "../../constants.ts";
+import {PROFILE_TURTLE, PROFILE_URI, STORAGE_KEYS} from "../../../constants.ts";
 import {parseRdf, toTurtle} from "ldo";
 import Demo, {FormData} from "../../demo";
 

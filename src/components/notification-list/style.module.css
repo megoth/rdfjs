@@ -1,0 +1,14 @@
+.notifications {
+    position: fixed;
+    right: 0.75rem;
+    top: 0.75rem;
+    width: 250px;
+    z-index: 1000000000;
+}
+
+@media screen and (min-width: 1024px) {
+    .notifications {
+        margin-right: 50%;
+        right: calc(-672px - 0.75em);
+    }
+}

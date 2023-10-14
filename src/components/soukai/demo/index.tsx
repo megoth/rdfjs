@@ -3,7 +3,7 @@ import {bootModels, FieldType, InMemoryEngine, setEngine} from "soukai";
 import Loading from "../../loading";
 import {bootSolidModels, SolidModel} from "soukai-solid";
 import useLocalStorage from "use-local-storage";
-import {PERSON_JSON, STORAGE_KEYS} from "../../constants.ts";
+import {PERSON_JSON, STORAGE_KEYS} from "../../../constants.ts";
 import Demo, {FormData} from "../../demo";
 
 class Person extends SolidModel {

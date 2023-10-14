@@ -1,4 +1,4 @@
-import {PROVIDERS} from "../constants.ts";
+import {PROVIDERS} from "../../constants.ts";
 
 interface Props {
     login: (url: string) => void,

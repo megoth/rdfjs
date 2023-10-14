@@ -1,5 +1,6 @@
 import {SubmitHandler, useForm} from "react-hook-form";
-import {useEffect} from "react";
+import {useContext, useEffect} from "react";
+import NotificationContext from "../../contexts/notification";
 
 interface Props {
     name: string,
@@ -16,12 +17,18 @@ export default function Demo({name, onSubmit}: Props) {
         handleSubmit,
         setValue
     } = useForm<FormData>();
+    const { notify } = useContext(NotificationContext);
 
     useEffect(() => setValue("name", name), [name, setValue]);
 
+    const onSubmitIntermediate = (data: FormData) => {
+        notify(`NAME UPDATED: ${data.name}`);
+        return onSubmit(data);
+    }
+
     return (
         <section className="box">
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(onSubmitIntermediate)}>
                 <div className="field">
                     <label className="label">Name</label>
                     <div className="control">
