@@ -12,6 +12,7 @@ import Rdflib from "./rdflib";
 import {BrowserSolidLdoProvider} from '@ldo/solid-react';
 import LDO from "./ldo";
 import RdflibSolid from "./rdflib-solid";
+import Inrupt from "./inrupt";
 
 const router = createBrowserRouter([{
     path: "/",
@@ -36,6 +37,10 @@ const router = createBrowserRouter([{
         {
             path: "/rdflib-solid",
             element: <RdflibSolid/>,
+        },
+        {
+            path: "/inrupt",
+            element: <Inrupt/>,
         },
     ]
 }]);

@@ -1,9 +1,9 @@
-import RdflibSolidDemo from "./demo";
-import Login from "../login";
-import {getDefaultSession, handleIncomingRedirect} from '@inrupt/solid-client-authn-browser'
+import {getDefaultSession, handleIncomingRedirect} from "@inrupt/solid-client-authn-browser";
 import {useEffect, useState} from "react";
+import Login from "../login";
+import InruptDemo from "./demo";
 
-export default function RdflibSolid() {
+export default function Inrupt() {
     const session = getDefaultSession();
     const [isLoggedIn, setIsLoggedIn] = useState(session.info.isLoggedIn);
 
@@ -22,12 +22,13 @@ export default function RdflibSolid() {
         await session.logout();
         setIsLoggedIn(session.info.isLoggedIn);
     }
-
-    return <>
-        <h1 className="title">rdflib.js with Solid</h1>
-        {isLoggedIn ? <>
-            <RdflibSolidDemo/>
-            <button className="button is-small" onClick={logout}>Log out</button>
-        </> : <Login login={login}/>}
-    </>
+    return (
+        <>
+            <h1 className="title">Inrupt</h1>
+            {isLoggedIn ? <>
+                <InruptDemo/>
+                <button className="button is-small" onClick={logout}>Log out</button>
+            </> : <Login login={login}/>}
+        </>
+    )
 }

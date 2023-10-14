@@ -42,6 +42,10 @@ const links: Array<Container> = [
                 href: "/ldo-solid-react",
                 text: "@ldo/solid-react"
             },
+            {
+                href: "/inrupt",
+                text: "Inrupt"
+            },
         ]
     }
 ]
