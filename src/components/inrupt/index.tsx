@@ -7,9 +7,10 @@ import IntroSection from "./intro.mdx";
 import CodeSection from "./code.mdx";
 import Content from "../content";
 import usePrism from "../../hooks/usePrism";
+import LogoutButton from "../logout-button";
 
 export default function Inrupt() {
-    const {login, logout, session} = useSolidAuth();
+    const {login, session} = useSolidAuth();
     usePrism();
 
     return (
@@ -18,7 +19,7 @@ export default function Inrupt() {
             <Content><IntroSection/></Content>
             {session.isLoggedIn ? <>
                 <InruptDemo/>
-                <button className="button is-small" onClick={logout}>Log out</button>
+                <LogoutButton/>
             </> : <Login login={login}/>}
             <Content><CodeSection/></Content>
             <Code language={"tsx"}>{demoCode}</Code>

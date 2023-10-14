@@ -1,13 +1,7 @@
 import {SubmitHandler} from "react-hook-form";
 import {useEffect, useState} from "react";
 import {
-    getLiteral,
-    getSolidDataset,
-    getThing,
-    saveSolidDatasetAt,
-    setLiteral,
-    setThing,
-    SolidDataset
+    getLiteral, getSolidDataset, getThing, saveSolidDatasetAt, setLiteral, setThing, SolidDataset
 } from "@inrupt/solid-client";
 import {FOAF} from "@inrupt/vocab-common-rdf";
 import {Literal} from "@rdfjs/types"
@@ -25,13 +19,12 @@ export default function InruptDemo() {
     const {fetch, session} = useSolidAuth();
 
     useEffect(() => {
-        (async () => {
-            const dataset = await getSolidDataset(session.webId!, {fetch});
+        getSolidDataset(session.webId!, {fetch}).then((dataset) => {
             setDataset(dataset);
             const profile = getThing(dataset, session.webId!)!;
             const name = getLiteral(profile, FOAF.name);
-            setName(name?.value || "")
-        })();
+            setName(name?.value || "");
+        })
     }, [fetch, session.webId]);
 
     const onSubmit: SubmitHandler<FormData> = async (data) => {

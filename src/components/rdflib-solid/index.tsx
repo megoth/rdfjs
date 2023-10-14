@@ -7,17 +7,18 @@ import IntroSection from "./intro.mdx";
 import CodeSection from "./code.mdx";
 import Content from "../content";
 import usePrism from "../../hooks/usePrism";
+import LogoutButton from "../logout-button";
 
 export default function RdflibSolid() {
     usePrism();
-    const {login, logout, session} = useSolidAuth();
+    const {login, session} = useSolidAuth();
 
     return <>
         <h1 className="title">rdflib.js with Solid</h1>
         <Content><IntroSection/></Content>
         {session.isLoggedIn ? <>
             <RdflibSolidDemo/>
-            <button className="button is-small" onClick={logout}>Log out</button>
+            <LogoutButton/>
         </> : <Login login={login}/>}
         <Content><CodeSection/></Content>
         <Code language={"tsx"}>{demoCode}</Code>
