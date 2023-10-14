@@ -1,4 +1,4 @@
-import {SubmitHandler, useForm} from "react-hook-form";
+import {SubmitHandler} from "react-hook-form";
 import {useEffect, useState} from "react";
 import {
     getLiteral,
@@ -13,17 +13,14 @@ import {FOAF} from "@inrupt/vocab-common-rdf";
 import {Literal} from "@rdfjs/types"
 import {lit} from "rdflib";
 import {useSolidAuth} from "@ldo/solid-react";
+import Demo from "../../demo";
 
 interface FormData {
     name: string;
 }
 
 export default function InruptDemo() {
-    const {
-        register,
-        handleSubmit,
-        setValue
-    } = useForm<FormData>();
+    const [name, setName] = useState("");
     const [dataset, setDataset] = useState<SolidDataset | null>(null);
     const {fetch, session} = useSolidAuth();
 
@@ -33,9 +30,9 @@ export default function InruptDemo() {
             setDataset(dataset);
             const profile = getThing(dataset, session.webId!)!;
             const name = getLiteral(profile, FOAF.name);
-            setValue("name", name?.value || "")
+            setName(name?.value || "")
         })();
-    }, [fetch, session.webId, setValue]);
+    }, [fetch, session.webId]);
 
     const onSubmit: SubmitHandler<FormData> = async (data) => {
         if (!dataset) return;
@@ -46,19 +43,5 @@ export default function InruptDemo() {
         setDataset(savedDataset);
     };
 
-    return (
-        <section className="box">
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <div className="field">
-                    <label className="label">Name</label>
-                    <div className="control">
-                        <input className="input" type="text" {...register("name", {required: true})} />
-                    </div>
-                </div>
-                <div className="control">
-                    <button className="button is-primary">Submit</button>
-                </div>
-            </form>
-        </section>
-    );
+    return <Demo name={name} onSubmit={onSubmit}/>
 }

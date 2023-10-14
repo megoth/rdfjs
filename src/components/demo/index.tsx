@@ -1,5 +1,5 @@
 import {SubmitHandler, useForm} from "react-hook-form";
-import {useContext, useEffect} from "react";
+import {useContext, useEffect, useState} from "react";
 import NotificationContext from "../../contexts/notification";
 
 interface Props {
@@ -18,12 +18,15 @@ export default function Demo({name, onSubmit}: Props) {
         setValue
     } = useForm<FormData>();
     const { notify } = useContext(NotificationContext);
+    const [isSyncing, setIsSyncing] = useState(false);
 
     useEffect(() => setValue("name", name), [name, setValue]);
 
-    const onSubmitIntermediate = (data: FormData) => {
+    const onSubmitIntermediate = async (data: FormData) => {
         notify(`NAME UPDATED: ${data.name}`);
-        return onSubmit(data);
+        setIsSyncing(true);
+        await onSubmit(data);
+        setIsSyncing(false);
     }
 
     return (
@@ -32,7 +35,7 @@ export default function Demo({name, onSubmit}: Props) {
                 <div className="field">
                     <label className="label">Name</label>
                     <div className="control">
-                        <input className="input" type="text" {...register("name", {required: true})} />
+                        <input className="input" type="text" {...register("name", {required: true})} disabled={isSyncing} />
                     </div>
                 </div>
                 <div className="control">
