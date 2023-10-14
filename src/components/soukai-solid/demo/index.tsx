@@ -1,21 +1,10 @@
 import {useSolidAuth} from "@ldo/solid-react";
-import {bootSolidModels, SolidEngine, SolidModel} from 'soukai-solid';
-import {bootModels, FieldType, setEngine} from 'soukai';
+import {bootSolidModels, SolidEngine} from 'soukai-solid';
+import {bootModels, setEngine} from 'soukai';
 import {useEffect, useState} from "react";
 import Loading from "../../loading";
 import Demo, {FormData} from "../../demo";
-
-class Person extends SolidModel {
-
-    static rdfsClasses = ['http://xmlns.com/foaf/0.1/Person'];
-
-    static fields = {
-        name: {
-            type: FieldType.String,
-            rdfProperty: 'http://xmlns.com/foaf/0.1/name',
-        },
-    };
-}
+import {Person} from "../../soukai/demo";
 
 bootSolidModels();
 bootModels({Person});

@@ -1,6 +1,8 @@
 import Login from "../login";
 import {useSolidAuth} from "@ldo/solid-react";
 import SoukaiSolidDemo from "./demo";
+import Code from "../code";
+import demoCode from "./demo/index.tsx?raw";
 
 export default function SoukaiSolid() {
     const {login, logout, session} = useSolidAuth();
@@ -12,6 +14,7 @@ export default function SoukaiSolid() {
                 <SoukaiSolidDemo/>
                 <button className="button is-small" onClick={() => logout()}>Log out</button>
             </> : <Login login={login}/>}
+            <Code language={"tsx"}>{demoCode}</Code>
         </>
     );
 }

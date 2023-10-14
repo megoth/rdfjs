@@ -1,6 +1,6 @@
 interface CodeProps {
     children: string | undefined;
-    language: "turtle" | "typescript";
+    language: "turtle" | "tsx" | "typescript";
 }
 
 

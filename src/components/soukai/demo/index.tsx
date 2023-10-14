@@ -6,7 +6,7 @@ import useLocalStorage from "use-local-storage";
 import {PERSON_JSON, STORAGE_KEYS} from "../../../constants.ts";
 import Demo, {FormData} from "../../demo";
 
-class Person extends SolidModel {
+export class Person extends SolidModel {
 
     static rdfsClasses = ['http://xmlns.com/foaf/0.1/Person'];
 
