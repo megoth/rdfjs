@@ -1,13 +1,14 @@
 import RdflibSolidDemo from "./demo";
 import Login from "../login";
-import {getDefaultSession} from '@inrupt/solid-client-authn-browser'
+import {EVENTS, getDefaultSession} from '@inrupt/solid-client-authn-browser'
 import {useState} from "react";
 
 export default function RdflibSolid() {
     const session = getDefaultSession();
     const [isLoggedIn, setIsLoggedIn] = useState(session.info.isLoggedIn);
-    session.on("login", () => setIsLoggedIn(session.info.isLoggedIn));
-    session.on("sessionRestore", () => setIsLoggedIn(session.info.isLoggedIn));
+    session.on(EVENTS.LOGIN, () => setIsLoggedIn(session.info.isLoggedIn));
+    session.on(EVENTS.SESSION_RESTORED, () => setIsLoggedIn(session.info.isLoggedIn));
+    session.on(EVENTS.SESSION_EXPIRED, () => setIsLoggedIn(session.info.isLoggedIn));
 
     const login = async (providerUrl: string) => session.login({
         oidcIssuer: providerUrl,
