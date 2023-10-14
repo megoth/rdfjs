@@ -20,7 +20,7 @@ const router = createBrowserRouter([{
     children: [
         {
             index: true,
-            element: <BrowserSolidLdoProvider><Frontpage/></BrowserSolidLdoProvider>,
+            element: <Frontpage/>,
         },
         {
             path: "/ldo",
@@ -28,7 +28,7 @@ const router = createBrowserRouter([{
         },
         {
             path: "/ldo-solid-react",
-            element: <BrowserSolidLdoProvider><LDOSolidReact/></BrowserSolidLdoProvider>,
+            element: <LDOSolidReact/>,
         },
         {
             path: "/rdflib",
@@ -47,6 +47,8 @@ const router = createBrowserRouter([{
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
-        <RouterProvider router={router}/>
+        <BrowserSolidLdoProvider>
+            <RouterProvider router={router}/>
+        </BrowserSolidLdoProvider>
     </React.StrictMode>,
 )

@@ -2,19 +2,19 @@ import {SubmitHandler, useForm} from "react-hook-form";
 import {Fetcher, graph, lit, LiveStore, namedNode, st, UpdateManager} from "rdflib";
 import {useEffect} from "react";
 import namespace from "solid-namespace";
-import {getDefaultSession} from "@inrupt/solid-client-authn-browser";
+import {useSolidAuth} from "@ldo/solid-react";
 
 interface FormData {
     name: string;
 }
 
 export default function RdflibSolidDemo() {
-    const session = getDefaultSession();
+    const {fetch, session} = useSolidAuth();
     const ns = namespace();
-    const profileNode = namedNode(session.info.webId!);
+    const profileNode = namedNode(session.webId!);
     const nameNode = namedNode(ns.foaf("name"));
     const store = graph() as LiveStore;
-    new Fetcher(store, {fetch: session.fetch});
+    new Fetcher(store, {fetch});
     new UpdateManager(store);
     const {
         register,
