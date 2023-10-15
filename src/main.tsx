@@ -16,6 +16,7 @@ import Inrupt from "./components/inrupt";
 import SoukaiSolid from "./components/soukai-solid";
 import Soukai from "./components/soukai";
 import {NotificationContextProvider} from "./contexts/notification";
+import Comunica from "./components/comunica";
 
 const router = createBrowserRouter([{
     path: "/",
@@ -26,12 +27,16 @@ const router = createBrowserRouter([{
             element: <Frontpage/>,
         },
         {
-            path: "/ldo",
-            element: <LDO/>,
+            path: "/comunica",
+            element: <Comunica/>,
         },
         {
-            path: "/soukai",
-            element: <Soukai/>,
+            path: "/inrupt",
+            element: <Inrupt/>,
+        },
+        {
+            path: "/ldo",
+            element: <LDO/>,
         },
         {
             path: "/ldo-solid-react",
@@ -46,8 +51,8 @@ const router = createBrowserRouter([{
             element: <RdflibSolid/>,
         },
         {
-            path: "/inrupt",
-            element: <Inrupt/>,
+            path: "/soukai",
+            element: <Soukai/>,
         },
         {
             path: "/soukai-solid",

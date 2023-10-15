@@ -119,6 +119,14 @@ export const SOLID_DEMOS: Array<DemoLink> = [
         slogan: "The creator of Soukai ODM has also created a Solid engine that allows you to use Soukai with Solid",
         text: "Soukai Solid"
     },
+    {
+        title: "Comunica",
+        subtitle: "By Comunica Team",
+        href: "/comunica",
+        icon: "/comunica.svg",
+        slogan: "Comunica allows you to execute SPARQL queries for resources on the web",
+        text: "Comunica"
+    },
 ];
 
 export const STORAGE_KEYS = {

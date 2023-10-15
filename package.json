@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@comunica/query-sparql": "^2.9.0",
     "@inrupt/solid-client": "^1.30.2",
     "@inrupt/vocab-common-rdf": "^1.0.5",
     "@inrupt/vocab-solid": "^1.0.4",
