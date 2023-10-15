@@ -2,6 +2,7 @@ import {NavLink} from "react-router-dom";
 import {clsx} from "clsx";
 import {Fragment, useState} from "react";
 import styles from "./style.module.css";
+import {BiHomeHeart} from "react-icons/bi";
 
 interface Link {
     href: string;
@@ -64,7 +65,10 @@ export default function Navigation() {
         <nav className="navbar" role="navigation" aria-label="main navigation">
             <div className="container">
                 <div className="navbar-brand">
-                    <NavLink to={"/"} className="navbar-item">⛫ Home</NavLink>
+                    <NavLink to={"/"} className={clsx("navbar-item", styles.homeLink)}>
+                        <BiHomeHeart />
+                        <span>Home</span>
+                    </NavLink>
                     <button className={clsx("navbar-burger", {
                         "is-active": isActive
                     })} aria-label="menu" aria-expanded="false" type="button"
