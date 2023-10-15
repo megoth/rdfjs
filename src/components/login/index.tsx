@@ -1,13 +1,13 @@
 import {PROVIDERS} from "../../constants.ts";
 import styles from "./style.module.css"
 import {clsx} from "clsx";
+import {HTMLAttributes} from "react";
 
-interface Props {
-    isLight?: boolean;
+interface Props extends HTMLAttributes<HTMLButtonElement> {
     login: (url: string) => void,
 }
 
-export default function Login({isLight, login}: Props) {
+export default function Login({className, login, ...props}: Props) {
     const onProviderClick = (loginUrl: string) => () => login(loginUrl);
 
     const onCustomProviderClick = () => {
@@ -20,13 +20,15 @@ export default function Login({isLight, login}: Props) {
         <div className={styles.login}>
             {PROVIDERS.map((provider) => (
                 <button key={provider.loginIri} type="button"
-                        className={clsx("button is-info", {"is-light": isLight})}
+                        {...props}
+                        className={clsx("button", className || "is-info")}
                         onClick={onProviderClick(provider.loginIri)}>
                     {provider.label}
                 </button>
             ))}
             <button type="button"
-                    className={clsx("button is-info", {"is-light": isLight})}
+                    {...props}
+                    className={clsx("button", className || "is-info")}
                     onClick={onCustomProviderClick}>
                 Custom Solid Provider
             </button>

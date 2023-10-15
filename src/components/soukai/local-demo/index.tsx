@@ -24,7 +24,7 @@ setEngine(new InMemoryEngine())
 
 export default function SoukaiLocalDemo() {
     const [person, setPerson] = useState<Person | null>(null);
-    const [json, setJson] = useLocalStorage(STORAGE_KEYS.PROFILE_JSON, "");
+    const [json, setJson] = useLocalStorage(STORAGE_KEYS.PROFILE_SOUKAI, "");
 
     useEffect(() => {
         const matchedPersonPromise = json.length ? Person.createFromJsonLD(JSON.parse(json)) : Person.create(PERSON_JSON);

@@ -1,0 +1,37 @@
+import Content from "../content";
+import AuthorNote from "../authorNote";
+import DeveloperExperienceSection from "./3.1-devx.mdx";
+import DocumentationSection from "./3.2-docs.mdx";
+import CommunitySection from "./3.3-community.mdx";
+import MaturitySection from "./3.4-maturity.mdx";
+
+<Content>
+    <h2 className="subtitle is-3">Which library should you use?</h2>
+
+    If there was an easy answer to this question, I wouldn't feel the need to make a website like this. Each
+    library has their pros and cons, and in the end the choice comes down to a set of personal and project specific
+    preferences.
+
+    I will do my best to present each library as simply as possible, using a very simple demo setup to demonstrate their
+    capabilities. That said, the demos are simple and they cannot show the full feature set of each library. The demos
+    are but a taste of each library, and to fully know their capacities, you need to check their documentation (which
+    I will link to).
+</Content>
+
+<AuthorNote title={"My opinion on the matter"}>
+    <Content>
+        Although I cannot fully convey everything that the libraries can offer on this website, I hope I'm able to at
+        least convey enough of my impressions so that it makes it clear to you in which situations the library suits
+        your needs (and for which they lack). For each demo I break down my impressions by categories, and I'll try to
+        assess how good a library is on the given category by rating it from 1 to 5. I'll describe what each
+        rating means for each category down below.
+
+        Some of these criteria might be unfair to review a library by, and all of these libraries fall short in some
+        regard. But I hope to maintain this website over time, and I'll update my reviews as changes happen. Also, the
+        choice of these categories are highly subjective, so you might disagree with my perspective altogether.
+    </Content>
+    <DeveloperExperienceSection/>
+    <DocumentationSection/>
+    <CommunitySection/>
+    <MaturitySection/>
+</AuthorNote>

@@ -7,7 +7,7 @@ import Demo, {FormData} from "../../demo";
 export default function RdflibLocalDemo() {
     const store = graph();
     const [name, setName] = useState("");
-    const [turtle, setTurtle] = useLocalStorage(STORAGE_KEYS.PROFILE_TURTLE, PROFILE_TURTLE);
+    const [turtle, setTurtle] = useLocalStorage(STORAGE_KEYS.PROFILE_RDFLIB, PROFILE_TURTLE);
 
     useEffect(() => {
         if (!store) return;
@@ -26,7 +26,6 @@ export default function RdflibLocalDemo() {
             if (error) return reject (error);
             setTurtle(result);
             resolve(result);
-            // addAction("rdflib-submit", `Submitted name (${data.name}) to localStorage`, result);
         }));
     };
 

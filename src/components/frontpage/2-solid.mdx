@@ -1,16 +1,16 @@
 import {GiTechnoHeart} from "react-icons/gi";
 import Content from "../content";
 
-<h2 className="subtitle is-3" style={{display: "flex", gap: "0.25rem", alignItems: "center"}}>
-    <span>RDF + JS + Solid =</span>
-    <GiTechnoHeart style={{fill: "#7C4DFF"}}/>
-</h2>
-
 <Content>
-    In the first demos we've focused on working locally in the browser by storing our data in cookies. But semantic data is
-    designed to live on the web, so to not take that aspect into mind is flawed. The problem with this approach is that it
-    requires us to synchronize our data with a web server. Meaning we need some sort of authorization on the resources
-    involved, which in turn probably would require some authentication.
+    <h2 className="subtitle is-3" style={{display: "flex", gap: "0.25rem", alignItems: "center"}}>
+        <span>RDF + JS + Solid =</span>
+        <GiTechnoHeart style={{fill: "#7C4DFF"}}/>
+    </h2>
+
+    In the first series of demos we've focused on working locally in the browser by storing our data in cookies. But
+    Linked Data is designed to live on the web and be, well, linked! The problem with this approach is that it requires
+    us to synchronize our data with a web server. Meaning we need some sort of authorization on the resources involved,
+    which in turn probably would require some authentication.
 
     Luckily, all of this is solved by using Solid! As promoted on [solidproject.org](https://solidproject.org/):
 </Content>
@@ -24,9 +24,20 @@ import Content from "../content";
 </div>
 
 <Content>
-    When working with Solid, we want to present three libraries. Rdflib.js can be used here too, and while LDO can too,
-    we've opted to use the [@ldo/solid-react](https://github.com/o-development/ldo/tree/main/packages/solid-react) package
-    which integrates nicely with Solid and React. Lastly, we've included
-    [Inrupt's JavaScript client libraries](https://docs.inrupt.com/developer-tools/javascript/client-libraries/) as well,
-    since it provides an interesting alternative to working with RDF and Solid.
+    Do note that even though I've chosen Solid for these demos, most of these should also work nicely with other
+    Linked Data-based systems. You might use another form of authentication, or another server API altogether, but
+    as long as they are compatible with RDF and SPARQL, they should be somewhat compatible.
+
+    When working with Solid, we want to present five libraries:
+
+    1. [rdflib.js](https://github.com/linkeddata/rdflib.js/)
+    2. [@ldo/solid-react](https://github.com/o-development/ldo/tree/main/packages/solid-react) (using
+    [LDO](https://github.com/o-development/ldo/))
+    3. [Inrupt's JavaScript client libraries](https://docs.inrupt.com/developer-tools/javascript/client-libraries/)
+    4. [Soukai Solid](https://github.com/NoelDeMartin/soukai-solid)
+    5. [Comunica](https://comunica.dev/)
+
+    Again we've implemented the same demo, but this time with the twist that it retrieves and updates the name
+    you're seeing from your WebID resource. This introduces some latency between client and server, and you'll
+    experience some loading states when retrieving and submitting data.
 </Content>

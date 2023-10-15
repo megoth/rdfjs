@@ -9,7 +9,7 @@ import Demo, {FormData} from "../../demo";
 
 export default function LDOLocalDemo() {
     const [profile, setProfile] = useState<SolidProfile | null>(null);
-    const [turtle, setTurtle] = useLocalStorage(STORAGE_KEYS.PROFILE_TURTLE, PROFILE_TURTLE);
+    const [turtle, setTurtle] = useLocalStorage(STORAGE_KEYS.PROFILE_LDO, PROFILE_TURTLE);
 
     useEffect(() => {
         parseRdf(turtle, {baseIRI: PROFILE_URI}).then((ldoDataset) => {

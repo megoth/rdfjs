@@ -2,25 +2,32 @@ import {useResource, useSolidAuth, useSubject} from "@ldo/solid-react";
 import Login from "../login";
 import {SolidProfileShapeType} from "ldo-solid-profile";
 import Loading from "../loading";
-import AuthorNote from "../authorNote";
 import LogoutButton from "../logout-button";
+import Content from "../content";
 
 export default function SolidWarning() {
     const {session, login} = useSolidAuth();
-    useResource(session.webId, { reloadOnMount: true });
+    useResource(session.webId, {reloadOnMount: true});
     const profile = useSubject(SolidProfileShapeType, session.webId);
 
-    return (
-        <AuthorNote>
-            {session.isLoggedIn ?
-                profile?.name ? <>
-                    <p>
-                        Thank you, <strong>{profile?.name || "Stranger"}</strong>, you're all good!
-                        (Thanks for trusting me btw, I won't abuse that trust.)
-                    </p>
-                    <LogoutButton />
-                </> : <Loading/>
-                : <>
+    return session.isLoggedIn ? (
+            profile?.name ?
+                <div className="message is-success">
+                    <div className="message-body">
+                        <Content>
+                            <p>
+                                Thank you, <strong>{profile?.name || "Stranger"}</strong>, you're all good!
+                                (Thanks for trusting me btw, I won't abuse that trust.)
+                            </p>
+                        </Content>
+                        <LogoutButton/>
+                    </div>
+                </div> :
+                <Loading/>
+        ) :
+        <div className="message is-warning">
+            <div className="message-body">
+                <Content>
                     <p>
                         The Solid demos allow you to change the name described in your WebID profile. This means the app
                         will need at least <strong>READ</strong> and <strong>APPEND</strong> access to your WebID
@@ -31,9 +38,8 @@ export default function SolidWarning() {
                     </p>
 
                     <p>If you want, you can log in here, to verify that everything connects as it should.</p>
-
-                    <Login login={login} isLight={true}/>
-                </>}
-        </AuthorNote>
-    )
+                </Content>
+                <Login login={login} className="is-warning is-small"/>
+            </div>
+        </div>
 }

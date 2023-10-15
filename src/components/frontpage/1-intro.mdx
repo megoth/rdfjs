@@ -1,18 +1,23 @@
-import {GiCrownedHeart} from "react-icons/gi";
 import Content from "../content";
-
-<h1 className="title" style={{display: "flex", gap: "0.25rem", alignItems: "center"}}>
-    <span>RDF + JS = </span>
-    <GiCrownedHeart style={{fill: "red"}}>&#10084;</GiCrownedHeart>
-</h1>
+import {BsFillHeartFill} from "react-icons/bs";
 
 <Content>
+    <h1 className="title" style={{display: "flex", gap: "0.25rem", alignItems: "center"}}>
+        <span>RDF + JS = </span>
+        <BsFillHeartFill style={{fill: "red"}}/>
+    </h1>
+
     Welcome to this demo app that highlights various ways you can work with Linked Data (aka
     [RDF](https://www.w3.org/TR/rdf11-primer/), aka semantic data) using JavaScript libraries.
 
-    We'll start by showing how RDF can be manipulated locally by using [LDO](https://github.com/o-development/ldo/) or
-    [rdflib.js](https://github.com/linkeddata/rdflib.js/). For each library we've implemented the same feature - a
-    simple form that takes your name and saves it to local storage when you submit the form.
+    We'll start by showing how RDF can be manipulated locally in your browser by using three libraries:
+
+    1. [rdflib.js](https://github.com/linkeddata/rdflib.js/)
+    2. [LDO](https://github.com/o-development/ldo/)
+    3. [Soukai](https://soukai.js.org/)
+
+    For each library we've implemented the same feature - a simple form that takes your name and saves it to local
+    storage when you submit the form. The demo will then retrieve that name when the demo is later reloaded.
 
     Please click onto one of the libraries listed below to see how the feature is implemented in that library. You can
     also navigate to the libraries via the navigation at the top.
