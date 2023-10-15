@@ -31,7 +31,7 @@ export default function Rdflib() {
                 {session.isLoggedIn ? <>
                     <RdflibSolidDemo/>
                     <LogoutButton/>
-                </> : <Login login={login}/>}
+                </> : <Login login={(issuer) => login(issuer, { redirectUrl: location.href.replace(/#\S+$/, "")})}/>}
                 <Content><SolidDemoCodeSection/></Content>
                 <Code language={"tsx"}>{solidDemoCode}</Code>
             </div>

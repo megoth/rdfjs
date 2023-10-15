@@ -4,7 +4,6 @@ import {
     createBrowserRouter,
     RouterProvider,
 } from "react-router-dom";
-import LDOSolidReact from "./components/ldo-solid-react";
 import Frontpage from "./components/frontpage";
 import Layout from "./components/layout";
 import "bulma/css/bulma.min.css"
@@ -36,10 +35,6 @@ const router = createBrowserRouter([{
         {
             path: "/ldo",
             element: <LDO/>,
-        },
-        {
-            path: "/ldo-solid-react",
-            element: <LDOSolidReact/>,
         },
         {
             path: "/rdflib",

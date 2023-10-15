@@ -22,7 +22,7 @@ export const LOCAL_DEMOS: Array<DemoLink> = [
     {
         title: "Linked Data Objects",
         subtitle: "By Jackson Morgan",
-        href: "/ldo",
+        href: "/ldo#local",
         icon: "/o-team.png",
         slogan: "The newest kid on the block, using SheX-shapes to ease the flow of handling RDF data",
         text: "LDO"
@@ -98,7 +98,7 @@ export const SOLID_DEMOS: Array<DemoLink> = [
     {
         title: "@ldo/solid-react",
         subtitle: "By Jackson Morgan",
-        href: "/ldo-solid-react",
+        href: "/ldo#solid-react",
         icon: "/o-team.png",
         slogan: "The creator behind LDO also offers a Solid/React integration",
         text: "@ldo/solid-react"

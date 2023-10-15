@@ -7,7 +7,7 @@ import {PROFILE_TURTLE, PROFILE_URI, STORAGE_KEYS} from "../../../constants.ts";
 import {parseRdf, toTurtle} from "ldo";
 import Demo, {FormData} from "../../demo";
 
-export default function LDODemo() {
+export default function LDOLocalDemo() {
     const [profile, setProfile] = useState<SolidProfile | null>(null);
     const [turtle, setTurtle] = useLocalStorage(STORAGE_KEYS.PROFILE_TURTLE, PROFILE_TURTLE);
 
