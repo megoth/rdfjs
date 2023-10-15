@@ -1,6 +1,42 @@
 import {namedNode} from "rdflib";
 import namespace from "solid-namespace";
 
+export interface DemoLink {
+    href: string;
+    icon: string;
+    slogan: string;
+    subtitle?: string;
+    text: string;
+    title: string;
+}
+
+export const LOCAL_DEMOS: Array<DemoLink> = [
+    {
+        title: "rdflib.js",
+        subtitle: "By a team of volunteers",
+        href: "/rdflib",
+        icon: "/linkeddata.png",
+        slogan: "The OG JavaScript library to manage RDF data",
+        text: "rdflib.js"
+    },
+    {
+        title: "Linked Data Objects",
+        subtitle: "By Jackson Morgan",
+        href: "/ldo",
+        icon: "/o-team.png",
+        slogan: "The newest kid on the block, using SheX-shapes to ease the flow of handling RDF data",
+        text: "LDO"
+    },
+    {
+        title: "Soukai ODM",
+        subtitle: "By Noel De Martin",
+        href: "/soukai",
+        icon: "/soukai.svg",
+        slogan: "A JavaScript-based Object Document Mapper that also works with RDF",
+        text: "Soukai"
+    },
+];
+
 export const NS = namespace();
 export const NAME_NODE = namedNode(NS.foaf("name"));
 
@@ -47,6 +83,41 @@ export const PROVIDERS: Array<Provider> = [
         logoSrc: "/logos/solid-emblem.svg",
         loginIri: "https://inrupt.net/",
         signupIri: "https://inrupt.net/register",
+    },
+];
+
+export const SOLID_DEMOS: Array<DemoLink> = [
+    {
+        title: "rdflib.js",
+        subtitle: "By a team of volunteers",
+        href: "/rdflib-solid",
+        icon: "/linkeddata.png",
+        slogan: "rdflib.js serves handy helpers to handle resource communication with Solid servers",
+        text: "rdflib.js"
+    },
+    {
+        title: "@ldo/solid-react",
+        subtitle: "By Jackson Morgan",
+        href: "/ldo-solid-react",
+        icon: "/o-team.png",
+        slogan: "The creator behind LDO also offers a Solid/React integration",
+        text: "@ldo/solid-react"
+    },
+    {
+        title: "Inrupt JavaScript Client Libraries",
+        subtitle: "By Inrupt",
+        href: "/inrupt",
+        icon: "/inrupt.webp",
+        slogan: "Inrupt offers an impressive suite of JavaScript libraries that offer developers a lot of features",
+        text: "Inrupt"
+    },
+    {
+        title: "Soukai Solid",
+        subtitle: "By Noel De Martin",
+        href: "/soukai-solid",
+        icon: "/soukai-solid.svg",
+        slogan: "The creator of Soukai ODM has also created a Solid engine that allows you to use Soukai with Solid",
+        text: "Soukai Solid"
     },
 ];
 

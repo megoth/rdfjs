@@ -3,58 +3,24 @@ import {clsx} from "clsx";
 import {Fragment, useState} from "react";
 import styles from "./style.module.css";
 import {BiHomeHeart} from "react-icons/bi";
+import {DemoLink, LOCAL_DEMOS, SOLID_DEMOS} from "../../constants.ts";
 
-interface Link {
-    href: string;
-    text: string;
-}
-
-interface Container {
-    children: Array<Link>;
+interface DemoGroup {
+    children: Array<DemoLink>;
     className: string;
     text: string;
 }
 
-const links: Array<Container> = [
+const links: Array<DemoGroup> = [
     {
         text: "Local",
         className: styles.local,
-        children: [
-            {
-                href: "/rdflib",
-                text: "rdflib.js"
-            },
-            {
-                href: "/ldo",
-                text: "LDO"
-            },
-            {
-                href: "/soukai",
-                text: "Soukai"
-            },
-        ]
+        children: LOCAL_DEMOS,
     },
     {
         text: "Solid",
         className: styles.solid,
-        children: [
-            {
-                href: "/rdflib-solid",
-                text: "rdflib.js"
-            },
-            {
-                href: "/ldo-solid-react",
-                text: "@ldo/solid-react"
-            },
-            {
-                href: "/inrupt",
-                text: "Inrupt"
-            },
-            {
-                href: "/soukai-solid",
-                text: "Soukai Solid"
-            },
-        ]
+        children: SOLID_DEMOS,
     }
 ]
 
@@ -66,7 +32,7 @@ export default function Navigation() {
             <div className="container">
                 <div className="navbar-brand">
                     <NavLink to={"/"} className={clsx("navbar-item", styles.homeLink)}>
-                        <BiHomeHeart />
+                        <BiHomeHeart/>
                         <span>Home</span>
                     </NavLink>
                     <button className={clsx("navbar-burger", {

@@ -1,11 +1,13 @@
 import {PROVIDERS} from "../../constants.ts";
 import styles from "./style.module.css"
+import {clsx} from "clsx";
 
 interface Props {
+    isLight?: boolean;
     login: (url: string) => void,
 }
 
-export default function Login({login}: Props) {
+export default function Login({isLight, login}: Props) {
     const onProviderClick = (loginUrl: string) => () => login(loginUrl);
 
     const onCustomProviderClick = () => {
@@ -17,12 +19,15 @@ export default function Login({login}: Props) {
     return (
         <div className={styles.login}>
             {PROVIDERS.map((provider) => (
-                <button key={provider.loginIri} type="button" className="button is-info"
+                <button key={provider.loginIri} type="button"
+                        className={clsx("button is-info", {"is-light": isLight})}
                         onClick={onProviderClick(provider.loginIri)}>
                     {provider.label}
                 </button>
             ))}
-            <button type="button" className="button is-info" onClick={onCustomProviderClick}>
+            <button type="button"
+                    className={clsx("button is-info", {"is-light": isLight})}
+                    onClick={onCustomProviderClick}>
                 Custom Solid Provider
             </button>
         </div>

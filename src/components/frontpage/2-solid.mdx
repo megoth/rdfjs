@@ -1,17 +1,19 @@
-import {Link} from "react-router-dom";
 import {GiTechnoHeart} from "react-icons/gi";
+import Content from "../content";
 
-<h2 className={"subtitle"} style={{display: "flex", gap: "0.25rem", alignItems: "center"}}>
+<h2 className="subtitle is-3" style={{display: "flex", gap: "0.25rem", alignItems: "center"}}>
     <span>RDF + JS + Solid =</span>
     <GiTechnoHeart style={{fill: "#7C4DFF"}}/>
 </h2>
 
-In the first demos we've focused on working locally in the browser by storing our data in cookies. But semantic data is
-designed to live on the web, so to not take that aspect into mind is flawed. The problem with this approach is that it
-requires us to synchronize our data with a web server. Meaning we need some sort of authorization on the resources
-involved, which in turn probably would require some authentication.
+<Content>
+    In the first demos we've focused on working locally in the browser by storing our data in cookies. But semantic data is
+    designed to live on the web, so to not take that aspect into mind is flawed. The problem with this approach is that it
+    requires us to synchronize our data with a web server. Meaning we need some sort of authorization on the resources
+    involved, which in turn probably would require some authentication.
 
-Luckily, all of this is solved by using Solid! As promoted on [solidproject.org](https://solidproject.org/):
+    Luckily, all of this is solved by using Solid! As promoted on [solidproject.org](https://solidproject.org/):
+</Content>
 
 <div className="message is-info">
     <div className={"message-body"}>
@@ -21,12 +23,10 @@ Luckily, all of this is solved by using Solid! As promoted on [solidproject.org]
     </div>
 </div>
 
-When working with Solid, we want to present three libraries. Rdflib.js can be used here too, and while LDO can too,
-we've opted to use the [@ldo/solid-react](https://github.com/o-development/ldo/tree/main/packages/solid-react) package
-which integrates nicely with Solid and React. Lastly, we've included
-[Inrupt's JavaScript client libraries](https://docs.inrupt.com/developer-tools/javascript/client-libraries/) as well,
-since it provides an interesting alternative to working with RDF and Solid.
-
-- <Link to="/rdflib-solid">rdflib.js (with Solid)</Link>
-- <Link to="/ldo-solid-react">@ldo/solid-react</Link>
-- <Link to="/inrupt">Inrupt’s JavaScript client libraries</Link>
+<Content>
+    When working with Solid, we want to present three libraries. Rdflib.js can be used here too, and while LDO can too,
+    we've opted to use the [@ldo/solid-react](https://github.com/o-development/ldo/tree/main/packages/solid-react) package
+    which integrates nicely with Solid and React. Lastly, we've included
+    [Inrupt's JavaScript client libraries](https://docs.inrupt.com/developer-tools/javascript/client-libraries/) as well,
+    since it provides an interesting alternative to working with RDF and Solid.
+</Content>

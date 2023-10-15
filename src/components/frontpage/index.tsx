@@ -1,17 +1,18 @@
 import Intro from "./1-intro.mdx";
 import Solid from "./2-solid.mdx";
 import Reviews from "./3-reviews.mdx";
-import Content from "../content";
 import SolidWarning from "../solid-warning";
+import DemoList from "../demo-list";
+import {LOCAL_DEMOS, SOLID_DEMOS} from "../../constants.ts";
 
 export default function Frontpage() {
     return (
         <>
-            <Content>
-                <Intro/>
-                <Solid/>
-                <SolidWarning/>
-            </Content>
+            <Intro/>
+            <DemoList list={LOCAL_DEMOS} />
+            <Solid/>
+            <DemoList list={SOLID_DEMOS} />
+            <SolidWarning/>
             <Reviews/>
         </>
     );

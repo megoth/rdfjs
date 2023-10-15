@@ -32,7 +32,7 @@ export default function SolidWarning() {
 
                     <p>If you want, you can log in here, to verify that everything connects as it should.</p>
 
-                    <Login login={login}/>
+                    <Login login={login} isLight={true}/>
                 </>}
         </AuthorNote>
     )
