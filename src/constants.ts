@@ -45,6 +45,7 @@ export const PROFILE_URI = "https://example.com/profile";
 export const PROFILE_NODE = namedNode(PROFILE_URI);
 
 export const PERSON_JSON = {
+    "@id": PROFILE_URI,
     name: "Soukai Test"
 };
 

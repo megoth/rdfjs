@@ -1,4 +1,4 @@
-import SoukaiDemo from "./local-demo";
+import SoukaiLocalDemo from "./local-demo";
 import Code from "../code";
 import localDemoCode from "./local-demo/index.tsx?raw";
 import solidDemoCode from "./solid-demo/index.tsx?raw";
@@ -22,7 +22,7 @@ export default function Soukai() {
             <Content><IntroSection/></Content>
             <div id="local">
                 <h2 className="subtitle is-3">Local demo</h2>
-                <SoukaiDemo/>
+                <SoukaiLocalDemo/>
                 <Content><LocalCodeSection/></Content>
                 <Code language={"tsx"}>{localDemoCode}</Code>
             </div>

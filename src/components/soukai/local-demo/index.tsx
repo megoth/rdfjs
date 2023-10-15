@@ -20,15 +20,15 @@ export class Person extends SolidModel {
 
 bootSolidModels();
 bootModels({Person});
+setEngine(new InMemoryEngine())
 
-export default function SoukaiDemo() {
+export default function SoukaiLocalDemo() {
     const [person, setPerson] = useState<Person | null>(null);
     const [json, setJson] = useLocalStorage(STORAGE_KEYS.PROFILE_JSON, "");
 
-    useEffect(() => setEngine(new InMemoryEngine()), []);
-
     useEffect(() => {
-        (json.length ? Person.createFromJsonLD(JSON.parse(json)) : Person.create(PERSON_JSON)).then(setPerson);
+        const matchedPersonPromise = json.length ? Person.createFromJsonLD(JSON.parse(json)) : Person.create(PERSON_JSON);
+        matchedPersonPromise.then(setPerson);
     }, [json]);
 
     if (!person) {
