@@ -4,7 +4,7 @@ import {bootModels, setEngine} from 'soukai';
 import {useEffect, useState} from "react";
 import Loading from "../../loading";
 import Demo, {FormData} from "../../demo";
-import {Person} from "../../soukai/demo";
+import {Person} from "../local-demo";
 
 bootSolidModels();
 bootModels({Person});

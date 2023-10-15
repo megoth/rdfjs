@@ -11,7 +11,6 @@ import Rdflib from "./components/rdflib";
 import {BrowserSolidLdoProvider} from '@ldo/solid-react';
 import LDO from "./components/ldo";
 import Inrupt from "./components/inrupt";
-import SoukaiSolid from "./components/soukai-solid";
 import Soukai from "./components/soukai";
 import {NotificationContextProvider} from "./contexts/notification";
 import Comunica from "./components/comunica";
@@ -43,10 +42,6 @@ const router = createBrowserRouter([{
         {
             path: "/soukai",
             element: <Soukai/>,
-        },
-        {
-            path: "/soukai-solid",
-            element: <SoukaiSolid/>,
         },
     ]
 }]);

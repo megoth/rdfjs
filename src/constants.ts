@@ -30,7 +30,7 @@ export const LOCAL_DEMOS: Array<DemoLink> = [
     {
         title: "Soukai ODM",
         subtitle: "By Noel De Martin",
-        href: "/soukai",
+        href: "/soukai#solid",
         icon: "/soukai.svg",
         slogan: "A JavaScript-based Object Document Mapper that also works with RDF",
         text: "Soukai"
@@ -114,7 +114,7 @@ export const SOLID_DEMOS: Array<DemoLink> = [
     {
         title: "Soukai Solid",
         subtitle: "By Noel De Martin",
-        href: "/soukai-solid",
+        href: "/soukai#solid",
         icon: "/soukai-solid.svg",
         slogan: "The creator of Soukai ODM has also created a Solid engine that allows you to use Soukai with Solid",
         text: "Soukai Solid"
