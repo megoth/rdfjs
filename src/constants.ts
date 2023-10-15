@@ -14,7 +14,7 @@ export const LOCAL_DEMOS: Array<DemoLink> = [
     {
         title: "rdflib.js",
         subtitle: "By rdflib.js team",
-        href: "/rdflib",
+        href: "/rdflib#local",
         icon: "/linkeddata.png",
         slogan: "The OG JavaScript library to manage RDF data",
         text: "rdflib.js"
@@ -90,7 +90,7 @@ export const SOLID_DEMOS: Array<DemoLink> = [
     {
         title: "rdflib.js",
         subtitle: "By rdflib.js team",
-        href: "/rdflib-solid",
+        href: "/rdflib#solid",
         icon: "/linkeddata.png",
         slogan: "rdflib.js serves handy helpers to handle resource communication with Solid servers",
         text: "rdflib.js"

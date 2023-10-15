@@ -11,7 +11,6 @@ import "bulma/css/bulma.min.css"
 import Rdflib from "./components/rdflib";
 import {BrowserSolidLdoProvider} from '@ldo/solid-react';
 import LDO from "./components/ldo";
-import RdflibSolid from "./components/rdflib-solid";
 import Inrupt from "./components/inrupt";
 import SoukaiSolid from "./components/soukai-solid";
 import Soukai from "./components/soukai";
@@ -45,10 +44,6 @@ const router = createBrowserRouter([{
         {
             path: "/rdflib",
             element: <Rdflib/>,
-        },
-        {
-            path: "/rdflib-solid",
-            element: <RdflibSolid/>,
         },
         {
             path: "/soukai",

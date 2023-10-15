@@ -4,7 +4,7 @@ import {useEffect, useState} from "react";
 import useLocalStorage from "use-local-storage";
 import Demo, {FormData} from "../../demo";
 
-export default function RdflibDemo() {
+export default function RdflibLocalDemo() {
     const store = graph();
     const [name, setName] = useState("");
     const [turtle, setTurtle] = useLocalStorage(STORAGE_KEYS.PROFILE_TURTLE, PROFILE_TURTLE);
