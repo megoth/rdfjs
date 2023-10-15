@@ -13,7 +13,7 @@ export interface DemoLink {
 export const LOCAL_DEMOS: Array<DemoLink> = [
     {
         title: "rdflib.js",
-        subtitle: "By a team of volunteers",
+        subtitle: "By rdflib.js team",
         href: "/rdflib",
         icon: "/linkeddata.png",
         slogan: "The OG JavaScript library to manage RDF data",
@@ -89,7 +89,7 @@ export const PROVIDERS: Array<Provider> = [
 export const SOLID_DEMOS: Array<DemoLink> = [
     {
         title: "rdflib.js",
-        subtitle: "By a team of volunteers",
+        subtitle: "By rdflib.js team",
         href: "/rdflib-solid",
         icon: "/linkeddata.png",
         slogan: "rdflib.js serves handy helpers to handle resource communication with Solid servers",
@@ -121,7 +121,7 @@ export const SOLID_DEMOS: Array<DemoLink> = [
     },
     {
         title: "Comunica",
-        subtitle: "By Comunica Team",
+        subtitle: "By Comunica team",
         href: "/comunica",
         icon: "/comunica.svg",
         slogan: "Comunica allows you to execute SPARQL queries for resources on the web",
