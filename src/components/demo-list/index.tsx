@@ -13,7 +13,7 @@ export default function DemoList({list}: Props) {
             <ul className={clsx("columns", styles.columns)}>
                 {list.map(({title, subtitle, href, icon, slogan}) => (
                     <div className="column">
-                        <div className={clsx("card", styles.card)}>
+                        <NavLink to={href} className={clsx("card", styles.card)}>
                             <div className={clsx("card-content", styles.cardContent)}>
                                 <div className={clsx("media", styles.media)}>
                                     <div className={clsx("media-left", styles.mediaLeft)}>
@@ -29,11 +29,11 @@ export default function DemoList({list}: Props) {
                                 <div className="content">{slogan}</div>
                             </div>
                             <footer className="card-footer">
-                                <NavLink to={href} className={clsx("card-footer-item button is-info", styles.link)}>
+                                <div className={clsx("card-footer-item button is-info", styles.link)}>
                                     Check out demo
-                                </NavLink>
+                                </div>
                             </footer>
-                        </div>
+                        </NavLink>
                     </div>
                 ))}
             </ul>
