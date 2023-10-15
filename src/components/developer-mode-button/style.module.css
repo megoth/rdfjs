@@ -1,0 +1,19 @@
+.largeText {
+    display: block;
+
+    @media screen and (min-width: 1024px) {
+        display: none;
+    }
+
+    @media screen and (min-width: 1216px) {
+        display: block;
+    }
+}
+
+.smallText {
+    display: none;
+
+    @media screen and (min-width: 1024px) and (max-width: 1215px) {
+        display: block;
+    }
+}
