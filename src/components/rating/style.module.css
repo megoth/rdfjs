@@ -1,0 +1,9 @@
+.rating {
+    align-self: center;
+    position: relative;
+    top: 2px;
+}
+
+.icon {
+    fill: red;
+}

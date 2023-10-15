@@ -13,9 +13,8 @@ export default function ComunicaDemo() {
 
         engine.queryBindings(`
         PREFIX foaf:  <http://xmlns.com/foaf/0.1/>
-        SELECT ?s ?p ?name WHERE {
-            <${session.webId}> foaf:name ?name.
-            ?s ?p ?name
+        SELECT ?name WHERE {
+            <${session.webId}> foaf:name ?name
         } LIMIT 1`
             , {
                 fetch,
