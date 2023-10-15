@@ -1,0 +1,10 @@
+.login {
+    display: flex;
+    gap: 0.5em;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+
+    &:is(:last-child) {
+        margin-bottom: 0;
+    }
+}

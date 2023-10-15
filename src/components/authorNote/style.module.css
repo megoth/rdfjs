@@ -1,0 +1,17 @@
+.card {
+    margin: 1rem 1rem 2rem 1rem;
+}
+
+.media {
+    margin-bottom: 0.75rem;
+}
+
+.img.img {
+    position: absolute;
+    left: -1rem;
+    bottom: 0;
+    height: 105px;
+    width: 96px;
+    max-width: inherit;
+    border-radius: 4px;
+}

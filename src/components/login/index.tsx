@@ -1,4 +1,5 @@
 import {PROVIDERS} from "../../constants.ts";
+import styles from "./style.module.css"
 
 interface Props {
     login: (url: string) => void,
@@ -14,7 +15,7 @@ export default function Login({login}: Props) {
     };
 
     return (
-        <div style={{display: "flex", gap: "0.5em", marginBottom: "1.5rem", flexWrap: "wrap"}}>
+        <div className={styles.login}>
             {PROVIDERS.map((provider) => (
                 <button key={provider.loginIri} type="button" className="button is-info"
                         onClick={onProviderClick(provider.loginIri)}>

@@ -6,11 +6,13 @@ import SolidWarning from "../solid-warning";
 
 export default function Frontpage() {
     return (
-        <Content>
-            <Intro/>
-            <Solid/>
-            <SolidWarning/>
-            <Reviews />
-        </Content>
+        <>
+            <Content>
+                <Intro/>
+                <Solid/>
+                <SolidWarning/>
+            </Content>
+            <Reviews/>
+        </>
     );
 }
