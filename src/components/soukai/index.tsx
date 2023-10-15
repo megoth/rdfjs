@@ -11,6 +11,7 @@ import Login from "../login";
 import usePrism from "../../hooks/use-prism";
 import {useSolidAuth} from "@ldo/solid-react";
 import SoukaiSolidDemo from "./solid-demo";
+import Review from "./review.mdx";
 
 export default function Soukai() {
     usePrism();
@@ -34,6 +35,7 @@ export default function Soukai() {
                 <Content><SolidCodeSection/></Content>
                 <Code language={"tsx"}>{solidDemoCode}</Code>
             </div>
+            <Review/>
         </>
     )
 }

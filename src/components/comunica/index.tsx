@@ -8,6 +8,7 @@ import {useSolidAuth} from "@ldo/solid-react";
 import usePrism from "../../hooks/use-prism";
 import LogoutButton from "../logout-button";
 import Login from "../login";
+import Review from "./review.mdx";
 
 export default function Comunica() {
     const {login, session} = useSolidAuth();
@@ -17,12 +18,15 @@ export default function Comunica() {
         <>
             <h1 className="title">Comunica</h1>
             <Content><IntroSection/></Content>
-            {session.isLoggedIn ? <>
-                <ComunicaDemo/>
-                <LogoutButton/>
-            </> : <Login login={login}/>}
-            <Content><CodeSection/></Content>
-            <Code language={"tsx"}>{demoCode}</Code>
+            <div id="solid">
+                {session.isLoggedIn ? <>
+                    <ComunicaDemo/>
+                    <LogoutButton/>
+                </> : <Login login={login}/>}
+                <Content><CodeSection/></Content>
+                <Code language={"tsx"}>{demoCode}</Code>
+            </div>
+            <Review/>
         </>
     )
 }
