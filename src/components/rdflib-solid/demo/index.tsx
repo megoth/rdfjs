@@ -3,11 +3,9 @@ import {useEffect, useState} from "react";
 import {useSolidAuth} from "@ldo/solid-react";
 import Demo, {FormData} from "../../demo";
 import {NAME_NODE} from "../../../constants.ts";
-import useDeveloperMode from "../../../hooks/use-developer-mode";
 
 export default function RdflibSolidDemo() {
-    const {session, ...auth} = useSolidAuth();
-    const {fetch} = useDeveloperMode(auth.fetch);
+    const {session, fetch} = useSolidAuth();
     const [name, setName] = useState("");
     const profileNode = namedNode(session.webId!);
     const store = graph() as LiveStore;
@@ -23,7 +21,8 @@ export default function RdflibSolidDemo() {
         setName(data.name);
         const ins = [st(profileNode, NAME_NODE, lit(data.name), profileNode.doc())];
         const del = store.statementsMatching(profileNode, NAME_NODE, null, profileNode.doc());
-        await store.updater.update(del, ins)
+        await store.updater.update(del, ins);
+        return store;
     };
 
     return <Demo name={name} onSubmit={onSubmit}/>

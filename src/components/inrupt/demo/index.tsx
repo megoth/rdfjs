@@ -16,7 +16,7 @@ interface FormData {
 export default function InruptDemo() {
     const [name, setName] = useState("");
     const [dataset, setDataset] = useState<SolidDataset | null>(null);
-    const {fetch, session} = useSolidAuth();
+    const {session, fetch} = useSolidAuth();
 
     useEffect(() => {
         getSolidDataset(session.webId!, {fetch}).then((dataset) => {

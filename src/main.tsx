@@ -16,7 +16,6 @@ import Inrupt from "./components/inrupt";
 import SoukaiSolid from "./components/soukai-solid";
 import Soukai from "./components/soukai";
 import {NotificationContextProvider} from "./contexts/notification";
-import {DeveloperModeContextProvider} from "./contexts/developer-mode";
 
 const router = createBrowserRouter([{
     path: "/",
@@ -59,12 +58,10 @@ const router = createBrowserRouter([{
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
-        <DeveloperModeContextProvider>
-            <BrowserSolidLdoProvider>
-                <NotificationContextProvider>
-                    <RouterProvider router={router}/>
-                </NotificationContextProvider>
-            </BrowserSolidLdoProvider>
-        </DeveloperModeContextProvider>
+        <BrowserSolidLdoProvider>
+            <NotificationContextProvider>
+                <RouterProvider router={router}/>
+            </NotificationContextProvider>
+        </BrowserSolidLdoProvider>
     </React.StrictMode>,
 )

@@ -29,8 +29,10 @@
     "use-local-storage": "^3.0.0"
   },
   "devDependencies": {
+    "@inrupt/universal-fetch": "^1.0.3",
     "@mdx-js/rollup": "^2.3.0",
     "@rdfjs/types": "^1.1.0",
+    "@types/node-fetch": "^2.6.6",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.0.0",

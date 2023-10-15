@@ -2,8 +2,6 @@ import {NavLink} from "react-router-dom";
 import {clsx} from "clsx";
 import {Fragment, useState} from "react";
 import styles from "./style.module.css";
-import DeveloperModeButton from "../developer-mode-button";
-
 
 interface Link {
     href: string;
@@ -90,9 +88,6 @@ export default function Navigation() {
                                                                      onClick={() => setIsActive(false)}>{text}</NavLink>)}
                         </Fragment>
                     ))}
-                </div>
-                <div className={clsx("navbar-end", styles.developerModeButton)}>
-                    <DeveloperModeButton />
                 </div>
             </div>
         </nav>

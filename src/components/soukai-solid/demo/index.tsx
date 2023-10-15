@@ -10,7 +10,7 @@ bootSolidModels();
 bootModels({Person});
 
 export default function SoukaiSolidDemo() {
-    const {fetch, session} = useSolidAuth();
+    const {session, fetch} = useSolidAuth();
     const [person, setPerson] = useState<Person | null>(null);
 
     useEffect(() => setEngine(new SolidEngine(fetch)), [fetch]);

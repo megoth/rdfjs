@@ -22,7 +22,12 @@ export default function RdflibDemo() {
     const onSubmit = async (data: FormData) => {
         store.remove(store.match(PROFILE_NODE, NAME_NODE, null));
         store.add(st(PROFILE_NODE, NAME_NODE, lit(data.name)));
-        serialize(null, store, null, 'text/turtle', (_, result) => setTurtle(result));
+        return new Promise((resolve, reject) => serialize(null, store, null, 'text/turtle', (error, result) => {
+            if (error) return reject (error);
+            setTurtle(result);
+            resolve(result);
+            // addAction("rdflib-submit", `Submitted name (${data.name}) to localStorage`, result);
+        }));
     };
 
     return <Demo name={name} onSubmit={onSubmit}/>

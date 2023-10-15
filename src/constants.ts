@@ -51,7 +51,6 @@ export const PROVIDERS: Array<Provider> = [
 ];
 
 export const STORAGE_KEYS = {
-    "DEVELOPER_MODE": "developer-mode",
     "PROFILE_TURTLE": "profileTurtle",
     "PROFILE_JSON": "profileJSON",
 }
