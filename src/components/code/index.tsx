@@ -1,12 +1,14 @@
-interface CodeProps {
+import {HTMLAttributes} from "react";
+
+interface CodeProps extends HTMLAttributes<HTMLPreElement> {
     children: string | undefined;
     language: "turtle" | "tsx" | "typescript";
 }
 
 
-export default function Code({children, language}: CodeProps) {
+export default function Code({children, language, ...props}: CodeProps) {
     return (
-        <pre className={`language-${language}`}>
+        <pre className={`language-${language}`} {...props}>
             <code className={`language-${language}`}>
                 {children}
             </code>
