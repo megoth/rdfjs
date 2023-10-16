@@ -3,28 +3,34 @@ import namespace from "solid-namespace";
 
 interface LibraryLink {
     href: string;
+    name: string;
     text: string;
 }
 
 export const LIBRARIES: Array<LibraryLink> = [
     {
         href: "/rdflib",
+        name: "rdflib.js",
         text: "rdflib.js"
     },
     {
         href: "/ldo",
+        name: "Linked Data Objects (LDO)",
         text: "LDO"
     },
     {
         href: "/inrupt",
+        name: "Inrupt's JavaScript client libraries",
         text: "Inrupt"
     },
     {
         href: "/soukai",
+        name: "Soukai ODM",
         text: "Soukai"
     },
     {
         href: "/comunica",
+        name: "Comunica",
         text: "Comunica"
     },
 ];

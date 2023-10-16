@@ -7,10 +7,10 @@ import Content from "../content";
         <GiTechnoHeart style={{fill: "#7C4DFF"}}/>
     </h2>
 
-    In the first series of demos we've focused on working locally in the browser by storing our data in cookies. But
-    Linked Data is designed to live on the web and be, well, linked! The problem with this approach is that it requires
-    us to synchronize our data with a web server. Meaning we need some sort of authorization on the resources involved,
-    which in turn probably would require some authentication.
+    In the first series of demos I've focused on working locally in the browser by storing the data in local storage.
+    But Linked Data is designed to live on the web and be, well, linked! The problem with this approach is that it
+    requires us to synchronize our data with a web server. Meaning we need some sort of authorization on the resources
+    involved, which in turn probably would require some authentication.
 
     Luckily, all of this is solved by using Solid! As promoted on [solidproject.org](https://solidproject.org/):
 </Content>
@@ -28,16 +28,8 @@ import Content from "../content";
     Linked Data-based systems. You might use another form of authentication, or another server API altogether, but
     as long as they are compatible with RDF and SPARQL, they should be somewhat compatible.
 
-    When working with Solid, we want to present five libraries:
-
-    1. [rdflib.js](https://github.com/linkeddata/rdflib.js/)
-    2. [@ldo/solid-react](https://github.com/o-development/ldo/tree/main/packages/solid-react) (using
-    [LDO](https://github.com/o-development/ldo/))
-    3. [Inrupt's JavaScript client libraries](https://docs.inrupt.com/developer-tools/javascript/client-libraries/)
-    4. [Soukai Solid](https://github.com/NoelDeMartin/soukai-solid)
-    5. [Comunica](https://comunica.dev/)
-
-    Again we've implemented the same demo, but this time with the twist that it retrieves and updates the name
-    you're seeing from your WebID resource. This introduces some latency between client and server, and you'll
-    experience some loading states when retrieving and submitting data.
+    When working with Solid, I want to present all libraries presented on this website. Again I've implemented the
+    same demo, but this time with the twist that it retrieves and updates the name that's retrieved from your WebID
+    resource. This introduces some latency between client and server, and you'll experience some loading states when
+    retrieving and submitting data.
 </Content>
