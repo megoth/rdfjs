@@ -1,10 +1,9 @@
-import {useContext} from "react";
-import NotificationContext from "../../contexts/notification";
 import style from "./style.module.css";
 import Notification from "../notification";
+import useNotification from "../../hooks/use-notification";
 
 export default function NotificationList() {
-    const {notifications} = useContext(NotificationContext);
+    const {notifications} = useNotification();
 
     return (
         <div className={style.notifications}>

@@ -9,8 +9,8 @@ export default function Review({children}: Props) {
     return (
         <table className="table">
             <tbody>
-            {children.map(([rating, review]) => (
-                <tr>
+            {children.map(([rating, review], index) => (
+                <tr key={`rating-${index}`}>
                     <td><Rating rating={rating}/></td>
                     <td>{review}</td>
                 </tr>

@@ -19,13 +19,14 @@ export default function Comunica() {
             <h1 className="title">Comunica</h1>
             <Content><IntroSection/></Content>
             <div id="solid">
-                <h2 className="subtitle is-3">Solid demo</h2>
-                {session.isLoggedIn ? <>
-                    <ComunicaDemo/>
-                    <LogoutButton/>
-                </> : <Login login={login}/>}
-                <Content><CodeSection/></Content>
-                <Code language={"tsx"}>{demoCode}</Code>
+                <Code language={"tsx"} id="ComunicaSolidDemo" code={demoCode}>
+                    <h2 className="subtitle is-3">Solid demo</h2>
+                    {session.isLoggedIn ? <>
+                        <ComunicaDemo/>
+                        <LogoutButton/>
+                    </> : <Login login={login}/>}
+                    <Content><CodeSection/></Content>
+                </Code>
             </div>
             <Review/>
         </>

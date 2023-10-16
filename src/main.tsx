@@ -12,8 +12,9 @@ import {BrowserSolidLdoProvider} from '@ldo/solid-react';
 import LDO from "./components/ldo";
 import Inrupt from "./components/inrupt";
 import Soukai from "./components/soukai";
-import {NotificationContextProvider} from "./contexts/notification";
 import Comunica from "./components/comunica";
+
+import {NotificationContextProvider} from "./hooks/use-notification";
 
 const router = createBrowserRouter([{
     path: "/",

@@ -1,0 +1,19 @@
+.container {
+    & ol li {
+    }
+}
+
+.code.code {
+    :global(.tag) {
+        align-items: inherit;
+        background-color: transparent;
+        border-radius: 0;
+        display: unset;
+        font-family: inherit;
+        font-size: inherit;
+        height: auto;
+        line-height: inherit;
+        padding: 0;
+        text-align: inherit;
+    }
+}

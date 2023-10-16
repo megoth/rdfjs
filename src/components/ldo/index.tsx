@@ -21,19 +21,21 @@ export default function LDO() {
             <h1 className="title">LDO (Linked Data Objects)</h1>
             <Content><IntroSection/></Content>
             <div id="local">
-                <h2 className="subtitle is-3">Local demo</h2>
-                <LDOLocalDemo/>
-                <Content><LocalCodeSection/></Content>
-                <Code language={"tsx"}>{localDemoCode}</Code>
+                <Code language={"tsx"} id="LDOLocalDemo" code={localDemoCode}>
+                    <h2 className="subtitle is-3">Local demo</h2>
+                    <LDOLocalDemo/>
+                    <Content><LocalCodeSection/></Content>
+                </Code>
             </div>
             <div id="solid-react">
-                <h2 className="subtitle is-3">@ldo/solid-react demo</h2>
-                {session.isLoggedIn ? <>
-                    <LDOSolidReactDemo/>
-                    <LogoutButton/>
-                </> : <Login login={(issuer) => login(issuer, { redirectUrl: location.href.replace(/#\S+$/, "")})}/>}
-                <Content><SolidReactCodeSection/></Content>
-                <Code language={"tsx"}>{solidReactDemoCode}</Code>
+                <Code language={"tsx"} id="LDOSolidDemo" code={solidReactDemoCode}>
+                    <h2 className="subtitle is-3">@ldo/solid-react demo</h2>
+                    {session.isLoggedIn ? <>
+                        <LDOSolidReactDemo/>
+                        <LogoutButton/>
+                    </> : <Login login={(issuer) => login(issuer, { redirectUrl: location.href.replace(/#\S+$/, "")})}/>}
+                    <Content><SolidReactCodeSection/></Content>
+                </Code>
             </div>
             <Review/>
         </>

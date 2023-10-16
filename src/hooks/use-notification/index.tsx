@@ -1,4 +1,4 @@
-import {createContext, ReactNode, useState} from "react";
+import {createContext, ReactNode, useContext, useState} from "react";
 import NotificationList from "../../components/notification-list";
 
 const NotificationContext = createContext<{
@@ -10,16 +10,9 @@ const NotificationContext = createContext<{
     notifications: [],
     notify: () => undefined,
 });
-export default NotificationContext;
 
 interface Props {
     children: ReactNode;
-}
-
-export interface NotificationModel {
-    id: string;
-    message: ReactNode;
-    hidden: boolean;
 }
 
 export function NotificationContextProvider({children}: Props) {
@@ -48,4 +41,14 @@ export function NotificationContextProvider({children}: Props) {
             <NotificationList/>
         </NotificationContext.Provider>
     )
+}
+
+export default function useNotification() {
+    return useContext(NotificationContext);
+}
+
+export interface NotificationModel {
+    id: string;
+    message: ReactNode;
+    hidden: boolean;
 }

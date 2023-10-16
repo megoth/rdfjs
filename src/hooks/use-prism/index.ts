@@ -1,5 +1,9 @@
-import {useEffect} from "react";
+import {useCallback, useLayoutEffect} from "react";
 
 export default function usePrism() {
-    useEffect(() => (window as any).Prism.highlightAll(), []);
+    const highlightAll = useCallback(() => {
+        setTimeout((window as any).Prism.highlightAll);
+    }, []);
+    useLayoutEffect(() => highlightAll(), [highlightAll]);
+    return highlightAll;
 }

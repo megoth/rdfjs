@@ -21,19 +21,21 @@ export default function Rdflib() {
             <h1 className="title">rdflib.js</h1>
             <Content><IntroSection/></Content>
             <div id="local">
-                <h2 className="subtitle is-3">Local demo</h2>
-                <RdflibLocalDemo/>
-                <Content><LocalDemoCodeSection/></Content>
-                <Code language={"tsx"}>{localDemoCode}</Code>
+                <Code language={"tsx"} id="RdflibLocalDemo" code={localDemoCode}>
+                    <h2 className="subtitle is-3">Local demo</h2>
+                    <RdflibLocalDemo/>
+                    <Content><LocalDemoCodeSection/></Content>
+                </Code>
             </div>
             <div id="solid">
-                <h2 className="subtitle is-3">Solid demo</h2>
-                {session.isLoggedIn ? <>
-                    <RdflibSolidDemo/>
-                    <LogoutButton/>
-                </> : <Login login={(issuer) => login(issuer, { redirectUrl: location.href.replace(/#\S+$/, "")})}/>}
-                <Content><SolidDemoCodeSection/></Content>
-                <Code language={"tsx"}>{solidDemoCode}</Code>
+                <Code language={"tsx"} id="RdflibSolidDemo" code={solidDemoCode}>
+                    <h2 className="subtitle is-3">Solid demo</h2>
+                    {session.isLoggedIn ? <>
+                        <RdflibSolidDemo/>
+                        <LogoutButton/>
+                    </> : <Login login={(issuer) => login(issuer, { redirectUrl: location.href.replace(/#\S+$/, "")})}/>}
+                    <Content><SolidDemoCodeSection/></Content>
+                </Code>
             </div>
             <Review/>
         </>

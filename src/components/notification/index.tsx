@@ -1,6 +1,6 @@
-import {useContext, useEffect, useState} from "react";
-import NotificationContext, {NotificationModel} from "../../contexts/notification";
+import {useEffect, useState} from "react";
 import {clsx} from "clsx";
+import useNotification, {NotificationModel} from "../../hooks/use-notification";
 
 interface Props {
     index: number;
@@ -9,7 +9,7 @@ interface Props {
 
 export default function Notification({index, notification}: Props) {
     const [hidden, setHidden] = useState(notification.hidden);
-    const {hide} = useContext(NotificationContext);
+    const {hide} = useNotification();
 
     useEffect(() => {
         setTimeout(() => {
