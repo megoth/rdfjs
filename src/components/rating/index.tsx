@@ -2,8 +2,10 @@ import {BsFillHeartFill, BsHeart} from "react-icons/bs";
 import styles from "./style.module.css";
 import {Fragment} from "react";
 
+export type RatingScore = 1 | 2 | 3 | 4 | 5;
+
 interface Props {
-    rating: 1 | 2 | 3 | 4 | 5;
+    rating: RatingScore;
 }
 
 export default function Rating({rating}: Props) {

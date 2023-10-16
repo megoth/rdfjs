@@ -1,5 +1,5 @@
 import Content from "../content";
-import Rating from "../rating";
+import Review from "../review";
 
 <Content>
     <h3 className="subtitle is-5">Overall</h3>
@@ -8,27 +8,12 @@ import Rating from "../rating";
     certain something that will improve or decrease the overall rating.
 </Content>
 
-<table className="table">
-    <tbody>
-    <tr>
-        <td><Rating rating={5}/></td>
-        <td>Foo</td>
-    </tr>
-    <tr>
-        <td><Rating rating={4}/></td>
-        <td>Foo</td>
-    </tr>
-    <tr>
-        <td><Rating rating={3}/></td>
-        <td>Foo</td>
-    </tr>
-    <tr>
-        <td><Rating rating={2}/></td>
-        <td>Foo</td>
-    </tr>
-    <tr>
-        <td><Rating rating={1}/></td>
-        <td>Foo</td>
-    </tr>
-    </tbody>
-</table>
+<Review>
+    {[
+        [5, <>Foo</>],
+        [4, <>Foo</>],
+        [3, <>Foo</>],
+        [2, <>Foo</>],
+        [1, <>Foo</>],
+    ]}
+</Review>
