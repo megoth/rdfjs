@@ -19,6 +19,7 @@ export default function Inrupt() {
             <h1 className="title">Inrupt's JavaScript client libraries</h1>
             <Content><IntroSection/></Content>
             <div id="solid">
+                <h2 className="subtitle is-3">Solid demo</h2>
                 {session.isLoggedIn ? <>
                     <InruptDemo/>
                     <LogoutButton/>

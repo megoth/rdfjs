@@ -1,6 +1,34 @@
 import {namedNode} from "rdflib";
 import namespace from "solid-namespace";
 
+interface LibraryLink {
+    href: string;
+    text: string;
+}
+
+export const LIBRARIES: Array<LibraryLink> = [
+    {
+        href: "/rdflib",
+        text: "rdflib.js"
+    },
+    {
+        href: "/ldo",
+        text: "LDO"
+    },
+    {
+        href: "/inrupt",
+        text: "Inrupt"
+    },
+    {
+        href: "/soukai",
+        text: "Soukai"
+    },
+    {
+        href: "/comunica",
+        text: "Comunica"
+    },
+];
+
 export interface DemoLink {
     href: string;
     icon: string;
@@ -33,7 +61,7 @@ export const LOCAL_DEMOS: Array<DemoLink> = [
     {
         title: "Soukai ODM",
         subtitle: "By Noel De Martin",
-        href: "/soukai#solid",
+        href: "/soukai#local",
         icon: "/soukai.svg",
         iconAlt: "Logo for Soukai ODM",
         slogan: "A JavaScript-based Object Document Mapper that also works with RDF",
@@ -113,7 +141,7 @@ export const SOLID_DEMOS: Array<DemoLink> = [
     {
         title: "Inrupt JavaScript Client Libraries",
         subtitle: "By Inrupt",
-        href: "/inrupt",
+        href: "/inrupt#solid",
         icon: "/inrupt.webp",
         iconAlt: "Logo for Inrupt",
         slogan: "Inrupt offers an impressive suite of JavaScript libraries that offer developers a lot of features",
@@ -131,7 +159,7 @@ export const SOLID_DEMOS: Array<DemoLink> = [
     {
         title: "Comunica",
         subtitle: "By Comunica team",
-        href: "/comunica",
+        href: "/comunica#solid",
         icon: "/comunica.svg",
         iconAlt: "Logo for Comunica",
         slogan: "Comunica allows you to execute SPARQL queries for resources on the web",
