@@ -6,17 +6,16 @@ import demoCode from "./demo/index.tsx?raw";
 import IntroSection from "./intro.mdx";
 import CodeSection from "./code.mdx";
 import Content from "../content";
-import usePrism from "../../hooks/use-prism";
 import LogoutButton from "../logout-button";
 import Review from "./review.mdx";
+import LibraryHeader from "../library-header";
+import {LIBRARY_INRUPT} from "../../constants.ts";
 
 export default function Inrupt() {
     const {login, session} = useSolidAuth();
-    usePrism();
-
     return (
         <>
-            <h1 className="title">Inrupt's JavaScript client libraries</h1>
+            <LibraryHeader library={LIBRARY_INRUPT}/>
             <Content><IntroSection/></Content>
             <div id="solid">
                 <Code language={"tsx"} id="InruptSolidDemo" code={demoCode}>

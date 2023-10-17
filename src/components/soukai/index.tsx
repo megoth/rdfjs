@@ -8,17 +8,17 @@ import SolidCodeSection from "./solid-demo/code.mdx";
 import Content from "../content";
 import LogoutButton from "../logout-button";
 import Login from "../login";
-import usePrism from "../../hooks/use-prism";
 import {useSolidAuth} from "@ldo/solid-react";
 import SoukaiSolidDemo from "./solid-demo";
 import Review from "./review.mdx";
+import LibraryHeader from "../library-header";
+import {LIBRARY_SOUKAI} from "../../constants.ts";
 
 export default function Soukai() {
-    usePrism();
     const {login, session} = useSolidAuth();
     return (
         <>
-            <h1 className="title">Soukai</h1>
+            <LibraryHeader library={LIBRARY_SOUKAI}/>
             <Content><IntroSection/></Content>
             <div id="local">
                 <Code language={"tsx"} id="SoukaiLocalDemo" code={localDemoCode}>

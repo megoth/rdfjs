@@ -1,0 +1,10 @@
+.media {
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+
+.image {
+    & img {
+        height: 48px;
+    }
+}

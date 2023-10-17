@@ -10,15 +10,15 @@ import LDOSolidReactDemo from "./solid-react-demo";
 import Review from "./review.mdx";
 import LogoutButton from "../logout-button";
 import Login from "../login";
-import usePrism from "../../hooks/use-prism";
 import {useSolidAuth} from "@ldo/solid-react";
+import LibraryHeader from "../library-header";
+import {LIBRARY_LDO} from "../../constants.ts";
 
 export default function LDO() {
-    usePrism();
     const {login, session} = useSolidAuth();
     return (
         <>
-            <h1 className="title">LDO (Linked Data Objects)</h1>
+            <LibraryHeader library={LIBRARY_LDO}/>
             <Content><IntroSection/></Content>
             <div id="local">
                 <Code language={"tsx"} id="LDOLocalDemo" code={localDemoCode}>
@@ -33,7 +33,7 @@ export default function LDO() {
                     {session.isLoggedIn ? <>
                         <LDOSolidReactDemo/>
                         <LogoutButton/>
-                    </> : <Login login={(issuer) => login(issuer, { redirectUrl: location.href.replace(/#\S+$/, "")})}/>}
+                    </> : <Login login={(issuer) => login(issuer, {redirectUrl: location.href.replace(/#\S+$/, "")})}/>}
                     <Content><SolidReactCodeSection/></Content>
                 </Code>
             </div>

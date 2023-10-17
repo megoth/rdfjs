@@ -10,15 +10,15 @@ import RdflibSolidDemo from "./solid-demo";
 import Review from "./review.mdx";
 import LogoutButton from "../logout-button";
 import Login from "../login";
-import usePrism from "../../hooks/use-prism";
 import {useSolidAuth} from "@ldo/solid-react";
+import LibraryHeader from "../library-header";
+import {LIBRARY_RDFLIB} from "../../constants.ts";
 
 export default function Rdflib() {
-    usePrism();
     const {login, session} = useSolidAuth();
     return (
         <>
-            <h1 className="title">rdflib.js</h1>
+            <LibraryHeader library={LIBRARY_RDFLIB} />
             <Content><IntroSection/></Content>
             <div id="local">
                 <Code language={"tsx"} id="RdflibLocalDemo" code={localDemoCode}>

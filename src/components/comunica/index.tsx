@@ -5,18 +5,18 @@ import CodeSection from "./code.mdx";
 import Content from "../content";
 import ComunicaDemo from "./demo";
 import {useSolidAuth} from "@ldo/solid-react";
-import usePrism from "../../hooks/use-prism";
 import LogoutButton from "../logout-button";
 import Login from "../login";
 import Review from "./review.mdx";
+import LibraryHeader from "../library-header";
+import {LIBRARY_COMUNICA} from "../../constants.ts";
 
 export default function Comunica() {
     const {login, session} = useSolidAuth();
-    usePrism();
 
     return (
         <>
-            <h1 className="title">Comunica</h1>
+            <LibraryHeader library={LIBRARY_COMUNICA}/>
             <Content><IntroSection/></Content>
             <div id="solid">
                 <Code language={"tsx"} id="ComunicaSolidDemo" code={demoCode}>

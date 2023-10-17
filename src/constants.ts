@@ -1,56 +1,73 @@
 import {namedNode} from "rdflib";
 import namespace from "solid-namespace";
 
-interface LibraryLink {
+export interface LibraryLink {
     href: string;
     icon: string;
     iconAlt: string;
     name: string;
     creator: string;
     text: string;
+    websiteName: string;
+    websiteUrl: string;
 }
 
+export const LIBRARY_RDFLIB = {
+    href: "/rdflib",
+    icon: "/linkeddata.png",
+    iconAlt: "Logo for Read-Write Linked Data",
+    name: "rdflib.js",
+    creator: "rdflib.js team",
+    text: "rdflib.js",
+    websiteName: "GitHub repo",
+    websiteUrl: "https://github.com/linkeddata/rdflib.js/"
+};
+export const LIBRARY_LDO = {
+    href: "/ldo",
+    icon: "/o-team.png",
+    iconAlt: "Logo for O.team",
+    name: "Linked Data Objects",
+    creator: "Jackson Morgan",
+    text: "LDO",
+    websiteName: "GitHub repo",
+    websiteUrl: "https://github.com/o-development/ldo/"
+};
+export const LIBRARY_INRUPT = {
+    href: "/inrupt",
+    icon: "/inrupt.webp",
+    iconAlt: "Logo for Inrupt",
+    name: "Inrupt's JavaScript client libraries",
+    creator: "Inrupt",
+    text: "Inrupt",
+    websiteName: "Official documentation",
+    websiteUrl: "https://docs.inrupt.com/developer-tools/javascript/client-libraries/"
+};
+export const LIBRARY_SOUKAI = {
+    href: "/soukai",
+    icon: "/soukai.svg",
+    iconAlt: "Logo for Soukai ODM",
+    name: "Soukai ODM",
+    creator: "Noel De Martin",
+    text: "Soukai",
+    websiteName: "Official website",
+    websiteUrl: "https://soukai.js.org/"
+};
+export const LIBRARY_COMUNICA = {
+    href: "/comunica",
+    icon: "/comunica.svg",
+    iconAlt: "Logo for Comunica",
+    name: "Comunica",
+    creator: "IDLab at Ghent University",
+    text: "Comunica",
+    websiteName: "Official website",
+    websiteUrl: "https://comunica.dev/"
+};
 export const LIBRARIES: Array<LibraryLink> = [
-    {
-        href: "/rdflib",
-        icon: "/linkeddata.png",
-        iconAlt: "Logo for Read-Write Linked Data",
-        name: "rdflib.js",
-        creator: "rdflib.js team",
-        text: "rdflib.js"
-    },
-    {
-        href: "/ldo",
-        icon: "/o-team.png",
-        iconAlt: "Logo for O.team",
-        name: "Linked Data Objects",
-        creator: "Jackson Morgan",
-        text: "LDO"
-    },
-    {
-        href: "/inrupt",
-        icon: "/inrupt.webp",
-        iconAlt: "Logo for Inrupt",
-        name: "Inrupt's JavaScript client libraries",
-        creator: "Inrupt",
-        text: "Inrupt"
-    },
-    {
-        href: "/soukai",
-        icon: "/soukai.svg",
-        iconAlt: "Logo for Soukai ODM",
-        name: "Soukai ODM",
-        creator: "Noel De Martin",
-        text: "Soukai"
-    },
-    {
-        href: "/comunica",
-        icon: "/comunica.svg",
-        iconAlt: "Logo for Comunica",
-        name: "Comunica",
-        creator: "IDLab at Ghent University",
-        text: "Comunica"
-    },
+    LIBRARY_RDFLIB,
+    LIBRARY_LDO,
+    LIBRARY_INRUPT,
+    LIBRARY_SOUKAI,
+    LIBRARY_COMUNICA,
 ];
 
 export interface DemoLink {
