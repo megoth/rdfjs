@@ -7,12 +7,12 @@ interface Props {
 
 export default function Review({children}: Props) {
     return (
-        <table className="table">
+        <table className="table is-fullwidth is-striped">
             <tbody>
             {children.map(([rating, review], index) => (
                 <tr key={`rating-${index}`}>
-                    <td><Rating rating={rating}/></td>
-                    <td>{review}</td>
+                    <td style={{width: 0}}><Rating rating={rating}/></td>
+                    <td className="is-full">{review}</td>
                 </tr>
             ))}
             </tbody>
