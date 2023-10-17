@@ -26,7 +26,7 @@ export default function LibraryList() {
                                 <table className={clsx("table", styles.table)}>
                                     <tbody>
                                     <tr>
-                                        <td>Overall score</td>
+                                        <td>My overall rating</td>
                                         <td><Rating rating={review[4]}/></td>
                                     </tr>
                                     <tr>

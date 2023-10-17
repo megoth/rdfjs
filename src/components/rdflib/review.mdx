@@ -7,14 +7,16 @@ import {LIBRARY_RDFLIB, RATING_CRITERIA} from "../../constants";
     <RatingCriteriaTitle index={0} rating={LIBRARY_RDFLIB.review[0]}/>
     <Content id={RATING_CRITERIA[0][0]}>
         The API is extensive, and should cover most of your RDF-related needs. It has limited
-        [SPARQL](https://www.w3.org/TR/sparql11-query/) support, allowing a subset of queries.
+        [SPARQL](https://www.w3.org/TR/sparql11-query/) support, allowing a subset of queries. That said, working with
+        rdflib.js' API nowadays feels antiquated, and I've always had to struggle to make it work with state-management
+        libraries like React.
     </Content>
 
     <RatingCriteriaTitle index={1} rating={LIBRARY_RDFLIB.review[1]}/>
     <Content id={RATING_CRITERIA[1][0]}>
-        The documentation is useful, but I find it at times lacking and a bit hard to navigate. Also, the project can
-        be confused by [Python's rdflib](https://pypi.org/project/rdflib/), especially if you're new to RDF, which is
-        not ideal.
+        The documentation is useful, but it's not complete and a bit hard to navigate at times. Also, the project can
+        be confused by [Python's rdflib](https://pypi.org/project/rdflib/) when using a search engine, especially if
+        you're new to RDF, which is less than ideal.
     </Content>
 
     <RatingCriteriaTitle index={2} rating={LIBRARY_RDFLIB.review[2]}/>
@@ -23,6 +25,10 @@ import {LIBRARY_RDFLIB, RATING_CRITERIA} from "../../constants";
         problems (usually through channels like
         [linkeddata/rdflib.js](https://app.gitter.im/#/room/#linkeddata_rdflib.js:gitter.im)). The library has had
         many developers throughout the years (myself included), and some of these will pitch in when needed.
+
+        Although the response can be good, and the people welcoming, the code base of rdflib.js is quite hard to manage
+        at times. This means that bug can take a long time to be fixed. Luckily, the library has been out for a long
+        time, and it has proven reliable in preserving it's APIs.
     </Content>
 
     <RatingCriteriaTitle index={3} rating={LIBRARY_RDFLIB.review[3]}/>
