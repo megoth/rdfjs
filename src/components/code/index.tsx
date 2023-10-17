@@ -53,7 +53,7 @@ export default function Code({children, code, id, language, url, ...props}: Code
             <div className={clsx("field is-grouped is-grouped-right is-grouped-multiline", styles.field)}>
                 {dataLine.length > 0 && <>
                     <p className="control">
-                        <NavLink to={`#${id}`} className={"button is-small is-warning is-light"}
+                        <NavLink to={`#${id}`} className={"button is-small is-danger is-light"}
                                  preventScrollReset={true}>
                             <span className="icon is-small"><MdOutlineClear /></span>
                             <span>Clear highlighted code</span>

@@ -8,10 +8,22 @@
 .field.field {
     &:global(.is-grouped-multiline.is-grouped-multiline) {
         gap: 0.5rem;
+
         :global(.control.control) {
             margin-bottom: 0;
             margin-right: 0;
         }
+    }
+}
+
+code[class*="language-"],
+pre[class*="language-"] {
+    font-size: 0.85rem;
+    @media screen and (min-width: 769px) {
+        font-size: 0.9rem;
+    }
+    @media screen and (min-width: 1024px) {
+        font-size: 1rem;
     }
 }
 
