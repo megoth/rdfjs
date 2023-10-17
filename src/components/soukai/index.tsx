@@ -13,6 +13,7 @@ import SoukaiSolidDemo from "./solid-demo";
 import Review from "./review.mdx";
 import LibraryHeader from "../library-header";
 import {LIBRARY_SOUKAI} from "../../constants.ts";
+import ReviewHeader from "../review-header";
 
 export default function Soukai() {
     const {login, session} = useSolidAuth();
@@ -20,6 +21,7 @@ export default function Soukai() {
         <>
             <LibraryHeader library={LIBRARY_SOUKAI}/>
             <Content><IntroSection/></Content>
+            <ReviewHeader library={LIBRARY_SOUKAI}/>
             <div id="local">
                 <Code language={"tsx"} id="SoukaiLocalDemo" code={localDemoCode}>
                     <h2 className="subtitle is-3">Local demo</h2>

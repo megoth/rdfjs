@@ -10,6 +10,7 @@ import Login from "../login";
 import Review from "./review.mdx";
 import LibraryHeader from "../library-header";
 import {LIBRARY_COMUNICA} from "../../constants.ts";
+import ReviewHeader from "../review-header";
 
 export default function Comunica() {
     const {login, session} = useSolidAuth();
@@ -18,6 +19,7 @@ export default function Comunica() {
         <>
             <LibraryHeader library={LIBRARY_COMUNICA}/>
             <Content><IntroSection/></Content>
+            <ReviewHeader library={LIBRARY_COMUNICA}/>
             <div id="solid">
                 <Code language={"tsx"} id="ComunicaSolidDemo" code={demoCode}>
                     <h2 className="subtitle is-3">Solid demo</h2>

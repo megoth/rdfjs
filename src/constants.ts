@@ -8,22 +8,36 @@ export interface LibraryLink {
     icon: string;
     iconAlt: string;
     name: string;
-    review?: Array<RatingScore>;
+    recommendation: string;
+    review: Array<RatingScore>;
     text: string;
     websiteName: string;
     websiteUrl: string;
 }
 
-export const LIBRARY_RDFLIB: LibraryLink = {
-    creator: "rdflib.js team",
-    href: "/rdflib",
-    icon: "/linkeddata.png",
-    iconAlt: "Logo for Read-Write Linked Data",
-    name: "rdflib.js",
-    review: [3, 2, 2, 4, 2.5],
-    text: "rdflib.js",
-    websiteName: "GitHub repo",
-    websiteUrl: "https://github.com/linkeddata/rdflib.js/"
+export const LIBRARY_COMUNICA: LibraryLink = {
+    creator: "IDLab at Ghent University",
+    href: "/comunica",
+    icon: "/comunica.svg",
+    iconAlt: "Logo for Comunica",
+    name: "Comunica",
+    recommendation: "Large systems based on SPARQL",
+    review: [2, 3, 2, 3, 2.5],
+    text: "Comunica",
+    websiteName: "Official website",
+    websiteUrl: "https://comunica.dev/"
+};
+export const LIBRARY_INRUPT: LibraryLink = {
+    creator: "Inrupt",
+    href: "/inrupt",
+    icon: "/inrupt.webp",
+    iconAlt: "Logo for Inrupt",
+    name: "Inrupt's JavaScript client libraries",
+    recommendation: "Systems that need to be production-ready soon",
+    review: [3, 3, 3, 3, 3],
+    text: "Inrupt",
+    websiteName: "Official documentation",
+    websiteUrl: "https://docs.inrupt.com/developer-tools/javascript/client-libraries/"
 };
 export const LIBRARY_LDO: LibraryLink = {
     creator: "Jackson Morgan",
@@ -31,45 +45,41 @@ export const LIBRARY_LDO: LibraryLink = {
     icon: "/o-team.png",
     iconAlt: "Logo for O.team",
     name: "Linked Data Objects",
+    recommendation: "Experimental apps",
+    review: [4, 3, 3, 2, 3],
     text: "LDO",
     websiteName: "GitHub repo",
     websiteUrl: "https://github.com/o-development/ldo/"
 };
-export const LIBRARY_INRUPT = {
-    creator: "Inrupt",
-    href: "/inrupt",
-    icon: "/inrupt.webp",
-    iconAlt: "Logo for Inrupt",
-    name: "Inrupt's JavaScript client libraries",
-    text: "Inrupt",
-    websiteName: "Official documentation",
-    websiteUrl: "https://docs.inrupt.com/developer-tools/javascript/client-libraries/"
+export const LIBRARY_RDFLIB: LibraryLink = {
+    creator: "rdflib.js team",
+    href: "/rdflib",
+    icon: "/linkeddata.png",
+    iconAlt: "Logo for Read-Write Linked Data",
+    name: "rdflib.js",
+    recommendation: "Low-level data management",
+    review: [2, 2, 3, 3, 2.5],
+    text: "rdflib.js",
+    websiteName: "GitHub repo",
+    websiteUrl: "https://github.com/linkeddata/rdflib.js/"
 };
-export const LIBRARY_SOUKAI = {
+export const LIBRARY_SOUKAI: LibraryLink = {
     creator: "Noel De Martin",
     href: "/soukai",
     icon: "/soukai.svg",
     iconAlt: "Logo for Soukai ODM",
     name: "Soukai ODM",
+    recommendation: "Experimental apps",
+    review: [3, 3, 3, 2, 3],
     text: "Soukai",
     websiteName: "Official website",
     websiteUrl: "https://soukai.js.org/"
 };
-export const LIBRARY_COMUNICA = {
-    creator: "IDLab at Ghent University",
-    href: "/comunica",
-    icon: "/comunica.svg",
-    iconAlt: "Logo for Comunica",
-    name: "Comunica",
-    text: "Comunica",
-    websiteName: "Official website",
-    websiteUrl: "https://comunica.dev/"
-};
 export const LIBRARIES: Array<LibraryLink> = [
-    LIBRARY_RDFLIB,
-    LIBRARY_LDO,
     LIBRARY_INRUPT,
+    LIBRARY_LDO,
     LIBRARY_SOUKAI,
+    LIBRARY_RDFLIB,
     LIBRARY_COMUNICA,
 ];
 

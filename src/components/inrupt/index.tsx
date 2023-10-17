@@ -10,6 +10,7 @@ import LogoutButton from "../logout-button";
 import Review from "./review.mdx";
 import LibraryHeader from "../library-header";
 import {LIBRARY_INRUPT} from "../../constants.ts";
+import ReviewHeader from "../review-header";
 
 export default function Inrupt() {
     const {login, session} = useSolidAuth();
@@ -17,6 +18,7 @@ export default function Inrupt() {
         <>
             <LibraryHeader library={LIBRARY_INRUPT}/>
             <Content><IntroSection/></Content>
+            <ReviewHeader library={LIBRARY_INRUPT}/>
             <div id="solid">
                 <Code language={"tsx"} id="InruptSolidDemo" code={demoCode}>
                     <h2 className="subtitle is-3">Solid demo</h2>

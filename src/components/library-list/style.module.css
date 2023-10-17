@@ -10,14 +10,11 @@
 
 .column {
     min-width: 100%;
-    @media screen and (min-width: 570px) {
+    @media screen and (min-width: 700px) {
         min-width: 50%;
     }
-    @media screen and (min-width: 769px) {
-        min-width: 33%;
-    }
     @media screen and (min-width: 1200px) {
-        min-width: 20%;
+        min-width: 33%;
     }
 }
 
@@ -28,8 +25,8 @@
 }
 
 .cardContent.cardContent {
-    align-items: center;
     display: flex;
+    flex-direction: column;
     flex-grow: 1;
     @media screen and (min-width: 570px) {
         justify-content: center;
@@ -44,6 +41,10 @@
 
 .mediaLeft.mediaLeft {
     margin-right: 0;
+}
+
+.table {
+    font-size: 0.9rem;
 }
 
 .image.image {

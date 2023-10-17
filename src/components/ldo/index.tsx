@@ -13,6 +13,7 @@ import Login from "../login";
 import {useSolidAuth} from "@ldo/solid-react";
 import LibraryHeader from "../library-header";
 import {LIBRARY_LDO} from "../../constants.ts";
+import ReviewHeader from "../review-header";
 
 export default function LDO() {
     const {login, session} = useSolidAuth();
@@ -20,6 +21,7 @@ export default function LDO() {
         <>
             <LibraryHeader library={LIBRARY_LDO}/>
             <Content><IntroSection/></Content>
+            <ReviewHeader library={LIBRARY_LDO}/>
             <div id="local">
                 <Code language={"tsx"} id="LDOLocalDemo" code={localDemoCode}>
                     <h2 className="subtitle is-3">Local demo</h2>
