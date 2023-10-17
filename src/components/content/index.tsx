@@ -1,9 +1,9 @@
-import {ReactNode} from "react";
+import {HTMLAttributes} from "react";
+import {clsx} from "clsx";
 
-interface Props {
-    children: ReactNode;
+interface Props extends HTMLAttributes<HTMLDivElement> {
 }
 
-export default function Content({children}: Props) {
-    return <div className="content">{children}</div>
+export default function Content({className, ...props}: Props) {
+    return <div className={clsx("content", className)} {...props} />
 }
