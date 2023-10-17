@@ -3,34 +3,52 @@ import namespace from "solid-namespace";
 
 interface LibraryLink {
     href: string;
+    icon: string;
+    iconAlt: string;
     name: string;
+    creator: string;
     text: string;
 }
 
 export const LIBRARIES: Array<LibraryLink> = [
     {
         href: "/rdflib",
+        icon: "/linkeddata.png",
+        iconAlt: "Logo for Read-Write Linked Data",
         name: "rdflib.js",
+        creator: "rdflib.js team",
         text: "rdflib.js"
     },
     {
         href: "/ldo",
+        icon: "/o-team.png",
+        iconAlt: "Logo for O.team",
         name: "Linked Data Objects (LDO)",
+        creator: "Jackson Morgan",
         text: "LDO"
     },
     {
         href: "/inrupt",
+        icon: "/inrupt.webp",
+        iconAlt: "Logo for Inrupt",
         name: "Inrupt's JavaScript client libraries",
+        creator: "Inrupt",
         text: "Inrupt"
     },
     {
         href: "/soukai",
+        icon: "/soukai.svg",
+        iconAlt: "Logo for Soukai ODM",
         name: "Soukai ODM",
+        creator: "Noel De Martin",
         text: "Soukai"
     },
     {
         href: "/comunica",
+        icon: "/comunica.svg",
+        iconAlt: "Logo for Comunica",
         name: "Comunica",
+        creator: "IDLab at Ghent University – imec",
         text: "Comunica"
     },
 ];
@@ -48,7 +66,6 @@ export interface DemoLink {
 export const LOCAL_DEMOS: Array<DemoLink> = [
     {
         title: "rdflib.js",
-        subtitle: "By rdflib.js team",
         href: "/rdflib#local",
         icon: "/linkeddata.png",
         iconAlt: "Logo for Read-Write Linked Data",
@@ -56,8 +73,7 @@ export const LOCAL_DEMOS: Array<DemoLink> = [
         text: "rdflib.js"
     },
     {
-        title: "Linked Data Objects",
-        subtitle: "By Jackson Morgan",
+        title: "LDO",
         href: "/ldo#local",
         icon: "/o-team.png",
         iconAlt: "Logo for O.team",
@@ -65,8 +81,7 @@ export const LOCAL_DEMOS: Array<DemoLink> = [
         text: "LDO"
     },
     {
-        title: "Soukai ODM",
-        subtitle: "By Noel De Martin",
+        title: "Soukai",
         href: "/soukai#local",
         icon: "/soukai.svg",
         iconAlt: "Logo for Soukai ODM",
@@ -128,7 +143,6 @@ export const PROVIDERS: Array<Provider> = [
 export const SOLID_DEMOS: Array<DemoLink> = [
     {
         title: "rdflib.js",
-        subtitle: "By rdflib.js team",
         href: "/rdflib#solid",
         icon: "/linkeddata.png",
         iconAlt: "Logo for Read-Write Linked Data",
@@ -137,7 +151,6 @@ export const SOLID_DEMOS: Array<DemoLink> = [
     },
     {
         title: "@ldo/solid-react",
-        subtitle: "By Jackson Morgan",
         href: "/ldo#solid-react",
         icon: "/o-team.png",
         iconAlt: "Logo for O.team",
@@ -146,7 +159,6 @@ export const SOLID_DEMOS: Array<DemoLink> = [
     },
     {
         title: "Inrupt JavaScript Client Libraries",
-        subtitle: "By Inrupt",
         href: "/inrupt#solid",
         icon: "/inrupt.webp",
         iconAlt: "Logo for Inrupt",
@@ -155,7 +167,6 @@ export const SOLID_DEMOS: Array<DemoLink> = [
     },
     {
         title: "Soukai Solid",
-        subtitle: "By Noel De Martin",
         href: "/soukai#solid",
         icon: "/soukai-solid.svg",
         iconAlt: "Logo for Soukai Solid",
@@ -164,7 +175,6 @@ export const SOLID_DEMOS: Array<DemoLink> = [
     },
     {
         title: "Comunica",
-        subtitle: "By Comunica team",
         href: "/comunica#solid",
         icon: "/comunica.svg",
         iconAlt: "Logo for Comunica",

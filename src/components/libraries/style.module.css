@@ -1,3 +1,61 @@
-.menu {
-    margin-bottom: 1.5rem;
+.libraries {
+    margin-bottom: 3rem;
+}
+
+.columns {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: stretch;
+}
+
+.column {
+    min-width: 100%;
+    @media screen and (min-width: 570px) {
+        min-width: 50%;
+    }
+    @media screen and (min-width: 769px) {
+        min-width: 33%;
+    }
+    @media screen and (min-width: 1200px) {
+        min-width: 20%;
+    }
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.cardContent.cardContent {
+    align-items: center;
+    display: flex;
+    flex-grow: 1;
+    @media screen and (min-width: 570px) {
+        justify-content: center;
+    }
+}
+
+.media.media {
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.mediaLeft.mediaLeft {
+    margin-right: 0;
+}
+
+.image.image {
+    height: 48px;
+
+    & img {
+        height: 100%;
+        max-width: none;
+        width: auto;
+    }
+}
+
+.link.link.link {
+    border-radius: 0 0 4px 4px;
 }
