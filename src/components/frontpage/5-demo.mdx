@@ -8,11 +8,11 @@ import Walkthrough from "../walkthrough";
 <Content id="demo">
     <h2 className="subtitle is-3">How does the demo work?</h2>
 
-    The `Demo` component takes two arguments, `name` and `onSubmit`. The components presents a form with one simple
-    text input. This input presents the name that is given. The form can be submitted, at which point the function
-    `onSubmit` will be called.
+    All of the demos use the same component, The `Demo` component. It takes two arguments, `name` and `onSubmit`. The
+    components presents a form with one simple text input. This input presents the name that is given. The form can be
+    submitted, at which point the function `onSubmit` will be called.
 
-    This demo will not store anything, so refreshing the webpage will reset all changes.
+    The demo below will not store anything, so refreshing the webpage will reset all changes.
 </Content>
 
 <FrontpageDemo/>
@@ -24,7 +24,8 @@ import Walkthrough from "../walkthrough";
     through the various parts:
 </Content>
 
-<Code language="tsx" id="FrontpageDemoCode" code={demoCode} url="https://github.com/megoth/semtechjs-demo/blob/main/src/components/demo/index.tsx">
+<Code language="tsx" id="FrontpageDemoCode" code={demoCode}
+      url="https://github.com/megoth/semtechjs-demo/blob/main/src/components/demo/index.tsx">
     <Walkthrough>
         <tr>
             <td>

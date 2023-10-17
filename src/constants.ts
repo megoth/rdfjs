@@ -23,7 +23,7 @@ export const LIBRARIES: Array<LibraryLink> = [
         href: "/ldo",
         icon: "/o-team.png",
         iconAlt: "Logo for O.team",
-        name: "Linked Data Objects (LDO)",
+        name: "Linked Data Objects",
         creator: "Jackson Morgan",
         text: "LDO"
     },
@@ -48,7 +48,7 @@ export const LIBRARIES: Array<LibraryLink> = [
         icon: "/comunica.svg",
         iconAlt: "Logo for Comunica",
         name: "Comunica",
-        creator: "IDLab at Ghent University – imec",
+        creator: "IDLab at Ghent University",
         text: "Comunica"
     },
 ];
