@@ -13,7 +13,7 @@ export default function AuthorNote({children, title}: Props) {
             <div className="card-content">
                 <div className={clsx("media", styles.media)}>
                     <div className={clsx("media-content", styles.mediaContent)}>
-                        <p className="title is-5">{title || "Author's note"}</p>
+                        <p className="title is-4">{title || "Author's note"}</p>
                     </div>
                     <div className="media-right">
                         <figure className={clsx("image", styles.image)}>

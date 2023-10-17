@@ -5,6 +5,7 @@ import DocumentationSection from "./4.2-docs.mdx";
 import CommunitySection from "./4.3-community.mdx";
 import MaturitySection from "./4.4-maturity.mdx";
 import OverallSection from "./4.5-overall.mdx";
+import ReviewList from "../review-list";
 
 <Content id="reviews">
     <h2 className="subtitle is-3">Which library should you use?</h2>
@@ -17,19 +18,35 @@ import OverallSection from "./4.5-overall.mdx";
     capabilities. That said, the demos are simple and they cannot show the full feature set of each library. The demos
     are but a taste of each library, and to fully know their capacities, you need to check their documentation (which
     I will link to).
+
+    That being said, I've tried to assess certain aspects for each library. I've focused on attributes of the libraries,
+    grouped into Developer Experience, Documentation, Community & Support, Maturity, and ending with an Overall rating.
+    In the following table you can see the complete review of all libraries.
+
+    <strong>All ratings are links that navigates to the explanation of that rating.</strong>
 </Content>
+
+<ReviewList/>
+
+<div className="message is-info">
+    <div className="message-body">
+        Remember that these ratings are my personal reviews. My insights into all of these libraries are limited
+        (especially Soukai and Comunica), and my impressions are tainted by that.
+    </div>
+</div>
 
 <AuthorNote title={"My opinion on the matter"}>
     <Content>
         Although I cannot fully convey everything that the libraries can offer on this website, I hope I'm able to at
         least convey enough of my impressions so that it makes it clear to you in which situations the library suits
-        your needs (and for which they lack). For each library I break down my impressions by categories, and I'll try
-        to assess how good a library is on the given category by rating it from 1 to 5. I'll describe what each
+        your needs (and for which they lack). For this purpose I want to break down my impressions into categories, and
+        I'll try to assess how good a library is on the given category by rating it from 1 to 5. I'll describe what each
         rating means for each category down below.
 
         Some of these criteria might be unfair to review a library by, and all of these libraries fall short in some
         regard. But I hope to maintain this website over time, and I'll update my reviews as changes happen. Also, the
-        choice of these categories are highly subjective, so you might disagree with my perspective altogether.
+        choice of these categories are highly subjective, so you might disagree with my perspective altogether. I invite
+        criticism, and am open to review my selection of categories and approach of review.
     </Content>
     <DeveloperExperienceSection/>
     <DocumentationSection/>

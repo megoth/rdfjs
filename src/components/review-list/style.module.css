@@ -1,0 +1,11 @@
+.table.table.table {
+    & th,
+    & td:not(:first-child) {
+        text-align: center;
+    }
+
+    & th:last-child,
+    & td:last-child {
+        background: #eeeeee;
+    }
+}

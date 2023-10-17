@@ -22,7 +22,7 @@ export const LIBRARY_COMUNICA: LibraryLink = {
     iconAlt: "Logo for Comunica",
     name: "Comunica",
     recommendation: "Large systems based on SPARQL",
-    review: [2, 3, 2, 3, 2.5],
+    review: [2, 3, 3, 3, 2.5],
     text: "Comunica",
     websiteName: "Official website",
     websiteUrl: "https://comunica.dev/"
@@ -76,10 +76,10 @@ export const LIBRARY_SOUKAI: LibraryLink = {
     websiteUrl: "https://soukai.js.org/"
 };
 export const LIBRARIES: Array<LibraryLink> = [
-    LIBRARY_INRUPT,
-    LIBRARY_LDO,
-    LIBRARY_SOUKAI,
     LIBRARY_RDFLIB,
+    LIBRARY_LDO,
+    LIBRARY_INRUPT,
+    LIBRARY_SOUKAI,
     LIBRARY_COMUNICA,
 ];
 
