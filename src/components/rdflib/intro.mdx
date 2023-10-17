@@ -1,6 +1,8 @@
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-aliqua. Mauris cursus mattis molestie a iaculis at erat pellentesque. Ornare lectus sit amet est. Scelerisque
-fermentum dui faucibus in. Lorem ipsum dolor sit amet consectetur adipiscing. Tellus in hac habitasse platea dictumst
-vestibulum rhoncus est. A iaculis at erat pellentesque adipiscing commodo elit. Porttitor eget dolor morbi non arcu
-risus quis varius. Et egestas quis ipsum suspendisse ultrices gravida dictum. Sodales neque sodales ut etiam sit.
-Lectus mauris ultrices eros in cursus. Integer enim neque volutpat ac tincidunt vitae semper quis.
+Rdflib.js is probably _the_ longest ongoing project that allow developers to manage RDF. It's used in many projects,
+such as [the SolidOS project](https://github.com/SolidOS/solidos). Its API is mostly low-level, requiring you to
+understand quite a bit of RDF to use it. I would also argue that the form of some of the functions are outdated, such
+as `serialize` where the last parameter is a callback function. This eludes back to how callbacks were handled before
+promises were a thing in the JS-community.
+
+The API is extensive, and should have you covered in most situations. But it's dated and low-level API makes me not
+enjoying my work with it, and in general I would recommend _not_ using it for front-end projects.

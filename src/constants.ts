@@ -1,63 +1,66 @@
 import {namedNode} from "rdflib";
 import namespace from "solid-namespace";
+import {RatingScore} from "./components/rating";
 
 export interface LibraryLink {
+    creator: string;
     href: string;
     icon: string;
     iconAlt: string;
     name: string;
-    creator: string;
+    review?: Array<RatingScore>;
     text: string;
     websiteName: string;
     websiteUrl: string;
 }
 
-export const LIBRARY_RDFLIB = {
+export const LIBRARY_RDFLIB: LibraryLink = {
+    creator: "rdflib.js team",
     href: "/rdflib",
     icon: "/linkeddata.png",
     iconAlt: "Logo for Read-Write Linked Data",
     name: "rdflib.js",
-    creator: "rdflib.js team",
+    review: [3, 2, 2, 4, 2.5],
     text: "rdflib.js",
     websiteName: "GitHub repo",
     websiteUrl: "https://github.com/linkeddata/rdflib.js/"
 };
-export const LIBRARY_LDO = {
+export const LIBRARY_LDO: LibraryLink = {
+    creator: "Jackson Morgan",
     href: "/ldo",
     icon: "/o-team.png",
     iconAlt: "Logo for O.team",
     name: "Linked Data Objects",
-    creator: "Jackson Morgan",
     text: "LDO",
     websiteName: "GitHub repo",
     websiteUrl: "https://github.com/o-development/ldo/"
 };
 export const LIBRARY_INRUPT = {
+    creator: "Inrupt",
     href: "/inrupt",
     icon: "/inrupt.webp",
     iconAlt: "Logo for Inrupt",
     name: "Inrupt's JavaScript client libraries",
-    creator: "Inrupt",
     text: "Inrupt",
     websiteName: "Official documentation",
     websiteUrl: "https://docs.inrupt.com/developer-tools/javascript/client-libraries/"
 };
 export const LIBRARY_SOUKAI = {
+    creator: "Noel De Martin",
     href: "/soukai",
     icon: "/soukai.svg",
     iconAlt: "Logo for Soukai ODM",
     name: "Soukai ODM",
-    creator: "Noel De Martin",
     text: "Soukai",
     websiteName: "Official website",
     websiteUrl: "https://soukai.js.org/"
 };
 export const LIBRARY_COMUNICA = {
+    creator: "IDLab at Ghent University",
     href: "/comunica",
     icon: "/comunica.svg",
     iconAlt: "Logo for Comunica",
     name: "Comunica",
-    creator: "IDLab at Ghent University",
     text: "Comunica",
     websiteName: "Official website",
     websiteUrl: "https://comunica.dev/"
@@ -155,6 +158,14 @@ export const PROVIDERS: Array<Provider> = [
         loginIri: "https://inrupt.net/",
         signupIri: "https://inrupt.net/register",
     },
+];
+
+export const RATING_CRITERIA: Array<[string, string]> = [
+    ["developerExperience", "Developer Experience"],
+    ["docs", "Documentation"],
+    ["communitySupport", "Community & Support"],
+    ["maturity", "Maturity"],
+    ["overall", "Overall"]
 ];
 
 export const SOLID_DEMOS: Array<DemoLink> = [

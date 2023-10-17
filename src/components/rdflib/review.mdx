@@ -1,10 +1,45 @@
-import AuthorNote from "../authorNote";
+import AuthorNote from "../author-note";
+import RatingCriteriaTitle from "../rating-criteria-title";
+import Content from "../content";
+import {LIBRARY_RDFLIB, RATING_CRITERIA} from "../../constants";
 
 <AuthorNote title="Should you choose rdflib.js?">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-    aliqua. Mauris cursus mattis molestie a iaculis at erat pellentesque. Ornare lectus sit amet est. Scelerisque
-    fermentum dui faucibus in. Lorem ipsum dolor sit amet consectetur adipiscing. Tellus in hac habitasse platea dictumst
-    vestibulum rhoncus est. A iaculis at erat pellentesque adipiscing commodo elit. Porttitor eget dolor morbi non arcu
-    risus quis varius. Et egestas quis ipsum suspendisse ultrices gravida dictum. Sodales neque sodales ut etiam sit.
-    Lectus mauris ultrices eros in cursus. Integer enim neque volutpat ac tincidunt vitae semper quis.
+    <RatingCriteriaTitle index={0} rating={LIBRARY_RDFLIB.review[0]}/>
+
+    <Content id={RATING_CRITERIA[0][0]}>
+        The API is extensive, and should cover most of your RDF-related needs. It has limited
+        [SPARQL](https://www.w3.org/TR/sparql11-query/) support, allowing a subset of queries.
+    </Content>
+
+    <RatingCriteriaTitle index={1} rating={LIBRARY_RDFLIB.review[1]}/>
+
+    <Content id={RATING_CRITERIA[1][0]}>
+        The documentation is useful, but I find it at times lacking and a bit hard to navigate. Also, the project can
+        be confused by [Python's rdflib](https://pypi.org/project/rdflib/), especially if you're new to RDF, which is
+        not ideal.
+    </Content>
+
+    <RatingCriteriaTitle index={2} rating={LIBRARY_RDFLIB.review[2]}/>
+
+    <Content id={RATING_CRITERIA[2][0]}>
+        The community for rdflib.js is lacking, but there are people out there that will step in to help if you have
+        problems (usually through channels like
+        [linkeddata/rdflib.js](https://app.gitter.im/#/room/#linkeddata_rdflib.js:gitter.im)). The library has had
+        many developers throughout the years (myself included), and some of these will pitch in when needed.
+    </Content>
+
+    <RatingCriteriaTitle index={3} rating={LIBRARY_RDFLIB.review[3]}/>
+
+    <Content id={RATING_CRITERIA[3][0]}>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. In fermentum et sollicitudin ac orci. Gravida dictum fusce ut placerat orci nulla.
+    </Content>
+
+    <RatingCriteriaTitle index={4} rating={LIBRARY_RDFLIB.review[4]}/>
+
+    <Content id={RATING_CRITERIA[4][0]}>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. In fermentum et sollicitudin ac orci. Gravida dictum fusce ut placerat orci nulla.
+    </Content>
+
 </AuthorNote>

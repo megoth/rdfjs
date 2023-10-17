@@ -1,0 +1,14 @@
+.subtitle {
+    align-content: center;
+    display: flex;
+    gap: 0.25rem;
+}
+
+.subtitleText {
+    flex-grow: 1;
+}
+
+.rating {
+    flex-grow: 0;
+    font-size: 0.9rem;
+}

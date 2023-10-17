@@ -9,19 +9,19 @@ export default function RdflibSolidDemo() {
     const [name, setName] = useState("");
     const profileNode = namedNode(session.webId!);
     const store = graph() as LiveStore;
-    new Fetcher(store, {fetch});
-    new UpdateManager(store);
+    const fetcher = new Fetcher(store, {fetch});
+    const updater = new UpdateManager(store);
 
     useEffect(() => {
         if (!store) return;
-        store.fetcher.load(profileNode.doc()).then(() => setName(store.any(profileNode, NAME_NODE, null)?.value || ""));
+        fetcher.load(profileNode.doc()).then(() => setName(store.any(profileNode, NAME_NODE, null)?.value || ""));
     }, [store, profileNode]);
 
     const onSubmit = async (data: FormData) => {
         setName(data.name);
         const ins = [st(profileNode, NAME_NODE, lit(data.name), profileNode.doc())];
         const del = store.statementsMatching(profileNode, NAME_NODE, null, profileNode.doc());
-        await store.updater.update(del, ins);
+        await updater.update(del, ins);
         return store;
     };
 

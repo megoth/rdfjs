@@ -13,13 +13,15 @@ import Login from "../login";
 import {useSolidAuth} from "@ldo/solid-react";
 import LibraryHeader from "../library-header";
 import {LIBRARY_RDFLIB} from "../../constants.ts";
+import ReviewHeader from "../review-header";
 
 export default function Rdflib() {
     const {login, session} = useSolidAuth();
     return (
         <>
-            <LibraryHeader library={LIBRARY_RDFLIB} />
+            <LibraryHeader library={LIBRARY_RDFLIB}/>
             <Content><IntroSection/></Content>
+            <ReviewHeader library={LIBRARY_RDFLIB}/>
             <div id="local">
                 <Code language={"tsx"} id="RdflibLocalDemo" code={localDemoCode}>
                     <h2 className="subtitle is-3">Local demo</h2>
@@ -33,7 +35,7 @@ export default function Rdflib() {
                     {session.isLoggedIn ? <>
                         <RdflibSolidDemo/>
                         <LogoutButton/>
-                    </> : <Login login={(issuer) => login(issuer, { redirectUrl: location.href.replace(/#\S+$/, "")})}/>}
+                    </> : <Login login={(issuer) => login(issuer, {redirectUrl: location.href.replace(/#\S+$/, "")})}/>}
                     <Content><SolidDemoCodeSection/></Content>
                 </Code>
             </div>
