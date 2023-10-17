@@ -21,7 +21,6 @@ export default function Notification({index, notification}: Props) {
     return (
         <div className={clsx("notification is-success is-light", {"is-hidden": hidden})}
              key={`notification-${index}`}>
-            <button className="delete" onClick={() => hide(notification.id)}></button>
             {notification.message}
         </div>
     )

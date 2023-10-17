@@ -6,14 +6,23 @@ interface Props {
 
 export default function Walkthrough({children}: Props) {
     return (
-        <table className="table">
-            <thead>
-            <tr>
-                <th>Part of logic</th>
-                <th>Explanation</th>
-            </tr>
-            </thead>
-            <tbody>{children}</tbody>
-        </table>
+        <>
+            <div className="message is-hidden-widescreen is-warning">
+                <div className="message-header">A note on smaller screens</div>
+                <div className="message-body">
+                    These walkthroughes are best consumed at larger screens. If you are on smaller screens, note that
+                    you might have to scroll down a bit to see the actual highlighted code.
+                </div>
+            </div>
+            <table className="table">
+                <thead>
+                <tr>
+                    <th>Part of logic</th>
+                    <th>Explanation</th>
+                </tr>
+                </thead>
+                <tbody>{children}</tbody>
+            </table>
+        </>
     );
 }
