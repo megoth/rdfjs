@@ -18,9 +18,10 @@ import Walkthrough from "../walkthrough";
 <FrontpageDemo/>
 
 <Content>
-    This code is written in TSX, a language that combines Typescript and ESM files. It's specifically written with React
-    in mind, and relies a lot on [React Hooks](https://react.dev/reference/react). That said, I think the overall
-    abstractions are clear, and I'll walk through the various parts:
+    This code is written in [TSX](https://www.typescriptlang.org/docs/handbook/jsx.html), a language that combines
+    Typescript and ESM files. It's specifically written with React in mind, and relies a lot on [React
+    Hooks](https://react.dev/reference/react). That said, I think the overall abstractions are clear, and I'll walk
+    through the various parts:
 </Content>
 
 <Code language="tsx" id={"FrontpageDemoCode"} code={demoCode}>
@@ -32,7 +33,7 @@ import Walkthrough from "../walkthrough";
             <td>
                 We're making use of [React Hook Form](https://www.react-hook-form.com/)'s `useForm`.
                 The `FormData` interface only has one attribute: name. This hook provides us with functionality that
-                manages the data flow of our form element at line 36. Also note `useEffect` at line 24, that updates the
+                manages the data flow of the form element at line 36. Also note `useEffect` at line 24, that updates the
                 value of name in the form if name is updated elsewhere.
             </td>
         </tr>
@@ -46,8 +47,8 @@ import Walkthrough from "../walkthrough";
             </td>
             <td>
                 Whenever we're working with the Solid demos, there might be a delay when communicating with the Solid
-                servers. Given this behavior, we want to limit when user can submit updates. At line 34 and 48 we see
-                that whenever a name isn't defined yet, we simply show the component loading.
+                servers. Given this behavior, I want to limit when a user can submit updates. At line 34 and 48 you'll
+                see that whenever a name isn't defined yet, I simply show the `Loading` component.
             </td>
         </tr>
         <tr>
@@ -61,7 +62,7 @@ import Walkthrough from "../walkthrough";
 
     <Content>
         The important part of all of this is that `name` is actually handled in the parent element, which is where the
-        logic of the demo resides (and which we show in the respective code section). It basically only provides a form
-        that calls on `onSubmit` when submitted.
+        logic of the demo resides (and which I'll show in the respective code section). It basically only provides a
+        form that calls on `onSubmit` when submitted.
     </Content>
 </Code>
