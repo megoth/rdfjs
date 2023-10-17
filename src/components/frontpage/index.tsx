@@ -4,7 +4,8 @@ import Reviews from "./3.0-reviews.mdx";
 import SolidWarning from "../solid-warning";
 import DemoList from "../demo-list";
 import {LOCAL_DEMOS, SOLID_DEMOS} from "../../constants.ts";
-import Demo from "./demo.mdx";
+import Demo from "./4-demo.mdx";
+import About from "./5-about.mdx";
 
 export default function Frontpage() {
     return (
@@ -16,6 +17,7 @@ export default function Frontpage() {
             <DemoList list={SOLID_DEMOS} />
             <Reviews/>
             <Demo />
+            <About />
         </>
     );
 }

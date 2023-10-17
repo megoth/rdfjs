@@ -1,5 +1,17 @@
 .container {
+    margin-bottom: 3rem;
+
     & ol li {
+    }
+}
+
+.field.field {
+    &:global(.is-grouped-multiline.is-grouped-multiline) {
+        gap: 0.5rem;
+        :global(.control.control) {
+            margin-bottom: 0;
+            margin-right: 0;
+        }
     }
 }
 

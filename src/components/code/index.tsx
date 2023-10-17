@@ -7,12 +7,14 @@ import useNotification from "../../hooks/use-notification";
 import styles from "./style.module.css";
 import {BsFillClipboardCheckFill, BsFillClipboardPlusFill} from "react-icons/bs";
 import {MdOutlineClear} from "react-icons/md";
+import {IoExitOutline} from "react-icons/io5";
 
 interface CodeProps extends HTMLAttributes<HTMLPreElement> {
     children: ReactNode;
     code: string;
     id: string;
     language: "turtle" | "tsx" | "typescript";
+    url?: string;
 }
 
 export function toCodePart(id: string, line: string, ...lines: string[]): string {
@@ -21,7 +23,7 @@ export function toCodePart(id: string, line: string, ...lines: string[]): string
 }
 
 
-export default function Code({children, code, id, language, ...props}: CodeProps) {
+export default function Code({children, code, id, language, url, ...props}: CodeProps) {
     const highlightAll = usePrism();
     const location = useLocation();
     const [searchParams] = useSearchParams();
@@ -48,18 +50,26 @@ export default function Code({children, code, id, language, ...props}: CodeProps
     return (
         <div id={id} className={styles.container}>
             {children}
-            <div className="field is-grouped is-grouped-right">
+            <div className={clsx("field is-grouped is-grouped-right is-grouped-multiline", styles.field)}>
                 {dataLine.length > 0 && <>
                     <p className="control">
-                        <NavLink to={`#${id}`} className={"button is-small is-danger is-light"}
+                        <NavLink to={`#${id}`} className={"button is-small is-warning is-light"}
                                  preventScrollReset={true}>
                             <span className="icon is-small"><MdOutlineClear /></span>
                             <span>Clear highlighted code</span>
                         </NavLink>
                     </p>
                 </>}
+                {url && <>
+                    <p className="control">
+                        <a href={url} className={"button is-small is-light"}>
+                            <span className="icon is-small"><IoExitOutline /></span>
+                            <span>Go to code in project's GH repo</span>
+                        </a>
+                    </p>
+                </>}
                 <p className="control">
-                    <button className="button is-small" onClick={() => copyCode()}>
+                    <button className="button is-small is-light" onClick={() => copyCode()}>
                         <span className="icon is-small"><BsFillClipboardPlusFill /></span>
                         <span>Copy code</span>
                     </button>
