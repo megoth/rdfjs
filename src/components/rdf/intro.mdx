@@ -2,6 +2,7 @@ import Content from "../content";
 import textTurtle from "./text.ttl?raw";
 import Code from "../code";
 import AuthorNote from "../author-note";
+import {NavLink} from "react-router-dom";
 
 <Content>
     There are
@@ -44,13 +45,21 @@ import AuthorNote from "../author-note";
     [RDF/XML](https://www.w3.org/TR/rdf-syntax-grammar/) amongst the popular ones (although we rarely speak of the
     latter one).
 
-    After RDFs initial conception in 1999 it has had multiple extensions, and we now have ways of describing
-    vocabularies, logical relationships, and infer new knowledge based on the given set of data. This might seem little,
-    but it opens up for a lot of powerful technologies, such as
-    [triplestores](https://en.wikipedia.org/wiki/Triplestore),
-    [SPARQL](https://en.wikipedia.org/wiki/SPARQL), and [Solid](https://solidproject.org/). And it's inherent nature to
-    the web should make it a perfect match for JavaScript, a programming language that has had its childhood on the web,
-    and keeps achieving great strides on the web today. But there's an inherent conflict with RDF and JavaScript...
+    After RDFs initial standardization in 1999 it has had multiple extensions, and we now have ways of describing
+    vocabularies, logical relationships, and infer new knowledge based on the given set of data. Vocabularies allow us
+    to formally agree on terms, and with those terms we can make sure that our data is understood by multiple apps. With
+    that we get projects like [schema.org](https://schema.org/), maybe worlds largest vocabulary. We can also share data
+    more easily, as shown by the [Linked Open Data Cloud](https://lod-cloud.net/).
+
+    This might seem little, but it opens up for a lot of powerful technologies, such as
+    [triplestores](https://en.wikipedia.org/wiki/Triplestore), [SPARQL](https://en.wikipedia.org/wiki/SPARQL), and
+    [Solid](https://solidproject.org/). There's also lovely technologies such as shapes, where you have
+    [SHACL](https://shacl.org/) and [ShEx](http://shex.io/) as the most promising technologies. (Make a note of the
+    latter, it will resurface on the page on <NavLink to="/ldo">LDO</NavLink>.)
+
+    It's inherent nature to the web should make RDF a perfect match for JavaScript, a programming language that has had
+    its childhood on the web, and keeps achieving great strides on the web today. But there's an inherent conflict with
+    RDF and JavaScript...
 
     <h2 className="subtitle">JavaScript has no native interface for RDF</h2>
 
@@ -58,7 +67,13 @@ import AuthorNote from "../author-note";
         <img src="/shock.jpg" style={{height: 200, width: "auto"}} alt={`A cartoon-like cat being seemingly shocked`}/>
     </picture>
 
-    Unlike JSON that enjoys being a first class citizen, JavaScript simply don't talk triples.
+    Unlike JSON that enjoys being a first class citizen, JavaScript simply don't talk triples. So we have to construct
+    systems to manage the data as if we were working with a graph, and APIs to interact with this graph, all in a
+    language that don't support it.
+
+    Luckily there are heroes out there who takes on this challenge. And we now have multiple ways of managing our data.
+
+    But alas, my train of thought went astray with the thought of JavaScript. Lets return to exploring RDF.
 </Content>
 
 <AuthorNote title={"Why are RDF, Linked Data and semantic web sometimes used interchangeably?"}>

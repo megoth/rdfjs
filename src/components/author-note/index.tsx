@@ -9,7 +9,7 @@ interface Props {
 
 export default function AuthorNote({children, title}: Props) {
     return (
-        <div className={clsx("card", styles.card)}>
+        <aside className={clsx("card", styles.card)}>
             <div className="card-content">
                 <div className={clsx("media", styles.media)}>
                     <div className={clsx("media-content", styles.mediaContent)}>
@@ -23,6 +23,6 @@ export default function AuthorNote({children, title}: Props) {
                 </div>
                 {children}
             </div>
-        </div>
+        </aside>
     )
 }
