@@ -1,4 +1,4 @@
-import {BsFillHeartFill, BsHeart, BsHeartHalf} from "react-icons/bs";
+import {BsFillHeartFill} from "react-icons/bs";
 import styles from "./style.module.css";
 import {Fragment, HTMLAttributes} from "react";
 import {clsx} from "clsx";
@@ -17,8 +17,8 @@ export default function Rating({className, rating, ...props}: Props) {
                 {normRating >= 0
                     ? <BsFillHeartFill className={styles.icon}/>
                     : (normRating === -0.5
-                            ? <BsHeartHalf className={styles.icon}/>
-                            : <BsHeart className={styles.icon}/>
+                            ? <BsFillHeartFill className={styles.icon} style={{width: "0.75em"}}/>
+                            : <BsFillHeartFill className={styles.icon} style={{fill: "transparent"}}/>
                     )
                 }
             </Fragment>
