@@ -5,7 +5,7 @@ import {clsx} from "clsx";
 
 export default function LibraryList() {
     return (
-        <div className={clsx("menu", styles.libraries)}>
+        <div className={clsx("menu", styles.libraryList)}>
             <ul className={clsx("columns", styles.columns)}>
                 {LIBRARIES.map(({creator, href, icon, iconAlt, name}) => (
                     <div key={href} className={clsx("column", styles.column)}>
