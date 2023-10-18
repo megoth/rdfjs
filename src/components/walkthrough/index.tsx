@@ -14,7 +14,7 @@ export default function Walkthrough({children}: Props) {
                     you might have to scroll down a bit to see the actual highlighted code.
                 </div>
             </div>
-            <table className="table">
+            <table className="table is-striped">
                 <thead>
                 <tr>
                     <th>Part of logic</th>

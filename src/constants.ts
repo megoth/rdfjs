@@ -46,7 +46,7 @@ export const LIBRARY_LDO: LibraryLink = {
     iconAlt: "Logo for O.team",
     name: "Linked Data Objects",
     recommendation: "Experimental apps",
-    review: [4, 3, 3, 2, 3],
+    review: [4, 3, 3, 2, 3.5],
     text: "LDO",
     websiteName: "GitHub repo",
     websiteUrl: "https://github.com/o-development/ldo/"
@@ -58,7 +58,7 @@ export const LIBRARY_RDFLIB: LibraryLink = {
     iconAlt: "Logo for Read-Write Linked Data",
     name: "rdflib.js",
     recommendation: "Low-level data management",
-    review: [2, 2, 3, 3, 2.5],
+    review: [2, 2, 3, 4, 2.5],
     text: "rdflib.js",
     websiteName: "GitHub repo",
     websiteUrl: "https://github.com/linkeddata/rdflib.js/"

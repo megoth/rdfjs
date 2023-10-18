@@ -1,0 +1,5 @@
+.content {
+    :global(.image) {
+        margin-bottom: 1em;
+    }
+}

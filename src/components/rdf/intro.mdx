@@ -1,0 +1,63 @@
+import Content from "../content";
+import textTurtle from "./text.ttl?raw";
+import Code from "../code";
+
+<Content>
+    There are
+    [several](https://ontola.io/blog/what-is-linked-data)
+    [great](https://www.youtube.com/watch?v=OM6XIICm_qo)
+    [resources](https://www.youtube.com/watch?v=NzzAxEPpuJQ)
+    [that](https://www.w3.org/RDF/)
+    [I](https://www.w3.org/TR/rdf11-concepts/)
+    [can](https://www.youtube.com/watch?v=V6BR9DrmUQA)
+    [list](https://www.youtube.com/watch?v=OGg8A2zfWKg)
+    [to](https://www.youtube.com/watch?v=4x_xzT5eF5Q)
+    [get](https://www.youtube.com/watch?v=EbpRofMqzF0)
+    [you](https://www.w3.org/TR/rdf11-concepts/)
+    [started](https://rdf.js.org/) (and I do encourage you to check them out), but for the purpose of this website I'll
+    give you a quick introduction to what RDF is all about.
+
+    RDF is an abbreviation for Resource Description Framework. It's a framework for representing information on the web.
+    It's a semantic technology in that its fundamental building stone, the triple, is based of the human language. This
+    allows us to express relationships using human language, where entities such as persons can be represented as nodes
+    and the relationships going from one to the other as edges. These directed graphs are what we call RDF graphs. They
+    describe a set of statements, which themselves consists of three parts - a triple. These parts are the Subject, the
+    Predicate, and the Object.
+
+    A classic depiction of this is:
+
+    <picture className="image">
+        <img src="/triple.png" style={{height: 66, width: "auto"}}
+             alt={`A diagram representing a triple with the Subject, the Predicate, and the Object.`}/>
+    </picture>
+
+    Another important feature of RDF is that nodes and edges are IRIs (similar to URLs) that represent them, and all
+    denoted things have unique IRIs. So another way of expressing the depiction above is with text:
+</Content>
+
+<Code code={textTurtle} id="textTurtle" language="turtle" noCopy={true}/>
+
+<Content>
+    This statement is expressed using [Turtle](https://www.w3.org/TR/turtle/), one of many serializations of RDF.
+    There's also [JSON-LD](https://json-ld.org/), [RDFa](https://www.w3.org/TR/rdfa-primer/), and
+    [RDF/XML](https://www.w3.org/TR/rdf-syntax-grammar/) amongst the popular ones (although we rarely speak of the
+    latter one).
+
+    After RDFs initial conception in 1999 it has had multiple extensions, and we now have ways of describing
+    vocabularies, logical relationships, and infer new knowledge based on the given set of data. This might seem little,
+    but it opens up for a lot of powerful technologies, such as
+    [triplestores](https://en.wikipedia.org/wiki/Triplestore),
+    [SPARQL](https://en.wikipedia.org/wiki/SPARQL), and [Solid](https://solidproject.org/). And it's inherent nature to
+    the web should make it a perfect match for JavaScript, a programming language that has had its childhood on the web,
+    and keeps achieving great strides on the web today. But there's an inherent conflict with RDF and JavaScript...
+
+    <h2 className="subtitle">The inherent problem with RDF and JavaScript</h2>
+
+    <p><strong>JavaScript has no native interface for RDF!</strong></p>
+
+    <picture className="image gif">
+        <img src="/shock.jpg" style={{height: 200, width: "auto"}} alt={`A cartoon-like cat being seemingly shocked`}/>
+    </picture>
+
+    Unlike another data structure, JSON, JavaScript simply don't talk triples.
+</Content>

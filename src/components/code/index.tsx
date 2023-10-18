@@ -10,8 +10,9 @@ import {MdOutlineClear} from "react-icons/md";
 import {IoExitOutline} from "react-icons/io5";
 
 interface CodeProps extends HTMLAttributes<HTMLPreElement> {
-    children: ReactNode;
+    children?: ReactNode;
     code: string;
+    noCopy?: boolean;
     id: string;
     language: "turtle" | "tsx" | "typescript";
     url?: string;
@@ -23,7 +24,7 @@ export function toCodePart(id: string, line: string, ...lines: string[]): string
 }
 
 
-export default function Code({children, code, id, language, url, ...props}: CodeProps) {
+export default function Code({children, className, code, noCopy, id, language, url, ...props}: CodeProps) {
     const highlightAll = usePrism();
     const location = useLocation();
     const [searchParams] = useSearchParams();
@@ -42,7 +43,7 @@ export default function Code({children, code, id, language, url, ...props}: Code
 
     const copyCode = async () => {
         await copy(code);
-        notify(<>Copied code to clipboard <BsFillClipboardCheckFill /></>)
+        notify(<>Copied code to clipboard <BsFillClipboardCheckFill/></>)
     }
 
     const dataLineProps = dataLine.length ? {"data-line": dataLine.join(",")} : {};
@@ -51,33 +52,27 @@ export default function Code({children, code, id, language, url, ...props}: Code
         <div id={id} className={styles.container}>
             {children}
             <div className={clsx("field is-grouped is-grouped-right is-grouped-multiline", styles.field)}>
-                {dataLine.length > 0 && <>
-                    <p className="control">
-                        <NavLink to={`#${id}`} className={"button is-small is-danger is-light"}
-                                 preventScrollReset={true}>
-                            <span className="icon is-small"><MdOutlineClear /></span>
-                            <span>Clear highlighted code</span>
-                        </NavLink>
-                    </p>
-                </>}
-                {url && <>
-                    <p className="control">
-                        <a href={url} className={"button is-small is-light"}>
-                            <span className="icon is-small"><IoExitOutline /></span>
-                            <span>Go to code in project's GH repo</span>
-                        </a>
-                    </p>
-                </>}
-                <p className="control">
+                {dataLine.length > 0 && <p className="control">
+                    <NavLink to={`#${id}`} className={"button is-small is-danger is-light"}
+                             preventScrollReset={true}>
+                        <span className="icon is-small"><MdOutlineClear/></span>
+                        <span>Clear highlighted code</span>
+                    </NavLink>
+                </p>}
+                {url && <p className="control">
+                    <a href={url} className={"button is-small is-light"}>
+                        <span className="icon is-small"><IoExitOutline/></span>
+                        <span>Go to code in project's GH repo</span>
+                    </a>
+                </p>}
+                {!noCopy && <p className="control">
                     <button className="button is-small is-light" onClick={() => copyCode()}>
-                        <span className="icon is-small"><BsFillClipboardPlusFill /></span>
+                        <span className="icon is-small"><BsFillClipboardPlusFill/></span>
                         <span>Copy code</span>
                     </button>
-                </p>
+                </p>}
             </div>
-            <pre className={clsx(`language-${language}`, {
-                "line-numbers": dataLine.length === 0
-            })} {...props} {...dataLineProps}>
+            <pre className={clsx(`language-${language}`, className)} {...props} {...dataLineProps}>
                 <code className={clsx(`language-${language}`, styles.code)}>
                     {code}
                 </code>

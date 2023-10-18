@@ -15,6 +15,7 @@ import Soukai from "./components/soukai";
 import Comunica from "./components/comunica";
 
 import {NotificationContextProvider} from "./hooks/use-notification";
+import RDF from "./components/rdf";
 
 const router = createBrowserRouter([{
     path: "/",
@@ -43,6 +44,10 @@ const router = createBrowserRouter([{
         {
             path: "/soukai",
             element: <Soukai/>,
+        },
+        {
+            path: "/rdf",
+            element: <RDF/>,
         },
     ]
 }]);
