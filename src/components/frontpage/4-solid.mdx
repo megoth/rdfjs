@@ -8,9 +8,9 @@ import Content from "../content";
     </h2>
 
     In the first series of demos I've focused on working locally in the browser by storing the data in local storage.
-    But Linked Data is designed to live on the web and be, well, linked! The problem with this approach is that it
-    requires us to synchronize our data with a web server. Meaning we need some sort of authorization on the resources
-    involved, which in turn probably would require some authentication.
+    But RDF is designed to live on the web and be, well, linked! (Hence the popular synonym Linked Data.) The problem
+    with this approach is that it requires us to synchronize our data with a web server. Meaning we need some sort of
+    authorization on the resources involved, which in turn probably would require some authentication.
 
     Luckily, all of this is solved by using Solid! As promoted on [solidproject.org](https://solidproject.org/):
 </Content>
@@ -26,7 +26,7 @@ import Content from "../content";
 <Content>
     Do note that even though I've chosen Solid for these demos, most of these should also work nicely with other
     Linked Data-based systems. You might use another form of authentication, or another server API altogether, but
-    as long as they are compatible with RDF and SPARQL, they should be somewhat compatible.
+    as long as they use RDF and SPARQL, they should be somewhat compatible.
 
     When working with Solid, I want to present all libraries presented on this website. Again I've implemented the
     same demo, but this time with the twist that it retrieves and updates the name that's retrieved from your WebID
