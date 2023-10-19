@@ -28,7 +28,6 @@ pre[class*="language-"] {
 }
 
 .code.code {
-    min-height: 30em;
     max-height: min(40em, 90vh);
 
     :global(.line-highlight) {
