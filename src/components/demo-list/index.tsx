@@ -2,6 +2,7 @@ import {DemoLink} from "../../constants.ts";
 import styles from "./style.module.css";
 import {clsx} from "clsx";
 import {NavLink} from "react-router-dom";
+import Card from "../card";
 
 interface Props {
     list: Array<DemoLink>
@@ -13,7 +14,7 @@ export default function DemoList({list}: Props) {
             <ul className={clsx("columns", styles.columns)}>
                 {list.map(({title, subtitle, href, icon, iconAlt, slogan}) => (
                     <div key={href} className={clsx("column", styles.column)}>
-                        <NavLink to={href} className={clsx("card", styles.card)}>
+                        <Card className={clsx("card", styles.card)}>
                             <div className={clsx("card-content", styles.cardContent)}>
                                 <div className={clsx("media", styles.media)}>
                                     <div className={clsx("media-left", styles.mediaLeft)}>
@@ -28,12 +29,12 @@ export default function DemoList({list}: Props) {
                                 </div>
                                 <div className="content">{slogan}</div>
                             </div>
-                            <footer className="card-footer">
-                                <div className={clsx("card-footer-item button is-info", styles.link)}>
+                            <div className="card-footer">
+                                <NavLink to={href} className={clsx("card-footer-item button is-info", styles.link)}>
                                     Check out demo
-                                </div>
-                            </footer>
-                        </NavLink>
+                                </NavLink>
+                            </div>
+                        </Card>
                     </div>
                 ))}
             </ul>

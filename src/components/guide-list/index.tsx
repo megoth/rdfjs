@@ -4,6 +4,7 @@ import {NavLink} from "react-router-dom";
 import styles from "./style.module.css";
 import {clsx} from "clsx";
 import {useMemo} from "react";
+import Card from "../card";
 
 export interface Props {
     exclude?: Guide
@@ -18,8 +19,8 @@ export default function GuideList({exclude}: Props) {
         <div className={clsx("columns", styles.columns)}>
             {guides.map(({href, name}) => (
                 <NavLink to={href} className={clsx("column", styles.column)}>
-                    <div className="card">
-                        <div className={"card-content"}>
+                    <Card>
+                        <div className="card-content">
                             <div className={clsx("media", styles.media)}>
                                 <div className="media-left">
                                     <figure className="image is-48x48">
@@ -31,7 +32,7 @@ export default function GuideList({exclude}: Props) {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </Card>
                 </NavLink>
             ))}
         </div>

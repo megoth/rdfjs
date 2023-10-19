@@ -1,0 +1,8 @@
+.card.card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    :global(.media-content) {
+        overflow-y: hidden;
+    }
+}

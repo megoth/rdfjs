@@ -1,6 +1,7 @@
 import {ReactNode} from "react";
 import styles from "./style.module.css";
 import {clsx} from "clsx";
+import Card from "../card";
 
 interface Props {
     children: ReactNode;
@@ -9,7 +10,7 @@ interface Props {
 
 export default function AuthorNote({children, title}: Props) {
     return (
-        <aside className={clsx("card", styles.card)}>
+        <Card className={clsx("card", styles.card)}>
             <div className="card-content">
                 <div className={clsx("media", styles.media)}>
                     <div className={clsx("media-content", styles.mediaContent)}>
@@ -23,6 +24,6 @@ export default function AuthorNote({children, title}: Props) {
                 </div>
                 {children}
             </div>
-        </aside>
+        </Card>
     )
 }

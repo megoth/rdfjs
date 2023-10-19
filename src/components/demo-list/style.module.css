@@ -13,11 +13,7 @@
     }
 }
 
-.card {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
+.card {}
 
 .cardContent {
     flex-grow: 1;
