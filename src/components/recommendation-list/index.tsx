@@ -10,7 +10,7 @@ export default function RecommendationList({guide}: Props) {
     return (
         <>
             <Content id="recommendations">
-                <h2 className="subtitle">Recommended reading/watching</h2>
+                <h2 className="subtitle">Recommended resources</h2>
 
                 For more reading on this topic, I recommend checking out these resources.
             </Content>
