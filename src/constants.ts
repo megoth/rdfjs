@@ -4,6 +4,7 @@ import {RatingScore} from "./components/rating";
 
 export interface LibraryLink {
     creator: string;
+    creatorUrl: string;
     href: string;
     icon: string;
     iconAlt: string;
@@ -17,6 +18,7 @@ export interface LibraryLink {
 
 export const LIBRARY_COMUNICA: LibraryLink = {
     creator: "IDLab at Ghent University",
+    creatorUrl: "https://www.ugent.be/ea/idlab/en",
     href: "/comunica",
     icon: "/comunica.svg",
     iconAlt: "Logo for Comunica",
@@ -29,6 +31,7 @@ export const LIBRARY_COMUNICA: LibraryLink = {
 };
 export const LIBRARY_INRUPT: LibraryLink = {
     creator: "Inrupt",
+    creatorUrl: "https://inrupt.com",
     href: "/inrupt",
     icon: "/inrupt.webp",
     iconAlt: "Logo for Inrupt",
@@ -41,6 +44,7 @@ export const LIBRARY_INRUPT: LibraryLink = {
 };
 export const LIBRARY_LDO: LibraryLink = {
     creator: "Jackson Morgan",
+    creatorUrl: "https://www.o.team/",
     href: "/ldo",
     icon: "/o-team.png",
     iconAlt: "Logo for O.team",
@@ -53,6 +57,7 @@ export const LIBRARY_LDO: LibraryLink = {
 };
 export const LIBRARY_RDFLIB: LibraryLink = {
     creator: "rdflib.js team",
+    creatorUrl: "https://github.com/linkeddata/rdflib.js/",
     href: "/rdflib",
     icon: "/linkeddata.png",
     iconAlt: "Logo for Read-Write Linked Data",
@@ -65,6 +70,7 @@ export const LIBRARY_RDFLIB: LibraryLink = {
 };
 export const LIBRARY_SOUKAI: LibraryLink = {
     creator: "Noel De Martin",
+    creatorUrl: "https://noeldemartin.com/",
     href: "/soukai",
     icon: "/soukai.svg",
     iconAlt: "Logo for Soukai ODM",
