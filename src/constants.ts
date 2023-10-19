@@ -2,6 +2,35 @@ import {namedNode} from "rdflib";
 import namespace from "solid-namespace";
 import {RatingScore} from "./components/rating";
 
+
+export interface GuideLink {
+    href: string;
+    fullName: string;
+    shortName: string;
+}
+
+export const RDFGuide: GuideLink = {
+    href: "/rdf",
+    fullName: "Resource Description Framework (RDF)",
+    shortName: "RDF",
+};
+export const ShExGuide: GuideLink = {
+    href: "/shex",
+    fullName: "Shape Expressions (ShEx)",
+    shortName: "ShEx",
+};
+export const SPARQLGuide: GuideLink = {
+    href: "/sparql",
+    fullName: "SPARQL Protocol and RDF Query Language (SPARQL)",
+    shortName: "SPARQL",
+};
+
+export const GUIDES = [
+    RDFGuide,
+    ShExGuide,
+    SPARQLGuide
+];
+
 export interface LibraryLink {
     creator: string;
     creatorUrl: string;

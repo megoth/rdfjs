@@ -15,7 +15,9 @@ import Soukai from "./components/soukai";
 import Comunica from "./components/comunica";
 
 import {NotificationContextProvider} from "./hooks/use-notification";
-import RDF from "./components/rdf";
+import RDFGuide from "./components/rdf-guide";
+import ShExGuide from "./components/shex-guide";
+import SPARQLGuide from "./components/sparql-guide";
 
 const router = createBrowserRouter([{
     path: "/",
@@ -47,7 +49,15 @@ const router = createBrowserRouter([{
         },
         {
             path: "/rdf",
-            element: <RDF/>,
+            element: <RDFGuide/>,
+        },
+        {
+            path: "/shex",
+            element: <ShExGuide/>,
+        },
+        {
+            path: "/sparql",
+            element: <SPARQLGuide/>,
         },
     ]
 }]);

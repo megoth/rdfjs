@@ -1,5 +1,5 @@
 import Intro from "./1-intro.mdx";
-import RDF from "./2-rdf.mdx";
+import Guides from "./2-guides.mdx";
 import Local from "./3-local.mdx";
 import Solid from "./4-solid.mdx";
 import Reviews from "./5.0-reviews.mdx";
@@ -13,7 +13,7 @@ export default function Frontpage() {
     return (
         <>
             <Intro/>
-            <RDF/>
+            <Guides/>
             <Local/>
             <DemoList list={LOCAL_DEMOS}/>
             <Solid/>

@@ -1,0 +1,7 @@
+.media.media {
+    align-items: center;
+    & svg {
+        height: auto;
+        width: 100%;
+    }
+}
