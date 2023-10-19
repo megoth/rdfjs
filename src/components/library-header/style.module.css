@@ -1,11 +1,6 @@
-.media {
-    flex-wrap: wrap;
-    margin-bottom: 1rem;
-}
-
 .image {
+    margin-bottom: 1rem;
     & img {
-        height: 48px;
         width: auto;
     }
 }

@@ -93,6 +93,7 @@ export interface LibraryLink {
     href: string;
     icon: string;
     iconAlt: string;
+    iconPreferredHeight: number;
     name: string;
     recommendation: string;
     review: Array<RatingScore>;
@@ -107,6 +108,7 @@ export const LIBRARY_COMUNICA: LibraryLink = {
     href: "/comunica",
     icon: "/comunica.svg",
     iconAlt: "Logo for Comunica",
+    iconPreferredHeight: 240,
     name: "Comunica",
     recommendation: "Large systems based on SPARQL",
     review: [2, 3, 3, 3, 2.5],
@@ -114,25 +116,13 @@ export const LIBRARY_COMUNICA: LibraryLink = {
     websiteName: "Official website",
     websiteUrl: "https://comunica.dev/"
 };
-export const LIBRARY_INRUPT: LibraryLink = {
-    creator: "Inrupt",
-    creatorUrl: "https://inrupt.com",
-    href: "/inrupt",
-    icon: "/inrupt.webp",
-    iconAlt: "Logo for Inrupt",
-    name: "Inrupt's JavaScript client libraries",
-    recommendation: "Systems that need to be production-ready soon",
-    review: [3, 3, 3, 3, 3],
-    text: "Inrupt",
-    websiteName: "Official documentation",
-    websiteUrl: "https://docs.inrupt.com/developer-tools/javascript/client-libraries/"
-};
 export const LIBRARY_LDO: LibraryLink = {
     creator: "Jackson Morgan",
     creatorUrl: "https://www.o.team/",
     href: "/ldo",
     icon: "/o-team.png",
     iconAlt: "Logo for O.team",
+    iconPreferredHeight: 48,
     name: "Linked Data Objects",
     recommendation: "Experimental apps",
     review: [4, 3, 3, 2, 3.5],
@@ -140,12 +130,27 @@ export const LIBRARY_LDO: LibraryLink = {
     websiteName: "GitHub repo",
     websiteUrl: "https://github.com/o-development/ldo/"
 };
+export const LIBRARY_INRUPT: LibraryLink = {
+    creator: "Inrupt",
+    creatorUrl: "https://inrupt.com",
+    href: "/inrupt",
+    icon: "/inrupt.webp",
+    iconAlt: "Logo for Inrupt",
+    iconPreferredHeight: 110,
+    name: "Inrupt's JavaScript client libraries",
+    recommendation: "Systems that need to be production-ready soon",
+    review: [3, 3, 3, 3, 3],
+    text: "Inrupt",
+    websiteName: "Official documentation",
+    websiteUrl: "https://docs.inrupt.com/developer-tools/javascript/client-libraries/"
+};
 export const LIBRARY_RDFLIB: LibraryLink = {
     creator: "rdflib.js team",
     creatorUrl: "https://github.com/linkeddata/rdflib.js/graphs/contributors",
     href: "/rdflib",
     icon: "/linkeddata.png",
     iconAlt: "Logo for Read-Write Linked Data",
+    iconPreferredHeight: 48,
     name: "rdflib.js",
     recommendation: "Low-level data management",
     review: [2, 2, 3, 4, 2.5],
@@ -159,6 +164,7 @@ export const LIBRARY_SOUKAI: LibraryLink = {
     href: "/soukai",
     icon: "/soukai.svg",
     iconAlt: "Logo for Soukai ODM",
+    iconPreferredHeight: 150,
     name: "Soukai ODM",
     recommendation: "Experimental apps",
     review: [3, 3, 3, 2, 3],
