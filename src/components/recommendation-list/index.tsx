@@ -15,9 +15,16 @@ export default function RecommendationList({guide}: Props) {
                 For more reading on this topic, I can recommend you to check out these resources.
             </Content>
 
-            <table className={"table is-striped"}>
+            <table className={"table is-striped is-fullwidth"}>
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>Title</th>
+                    <th>Note</th>
+                </tr>
+                </thead>
                 <tbody>
-                {guide.recommendations.map(({href, title, type}) => (
+                {guide.recommendations.map(({href, note, title, type}) => (
                     <tr>
                         <td>
                             {type === "URL" && <AiOutlineLink/>}
@@ -26,6 +33,7 @@ export default function RecommendationList({guide}: Props) {
                         <td>
                             <a href={href}>{title}</a>
                         </td>
+                        <td>{note}</td>
                     </tr>
                 ))}
                 </tbody>

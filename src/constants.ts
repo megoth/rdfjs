@@ -13,12 +13,54 @@ export const RDF_GUIDE: Guide = {
     href: "/rdf",
     name: "RDF",
     recommendations: [{
+        title: "A brief introduction to linked data",
+        href: "https://ontola.io/blog/what-is-linked-data",
+        type: "URL"
+    }, {
         title: "Stardog Academy Fundamentals: Getting Started with RDF & SPARQL",
         href: "https://www.youtube.com/watch?v=bDxclRhDb-o",
         type: "YouTube"
     }, {
+        title: "Tim Berners-Lee: The next Web of open, linked data",
+        href: "https://www.youtube.com/watch?v=OM6XIICm_qo",
+        note: "Old but good",
+        type: "YouTube"
+    }, {
         title: "RDF Primer",
         href: "https://www.w3.org/TR/rdf-primer/",
+        type: "URL"
+    }, {
+        title: "RDF 1.1 Concepts and Abstract Syntax",
+        href: "https://www.w3.org/TR/rdf11-concepts/",
+        note: "RDF specification",
+        type: "URL",
+    }, {
+        title: "RDF 1.1 Semantics",
+        href: "https://www.w3.org/TR/rdf11-mt/",
+        note: "RDFS specification",
+        type: "URL"
+    }, {
+        title: "Intro to the Semantic Web",
+        href: "https://www.youtube.com/watch?v=OGg8A2zfWKg",
+        note: "Old but good",
+        type: "YouTube"
+    }, {
+        title: "What is Linked Data?",
+        href: "https://www.youtube.com/watch?v=4x_xzT5eF5Q",
+        note: "If you liked \"Intro to the Semantic Web\", you'll like this one too",
+        type: "YouTube"
+    }, {
+        title: "An Introduction to the Semantic Web",
+        href: "https://www.youtube.com/watch?v=V6BR9DrmUQA",
+        type: "YouTube"
+    }, {
+        title: "What is the Resource Description Framework (RDF)?",
+        href: "https://www.youtube.com/watch?v=NzzAxEPpuJQ",
+        type: "YouTube"
+    }, {
+        title: "OWL 2 Web Ontology Language - Document Overview (Second Edition)",
+        href: "https://www.w3.org/TR/owl2-overview/",
+        note: "If you're into formal definitions and inferring knowledge, you'll like this",
         type: "URL"
     }],
 };
@@ -227,15 +269,17 @@ export const RATING_CRITERIA: Array<[string, string]> = [
     ["overall", "Overall"]
 ];
 
-export interface URLRecommendation {
+interface BaseRecommendation {
     href: string;
+    note?: string;
     title: string;
+}
+
+export interface URLRecommendation extends BaseRecommendation {
     type: "URL";
 }
 
-export interface YouTubeRecommendation {
-    href: string;
-    title: string;
+export interface YouTubeRecommendation extends BaseRecommendation {
     type: "YouTube";
 }
 
