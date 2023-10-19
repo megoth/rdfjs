@@ -1,11 +1,11 @@
 import {graph, lit, parse, serialize, st} from "rdflib";
 import {NAME_NODE, PROFILE_NODE, PROFILE_TURTLE, PROFILE_URI, STORAGE_KEYS} from "../../../constants.ts";
-import {useEffect, useState} from "react";
+import {useEffect, useMemo, useState} from "react";
 import useLocalStorage from "use-local-storage";
 import Demo, {FormData} from "../../demo";
 
 export default function RdflibLocalDemo() {
-    const store = graph();
+    const store = useMemo(() => graph(), []);
     const [name, setName] = useState("");
     const [turtle, setTurtle] = useLocalStorage(STORAGE_KEYS.PROFILE_RDFLIB, PROFILE_TURTLE);
 
@@ -23,7 +23,7 @@ export default function RdflibLocalDemo() {
         store.remove(store.match(PROFILE_NODE, NAME_NODE, null));
         store.add(st(PROFILE_NODE, NAME_NODE, lit(data.name)));
         return new Promise((resolve, reject) => serialize(null, store, null, 'text/turtle', (error, result) => {
-            if (error) return reject (error);
+            if (error) return reject(error);
             setTurtle(result);
             resolve(result);
         }));

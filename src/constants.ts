@@ -3,32 +3,46 @@ import namespace from "solid-namespace";
 import {RatingScore} from "./components/rating";
 
 
-export interface GuideLink {
+export interface Guide {
     href: string;
-    fullName: string;
-    shortName: string;
+    name: string;
+    recommendations: Array<Recommendation>;
 }
 
-export const RDFGuide: GuideLink = {
+export const RDF_GUIDE: Guide = {
     href: "/rdf",
-    fullName: "Resource Description Framework (RDF)",
-    shortName: "RDF",
+    name: "RDF",
+    recommendations: [{
+        title: "Stardog Academy Fundamentals: Getting Started with RDF & SPARQL",
+        href: "https://www.youtube.com/watch?v=bDxclRhDb-o",
+        type: "YouTube"
+    }, {
+        title: "RDF Primer",
+        href: "https://www.w3.org/TR/rdf-primer/",
+        type: "URL"
+    }],
 };
-export const ShExGuide: GuideLink = {
+export const SHEX_GUIDE: Guide = {
     href: "/shex",
-    fullName: "Shape Expressions (ShEx)",
-    shortName: "ShEx",
+    name: "ShEx",
+    recommendations: [],
 };
-export const SPARQLGuide: GuideLink = {
+export const SOLID_GUIDE: Guide = {
+    href: "/solid",
+    name: "Solid",
+    recommendations: [],
+};
+export const SPARQL_GUIDE: Guide = {
     href: "/sparql",
-    fullName: "SPARQL Protocol and RDF Query Language (SPARQL)",
-    shortName: "SPARQL",
+    name: "SPARQL",
+    recommendations: [],
 };
 
 export const GUIDES = [
-    RDFGuide,
-    ShExGuide,
-    SPARQLGuide
+    RDF_GUIDE,
+    SHEX_GUIDE,
+    SPARQL_GUIDE,
+    SOLID_GUIDE
 ];
 
 export interface LibraryLink {
@@ -212,6 +226,20 @@ export const RATING_CRITERIA: Array<[string, string]> = [
     ["maturity", "Maturity"],
     ["overall", "Overall"]
 ];
+
+export interface URLRecommendation {
+    href: string;
+    title: string;
+    type: "URL";
+}
+
+export interface YouTubeRecommendation {
+    href: string;
+    title: string;
+    type: "YouTube";
+}
+
+export type Recommendation = URLRecommendation | YouTubeRecommendation;
 
 export const SOLID_DEMOS: Array<DemoLink> = [
     {

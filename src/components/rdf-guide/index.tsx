@@ -1,13 +1,18 @@
-import Content from "../content";
-import Intro from "./intro.mdx";
+import Intro from "./1-intro.mdx";
+import BeyondRDF from "./2-beyond-rdf.mdx";
+import Resources from "./3-resources.mdx";
+import GuideSection from "../guide-section";
+import {RDF_GUIDE} from "../../constants.ts";
+import RecommendationList from "../recommendation-list";
 
 export default function RDFGuide() {
     return (
         <>
-            <Content>
-                <h1 className="title">RDF, Linked Data, and the Semantic Web</h1>
-            </Content>
             <Intro/>
+            <BeyondRDF/>
+            <GuideSection exclude={RDF_GUIDE} />
+            <RecommendationList guide={RDF_GUIDE} />
+            <Resources />
         </>
     )
 }

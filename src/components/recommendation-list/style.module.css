@@ -1,0 +1,13 @@
+.list {
+    margin: 1.5rem 0;
+    list-style: disc;
+}
+
+.listItem {
+}
+
+.listItemContent {
+    align-items: center;
+    display: flex;
+    gap: 0.25em;
+}

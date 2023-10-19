@@ -18,6 +18,7 @@ import {NotificationContextProvider} from "./hooks/use-notification";
 import RDFGuide from "./components/rdf-guide";
 import ShExGuide from "./components/shex-guide";
 import SPARQLGuide from "./components/sparql-guide";
+import SolidGuide from "./components/solid-guide";
 
 const router = createBrowserRouter([{
     path: "/",
@@ -54,6 +55,10 @@ const router = createBrowserRouter([{
         {
             path: "/shex",
             element: <ShExGuide/>,
+        },
+        {
+            path: "/solid",
+            element: <SolidGuide/>,
         },
         {
             path: "/sparql",

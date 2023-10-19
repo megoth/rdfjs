@@ -1,14 +1,23 @@
-import {GUIDES} from "../../constants.ts";
+import {Guide, GUIDES} from "../../constants.ts";
 import {BsBook} from "react-icons/bs";
 import {NavLink} from "react-router-dom";
 import styles from "./style.module.css";
 import {clsx} from "clsx";
+import {useMemo} from "react";
 
-export default function GuideList() {
+export interface Props {
+    exclude?: Guide
+}
+
+export default function GuideList({exclude}: Props) {
+    const guides = useMemo(() => exclude
+            ? GUIDES.filter((guide) => guide !== exclude)
+            : GUIDES,
+        [exclude])
     return (
-        <div className="columns">
-            {GUIDES.map(({href, fullName}) => (
-                <NavLink to={href} className={"column"}>
+        <div className={clsx("columns", styles.columns)}>
+            {guides.map(({href, name}) => (
+                <NavLink to={href} className={clsx("column", styles.column)}>
                     <div className="card">
                         <div className={"card-content"}>
                             <div className={clsx("media", styles.media)}>
@@ -18,7 +27,7 @@ export default function GuideList() {
                                     </figure>
                                 </div>
                                 <div className="media-content">
-                                    <p className="title is-4">{fullName}</p>
+                                    <p className="title is-4">{name}</p>
                                 </div>
                             </div>
                         </div>
