@@ -9,10 +9,10 @@ interface Props {
 export default function RecommendationList({guide}: Props) {
     return (
         <>
-            <Content>
+            <Content id="recommendations">
                 <h2 className="subtitle">Recommended reading/watching</h2>
 
-                For more reading on this topic, I can recommend you to check out these resources.
+                For more reading on this topic, I recommend checking out these resources.
             </Content>
 
             <table className={"table is-striped is-fullwidth"}>

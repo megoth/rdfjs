@@ -3,23 +3,13 @@ import tripleTurtle from "./triple.ttl?raw";
 import profileTurtle from "./profile.ttl?raw";
 import Code from "../code";
 import AuthorNote from "../author-note";
+import {NavLink} from "react-router-dom";
 
 <Content>
     <h1 className="title">RDF, Linked Data, and the Semantic Web</h1>
 
-    There are
-    [several](https://ontola.io/blog/what-is-linked-data)
-    [great](https://www.youtube.com/watch?v=OM6XIICm_qo)
-    [resources](https://www.youtube.com/watch?v=NzzAxEPpuJQ)
-    [that](https://www.w3.org/RDF/)
-    [I](https://www.w3.org/TR/rdf11-concepts/)
-    [can](https://www.youtube.com/watch?v=V6BR9DrmUQA)
-    [list](https://www.youtube.com/watch?v=OGg8A2zfWKg)
-    [to](https://www.youtube.com/watch?v=4x_xzT5eF5Q)
-    [get](https://www.youtube.com/watch?v=EbpRofMqzF0)
-    [you](https://www.w3.org/TR/rdf11-concepts/)
-    [started](https://rdf.js.org/) (and I do encourage you to check them out), but for the purpose of this website I'll
-    give you a quick introduction to what RDF is all about.
+    There are <NavLink to="#recommendations">several resources I can recommend to get you started</NavLink> (and I do
+    encourage you to check them out), but for the purpose of this website I'll give you a quick introduction to what RDF is all about.
 
     RDF is an abbreviation for **Resource Description Framework**. It's a framework for representing information on the
     web. It's a semantic technology in that its fundamental building stone, the triple, is based of the human language.
