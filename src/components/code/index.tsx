@@ -47,6 +47,9 @@ export default function Code({children, className, code, noCopy, id, language, u
     }
 
     const dataLineProps = dataLine.length ? {"data-line": dataLine.join(",")} : {};
+    const alteredClassName = className && dataLine.length
+        ? className.replace("line-numbers", "")
+        : className;
 
     return (
         <div id={id} className={styles.container}>
@@ -72,8 +75,8 @@ export default function Code({children, className, code, noCopy, id, language, u
                     </button>
                 </p>}
             </div>
-            <pre className={clsx(`language-${language}`, className)} {...props} {...dataLineProps}>
-                <code className={clsx(`language-${language}`, styles.code)}>
+            <pre className={clsx(`language-${language}`, alteredClassName, styles.code)} {...props} {...dataLineProps}>
+                <code className={`language-${language}`}>
                     {code}
                 </code>
             </pre>

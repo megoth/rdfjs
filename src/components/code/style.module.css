@@ -28,6 +28,13 @@ pre[class*="language-"] {
 }
 
 .code.code {
+    min-height: 30em;
+    max-height: min(40em, 90vh);
+
+    :global(.line-highlight) {
+        background: linear-gradient(to right, rgba(0%, 0%, 0%, 0.2) 70%, rgba(0, 0, 0, 0.3));
+    }
+
     :global(.tag) {
         align-items: inherit;
         background-color: transparent;
