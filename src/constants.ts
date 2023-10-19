@@ -142,7 +142,7 @@ export const LIBRARY_LDO: LibraryLink = {
 };
 export const LIBRARY_RDFLIB: LibraryLink = {
     creator: "rdflib.js team",
-    creatorUrl: "https://github.com/linkeddata/rdflib.js/",
+    creatorUrl: "https://github.com/linkeddata/rdflib.js/graphs/contributors",
     href: "/rdflib",
     icon: "/linkeddata.png",
     iconAlt: "Logo for Read-Write Linked Data",

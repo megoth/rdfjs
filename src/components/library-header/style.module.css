@@ -6,5 +6,6 @@
 .image {
     & img {
         height: 48px;
+        width: auto;
     }
 }
