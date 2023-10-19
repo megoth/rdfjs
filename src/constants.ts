@@ -5,12 +5,18 @@ import {RatingScore} from "./components/rating";
 
 export interface Guide {
     href: string;
+    logo: string;
+    logoAlt: string;
+    logoPreferredHeight: number;
     name: string;
     recommendations: Array<Recommendation>;
 }
 
 export const RDF_GUIDE: Guide = {
     href: "/rdf",
+    logo: "./rdf.png",
+    logoAlt: "Logo of RDF",
+    logoPreferredHeight: 128,
     name: "RDF",
     recommendations: [{
         title: "A brief introduction to linked data",
@@ -66,16 +72,25 @@ export const RDF_GUIDE: Guide = {
 };
 export const SHEX_GUIDE: Guide = {
     href: "/shex",
+    logo: "./shex.svg",
+    logoAlt: "Logo of ShEx",
+    logoPreferredHeight: 100,
     name: "ShEx",
     recommendations: [],
 };
 export const SOLID_GUIDE: Guide = {
     href: "/solid",
+    logo: "./solid.svg",
+    logoAlt: "Logo of Solid",
+    logoPreferredHeight: 352,
     name: "Solid",
     recommendations: [],
 };
 export const SPARQL_GUIDE: Guide = {
     href: "/sparql",
+    logo: "./sparql.svg",
+    logoAlt: "Logo of SPARQL",
+    logoPreferredHeight: 128,
     name: "SPARQL",
     recommendations: [],
 };

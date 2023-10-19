@@ -7,12 +7,12 @@ interface Props {
 }
 
 export default function RecommendationList({guide}: Props) {
-    return (
+    return guide.recommendations.length ? (
         <>
             <Content id="recommendations">
                 <h2 className="subtitle">Recommended resources</h2>
 
-                For more reading on this topic, I recommend checking out these resources.
+                For more insights into this topic, I recommend checking out these resources.
             </Content>
 
             <table className={"table is-striped is-fullwidth"}>
@@ -39,5 +39,5 @@ export default function RecommendationList({guide}: Props) {
                 </tbody>
             </table>
         </>
-    )
+    ) : null;
 }

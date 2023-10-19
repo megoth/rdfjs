@@ -1,18 +1,13 @@
 import Intro from "./1-intro.mdx";
 import BeyondRDF from "./2-beyond-rdf.mdx";
-import GuideSection from "../guide-section";
 import {RDF_GUIDE} from "../../constants.ts";
-import RecommendationList from "../recommendation-list";
-import LibrarySection from "../library-section";
+import GuideLayout from "../guide-layout";
 
 export default function RDFGuide() {
     return (
-        <>
+        <GuideLayout guide={RDF_GUIDE}>
             <Intro/>
             <BeyondRDF/>
-            <GuideSection exclude={RDF_GUIDE} />
-            <RecommendationList guide={RDF_GUIDE} />
-            <LibrarySection />
-        </>
+        </GuideLayout>
     )
 }
