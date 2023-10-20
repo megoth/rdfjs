@@ -173,7 +173,7 @@ export const LIBRARY_INRUPT: LibraryLink = {
     name: "Inrupt's JavaScript client libraries",
     recommendation: "Systems that need to be production-ready soon",
     review: [3, 3, 3, 3, 3],
-    text: "Inrupt",
+    text: "Inrupt JS",
     websiteName: "Official documentation",
     websiteUrl: "https://docs.inrupt.com/developer-tools/javascript/client-libraries/"
 };
