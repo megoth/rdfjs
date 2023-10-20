@@ -18,8 +18,6 @@
     }
 }
 
-.card {}
-
 .cardContent.cardContent {
     display: flex;
     flex-direction: column;
@@ -27,32 +25,4 @@
     @media screen and (min-width: 570px) {
         justify-content: center;
     }
-}
-
-.media.media {
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-}
-
-.mediaLeft.mediaLeft {
-    margin-right: 0;
-}
-
-.table {
-    font-size: 0.9rem;
-}
-
-.image.image {
-    height: 48px;
-
-    & img {
-        height: 100%;
-        max-width: none;
-        width: auto;
-    }
-}
-
-.link.link.link {
-    border-radius: 0 0 4px 4px;
 }

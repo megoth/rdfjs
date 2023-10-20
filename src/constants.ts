@@ -70,6 +70,14 @@ export const RDF_GUIDE: Guide = {
         type: "URL"
     }],
 };
+export const REACT_GUIDE: Guide = {
+    href: "/react",
+    logo: "./react.svg",
+    logoAlt: "Logo of React",
+    logoPreferredHeight: 128,
+    name: "React",
+    recommendations: [],
+};
 export const SHEX_GUIDE: Guide = {
     href: "/shex",
     logo: "./shex.svg",
@@ -94,12 +102,22 @@ export const SPARQL_GUIDE: Guide = {
     name: "SPARQL",
     recommendations: [],
 };
+export const TYPESCRIPT_GUIDE: Guide = {
+    href: "/typescript",
+    logo: "./typescript.png",
+    logoAlt: "Logo of TypeScript",
+    logoPreferredHeight: 128,
+    name: "TypeScript",
+    recommendations: [],
+};
 
 export const GUIDES = [
     RDF_GUIDE,
     SHEX_GUIDE,
     SPARQL_GUIDE,
-    SOLID_GUIDE
+    SOLID_GUIDE,
+    TYPESCRIPT_GUIDE,
+    REACT_GUIDE
 ];
 
 export interface LibraryLink {

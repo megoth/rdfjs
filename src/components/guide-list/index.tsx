@@ -1,5 +1,4 @@
 import {Guide, GUIDES} from "../../constants.ts";
-import {BsBook} from "react-icons/bs";
 import {NavLink} from "react-router-dom";
 import styles from "./style.module.css";
 import {clsx} from "clsx";
@@ -17,14 +16,14 @@ export default function GuideList({exclude}: Props) {
         [exclude])
     return (
         <div className={clsx("columns", styles.columns)}>
-            {guides.map(({href, name}) => (
+            {guides.map(({href, logo, logoAlt, name}) => (
                 <NavLink to={href} className={clsx("column", styles.column)}>
                     <Card>
                         <div className="card-content">
                             <div className={clsx("media", styles.media)}>
                                 <div className="media-left">
-                                    <figure className="image is-48x48">
-                                        <BsBook/>
+                                    <figure className="image">
+                                        <img src={logo} alt={logoAlt} />
                                     </figure>
                                 </div>
                                 <div className="media-content">

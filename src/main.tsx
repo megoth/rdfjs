@@ -19,6 +19,8 @@ import RDFGuide from "./components/rdf-guide";
 import ShExGuide from "./components/shex-guide";
 import SPARQLGuide from "./components/sparql-guide";
 import SolidGuide from "./components/solid-guide";
+import TypeScriptGuide from "./components/typescript-guide";
+import ReactGuide from "./components/react-guide";
 
 const router = createBrowserRouter([{
     path: "/",
@@ -63,6 +65,14 @@ const router = createBrowserRouter([{
         {
             path: "/sparql",
             element: <SPARQLGuide/>,
+        },
+        {
+            path: "/typescript",
+            element: <TypeScriptGuide/>,
+        },
+        {
+            path: "/react",
+            element: <ReactGuide/>,
         },
     ]
 }]);

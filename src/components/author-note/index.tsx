@@ -10,7 +10,7 @@ interface Props {
 
 export default function AuthorNote({children, title}: Props) {
     return (
-        <Card className={clsx("card", styles.card)}>
+        <Card className={styles.card}>
             <div className="card-content">
                 <div className={clsx("media", styles.media)}>
                     <div className={clsx("media-content", styles.mediaContent)}>

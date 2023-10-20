@@ -7,15 +7,16 @@
 }
 
 .columns {
+    display: flex;
     flex-wrap: wrap;
     justify-content: stretch;
 }
 
 .column {
-    @media screen and (min-width: 769px) {
+    @media screen and (min-width: 450px) {
         min-width: 50%;
     }
-    @media screen and (min-width: 1000px) {
-        min-width: 25%;
+    @media screen and (min-width: 769px) {
+        min-width: 33.33%;
     }
 }

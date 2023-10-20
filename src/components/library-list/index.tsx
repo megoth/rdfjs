@@ -14,7 +14,7 @@ export default function LibraryList() {
                             <NavLink to={href} className={clsx("card-content", styles.cardContent)}>
                                 <div className={clsx("media", styles.media)}>
                                     <div className={clsx("media-left", styles.mediaLeft)}>
-                                        <figure className={clsx("image", styles.image)}>
+                                        <figure className="image">
                                             <img src={icon} alt={iconAlt}/>
                                         </figure>
                                     </div>

@@ -13,32 +13,6 @@
     }
 }
 
-.card {}
-
 .cardContent {
     flex-grow: 1;
-}
-
-.media.media {
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-}
-
-.mediaLeft.mediaLeft {
-    margin-right: 0;
-}
-
-.image.image {
-    height: 48px;
-
-    & img {
-        height: 100%;
-        max-width: none;
-        width: auto;
-    }
-}
-
-.link.link.link {
-    border-radius: 0 0 4px 4px;
 }

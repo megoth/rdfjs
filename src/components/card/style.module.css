@@ -2,7 +2,32 @@
     display: flex;
     flex-direction: column;
     height: 100%;
+
+    :global(.media.media) {
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    :global(.media-left.media-left) {
+        margin-right: 0;
+    }
+
     :global(.media-content) {
         overflow-y: hidden;
+    }
+
+    :global(.image.image) {
+        height: 48px;
+
+        & img {
+            height: 100%;
+            max-width: none;
+            width: auto;
+        }
+    }
+
+    :global(.card-footer-item.button) {
+        border-radius: 0 0 4px 4px;
     }
 }

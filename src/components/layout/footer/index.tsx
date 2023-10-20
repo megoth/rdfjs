@@ -11,8 +11,8 @@ export default function Footer({className, ...props}: Props) {
     return (
         <footer className={clsx(className, styles.footer)} {...props}>
             <div className={styles.footerItem}>
-                <span>Guides: </span>
                 <nav className={styles.footerNav}>
+                    <span>Guides: </span>
                     {GUIDES.map(({href, name}) => (
                         <NavLink to={href}>{name}</NavLink>
                     ))}
