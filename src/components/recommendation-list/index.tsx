@@ -28,7 +28,7 @@ export default function RecommendationList({guide}: Props) {
                     <tr>
                         <td>
                             {type === "URL" && <AiOutlineLink/>}
-                            {type === "YouTube" && <AiFillYoutube/>}
+                            {type === "YouTube" && <AiFillYoutube style={{fill: "red"}}/>}
                         </td>
                         <td>
                             <a href={href}>{title}</a>
