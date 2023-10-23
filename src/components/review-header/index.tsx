@@ -1,10 +1,10 @@
 import Rating from "../rating";
 import {NavLink} from "react-router-dom";
-import {LibraryLink, RATING_CRITERIA} from "../../constants.ts";
+import {Library, RATING_CRITERIA} from "../../constants.ts";
 import AuthorNote from "../author-note";
 
 interface Props {
-    library: LibraryLink;
+    library: Library;
 }
 
 export default function ReviewHeader({library}: Props) {

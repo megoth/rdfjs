@@ -1,18 +1,19 @@
-import {DemoLink} from "../../constants.ts";
+import {Demo} from "../../constants.ts";
 import styles from "./style.module.css";
 import {clsx} from "clsx";
 import {NavLink} from "react-router-dom";
 import Card from "../card";
 
 interface Props {
-    list: Array<DemoLink>
+    list: Array<Demo>
 }
 
 export default function DemoList({list}: Props) {
+    const demoList = list.filter(({library}) => library.published);
     return (
         <div className={styles.demoList}>
             <ul className={clsx("columns", styles.columns)}>
-                {list.map(({title, subtitle, href, icon, iconAlt, slogan}) => (
+                {demoList.map(({title, subtitle, href, icon, iconAlt, slogan}) => (
                     <div key={href} className={clsx("column", styles.column)}>
                         <Card>
                             <div className={clsx("card-content", styles.cardContent)}>

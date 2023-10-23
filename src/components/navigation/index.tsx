@@ -6,6 +6,7 @@ import {LIBRARIES} from "../../constants.ts";
 
 export default function Navigation() {
     const [menuIsActive, setMenuIsActive] = useState<boolean>(false);
+    const libraries = LIBRARIES.filter(({published}) => published);
     return (
         <nav className="navbar" role="navigation" aria-label="main navigation">
             <div className="container">
@@ -28,7 +29,7 @@ export default function Navigation() {
                     "is-active": menuIsActive
                 })}>
                     <div className="navbar-start">
-                        {LIBRARIES.map(({href, text}) => (
+                        {libraries.map(({href, text}) => (
                             <NavLink to={href} key={href}
                                      className={({isActive}) => clsx("navbar-item", {"is-active": isActive})}
                                      onClick={() => setMenuIsActive(false)}>

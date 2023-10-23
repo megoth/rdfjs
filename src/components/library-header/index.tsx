@@ -1,9 +1,9 @@
-import {LibraryLink} from "../../constants.ts";
+import {Library} from "../../constants.ts";
 import {clsx} from "clsx";
 import styles from "./style.module.css";
 
 interface Props {
-    library: LibraryLink
+    library: Library
 }
 
 export default function LibraryHeader({library}: Props) {

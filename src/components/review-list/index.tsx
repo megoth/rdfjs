@@ -5,6 +5,7 @@ import {clsx} from "clsx";
 import styles from "./style.module.css";
 
 export default function ReviewList() {
+    const libraries = LIBRARIES.filter(({published}) => published);
     return (
         <div className="table-container">
             <table className={clsx("table is-striped is-fullwidth", styles.table)}>
@@ -17,7 +18,7 @@ export default function ReviewList() {
                 </tr>
                 </thead>
                 <tbody>
-                {LIBRARIES.map(({href, review, text}) => (
+                {libraries.map(({href, review, text}) => (
                     <tr key={href}>
                         <td>{text}</td>
                         {RATING_CRITERIA.map(([id], index) => (

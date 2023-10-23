@@ -5,10 +5,11 @@ import {clsx} from "clsx";
 import Card from "../card";
 
 export default function LibraryList() {
+    const libraries = LIBRARIES.filter(({published}) => published);
     return (
         <div className={clsx("menu", styles.libraryList)}>
             <ul className={clsx("columns", styles.columns)}>
-                {LIBRARIES.map(({creator, href, icon, iconAlt, name}) => (
+                {libraries.map(({creator, href, icon, iconAlt, name}) => (
                     <div key={href} className={clsx("column", styles.column)}>
                         <Card className={clsx("card", styles.card)}>
                             <div className="card-image">

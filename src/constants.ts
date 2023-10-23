@@ -120,7 +120,7 @@ export const GUIDES = [
     REACT_GUIDE
 ];
 
-export interface LibraryLink {
+export interface Library {
     creator: string;
     creatorUrl: string;
     href: string;
@@ -128,6 +128,7 @@ export interface LibraryLink {
     iconAlt: string;
     iconPreferredHeight: number;
     name: string;
+    published: boolean;
     recommendation: string;
     review: Array<RatingScore>;
     text: string;
@@ -135,7 +136,7 @@ export interface LibraryLink {
     websiteUrl: string;
 }
 
-export const LIBRARY_COMUNICA: LibraryLink = {
+export const LIBRARY_COMUNICA: Library = {
     creator: "IDLab at Ghent University",
     creatorUrl: "https://www.ugent.be/ea/idlab/en",
     href: "/comunica",
@@ -143,13 +144,14 @@ export const LIBRARY_COMUNICA: LibraryLink = {
     iconAlt: "Logo for Comunica",
     iconPreferredHeight: 240,
     name: "Comunica",
+    published: false,
     recommendation: "Large systems based on SPARQL",
     review: [2, 3, 3, 3, 2.5],
     text: "Comunica",
     websiteName: "Official website",
     websiteUrl: "https://comunica.dev/"
 };
-export const LIBRARY_LDO: LibraryLink = {
+export const LIBRARY_LDO: Library = {
     creator: "Jackson Morgan",
     creatorUrl: "https://www.o.team/",
     href: "/ldo",
@@ -157,13 +159,14 @@ export const LIBRARY_LDO: LibraryLink = {
     iconAlt: "Logo for O.team",
     iconPreferredHeight: 48,
     name: "Linked Data Objects",
+    published: true,
     recommendation: "Experimental apps",
     review: [4, 3, 3, 2, 3.5],
     text: "LDO",
     websiteName: "GitHub repo",
     websiteUrl: "https://github.com/o-development/ldo/"
 };
-export const LIBRARY_INRUPT: LibraryLink = {
+export const LIBRARY_INRUPT: Library = {
     creator: "Inrupt",
     creatorUrl: "https://inrupt.com",
     href: "/inrupt",
@@ -171,13 +174,14 @@ export const LIBRARY_INRUPT: LibraryLink = {
     iconAlt: "Logo for Inrupt",
     iconPreferredHeight: 110,
     name: "Inrupt's JavaScript client libraries",
+    published: true,
     recommendation: "Systems that need to be production-ready soon",
     review: [3, 3, 3, 3, 3],
     text: "Inrupt JS",
     websiteName: "Official documentation",
     websiteUrl: "https://docs.inrupt.com/developer-tools/javascript/client-libraries/"
 };
-export const LIBRARY_RDFLIB: LibraryLink = {
+export const LIBRARY_RDFLIB: Library = {
     creator: "rdflib.js team",
     creatorUrl: "https://github.com/linkeddata/rdflib.js/graphs/contributors",
     href: "/rdflib",
@@ -185,13 +189,14 @@ export const LIBRARY_RDFLIB: LibraryLink = {
     iconAlt: "Logo for Read-Write Linked Data",
     iconPreferredHeight: 48,
     name: "rdflib.js",
+    published: true,
     recommendation: "Low-level data management",
     review: [2, 2, 3, 4, 2.5],
     text: "rdflib.js",
     websiteName: "GitHub repo",
     websiteUrl: "https://github.com/linkeddata/rdflib.js/"
 };
-export const LIBRARY_SOUKAI: LibraryLink = {
+export const LIBRARY_SOUKAI: Library = {
     creator: "Noel De Martin",
     creatorUrl: "https://noeldemartin.com/",
     href: "/soukai",
@@ -199,13 +204,14 @@ export const LIBRARY_SOUKAI: LibraryLink = {
     iconAlt: "Logo for Soukai ODM",
     iconPreferredHeight: 150,
     name: "Soukai ODM",
+    published: false,
     recommendation: "Experimental apps",
     review: [3, 3, 3, 2, 3],
     text: "Soukai",
     websiteName: "Official website",
     websiteUrl: "https://soukai.js.org/"
 };
-export const LIBRARIES: Array<LibraryLink> = [
+export const LIBRARIES: Array<Library> = [
     LIBRARY_RDFLIB,
     LIBRARY_LDO,
     LIBRARY_INRUPT,
@@ -213,22 +219,24 @@ export const LIBRARIES: Array<LibraryLink> = [
     LIBRARY_COMUNICA,
 ];
 
-export interface DemoLink {
+export interface Demo {
     href: string;
     icon: string;
     iconAlt: string;
+    library: Library;
     slogan: string;
     subtitle?: string;
     text: string;
     title: string;
 }
 
-export const LOCAL_DEMOS: Array<DemoLink> = [
+export const LOCAL_DEMOS: Array<Demo> = [
     {
         title: "rdflib.js",
         href: "/rdflib#local",
         icon: "/rdf.svg",
         iconAlt: "Logo for Read-Write Linked Data",
+        library: LIBRARY_RDFLIB,
         slogan: "The OG JavaScript library to manage RDF data",
         text: "rdflib.js"
     },
@@ -237,6 +245,7 @@ export const LOCAL_DEMOS: Array<DemoLink> = [
         href: "/ldo#local",
         icon: "/o-team.png",
         iconAlt: "Logo for O.team",
+        library: LIBRARY_LDO,
         slogan: "The newest kid on the block, using ShEx-shapes to ease the flow of handling RDF data",
         text: "LDO"
     },
@@ -245,6 +254,7 @@ export const LOCAL_DEMOS: Array<DemoLink> = [
         href: "/soukai#local",
         icon: "/soukai.svg",
         iconAlt: "Logo for Soukai ODM",
+        library: LIBRARY_SOUKAI,
         slogan: "A JavaScript-based Object Document Mapper that also works with RDF",
         text: "Soukai"
     },
@@ -324,12 +334,13 @@ export interface YouTubeRecommendation extends BaseRecommendation {
 
 export type Recommendation = URLRecommendation | YouTubeRecommendation;
 
-export const SOLID_DEMOS: Array<DemoLink> = [
+export const SOLID_DEMOS: Array<Demo> = [
     {
         title: "rdflib.js",
         href: "/rdflib#solid",
         icon: "/rdf.svg",
         iconAlt: "Logo for Read-Write Linked Data",
+        library: LIBRARY_RDFLIB,
         slogan: "rdflib.js serves handy helpers to handle resource communication with Solid servers",
         text: "rdflib.js"
     },
@@ -338,6 +349,7 @@ export const SOLID_DEMOS: Array<DemoLink> = [
         href: "/ldo#solid-react",
         icon: "/o-team.png",
         iconAlt: "Logo for O.team",
+        library: LIBRARY_LDO,
         slogan: "The creator behind LDO also offers a Solid/React integration",
         text: "@ldo/solid-react"
     },
@@ -346,6 +358,7 @@ export const SOLID_DEMOS: Array<DemoLink> = [
         href: "/inrupt#solid",
         icon: "/inrupt.webp",
         iconAlt: "Logo for Inrupt",
+        library: LIBRARY_INRUPT,
         slogan: "Inrupt offers an impressive suite of JavaScript libraries that offer developers a lot of features",
         text: "Inrupt"
     },
@@ -354,6 +367,7 @@ export const SOLID_DEMOS: Array<DemoLink> = [
         href: "/soukai#solid",
         icon: "/soukai-solid.svg",
         iconAlt: "Logo for Soukai Solid",
+        library: LIBRARY_SOUKAI,
         slogan: "The creator of Soukai ODM has also created a Solid engine that allows you to use Soukai with Solid",
         text: "Soukai Solid"
     },
@@ -362,6 +376,7 @@ export const SOLID_DEMOS: Array<DemoLink> = [
         href: "/comunica#solid",
         icon: "/comunica.svg",
         iconAlt: "Logo for Comunica",
+        library: LIBRARY_COMUNICA,
         slogan: "Comunica allows you to execute SPARQL queries for resources on the web",
         text: "Comunica"
     },
