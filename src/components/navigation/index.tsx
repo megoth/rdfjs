@@ -2,7 +2,6 @@ import {NavLink} from "react-router-dom";
 import {clsx} from "clsx";
 import {useState} from "react";
 import styles from "./style.module.css";
-import {BiHomeHeart} from "react-icons/bi";
 import {LIBRARIES} from "../../constants.ts";
 
 export default function Navigation() {
@@ -13,7 +12,7 @@ export default function Navigation() {
                 <div className="navbar-brand">
                     <NavLink to={"/"} className={clsx("navbar-item", styles.homeLink)}
                              onClick={() => setMenuIsActive(false)}>
-                        <BiHomeHeart/>
+                        <img src="/rdfjs.png" alt={"Logo for rdf.js.org"}/>
                         <span>Home</span>
                     </NavLink>
                     <button className={clsx("navbar-burger", {

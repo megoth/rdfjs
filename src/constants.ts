@@ -181,7 +181,7 @@ export const LIBRARY_RDFLIB: LibraryLink = {
     creator: "rdflib.js team",
     creatorUrl: "https://github.com/linkeddata/rdflib.js/graphs/contributors",
     href: "/rdflib",
-    icon: "/linkeddata.png",
+    icon: "/rdf.svg",
     iconAlt: "Logo for Read-Write Linked Data",
     iconPreferredHeight: 48,
     name: "rdflib.js",
@@ -227,7 +227,7 @@ export const LOCAL_DEMOS: Array<DemoLink> = [
     {
         title: "rdflib.js",
         href: "/rdflib#local",
-        icon: "/linkeddata.png",
+        icon: "/rdf.svg",
         iconAlt: "Logo for Read-Write Linked Data",
         slogan: "The OG JavaScript library to manage RDF data",
         text: "rdflib.js"
@@ -328,7 +328,7 @@ export const SOLID_DEMOS: Array<DemoLink> = [
     {
         title: "rdflib.js",
         href: "/rdflib#solid",
-        icon: "/linkeddata.png",
+        icon: "/rdf.svg",
         iconAlt: "Logo for Read-Write Linked Data",
         slogan: "rdflib.js serves handy helpers to handle resource communication with Solid servers",
         text: "rdflib.js"
