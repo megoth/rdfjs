@@ -9,7 +9,7 @@ interface Props {
 
 export default function ReviewHeader({library}: Props) {
     return library.review?.length ? (
-        <AuthorNote title={`My review of ${library.text}`}>
+        <AuthorNote title={`My review of ${library.name}`}>
             <table className="table is-fullwidth is-striped">
                 <tbody>
                 {library.review.map((rating, index) => (

@@ -29,11 +29,11 @@ export default function Navigation() {
                     "is-active": menuIsActive
                 })}>
                     <div className="navbar-start">
-                        {libraries.map(({href, text}) => (
+                        {libraries.map(({href, name}) => (
                             <NavLink to={href} key={href}
                                      className={({isActive}) => clsx("navbar-item", {"is-active": isActive})}
                                      onClick={() => setMenuIsActive(false)}>
-                                {text}
+                                {name}
                             </NavLink>)
                         )}
                     </div>
