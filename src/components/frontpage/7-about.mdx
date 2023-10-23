@@ -1,5 +1,5 @@
 import Content from "../content";
-import Card from "../card";
+import AuthorNote from "../author-note";
 
 <Content id="about">
     <h2 className="subtitle is-3">About this website</h2>
@@ -16,34 +16,18 @@ import Card from "../card";
     The code is available on [the project's GitHub repo](https://github.com/megoth/semtechjs-demo).
 </Content>
 
-<Card>
-    <div className="card-content">
-        <div className="media">
-            <div className="media-left">
-                <figure className="image is-48x48">
-                    <img src="/arne.png" alt="Picture of Arne Hassel" style={{width: "auto"}}/>
-                </figure>
-            </div>
-            <div className="media-content">
-                <p className="title is-4">[Arne Hassel](https://icanhasweb.net/#me)</p>
-                <p className="subtitle is-6">Creator of this website</p>
-            </div>
-        </div>
+<AuthorNote title={"Why I made this website"}>
+    I've created this website in the hopes of providing an educative platform for choosing a library when one
+    wants to work with [Linked Data](https://en.wikipedia.org/wiki/Linked_data). I've worked with this since I
+    wrote my [Master Theses](https://graphitethesis.icanhasweb.net/) back in 2012, and although there are some
+    gaps in how much I've been able to invest in the matter, I feel confident in expressing my opinions.
 
-        <div className="content">
-            I've created this website in the hopes of providing an educative platform for choosing a library when one
-            wants to work with [Linked Data](https://en.wikipedia.org/wiki/Linked_data). I've worked with this since I
-            wrote my [Master Theses](https://graphitethesis.icanhasweb.net/) back in 2012, and although there are some
-            gaps in how much I've been able to invest in the matter, I feel confident in expressing my opinions.
+    I'm a moderator at [Solid Community Forum](https://forum.solidproject.org/u/megoth) and
+    [r/solid](https://www.reddit.com/r/solid), and interact with the Solid community from time to time. I've
+    worked at [Inrupt](https://www.inrupt.com/) for four years, and am currently working as a [Senior Consultant
+    at Capgemini - Insights and Data](https://www.linkedin.com/in/arnehassel/).
 
-            I'm a moderator at [Solid Community Forum](https://forum.solidproject.org/u/megoth) and
-            [r/solid](https://www.reddit.com/r/solid), and interact with the Solid community from time to time. I've
-            worked at [Inrupt](https://www.inrupt.com/) for four years, and am currently working as a [Senior Consultant
-            at Capgemini - Insights and Data](https://www.linkedin.com/in/arnehassel/).
-
-            I hope you're able to find value in these writings, and that we can have a productive discussion on how
-            to improve educational tools like this for users. If you have any issues with the content, please contact
-            me via [issues on the project's GitHub repo](https://github.com/megoth/semtechjs-demo/issues).
-        </div>
-    </div>
-</Card>
+    I hope you're able to find value in these writings, and that we can have a productive discussion on how
+    to improve educational tools like this for users. If you have any issues with the content, please contact
+    me via [issues on the project's GitHub repo](https://github.com/megoth/semtechjs-demo/issues).
+</AuthorNote>
