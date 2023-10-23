@@ -11,13 +11,13 @@ export default function LibraryList() {
                 {LIBRARIES.map(({creator, href, icon, iconAlt, name}) => (
                     <div key={href} className={clsx("column", styles.column)}>
                         <Card className={clsx("card", styles.card)}>
+                            <div className="card-image">
+                                <picture className={clsx("image", styles.image)}>
+                                    <img src={icon} alt={iconAlt}/>
+                                </picture>
+                            </div>
                             <NavLink to={href} className={clsx("card-content", styles.cardContent)}>
                                 <div className={clsx("media", styles.media)}>
-                                    <div className={clsx("media-left", styles.mediaLeft)}>
-                                        <figure className="image">
-                                            <img src={icon} alt={iconAlt}/>
-                                        </figure>
-                                    </div>
                                     <div className="media-content">
                                         <p className="title is-4">{name}</p>
                                         <p className="subtitle is-6">By {creator}</p>

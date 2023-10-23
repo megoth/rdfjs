@@ -18,6 +18,16 @@
     }
 }
 
+.image.image.image.image.image {
+    height: auto;
+    & img {
+        height: auto;
+        max-height: 8em;
+        max-width: 100%;
+        padding: 1.5em 1.5em 0;
+    }
+}
+
 .cardContent.cardContent {
     display: flex;
     flex-direction: column;
