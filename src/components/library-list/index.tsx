@@ -1,11 +1,17 @@
-import {LIBRARIES} from "../../constants.ts";
+import {LIBRARIES, Library} from "../../constants.ts";
 import {NavLink} from "react-router-dom";
 import styles from "./style.module.css";
 import {clsx} from "clsx";
 import Card from "../card";
 
-export default function LibraryList() {
-    const libraries = LIBRARIES.filter(({published}) => published);
+export interface Props {
+    exclude?: Library;
+}
+
+export default function LibraryList({exclude}: Props) {
+    const libraries = exclude
+        ? LIBRARIES.filter((library) => library !== exclude)
+        : LIBRARIES;
     return (
         <div className={clsx("menu", styles.libraryList)}>
             <ul className={clsx("columns", styles.columns)}>

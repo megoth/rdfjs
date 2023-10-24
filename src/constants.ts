@@ -217,7 +217,7 @@ export const LIBRARIES: Array<Library> = [
     LIBRARY_INRUPT,
     LIBRARY_SOUKAI,
     LIBRARY_COMUNICA,
-];
+].filter(({ published }) => published);
 
 export interface Demo {
     href: string;

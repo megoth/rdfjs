@@ -1,15 +1,17 @@
-import LibraryList from "../library-list";
+import LibraryList, {Props as LibraryListProps} from "../library-list";
 import Content from "../content";
 
-export default function LibrarySection() {
+interface Props extends LibraryListProps {
+    title?: string;
+}
+
+export default function LibrarySection({title, ...props}: Props) {
     return (
         <>
             <Content>
-                <h2>Ready to check out the libraries?</h2>
-
-                I recommend reading them in the given order.
+                <h2>{title || "Ready to check out the libraries?"}</h2>
             </Content>
-            <LibraryList/>
+            <LibraryList {...props}/>
         </>
     )
 }

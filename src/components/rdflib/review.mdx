@@ -33,13 +33,20 @@ import {LIBRARY_RDFLIB, RATING_CRITERIA} from "../../constants";
 
     <RatingCriteriaTitle index={3} rating={LIBRARY_RDFLIB.review[3]}/>
     <Content id={RATING_CRITERIA[3][0]}>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua. In fermentum et sollicitudin ac orci. Gravida dictum fusce ut placerat orci nulla.
+        rdflib.js is probably the oldest JavaScript library that supports RDF. Hence, it's sports a test and tried API
+        that you can be sure have most bugs discovered.
     </Content>
 
     <RatingCriteriaTitle index={4} rating={LIBRARY_RDFLIB.review[4]}/>
     <Content id={RATING_CRITERIA[4][0]}>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua. In fermentum et sollicitudin ac orci. Gravida dictum fusce ut placerat orci nulla.
+        rdflib.js offers a robust experience that allows you to engage with RDF in a low-level manner. It requires you
+        to know how RDF works to use it, but rewards you with an stable and safe API. In my opinion the API also suffers
+        from its age, most prominently shown in asynchronous functions like `parse` and `serialize` that relies on
+        callbacks. It's philosophy on having a global store is also not necessarily aligned with component-specific
+        scopes, but since it's forced upon you, it's not a big problem.
+
+        I <u>**would use**</u> rdflib.js if you're dependent on a stable library with a low-level API plus some helper
+        utility for online features. I <u>**would not use**</u> it in most web apps since it forces you to get into the
+        nitty gritty of low-level RDF data management.
     </Content>
 </AuthorNote>

@@ -17,7 +17,7 @@ export default function GuideLayout({children, guide, minimal}: Props) {
         {children}
         {!minimal && <>
             <RecommendationList guide={guide}/>
-            <GuideSection exclude={guide}/>
+            <GuideSection exclude={guide} title={"More guides"}/>
             <LibrarySection/>
         </>}
     </>;

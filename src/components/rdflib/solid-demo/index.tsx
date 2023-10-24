@@ -1,4 +1,4 @@
-import {Fetcher, graph, lit, LiveStore, namedNode, st, UpdateManager} from "rdflib";
+import {Fetcher, graph, lit, namedNode, st, UpdateManager} from "rdflib";
 import {useEffect, useMemo, useState} from "react";
 import {useSolidAuth} from "@ldo/solid-react";
 import Demo, {FormData} from "../../demo";
@@ -8,7 +8,7 @@ export default function RdflibSolidDemo() {
     const {session, fetch} = useSolidAuth();
     const [name, setName] = useState("");
     const profileNode = namedNode(session.webId!);
-    const store = useMemo(() => graph() as LiveStore, []);
+    const store = useMemo(() => graph(), []);
     const fetcher = useMemo(() => new Fetcher(store, {fetch}), [store, fetch]);
     const updater = useMemo(() => new UpdateManager(store), [store]);
 
