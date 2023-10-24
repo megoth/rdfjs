@@ -1,0 +1,16 @@
+import Content from "../content";
+import Code from "../code";
+import sparqlUpdateName from "./sparql-update-name.sparql?raw";
+
+<Content>
+    <h2 className="subtitle">Writing data with SPARQL</h2>
+
+    SPARQL supports a couple of methods to manipulate RDF data, but we're most interested in [SPARQL
+    Update](https://www.w3.org/TR/sparql11-update/).
+</Content>
+
+<Code language="sparql" id="SPARQLUpdateName" code={sparqlUpdateName}/>
+
+<Content>
+    This is enough to understand how we update the names in our Solid demos.
+</Content>

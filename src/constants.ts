@@ -124,7 +124,35 @@ export const SPARQL_GUIDE: Guide = {
     logoAlt: "Logo of SPARQL",
     logoPreferredHeight: 128,
     name: "SPARQL",
-    recommendations: [],
+    recommendations: [{
+        title: "Learn SPARQL",
+        href: "https://sparql.dev/",
+        note: "A very good guide on learning SPARQL",
+        type: "URL"
+    }, {
+        title: "SPARQL 1.1 Query Language",
+        href: "https://www.w3.org/TR/sparql11-query/",
+        note: "SPARQL specification",
+        type: "URL"
+    }, {
+        title: "SPARQL 1.1 Update",
+        href: "https://www.w3.org/TR/sparql11-update/",
+        note: "SPARQL Update specification",
+        type: "URL"
+    }, {
+        title: "sparql.org",
+        href: "https://sparql.org/",
+        note: "Lots of good resources",
+        type: "URL"
+    }, {
+        title: "Stardog Academy Fundamentals: Getting Started with RDF & SPARQL",
+        href: "https://www.youtube.com/watch?v=bDxclRhDb-o",
+        type: "YouTube"
+    }, {
+        title: "Querying Wikidata with SPARQL for Absolute Beginners",
+        href: "https://www.youtube.com/watch?v=kJph4q0Im98",
+        type: "YouTube"
+    }],
 };
 export const TYPESCRIPT_GUIDE: Guide = {
     href: "/typescript",

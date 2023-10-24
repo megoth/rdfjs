@@ -1,0 +1,16 @@
+import Content from "../content";
+import Code from "../code";
+import simpleSelect from "./sparql-simple-select.sparql?raw"
+
+<Content>
+    <h2 className="subtitle">Retrieving data with SPARQL</h2>
+
+    Reading data is done by using the `SELECT` and `WHERE` tokens.
+</Content>
+
+<Code language="sparql" id="SPARQLSimpleSelect" code={simpleSelect} noCopy={true}/>
+
+<Content>
+    In this example we list all triples in a graph. We've assigned the variables `?subject`, `?predicate`, and `?object`
+    to catch the corresponding subjects, predicates, and objects.
+</Content>
