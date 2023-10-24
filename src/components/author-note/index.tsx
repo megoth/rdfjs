@@ -2,6 +2,7 @@ import {ReactNode} from "react";
 import styles from "./style.module.css";
 import {clsx} from "clsx";
 import Card from "../card";
+import Content from "../content";
 
 interface Props {
     children: ReactNode;
@@ -22,7 +23,9 @@ export default function AuthorNote({children, title}: Props) {
                         </figure>
                     </div>
                 </div>
-                {children}
+                <Content>
+                    {children}
+                </Content>
             </div>
         </Card>
     )
