@@ -1,20 +1,17 @@
 import GuideLayout from "../guide-layout";
 import {SHEX_GUIDE} from "../../constants.ts";
-import Content from "../content";
+import Intro from "./1-intro.mdx";
+import SimpleExample from "./2-simple-example.mdx";
+import AdvancedExample from "./3-advanced-example.mdx";
+import Outro from "./4-outro.mdx";
 
 export default function ShExGuide() {
     return (
-        <GuideLayout guide={SHEX_GUIDE} minimal={true}>
-            <Content>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Suspendisse interdum consectetur libero id faucibus nisl tincidunt eget. Sit
-                    amet aliquam id diam maecenas. Sit amet justo donec enim diam vulputate. Pellentesque sit amet
-                    porttitor eget dolor morbi non arcu risus. </p>
-
-                <p>Mi sit amet mauris commodo quis imperdiet massa tincidunt nunc. Sit amet nulla facilisi morbi.
-                    Venenatis cras sed felis eget velit aliquet. Rhoncus est pellentesque elit ullamcorper dignissim
-                    cras. Malesuada nunc vel risus commodo viverra.</p>
-            </Content>
+        <GuideLayout guide={SHEX_GUIDE}>
+            <Intro />
+            <SimpleExample />
+            <AdvancedExample />
+            <Outro />
         </GuideLayout>
     )
 }

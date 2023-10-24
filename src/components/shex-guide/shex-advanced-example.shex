@@ -1,0 +1,24 @@
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX ldp: <http://www.w3.org/ns/ldp#>
+PREFIX schema: <http://schema.org/>
+PREFIX solid: <http://www.w3.org/ns/solid/terms#>
+PREFIX shape: </shapes/solid-profile.ttl#>
+PREFIX space: <http://www.w3.org/ns/pim/space#>
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX xtypes: <http://graphite.ecs.soton.ac.uk/xtypes/#xtypes:>
+
+shape:SolidProfile EXTRA rdf:type {
+  rdf:type [schema:Person foaf:Person] ;
+  vcard:fn xsd:string? ;
+  foaf:name xsd:string? ;
+  ldp:inbox IRI? ;
+  space:preferencesFile IRI? ;
+  space:storage IRI* ;
+  solid:account IRI? ;
+  solid:oidcIssuer IRI? ;
+  solid:privateTypeIndex IRI? ;
+  solid:publicTypeIndex IRI? ;
+}

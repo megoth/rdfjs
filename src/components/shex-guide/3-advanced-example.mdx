@@ -1,0 +1,58 @@
+import Content from "../content";
+import shexAdvancedExample from "./shex-advanced-example.shex?raw";
+import Code from "../code";
+import Walkthrough from "../walkthrough";
+import CodeLink from "../code-link";
+
+<Content>
+    To understand more of what ShEx can do, let's take a more advanced example. This is fetched from my project
+    [ldo-solid-profile](https://github.com/megoth/ldo-solid-profile) where I try to work on client-to-client standard
+    to describe the data you can expect when working with a Solid profile.
+</Content>
+
+<Code language="turtle" code={shexAdvancedExample} id="ShexAdvancedExample"
+      url="https://github.com/megoth/ldo-solid-profile/blob/main/shapes/profile.shex" className="line-numbers">
+    <Walkthrough>
+        <tr>
+            <td><CodeLink id="ShexAdvancedExample" lines={["13-14"]}>Specifying type</CodeLink></td>
+            <td>
+                We recognize this data by it's type, being either `schema:Person` or `foaf:Person`. We use the `EXTRA`
+                token to allow multiple types being used.
+            </td>
+        </tr>
+        <tr>
+            <td><CodeLink id="ShexAdvancedExample" lines={["15-16"]}>Describing name</CodeLink></td>
+            <td>Name is described using `vcard:fn` or `foaf:name`, either is fine, but none is required.</td>
+        </tr>
+        <tr>
+            <td><CodeLink id="ShexAdvancedExample" lines={["17"]}>LDP inbox</CodeLink></td>
+            <td>
+                Solid extends a lot of the [LDP specification](https://www.w3.org/TR/ldp/), the ability to communicate
+                with users using a container as an inbox. It's using the `ldp:inbox` predicate to describe this (which
+                is defined in the [Linked Data Notifications specification](https://www.w3.org/TR/ldn/)).
+            </td>
+        </tr>
+        <tr>
+            <td><CodeLink id="ShexAdvancedExample" lines={["18-19"]}>Workspace related data</CodeLink></td>
+            <td>
+                <Content>
+                    Solid makes use of the [Workspace ontology](http://www.w3.org/ns/pim/space#) to allow users to:
+
+                    1. extend their profile with private information using `space:preferencesFile`, and
+                    2. list their storages using `space:storage`
+
+                    An important thing to note here is the cardinality token used for `space:storage`: `*`. This token
+                    means "zero or more", meaning we need to account for all of these cases in our App (even though most
+                    users will have only one).
+                </Content>
+            </td>
+        </tr>
+        <tr>
+            <td><CodeLink id="ShexAdvancedExample" lines={["18-19"]}>Solid related data</CodeLink></td>
+            <td>
+                Solid also has its own [vocabulary](http://www.w3.org/ns/solid/terms#) that allow users to describe data
+                that is specific to the Solid API.
+            </td>
+        </tr>
+    </Walkthrough>
+</Code>

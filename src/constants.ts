@@ -84,7 +84,31 @@ export const SHEX_GUIDE: Guide = {
     logoAlt: "Logo of ShEx",
     logoPreferredHeight: 100,
     name: "ShEx",
-    recommendations: [],
+    recommendations: [{
+        title: "shex.io",
+        href: "https://shex.io/",
+        note: "Official website",
+        type: "URL"
+    }, {
+        title: "Shape Expressions (ShEx) 2.1 Primer",
+        href: "https://shex.io/shex-primer/",
+        type: "URL"
+    }, {
+        title: "Shape Expressions Language 2.1",
+        href: "https://shex.io/shex-semantics/",
+        note: "Specification",
+        type: "URL"
+    }, {
+        title: "Lotico Data Shapes Event",
+        href: "https://www.youtube.com/watch?v=M3lpHLn__Cc",
+        note: "Long, but good explanation of ShEx",
+        type: "YouTube"
+    }, {
+        title: "Shapes Constraint Language (SHACL)",
+        href: "https://www.w3.org/TR/shacl/",
+        note: "The specification for SHACL, an alternative to ShEx. SHACL has more features than ShEx, but is IMHO harder to get into.",
+        type: "URL"
+    }],
 };
 export const SOLID_GUIDE: Guide = {
     href: "/solid",
@@ -217,7 +241,7 @@ export const LIBRARIES: Array<Library> = [
     LIBRARY_INRUPT,
     LIBRARY_SOUKAI,
     LIBRARY_COMUNICA,
-].filter(({ published }) => published);
+].filter(({published}) => published);
 
 export interface Demo {
     href: string;

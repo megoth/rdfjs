@@ -1,0 +1,17 @@
+import Content from "../content";
+import shexExample from "./shex-example.shex?raw";
+import Code from "../code";
+import {NavLink} from "react-router-dom";
+
+<Content>
+    Let's start with an example that describes a ShEx-shape we can use for the data model used in the demos on this
+    website:
+</Content>
+
+<Code language="turtle" code={shexExample} id={"ShexExample"} noCopy={true}/>
+
+<Content>
+    In this example we see the shape `ProfileShape` with one attribute, `foaf:name`. It's datatype, `xsd:string`, has a
+    cardinality token, `?`, meaning that it can be zero or one occurrences of it. This is the shape needed to make our
+    demos with <NavLink to="/ldo">LDO</NavLink> work.
+</Content>
