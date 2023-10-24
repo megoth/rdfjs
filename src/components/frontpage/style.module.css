@@ -1,0 +1,13 @@
+.localTitle.localTitle {
+    hyphens: auto;
+
+    @media screen and (max-width: 500px) {
+        font-size: 1.5em;
+    }
+
+    @media screen and (min-width: 500px) {
+        align-items: center;
+        display: flex;
+        gap: 0.25rem;
+    }
+}
