@@ -1,0 +1,43 @@
+import Content from "../content";
+import Code from "../code";
+import browserSolidLdoProvider from "./BrowserSolidLdoProvider-example.tsx?raw"
+import authenticationDemo from "./authentication-demo.tsx?raw"
+import AuthenticationDemo from "./authentication-demo";
+
+<Content>
+    <h2 className="subtitle">Authentication</h2>
+
+    Solid supports authentication through the [Solid-OIDC](https://solid.github.io/solid-oidc/) specification, which
+    builds upon the [OpenID Connect](https://openid.net/connect/) standards, which itself builds upon the [OAuth
+    2.0](https://datatracker.ietf.org/doc/html/rfc6749) authorization framework. In other words, a lot of work has gone
+    into making sure that Solid features proper authentication.
+
+    Authentication is a vital pillar of the Solid framework, together with authorization and apps using data
+    interchangeably. Usually it has been a chore to set this up in applications, but using the authentication features
+    of [@ldo/solid-react](https://github.com/o-development/ldobjects/tree/main/packages/solid-react) (or rather
+    [@inrupt/solid-client-authn-core](https://github.com/inrupt/solid-client-authn-js) which it relays).
+
+    To set it up we need to insert `BrowserSolidLdoProvider` somewhere early in our app.
+</Content>
+
+<Code language="tsx" id="BrowserSolidLdoProvider" code={browserSolidLdoProvider}/>
+
+<Content>
+    Later on we can use `login` and `logout` to start the respective processes of authenticating and logging out with
+    your Solid account. (Note that if you don't provide a URL, it will default to
+    [https://solidcommunity.net/](https://solidcommunity.net/).)
+</Content>
+
+<section className="box">
+    <AuthenticationDemo/>
+</section>
+
+<Content>
+    And here's the code for the demo above:
+</Content>
+
+<Code language="tsx" id="AuthenticationDemo" code={authenticationDemo}/>
+
+<Content>
+    There are other ways to authenticate with Solid, but that is beyond the scope of this website.
+</Content>
