@@ -1,11 +1,47 @@
-<h2 className="subtitle">Code</h2>
+import Content from "../../content";
+import Code from "../../code";
+import localDemoCode from "./index.tsx?raw";
+import Walkthrough from "../../walkthrough";
+import CodeLink from "../../code-link";
+import {PROFILE_TURTLE} from "../../../constants";
+import {NavLink} from "react-router-dom";
 
-A pellentesque sit amet porttitor eget dolor. Enim nunc faucibus a pellentesque sit amet porttitor eget. Praesent
-tristique magna sit amet purus gravida. Feugiat scelerisque varius morbi enim nunc faucibus a. Accumsan in nisl nisi
-scelerisque eu ultrices. Eget nulla facilisi etiam dignissim diam quis enim. Risus nec feugiat in fermentum posuere
-urna nec. Egestas maecenas pharetra convallis posuere morbi leo urna molestie. Accumsan in nisl nisi scelerisque eu
-ultrices vitae auctor. Feugiat pretium nibh ipsum consequat nisl vel. Mauris pharetra et ultrices neque ornare aenean
-euismod elementum. Risus in hendrerit gravida rutrum quisque non tellus orci. Urna molestie at elementum eu facilisis
-sed odio morbi. Ullamcorper malesuada proin libero nunc consequat interdum varius sit amet. Convallis tellus id
-interdum velit laoreet id. Quam id leo in vitae turpis massa sed. Eget nunc scelerisque viverra mauris in aliquam sem
-fringilla. Morbi non arcu risus quis varius quam quisque. Faucibus in ornare quam viverra.
+<Content>
+    <h2 className="subtitle">Code</h2>
+
+    This demo loads and saves a given name to `localStorage`. If no data is saved in `localStorage` from before, it will
+    use a pre-set turtle that contains a simple profile with the name "Test".
+</Content>
+
+<Code language="turtle" id="ProfileTurtle" code={PROFILE_TURTLE} noCopy={true}/>
+
+<Content>
+    (If the above code doesn't make sense for you, you might want to consider reading the <NavLink to={"/rdf"}>guide on
+    RDF</NavLink>.)
+</Content>
+
+<Code language="tsx" id="RdflibLocalDemo" code={localDemoCode} className="line-numbers">
+    <Walkthrough>
+        <tr>
+            <td>
+                <CodeLink id="RdflibLocalDemo" lines={["8"]}>Store setup</CodeLink>
+            </td>
+            <td>Setting up the store that's going to contain our data.</td>
+        </tr>
+        <tr>
+            <td>
+                <CodeLink id="RdflibLocalDemo" lines={["15-18"]}>Parsing turtle and loading name</CodeLink>
+            </td>
+            <td>Loading existing data from either default turtle or saved turtle from `localStorage`.</td>
+        </tr>
+        <tr>
+            <td>
+                <CodeLink id="RdflibLocalDemo" lines={["23-29"]}>Updating turtle in `localStorage` and name</CodeLink>
+            </td>
+            <td>
+                Upon submitting the form, a new triple with the name is inserted while the old name is removed in
+                another triple. The store is then serialized and `localStorage` is updated with the new Turtle string.
+            </td>
+        </tr>
+    </Walkthrough>
+</Code>

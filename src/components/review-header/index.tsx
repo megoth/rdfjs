@@ -1,7 +1,6 @@
 import Rating from "../rating";
 import {NavLink} from "react-router-dom";
 import {Library, RATING_CRITERIA} from "../../constants.ts";
-import AuthorNote from "../author-note";
 
 interface Props {
     library: Library;
@@ -9,7 +8,7 @@ interface Props {
 
 export default function ReviewHeader({library}: Props) {
     return library.review?.length ? (
-        <AuthorNote title={`My review of ${library.name}`}>
+        <>
             <table className="table is-fullwidth is-striped">
                 <tbody>
                 {library.review.map((rating, index) => (
@@ -30,6 +29,6 @@ export default function ReviewHeader({library}: Props) {
                 <strong>Disclaimer:</strong> This review is a personal assertion, and not in any way linked to the <a
                 href="https://github.com/rdfjs">W3C RDF/JS CG</a>.
             </p>
-        </AuthorNote>
+        </>
     ) : null;
 }

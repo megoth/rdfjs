@@ -6,11 +6,11 @@ import {NAME_NODE} from "../../../constants.ts";
 
 export default function RdflibSolidDemo() {
     const {session, fetch} = useSolidAuth();
-    const [name, setName] = useState("");
-    const profileNode = namedNode(session.webId!);
     const store = useMemo(() => graph(), []);
     const fetcher = useMemo(() => new Fetcher(store, {fetch}), [store, fetch]);
     const updater = useMemo(() => new UpdateManager(store), [store]);
+    const [name, setName] = useState("");
+    const profileNode = namedNode(session.webId!);
 
     useEffect(() => {
         if (!store) return;
@@ -22,7 +22,6 @@ export default function RdflibSolidDemo() {
         const del = store.statementsMatching(profileNode, NAME_NODE, null, profileNode.doc());
         await updater.update(del, ins);
         setName(data.name);
-        return store;
     };
 
     return <Demo name={name} onSubmit={onSubmit}/>
