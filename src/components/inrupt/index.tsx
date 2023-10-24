@@ -1,10 +1,13 @@
 import Login from "../login";
-import InruptDemo from "./demo";
+import InruptLocalDemo from "./local-demo";
+import InruptSolidDemo from "./solid-demo";
 import {useSolidAuth} from "@ldo/solid-react";
 import Code from "../code";
-import demoCode from "./demo/index.tsx?raw";
+import localDemoCode from "./local-demo/index.tsx?raw";
+import solidDemoCode from "./solid-demo/index.tsx?raw";
 import IntroSection from "./intro.mdx";
-import CodeSection from "./code.mdx";
+import LocalCodeSection from "./local-demo/code.mdx";
+import SolidCodeSection from "./solid-demo/code.mdx";
 import Content from "../content";
 import LogoutButton from "../logout-button";
 import Review from "./review.mdx";
@@ -19,15 +22,20 @@ export default function Inrupt() {
             <LibraryHeader library={LIBRARY_INRUPT}/>
             <Content><IntroSection/></Content>
             <ReviewHeader library={LIBRARY_INRUPT}/>
+            <div id="local">
+                <h2 className="subtitle is-3">Local demo</h2>
+                <InruptLocalDemo/>
+                <Content><LocalCodeSection/></Content>
+                <Code language={"tsx"} id="InruptLocalDemo" code={localDemoCode}/>
+            </div>
             <div id="solid">
-                <Code language={"tsx"} id="InruptSolidDemo" code={demoCode}>
-                    <h2 className="subtitle is-3">Solid demo</h2>
-                    {session.isLoggedIn ? <>
-                        <InruptDemo/>
-                        <LogoutButton/>
-                    </> : <Login login={login}/>}
-                    <Content><CodeSection/></Content>
-                </Code>
+                <h2 className="subtitle is-3">Solid demo</h2>
+                {session.isLoggedIn ? <>
+                    <InruptSolidDemo/>
+                    <LogoutButton/>
+                </> : <Login login={login}/>}
+                <Content><SolidCodeSection/></Content>
+                <Code language={"tsx"} id="InruptSolidDemo" code={solidDemoCode}/>
             </div>
             <Review/>
         </>

@@ -13,26 +13,28 @@ interface FormData {
     name: string;
 }
 
-export default function InruptDemo() {
+export default function InruptSolidDemo() {
     const [name, setName] = useState("");
     const [dataset, setDataset] = useState<SolidDataset | null>(null);
     const {session, fetch} = useSolidAuth();
 
     useEffect(() => {
-        getSolidDataset(session.webId!, {fetch}).then((dataset) => {
+        if (!session.webId) return;
+        getSolidDataset(session.webId, {fetch}).then((dataset) => {
+            if (!session.webId) return;
             setDataset(dataset);
-            const profile = getThing(dataset, session.webId!)!;
-            const name = getLiteral(profile, FOAF.name);
-            setName(name?.value || "");
+            const profile = getThing(dataset, session.webId);
+            setName(profile ? getLiteral(profile, FOAF.name)?.value || "" : "");
         })
     }, [fetch, session.webId]);
 
     const onSubmit: SubmitHandler<FormData> = async (data) => {
-        if (!dataset) return;
-        const profile = getThing(dataset, session.webId!)!;
+        if (!dataset || !session.webId) return;
+        const profile = getThing(dataset, session.webId);
+        if (!profile) return;
         const updatedProfile = setLiteral(profile, FOAF.name, lit(data.name) as Literal);
         const updatedDataset = setThing(dataset, updatedProfile);
-        const savedDataset = await saveSolidDatasetAt(session.webId!, updatedDataset, {fetch});
+        const savedDataset = await saveSolidDatasetAt(session.webId, updatedDataset, {fetch});
         setDataset(savedDataset);
     };
 

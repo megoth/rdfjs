@@ -250,6 +250,15 @@ export const LOCAL_DEMOS: Array<Demo> = [
         text: "LDO"
     },
     {
+        title: "Inrupt JavaScript Client Libraries",
+        href: "/inrupt#local",
+        icon: "/inrupt.webp",
+        iconAlt: "Logo for Inrupt",
+        library: LIBRARY_INRUPT,
+        slogan: "Inrupt's JS libraries can be used locally as well",
+        text: "Inrupt"
+    },
+    {
         title: "Soukai",
         href: "/soukai#local",
         icon: "/soukai.svg",
@@ -383,7 +392,8 @@ export const SOLID_DEMOS: Array<Demo> = [
 ];
 
 export const STORAGE_KEYS = {
-    "PROFILE_RDFLIB": "profileRdflib",
+    "PROFILE_INRUPT": "profileInrupt",
     "PROFILE_LDO": "profileLdo",
+    "PROFILE_RDFLIB": "profileRdflib",
     "PROFILE_SOUKAI": "profileSoukai",
 }
