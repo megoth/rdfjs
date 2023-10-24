@@ -3,6 +3,25 @@ import Content from "../content";
 <Content>
     <h2 className="subtitle">Authorization</h2>
 
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-    aliqua. Neque sodales ut etiam sit amet nisl purus in. Tempus iaculis urna id volutpat lacus.
+    Authorization is another vital pillar of Solid. It is what connects the user with the control of resources.
+    Currently there are two standards in the works describing authorization controls for Solid, [Web Access
+    Control (WAC)](https://solidproject.org/TR/wac) and [Access Control Policy
+    (ACP)](https://solid.github.io/authorization-panel/acp-specification/). Going into details in either is beyond the
+    scope of this website.
+
+    *As a side-note though:* An important feature that we can take away from them both is the access modes `READ`,
+    `WRITE`, `APPEND`, and `DELETE`. The specifics of these might vary, but for the purpose of this website they mean
+    the following:
+
+    * `READ`: Being able to access a resource and its content. In the case of containers it's debated whether you should
+    see children who themselves has access controls denying user `READ` access.
+    * `WRITE`: Being able to write to a resource, and in the case of containers, create new resources within them.
+    * `APPEND`: Being able to append but not remove existing data. In the case of containers, you're able to create
+    a resource, but not necessarily write to it afterwards. This mode allows you to have, say, an inbox, where outsiders
+    can post messages, but not see other messages.
+    * `DELETE`: This access allows you to delete something explicitly (e.g. you cannot access its content, which `READ`
+    or `WRITE` would give)
+
+    These concepts are not important to understand to use this website, but they are useful fundamentals when reading
+    up on authorization.
 </Content>

@@ -116,7 +116,77 @@ export const SOLID_GUIDE: Guide = {
     logoAlt: "Logo of Solid",
     logoPreferredHeight: 192,
     name: "Solid",
-    recommendations: [],
+    recommendations: [{
+        title: "solidproject.org",
+        href: "https://solidproject.org/",
+        note: "Official website",
+        type: "URL"
+    }, {
+        title: "How Solid will give back control over your data",
+        href: "https://www.youtube.com/watch?v=V-9cOJ6SUHI",
+        note: "Good introduction to Solid",
+        type: "YouTube"
+    }, {
+        title: "Solid Protocol",
+        href: "https://solidproject.org/TR/protocol",
+        note: "Solid specification",
+        type: "URL"
+    }, {
+        title: " Your Personal Linked Data Graphs with Solid - Ruben Verborgh ",
+        href: "https://www.youtube.com/watch?v=lkYrwbxCCHE",
+        note: "Long but good",
+        type: "YouTube"
+    }, {
+        title: "Web Access Control",
+        href: "https://solidproject.org/TR/wac",
+        note: "WAC specification",
+        type: "URL"
+    }, {
+        title: "Access Control Policy (ACP)",
+        href: "https://solid.github.io/authorization-panel/acp-specification/",
+        note: "ACP specification",
+        type: "URL"
+    }, {
+        title: "Solid-OIDC",
+        href: "https://solid.github.io/solid-oidc/",
+        note: "Solid-OIDC specification",
+        type: "URL"
+    }, {
+        title: "Solid Project (Eventbrite)",
+        href: "https://www.eventbrite.co.uk/o/solid-project-30026804546",
+        note: "Project site at Eventbrite where they post when there are upcoming Solid World events",
+        type: "URL"
+    }, {
+        title: "Solid Project (Vimeo)",
+        href: "https://vimeo.com/solidworld",
+        note: "Previous recordings of Solid Word events",
+        type: "URL"
+    }, {
+        title: "Using all flavours of Solid",
+        href: "https://michielbdejong.com/blog/29",
+        note: "Interesting read by Michiel B. de Jong",
+        type: "URL"
+    }, {
+        title: "r/solid",
+        href: "https://www.reddit.com/r/SOLID/",
+        note: "Subreddit for Solid",
+        type: "URL"
+    }, {
+        title: "Women of Solid",
+        href: "https://www.womenofsolid.org/",
+        note: "A community for women that are interested in Solid",
+        type: "URL"
+    }, {
+        title: "The future of the decentralized web",
+        href: "https://medium.com/berkman-klein-center/the-future-of-the-decentralized-web-707915f12360",
+        note: "An interesting long-read on Solid",
+        type: "URL"
+    }, {
+        title: "Solid - A Better Web (Simply Explained)",
+        href: "https://www.youtube.com/watch?v=V-9cOJ6SUHI",
+        note: "If you only have five minutes",
+        type: "YouTube"
+    }],
 };
 export const SPARQL_GUIDE: Guide = {
     href: "/sparql",
