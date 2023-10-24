@@ -8,29 +8,25 @@ import {useSolidAuth} from "@ldo/solid-react";
 import LogoutButton from "../logout-button";
 import Login from "../login";
 import Review from "./review.mdx";
-import LibraryHeader from "../library-header";
 import {LIBRARY_COMUNICA} from "../../constants.ts";
-import ReviewHeader from "../review-header";
+import LibraryLayout from "../library-layout";
 
 export default function Comunica() {
     const {login, session} = useSolidAuth();
 
     return (
-        <>
-            <LibraryHeader library={LIBRARY_COMUNICA}/>
+        <LibraryLayout library={LIBRARY_COMUNICA}>
             <Content><IntroSection/></Content>
-            <ReviewHeader library={LIBRARY_COMUNICA}/>
             <div id="solid">
-                <Code language={"tsx"} id="ComunicaSolidDemo" code={demoCode}>
-                    <h2 className="subtitle is-3">Solid demo</h2>
-                    {session.isLoggedIn ? <>
-                        <ComunicaDemo/>
-                        <LogoutButton/>
-                    </> : <Login login={login}/>}
-                    <Content><CodeSection/></Content>
-                </Code>
+                <Content><h2 className="subtitle is-3">Solid demo</h2></Content>
+                {session.isLoggedIn ? <>
+                    <ComunicaDemo/>
+                    <LogoutButton/>
+                </> : <Login login={login}/>}
+                <Content><CodeSection/></Content>
+                <Code language={"tsx"} id="ComunicaSolidDemo" code={demoCode}/>
             </div>
             <Review/>
-        </>
+        </LibraryLayout>
     )
 }

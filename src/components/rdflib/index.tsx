@@ -10,17 +10,14 @@ import Review from "./review.mdx";
 import LogoutButton from "../logout-button";
 import Login from "../login";
 import {useSolidAuth} from "@ldo/solid-react";
-import LibraryHeader from "../library-header";
 import {LIBRARY_RDFLIB} from "../../constants.ts";
 import CodeLink from "../code-link";
-import LibrarySection from "../library-section";
-import GuideSection from "../guide-section";
+import LibraryLayout from "../library-layout";
 
 export default function Rdflib() {
     const {login, session} = useSolidAuth();
     return (
-        <>
-            <LibraryHeader library={LIBRARY_RDFLIB}/>
+        <LibraryLayout library={LIBRARY_RDFLIB}>
             <IntroSection/>
             <div id="local">
                 <Content><h2 className="subtitle is-3">Local demo</h2></Content>
@@ -44,8 +41,6 @@ export default function Rdflib() {
             <Code code={storeHookCode} id="StoreHook" language="typescript" className="line-numbers"/>
             <Content>It should allow you to easily access a global store. (It is basically the same code used in
                 the <CodeLink id="RdflibSolidDemo" lines={["8", "11-13"]}>Solid demo</CodeLink>.)</Content>
-            <LibrarySection exclude={LIBRARY_RDFLIB} title="Wanna check out the other libraries?" />
-            <GuideSection />
-        </>
+        </LibraryLayout>
     )
 }
