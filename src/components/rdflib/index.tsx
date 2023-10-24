@@ -34,12 +34,12 @@ export default function Rdflib() {
             </div>
             <div id="solid">
                 <Content><h2 className="subtitle is-3">Solid demo</h2></Content>
-                <Code language={"tsx"} id="RdflibSolidDemo" code={solidDemoCode} className="line-numbers"/>
                 {session.isLoggedIn ? <>
                     <RdflibSolidDemo/>
                     <LogoutButton/>
                 </> : <Login login={(issuer) => login(issuer, {redirectUrl: location.href.replace(/#\S+$/, "")})}/>}
                 <Content><SolidDemoCodeSection/></Content>
+                <Code language={"tsx"} id="RdflibSolidDemo" code={solidDemoCode} className="line-numbers"/>
             </div>
             <Review/>
             <Content>
