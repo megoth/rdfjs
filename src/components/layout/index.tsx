@@ -8,7 +8,7 @@ export default function Layout() {
         <div className="container">
             <Navigation/>
             <main className={styles.main}>
-                <div className="message is-info is-small">
+                <div className="message is-light is-small">
                     <div className="message-header">Work in progress</div>
                     <div className="message-body">
                         This website is a work in progress. Things might change radically.
