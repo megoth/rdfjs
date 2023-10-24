@@ -14,7 +14,7 @@ export default function Footer({className, ...props}: Props) {
                 <nav className={styles.footerNav}>
                     <span>Guides: </span>
                     {GUIDES.map(({href, name}) => (
-                        <NavLink to={href}>{name}</NavLink>
+                        <NavLink key={href} to={href}>{name}</NavLink>
                     ))}
                 </nav>
             </div>
