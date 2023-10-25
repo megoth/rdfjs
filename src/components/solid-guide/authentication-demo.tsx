@@ -1,5 +1,6 @@
 import {useSolidAuth} from "@ldo/solid-react";
 import Content from "../content";
+import Login from "../login";
 
 export default function AuthenticationDemo() {
     const {login, logout, session} = useSolidAuth();
@@ -12,10 +13,7 @@ export default function AuthenticationDemo() {
             </>
             : <>
                 <p>You're not authenticated</p>
-                <button className="button is-small"
-                        onClick={() => login(prompt("Provider URL") || "https://solidcommunity.net/")}>
-                    Log in
-                </button>
+                <Login login={login}/>
             </>}
     </Content>
 }
