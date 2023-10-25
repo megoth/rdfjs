@@ -2,6 +2,7 @@ import {SubmitHandler, useForm} from "react-hook-form";
 import {useEffect, useState} from "react";
 import Loading from "../loading";
 import useNotification from "../../hooks/use-notification";
+import Box from "../box";
 
 interface Props {
     name: string,
@@ -32,7 +33,7 @@ export default function Demo({name, onSubmit}: Props) {
     }
 
     return name ? (
-        <section className="box">
+        <Box>
             <form onSubmit={handleSubmit(onSubmitIntermediate)}>
                 <div className="field">
                     <label className="label">Name</label>
@@ -45,6 +46,6 @@ export default function Demo({name, onSubmit}: Props) {
                     <button className="button is-primary" disabled={isSyncing}>Submit</button>
                 </div>
             </form>
-        </section>
+        </Box>
     ) : <Loading/>
 }

@@ -1,0 +1,45 @@
+import Content from "../content";
+import Code from "../code";
+import jsxExample from "./jsx-example.tsx?raw";
+import JsxExample from "./jsx-example";
+import thisCode from "./2-jsx.mdx?raw";
+import Box from "../box";
+import CodeLink from "../code-link";
+import AuthorNote from "../author-note";
+
+<Content>
+    <h2 className="subtitle">JSX</h2>
+
+    One of it's most important features is the possibility of writing [markup using
+    JSX](https://react.dev/learn/writing-markup-with-jsx). This extension of JavaScript allows you to write code like
+    the following:
+</Content>
+
+<Code language="tsx" id="JsxExample" code={jsxExample} noCopy={true}/>
+
+<Content>
+    These functions are called **components**, and React apps composes one or more (usually a lot more) components. As
+    this website is a React app as well, we can include this function as well:
+</Content>
+
+<Box>
+    <JsxExample/>
+</Box>
+
+<Content>
+    And our component, `JsxExample`, is then reused again in the code running this page as well, as seen in
+    <CodeLink id="meta" lines={["4", "26"]}>lines 4 and 26</CodeLink> in the code below.
+</Content>
+
+<Code language="tsx" id="meta" code={thisCode} noCopy={true} className="line-numbers"/>
+
+<AuthorNote title="It's actually MDX!">
+    To be completely clear, this is actually [MDX](https://mdxjs.com/docs/what-is-mdx/), which is an extension of JSX.
+    But don't you love how self-referential we can be when coding? (I couldn't let this chance go =P )
+</AuthorNote>
+
+<AuthorNote title="It's actually TSX!">
+    And yes, technically I'm also using [TSX](https://www.typescriptlang.org/docs/handbook/jsx.html), which is a
+    TypeScript-supported version of JSX. Lots of fun tools to make things more complicated, sure, but the end result is
+    so nice to work with ^_^ (well, for me at least =P )
+</AuthorNote>
