@@ -1,9 +1,72 @@
 import Content from "../../content";
 import Code from "../../code";
 import localDemoCode from "./index.tsx?raw";
+import Walkthrough from "../../walkthrough";
+import CodeLink from "../../code-link";
+import {PROFILE_TURTLE} from "../../../constants";
 
 <Content>
     <h2 className="subtitle">Code</h2>
+
+    This demo saves the underlying turtle in `localStorage`. It no turtle is found, a default one is used:
 </Content>
 
-<Code language="tsx" id="InruptLocalDemo" code={localDemoCode} className="line-numbers"/>
+<Code language="turtle" id="DefaultTurtle" code={PROFILE_TURTLE} noCopy={true}/>
+
+<Code language="tsx" id="InruptLocalDemo" code={localDemoCode} className="line-numbers">
+    <Walkthrough>
+        <tr>
+            <td>
+                <CodeLink id="InruptLocalDemo" lines={["16-17"]}>Setting up dataset and turtle</CodeLink>
+            </td>
+            <td>
+                The type of objects that we usually start with is `SolidDataset` from the
+                [resource/solidDataset](https://docs.inrupt.com/developer-tools/api/javascript/solid-client/modules/resource_solidDataset.html)
+                module. We also prepare a turtle string since we're working locally.
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <CodeLink id="InruptLocalDemo" lines={["18-19"]}>Getting profile and name</CodeLink>
+            </td>
+            <td>
+                We also set up the variables `profile` and `name`, which respectively represent the thing retrieved as
+                profile and the literal name. The latter is important to pass on for the `Demo` component we fetch the
+                profile from the dataset that's currently used.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <CodeLink id="InruptLocalDemo" lines={["22-27"]}>Parsing turtle and updating dataset</CodeLink>
+            </td>
+            <td>
+                @inrupt/solid-client doesn't provide all the tools necessary for loading a turtle locally, so we've made
+                use of [N3.js](https://github.com/rdfjs/N3.js) to parse the turtle string. Since N3 returns [RDF/JS
+                Dataset](https://rdf.js.org/dataset-spec/), we can parse it using `fromRdfJsDataset`.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <CodeLink id="InruptLocalDemo" lines={["30-32"]}>Loading state</CodeLink>
+            </td>
+            <td>
+                Since parsing the initial turtle string can take a little time, we show the `Loading` component while we
+                wait for it to complete and update the dataset. Usually this goes very fast though.
+
+                Do note that the error handling here is bad, since there are changes that the dataset or profile turns
+                up `null`. But I've simplified the code for readability, so I accept this flaw.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <CodeLink id="InruptLocalDemo" lines={["35-42"]}>Updating RDF upon submit</CodeLink>
+            </td>
+            <td>
+                When submitting we get get thing we want to update, the profile, and update the literal that was set for
+                `foaf:name`. We then update the dataset with the updated thing, and proceed to serialize the updated
+                dataset, again with the help of N3.js.
+            </td>
+        </tr>
+    </Walkthrough>
+</Code>
