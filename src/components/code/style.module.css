@@ -1,8 +1,5 @@
 .container {
-    margin-bottom: 3rem;
-
-    & ol li {
-    }
+    margin-bottom: 1.5rem;
 }
 
 .field.field {

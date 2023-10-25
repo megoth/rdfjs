@@ -1,4 +1,13 @@
-.content {
+.content.content {
+    & h1,
+    & h2,
+    & h3,
+    & h4,
+    & h5,
+    & h6 {
+        margin-bottom: 0.75rem;
+    }
+
     :global(.image) {
         margin-bottom: 1em;
     }
