@@ -10,26 +10,34 @@ import Login from "../login";
 import {useSolidAuth} from "@ldo/solid-react";
 import {LIBRARY_LDO} from "../../constants.ts";
 import LibraryLayout from "../library-layout";
+import Container from "../container";
+import Hero from "../hero";
 
 export default function LDO() {
     const {login, session} = useSolidAuth();
     return (
         <LibraryLayout library={LIBRARY_LDO}>
-            <IntroSection/>
-            <div id="local">
-                <Content><h2 className="subtitle is-3">Local demo</h2></Content>
+            <Container>
+                <IntroSection/>
+                <Content id="local"><h2 className="subtitle is-3">Local demo</h2></Content>
+            </Container>
+            <Hero>
                 <LDOLocalDemo/>
+            </Hero>
+            <Container>
                 <LocalCodeSection/>
-            </div>
-            <div id="solid-react">
-                <Content><h2 className="subtitle is-3">@ldo/solid-react demo</h2></Content>
-                {session.isLoggedIn ? <>
-                    <LDOSolidReactDemo/>
-                    <LogoutButton/>
-                </> : <Login login={(issuer) => login(issuer, {redirectUrl: location.href.replace(/#\S+$/, "")})}/>}
+                <Content id="solid-react"><h2 className="subtitle is-3">@ldo/solid-react demo</h2></Content>
+                {session.isLoggedIn && <LogoutButton/>}
+            </Container>
+            <Hero>
+                {session.isLoggedIn
+                    ? <LDOSolidReactDemo/>
+                    : <Login login={(issuer) => login(issuer, {redirectUrl: location.href.replace(/#\S+$/, "")})}/>}
+            </Hero>
+            <Container>
                 <SolidReactCodeSection/>
-            </div>
-            <Review/>
+                <Review/>
+            </Container>
         </LibraryLayout>
     )
 }

@@ -4,6 +4,7 @@ import GuideHeader from "../guide-header";
 import RecommendationList from "../recommendation-list";
 import GuideSection from "../guide-section";
 import LibrarySection from "../library-section";
+import Container from "../container";
 
 interface Props {
     children: ReactNode
@@ -12,7 +13,7 @@ interface Props {
 }
 
 export default function GuideLayout({children, guide, minimal}: Props) {
-    return <>
+    return <Container>
         <GuideHeader guide={guide}/>
         {children}
         {!minimal && <>
@@ -20,5 +21,5 @@ export default function GuideLayout({children, guide, minimal}: Props) {
             <GuideSection exclude={guide} title={"More guides"}/>
             <LibrarySection/>
         </>}
-    </>;
+    </Container>;
 }

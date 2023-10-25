@@ -12,8 +12,7 @@ export default function SolidWarning() {
 
     return session.isLoggedIn ? (
             profile?.name ?
-                <div className="message is-success">
-                    <div className="message-body">
+                <>
                         <Content>
                             <p>
                                 Thank you, <strong>{profile?.name || "Stranger"}</strong>, you're all good!
@@ -21,12 +20,10 @@ export default function SolidWarning() {
                             </p>
                         </Content>
                         <LogoutButton/>
-                    </div>
-                </div> :
+                </> :
                 <Loading/>
         ) :
-        <div className="message is-warning">
-            <div className="message-body">
+        <>
                 <Content>
                     <p>
                         The Solid demos allow you to change the name described in your WebID profile. This means the app
@@ -39,7 +36,6 @@ export default function SolidWarning() {
 
                     <p>If you want, you can log in here, to verify that everything connects as it should.</p>
                 </Content>
-                <Login login={login} className="is-warning is-small"/>
-            </div>
-        </div>
+                <Login login={login} className="is-small"/>
+        </>
 }

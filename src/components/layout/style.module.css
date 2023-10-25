@@ -9,16 +9,10 @@
     }
 }
 
-.main {
-    margin: 1rem 0;
-}
+.main {}
 
-@media screen and (max-width: 1024px) {
-    .main {
-        margin: 1rem 0.75rem 1rem;
-    }
-
-    .footer {
+.footer {
+    @media screen and (max-width: 1024px) {
         margin: 0 0.75rem 0.5rem;
     }
 }

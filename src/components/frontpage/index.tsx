@@ -9,23 +9,33 @@ import {LOCAL_DEMOS, SOLID_DEMOS} from "../../constants.ts";
 import Demo from "./6-demo.mdx";
 import About from "./7-about.mdx";
 import Content from "../content";
+import Container from "../container";
+import Hero from "../hero";
 
 export default function Frontpage() {
     return (
         <>
-            <Intro/>
-            <Guides/>
-            <Local/>
-            <DemoList list={LOCAL_DEMOS}/>
-            <Content>
-                <p>Note that each demo has its own storage, so none of the local demos "bleed" into each other.</p>
-            </Content>
-            <Solid/>
-            <SolidWarning/>
-            <DemoList list={SOLID_DEMOS}/>
-            <Reviews/>
+            <Container>
+                <Intro/>
+                <Guides/>
+                <Local/>
+                <DemoList list={LOCAL_DEMOS}/>
+                <Content>
+                    <p>Note that each demo has its own storage, so none of the local demos "bleed" into each other.</p>
+                </Content>
+                <Solid/>
+            </Container>
+            <Hero>
+                <SolidWarning/>
+            </Hero>
+            <Container>
+                <DemoList list={SOLID_DEMOS}/>
+                <Reviews/>
+            </Container>
             <Demo/>
-            <About/>
+            <Container>
+                <About/>
+            </Container>
         </>
     );
 }

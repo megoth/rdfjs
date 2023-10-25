@@ -1,13 +1,16 @@
 import {NavLink} from "react-router-dom";
 import {clsx} from "clsx";
-import {useState} from "react";
+import {HTMLAttributes, useState} from "react";
 import styles from "./style.module.css";
 import {LIBRARIES} from "../../constants.ts";
 
-export default function Navigation() {
+interface Props extends HTMLAttributes<HTMLDivElement> {
+}
+
+export default function Navigation({className, ...props}: Props) {
     const [menuIsActive, setMenuIsActive] = useState<boolean>(false);
     return (
-        <nav className="navbar" role="navigation" aria-label="main navigation">
+        <nav className={clsx("navbar", className)} role="navigation" aria-label="main navigation" {...props}>
             <div className="container">
                 <div className="navbar-brand">
                     <NavLink to={"/"} className={clsx("navbar-item", styles.homeLink)}

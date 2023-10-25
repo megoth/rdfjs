@@ -4,66 +4,74 @@ import Code from "../code";
 import demoCode from "../demo/index.tsx?raw"
 import CodeLink from "../code-link";
 import Walkthrough from "../walkthrough";
+import Container from "../container";
+import Hero from "../hero";
 
-<Content id="demo">
-    <h2 className="subtitle is-3">How does the demo work?</h2>
+<Container>
+    <Content id="demo">
+        <h2 className="subtitle is-3">How does the demo work?</h2>
 
-    All of the demos use the same component, The `Demo` component. It takes two arguments, `name` and `onSubmit`. The
-    component presents a form with one simple text input. This input presents the name that is given to the user. The
-    form can be submitted, at which point the function `onSubmit` will be called.
+        All of the demos use the same component, The `Demo` component. It takes two arguments, `name` and `onSubmit`. The
+        component presents a form with one simple text input. This input presents the name that is given to the user. The
+        form can be submitted, at which point the function `onSubmit` will be called.
 
-    The demo below will not store anything, so refreshing the webpage will reset all changes.
-</Content>
-
-<FrontpageDemo/>
-
-<Content>
-    This code is written in [TSX](https://www.typescriptlang.org/docs/handbook/jsx.html), a language that combines
-    Typescript and ESM files. It's specifically written with React in mind, and relies a lot on [React
-    Hooks](https://react.dev/reference/react). That said, I think the overall abstractions are clear, and I'll walk
-    through the various parts:
-</Content>
-
-<Code language="tsx" id="FrontpageDemoCode" code={demoCode} className="line-numbers"
-      url="https://github.com/megoth/semtechjs-demo/blob/main/src/components/demo/index.tsx">
-    <Walkthrough>
-        <tr>
-            <td>
-                <CodeLink id="FrontpageDemoCode" lines={["11-13", "16-20", "24", "36", "40"]}>Form handling</CodeLink>
-            </td>
-            <td>
-                We're making use of [React Hook Form](https://www.react-hook-form.com/)'s `useForm`.
-                The `FormData` interface only has one attribute: name. This hook provides us with functionality that
-                manages the data flow of the form element at line 36. Also note `useEffect` at line 24, that updates the
-                value of name in the form if name is updated elsewhere.
-            </td>
-        </tr>
-        <tr>
-            <td><CodeLink id="FrontpageDemoCode" lines={["21", "31"]}>Notifications</CodeLink></td>
-            <td>Whenever the name successfully submits, we want to notify the user.</td>
-        </tr>
-        <tr>
-            <td>
-                <CodeLink id="FrontpageDemoCode" lines={["22", "27-30", "34", "44", "48"]}>Throttling submits</CodeLink>
-            </td>
-            <td>
-                Whenever we're working with the Solid demos, there might be a delay when communicating with the Solid
-                servers. Given this behavior, I want to limit when a user can submit updates. At line 34 and 48 you'll
-                see that whenever a name isn't defined yet, I simply show the `Loading` component.
-            </td>
-        </tr>
-        <tr>
-            <td><CodeLink id="FrontpageDemoCode" lines={["29", "36"]}>Handling submits</CodeLink></td>
-            <td>
-                We pass the data submitted to the parent demo code, which provide the specific logic that should
-                be done when form is submitted.
-            </td>
-        </tr>
-    </Walkthrough>
-
-    <Content>
-        The important part of all of this is that `name` is actually handled in the parent element, which is where the
-        logic of the demo resides (and which I'll show in the respective code section). It basically only provides a
-        form that calls on `onSubmit` when submitted.
+        The demo below will not store anything, so refreshing the webpage will reset all changes.
     </Content>
-</Code>
+</Container>
+
+<Hero>
+    <FrontpageDemo/>
+</Hero>
+
+<Container>
+    <Content>
+        This code is written in [TSX](https://www.typescriptlang.org/docs/handbook/jsx.html), a language that combines
+        Typescript and ESM files. It's specifically written with React in mind, and relies a lot on [React
+        Hooks](https://react.dev/reference/react). That said, I think the overall abstractions are clear, and I'll walk
+        through the various parts:
+    </Content>
+
+    <Code language="tsx" id="FrontpageDemoCode" code={demoCode} className="line-numbers"
+          url="https://github.com/megoth/semtechjs-demo/blob/main/src/components/demo/index.tsx">
+        <Walkthrough>
+            <tr>
+                <td>
+                    <CodeLink id="FrontpageDemoCode" lines={["11-13", "16-20", "24", "36", "40"]}>Form handling</CodeLink>
+                </td>
+                <td>
+                    We're making use of [React Hook Form](https://www.react-hook-form.com/)'s `useForm`.
+                    The `FormData` interface only has one attribute: name. This hook provides us with functionality that
+                    manages the data flow of the form element at line 36. Also note `useEffect` at line 24, that updates the
+                    value of name in the form if name is updated elsewhere.
+                </td>
+            </tr>
+            <tr>
+                <td><CodeLink id="FrontpageDemoCode" lines={["21", "31"]}>Notifications</CodeLink></td>
+                <td>Whenever the name successfully submits, we want to notify the user.</td>
+            </tr>
+            <tr>
+                <td>
+                    <CodeLink id="FrontpageDemoCode" lines={["22", "27-30", "34", "44", "48"]}>Throttling submits</CodeLink>
+                </td>
+                <td>
+                    Whenever we're working with the Solid demos, there might be a delay when communicating with the Solid
+                    servers. Given this behavior, I want to limit when a user can submit updates. At line 34 and 48 you'll
+                    see that whenever a name isn't defined yet, I simply show the `Loading` component.
+                </td>
+            </tr>
+            <tr>
+                <td><CodeLink id="FrontpageDemoCode" lines={["29", "36"]}>Handling submits</CodeLink></td>
+                <td>
+                    We pass the data submitted to the parent demo code, which provide the specific logic that should
+                    be done when form is submitted.
+                </td>
+            </tr>
+        </Walkthrough>
+
+        <Content>
+            The important part of all of this is that `name` is actually handled in the parent element, which is where the
+            logic of the demo resides (and which I'll show in the respective code section). It basically only provides a
+            form that calls on `onSubmit` when submitted.
+        </Content>
+    </Code>
+</Container>

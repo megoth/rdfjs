@@ -10,26 +10,32 @@ import LogoutButton from "../logout-button";
 import Review from "./review.mdx";
 import {LIBRARY_INRUPT} from "../../constants.ts";
 import LibraryLayout from "../library-layout";
+import Container from "../container";
+import Hero from "../hero";
 
 export default function Inrupt() {
     const {login, session} = useSolidAuth();
     return (
         <LibraryLayout library={LIBRARY_INRUPT}>
-            <IntroSection/>
-            <div id="local">
-                <Content><h2 className="subtitle is-3">Local demo</h2></Content>
+            <Container>
+                <IntroSection/>
+                <Content id="local"><h2 className="subtitle is-3">Local demo</h2></Content>
+            </Container>
+            <Hero>
                 <InruptLocalDemo/>
+            </Hero>
+            <Container>
                 <LocalCodeSection/>
-            </div>
-            <div id="solid">
-                <Content><h2 className="subtitle is-3">Solid demo</h2></Content>
-                {session.isLoggedIn ? <>
-                    <InruptSolidDemo/>
-                    <LogoutButton/>
-                </> : <Login login={login}/>}
+                <Content id="solid"><h2 className="subtitle is-3">Solid demo</h2></Content>
+                {session.isLoggedIn && <LogoutButton/>}
+            </Container>
+            <Hero>
+                {session.isLoggedIn ? <InruptSolidDemo/> : <Login login={login}/>}
+            </Hero>
+            <Container>
                 <SolidCodeSection/>
-            </div>
-            <Review/>
+                <Review/>
+            </Container>
         </LibraryLayout>
     )
 }

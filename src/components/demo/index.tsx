@@ -32,19 +32,17 @@ export default function Demo({name, onSubmit}: Props) {
     }
 
     return name ? (
-        <section className="box">
-            <form onSubmit={handleSubmit(onSubmitIntermediate)}>
-                <div className="field">
-                    <label className="label">Name</label>
-                    <div className="control">
-                        <input className="input" type="text" {...register("name", {required: true})}
-                               disabled={isSyncing}/>
-                    </div>
-                </div>
+        <form onSubmit={handleSubmit(onSubmitIntermediate)}>
+            <div className="field">
+                <label className="label">Name</label>
                 <div className="control">
-                    <button className="button is-primary" disabled={isSyncing}>Submit</button>
+                    <input className="input" type="text" {...register("name", {required: true})}
+                           disabled={isSyncing}/>
                 </div>
-            </form>
-        </section>
+            </div>
+            <div className="control">
+                <button className="button is-primary" disabled={isSyncing}>Submit</button>
+            </div>
+        </form>
     ) : <Loading/>
 }
