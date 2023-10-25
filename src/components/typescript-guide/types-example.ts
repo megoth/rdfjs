@@ -1,0 +1,3 @@
+type Profile = {
+    name?: string;
+}

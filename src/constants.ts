@@ -230,7 +230,32 @@ export const TYPESCRIPT_GUIDE: Guide = {
     logoAlt: "Logo of TypeScript",
     logoPreferredHeight: 192,
     name: "TypeScript",
-    recommendations: [],
+    recommendations: [{
+        title: "TypeScript: JavaScript With Syntax For Types",
+        href: "https://www.typescriptlang.org/",
+        note: "Official website",
+        type: "URL"
+    }, {
+        title: "TypeScript Tutorial for Beginners",
+        href: "https://www.youtube.com/watch?v=d56mG7DezGs",
+        note: "Long, but good introduction",
+        type: "YouTube"
+    }, {
+        title: "TypeScript Origins: The Documentary",
+        href: "https://www.youtube.com/watch?v=U6s2pdxebSo",
+        note: "Interesting documentary if you're into that stuff",
+        type: "YouTube"
+    }, {
+        title: "The TypeScript Tax",
+        href: "https://medium.com/javascript-scene/the-typescript-tax-132ff4cb175b",
+        note: "Interesting long-read from Eric Elliot on the cost of using TypeScript",
+        type: "URL"
+    }, {
+        title: "TypeScript at Slack",
+        href: "https://slack.engineering/typescript-at-slack/",
+        note: "Interesting text from Felix Rieseberg with some positive reflections on using TypeScript",
+        type: "URL"
+    }],
 };
 
 export const GUIDES = [
