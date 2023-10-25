@@ -1,3 +1,3 @@
-interface Profile {
-    name?: string;
+export interface Profile {
+    name?: string
 }

@@ -1,3 +1,3 @@
-type Profile = {
-    name?: string;
+export type Profile = {
+    name?: string
 }
