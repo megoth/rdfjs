@@ -13,6 +13,7 @@ import {useSolidAuth} from "@ldo/solid-react";
 import {LIBRARY_RDFLIB} from "../../constants.ts";
 import CodeLink from "../code-link";
 import LibraryLayout from "../library-layout";
+import Box from "../box";
 
 export default function Rdflib() {
     const {login, session} = useSolidAuth();
@@ -29,7 +30,9 @@ export default function Rdflib() {
                 {session.isLoggedIn ? <>
                     <RdflibSolidDemo/>
                     <LogoutButton/>
-                </> : <Login login={(issuer) => login(issuer, {redirectUrl: location.href.replace(/#\S+$/, "")})}/>}
+                </> : <Box>
+                    <Login login={(issuer) => login(issuer, {redirectUrl: location.href.replace(/#\S+$/, "")})}/>
+                </Box>}
                 <SolidDemoCodeSection/>
             </div>
             <Review/>

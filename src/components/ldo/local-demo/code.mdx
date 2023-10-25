@@ -1,9 +1,61 @@
 import Content from "../../content";
 import Code from "../../code";
 import localDemoCode from "./index.tsx?raw";
+import Walkthrough from "../../walkthrough";
+import CodeLink from "../../code-link";
+import {PROFILE_TURTLE} from "../../../constants";
 
 <Content>
     <h2 className="subtitle">Code</h2>
+
+    This demo saves the underlying turtle in `localStorage`. It no turtle is found, a default one is used:
 </Content>
 
-<Code language="tsx" id="LDOLocalDemo" code={localDemoCode} className="line-numbers" />
+<Code language="turtle" id="DefaultTurtle" code={PROFILE_TURTLE} noCopy={true}/>
+
+<Code language="tsx" id="LDOLocalDemo" code={localDemoCode} className="line-numbers">
+    <Walkthrough>
+        <tr>
+            <td>
+                <CodeLink id="LDOLocalDemo" lines={["11-12"]}>Setting up profile and turtle</CodeLink>
+            </td>
+            <td>
+                <p>
+                    We're setting a `null` for profile until we've loaded one from storage. For the turtle we have a
+                    default turtle that we use if none is stored in `localStorage`.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <CodeLink id="LDOLocalDemo" lines={["15-18"]}>Parsing turtle and updating profile</CodeLink>
+            </td>
+            <td>
+                When we have some turtle to process, we parse it with LDO's `parseRdf`, an asynchronous function that
+                returns `ldoDataset`, a variable of type `LdoDataset`, which is a very useful LDO object. From this
+                dataset we retrieve the object representing a subject in the dataset. This way we can retrieve the
+                profile, and update our code.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <CodeLink id="LDOLocalDemo" lines={["21-23"]}>Loading state</CodeLink>
+            </td>
+            <td>
+                While we wait for the turtle to parse, we simply show the `Loading` component. One drawback of this
+                solution is that we might simply not find a profile object, in which case we would show the demo to be
+                loading indefinitely. So there should be some error handling here, but I wanted to keep this code
+                simple.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <CodeLink id="LDOLocalDemo" lines={["26-27"]}>Updating name and storage</CodeLink>
+            </td>
+            <td>
+                These is where the beauty of LDO really shines through. Updating name is as simple as setting a new
+                value to `profile.name`. Next, we simply serialize the updated turtle using `toTurtle`.
+            </td>
+        </tr>
+    </Walkthrough>
+</Code>

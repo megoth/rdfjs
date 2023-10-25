@@ -1,0 +1,46 @@
+import AuthorNote from "../author-note";
+import {LIBRARY_LDO, RATING_CRITERIA} from "../../constants";
+import RatingCriteriaTitle from "../rating-criteria-title";
+import Content from "../content";
+import ReviewHeader from "../review-header";
+
+<AuthorNote title="Should you choose LDO?">
+    <ReviewHeader library={LIBRARY_LDO}/>
+
+    <RatingCriteriaTitle index={0} rating={LIBRARY_LDO.review[0]}/>
+    <Content id={RATING_CRITERIA[0][0]}>
+        Developer experience is where LDO shines through. By abstracting RDF graph management into what mostly feels
+        like normal JavaScript feels like magic. There are some bugs here and there due to its lack of maturity, and it
+        can be difficult to dig through some of stack traces when it is involved, but all of this is will pass as it
+        matures and the API becomes more stable.
+    </Content>
+
+    <RatingCriteriaTitle index={1} rating={LIBRARY_LDO.review[1]}/>
+    <Content id={RATING_CRITERIA[1][0]}>
+        The documentation of LDO is ok, but can definitely be improved, especially for the more experimental stuff (I'm
+        looking at you @ldo/solid-react). But again, this is to be expected for something this new, and given the
+        material we have we can expect more to come.
+    </Content>
+
+    <RatingCriteriaTitle index={2} rating={LIBRARY_LDO.review[2]}/>
+    <Content id={RATING_CRITERIA[2][0]}>
+        The community of LDO is a small group of people, with Jackson Morgan doing most of the development. Jackson's
+        quite busy, so it can take some time to get bugs fixed, but he's also the kind of guy who'll rewrite most of his
+        code because a bug showed a flaw in his old code. If you're in a position where you can give a bug some time, be
+        patient, and let it be resolved down the line, then you're good with choosing LDO.
+    </Content>
+
+    <RatingCriteriaTitle index={3} rating={LIBRARY_LDO.review[3]}/>
+    <Content id={RATING_CRITERIA[3][0]}>
+        This is where LDO lacks behind the other libraries. Jackson has been working on it for over a year or so, and
+        with limited resources there are lengths to how much you can do. That said, it's impressive how much that's in
+        the works for LDO, and how much that already works!
+    </Content>
+
+    <RatingCriteriaTitle index={4} rating={LIBRARY_LDO.review[4]}/>
+    <Content id={RATING_CRITERIA[4][0]}>
+        I know it's a hard sell, but if you're lucky enough to be able to experiment in your work, and possibly having
+        to do major changes in the use of APIs a couple of times, then you're good with LDO. I'm going to choose LDO for
+        every project I can, and hopefully my customers will agree that it's a risk worth taking.
+    </Content>
+</AuthorNote>
