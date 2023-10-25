@@ -1,0 +1,16 @@
+import Content from "../content";
+import Code from "../code";
+import CodeLink from "../code-link";
+import storeHookCode from "./store-hook.ts?raw";
+
+<Content>
+    <h2 className="subtitle">Tips on React</h2>
+
+    If you're going to use rdflib.js with React, I would encourage you to use this hook:
+</Content>
+<Code code={storeHookCode} id="StoreHook" language="typescript" className="line-numbers"/>
+
+<Content>
+    It should allow you to easily access a global store. (It is basically the same code used in
+    the <CodeLink id="RdflibSolidDemo" lines={["8", "11-13"]}>Solid demo</CodeLink>.)
+</Content>

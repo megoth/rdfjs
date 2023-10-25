@@ -1,17 +1,16 @@
 import RdflibLocalDemo from "./local-demo";
-import storeHookCode from "./store-hook.ts?raw";
-import Code from "../code";
-import IntroSection from "./intro.mdx";
 import LocalDemoCodeSection from "./local-demo/code.mdx";
 import SolidDemoCodeSection from "./solid-demo/code.mdx";
 import Content from "../content";
 import RdflibSolidDemo from "./solid-demo";
-import Review from "./review.mdx";
+import IntroSection from "./1-intro.mdx";
+import Review from "./2-review.mdx";
+import React from "./3-react.mdx";
+import Bias from "./4-bias.mdx";
 import LogoutButton from "../logout-button";
 import Login from "../login";
 import {useSolidAuth} from "@ldo/solid-react";
 import {LIBRARY_RDFLIB} from "../../constants.ts";
-import CodeLink from "../code-link";
 import LibraryLayout from "../library-layout";
 import Box from "../box";
 
@@ -20,30 +19,20 @@ export default function Rdflib() {
     return (
         <LibraryLayout library={LIBRARY_RDFLIB}>
             <IntroSection/>
-            <div id="local">
-                <Content><h2 className="subtitle is-3">Local demo</h2></Content>
-                <RdflibLocalDemo/>
-                <LocalDemoCodeSection/>
-            </div>
-            <div id="solid">
-                <Content><h2 className="subtitle is-3">Solid demo</h2></Content>
-                {session.isLoggedIn ? <>
-                    <RdflibSolidDemo/>
-                    <LogoutButton/>
-                </> : <Box>
-                    <Login login={(issuer) => login(issuer, {redirectUrl: location.href.replace(/#\S+$/, "")})}/>
-                </Box>}
-                <SolidDemoCodeSection/>
-            </div>
+            <Content id="local"><h2 className="subtitle is-3">Local demo</h2></Content>
+            <RdflibLocalDemo/>
+            <LocalDemoCodeSection/>
+            <Content id="solid"><h2 className="subtitle is-3">Solid demo</h2></Content>
+            {session.isLoggedIn ? <>
+                <RdflibSolidDemo/>
+                <LogoutButton/>
+            </> : <Box>
+                <Login login={(issuer) => login(issuer, {redirectUrl: location.href.replace(/#\S+$/, "")})}/>
+            </Box>}
+            <SolidDemoCodeSection/>
+            <React/>
             <Review/>
-            <Content>
-                <h2 className="subtitle">Tips on React</h2>
-
-                If you're going to use rdflib.js with React, I would encourage you to use this hook:
-            </Content>
-            <Code code={storeHookCode} id="StoreHook" language="typescript" className="line-numbers"/>
-            <Content>It should allow you to easily access a global store. (It is basically the same code used in
-                the <CodeLink id="RdflibSolidDemo" lines={["8", "11-13"]}>Solid demo</CodeLink>.)</Content>
+            <Bias/>
         </LibraryLayout>
     )
 }
