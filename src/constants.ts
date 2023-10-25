@@ -122,6 +122,21 @@ export const SOLID_GUIDE: Guide = {
         note: "Official website",
         type: "URL"
     }, {
+        title: "Solid Community Forum",
+        href: "https://forum.solidproject.org/",
+        note: "Official forum of Solid",
+        type: "URL"
+    }, {
+        title: "solid/chat",
+        href: "https://app.gitter.im/#/room/#solid_chat:gitter.im",
+        note: "Official chat room for Solid, using the Matrix protocol",
+        type: "URL"
+    }, {
+        title: "solidProjectSpace",
+        href: "https://app.gitter.im/#/room/#solidprojectspace:matrix.org",
+        note: "More chat rooms using the Matrix protocol",
+        type: "URL"
+    }, {
         title: "How Solid will give back control over your data",
         href: "https://www.youtube.com/watch?v=V-9cOJ6SUHI",
         note: "Good introduction to Solid",
