@@ -11,8 +11,8 @@ export default function GuideSection({exclude, title}: Props) {
             <Content>
                 <h2 className="subtitle">{title || "Guides"}</h2>
 
-                If you want to learn more about semantic technologies that are relevant for the demos used on this
-                website, check out these other guides.
+                If you want to learn more about technologies that are relevant for the demos used on this
+                website, check out these {title ? "other guides" : "guides"} as well.
             </Content>
 
             <GuideList exclude={exclude}/>
