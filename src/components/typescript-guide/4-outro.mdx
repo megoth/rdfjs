@@ -1,6 +1,9 @@
 import AuthorNote from "../author-note";
+import {BsFillHeartFill} from "react-icons/bs";
+import styles from "./styles.module.css";
 
-<AuthorNote title="I like TypeScript">
+<AuthorNote
+    title={<span className={styles.outroTitle}><span>I </span><BsFillHeartFill/><span> TypeScript</span></span>}>
     As I mentioned, I enjoy coding with TypeScript. I'll use it in most of my projects, if not all. This website is not
     an exemption. So even if you're amongst those that despise TypeScript or find it unnecessary, I hope you find value
     in the code I share ^_^

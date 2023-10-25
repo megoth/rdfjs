@@ -6,7 +6,7 @@ import Content from "../content";
 
 interface Props {
     children: ReactNode;
-    title?: string;
+    title?: ReactNode;
 }
 
 export default function AuthorNote({children, title}: Props) {
