@@ -1,5 +1,5 @@
 import {SubmitHandler} from "react-hook-form";
-import {useEffect, useMemo, useState} from "react";
+import {useEffect, useState} from "react";
 import {
     getLiteral, getSolidDataset, getThing, saveSolidDatasetAt, setLiteral, setThing, SolidDataset
 } from "@inrupt/solid-client";
@@ -13,14 +13,8 @@ import Loading from "../../loading";
 export default function InruptSolidDemo() {
     const {session, fetch} = useSolidAuth();
     const [dataset, setDataset] = useState<SolidDataset | null>(null);
-    const profile = useMemo(
-        () => dataset && session.webId && getThing(dataset, session.webId),
-        [dataset, session.webId]
-    );
-    const name = useMemo(
-        () => profile ? getLiteral(profile, FOAF.name)?.value || "" : "",
-        [profile]
-    );
+    const profile = dataset && session.webId && getThing(dataset, session.webId);
+    const name = profile ? getLiteral(profile, FOAF.name)?.value || "" : "";
 
     useEffect(() => {
         if (!session.webId) return;

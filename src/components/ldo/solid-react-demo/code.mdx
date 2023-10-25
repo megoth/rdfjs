@@ -17,10 +17,15 @@ import Walkthrough from "../../walkthrough";
                 <CodeLink id="LDOSolidDemo" lines={["9-10"]}>Loading resource and retrieving profile</CodeLink>
             </td>
             <td>
-                `useResource` and `useSubject` are a couple of handy hooks from
-                [@ldo/solid-react](https://github.com/o-development/ldobjects/tree/main/packages/solid-react) that allow
-                us to 1) fetch the WebID resource, and 2) retrieve it packaged as a `SolidProfile`. This is another
-                example of the ease LDO allow you to express your code.
+                <Content>
+                    `useResource` and `useSubject` are a couple of handy hooks from
+                    [@ldo/solid-react](https://github.com/o-development/ldobjects/tree/main/packages/solid-react) that
+                    allow us to 1) fetch the WebID resource, and 2) retrieve it packaged as a `SolidProfile`. This is
+                    another example of the ease LDO allow you to express your code.
+
+                    We set `reloadOnMount` to make sure that LDO always reloads the online resource when the demo is
+                    shown. I have to do this since the demos don't tell LDO that the online resource has been updated.
+                </Content>
             </td>
         </tr>
         <tr>

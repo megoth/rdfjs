@@ -1,5 +1,4 @@
 import {SubmitHandler} from "react-hook-form";
-import {useMemo} from "react";
 import {getLiteral, getThing, setLiteral, setThing} from "@inrupt/solid-client";
 import {FOAF} from "@inrupt/vocab-common-rdf";
 import {Literal} from "@rdfjs/types"
@@ -12,14 +11,8 @@ import useSolidDataset from "./useSolidDataset.ts";
 export default function InruptSolidAlternativeDemo() {
     const {session} = useSolidAuth();
     const [profileDataset, saveProfileDataset] = useSolidDataset(session.webId);
-    const profile = useMemo(
-        () => profileDataset && session.webId && getThing(profileDataset, session.webId),
-        [profileDataset, session.webId]
-    );
-    const name = useMemo(
-        () => profile ? getLiteral(profile, FOAF.name)?.value || "" : "",
-        [profile]
-    );
+    const profile = profileDataset && session.webId && getThing(profileDataset, session.webId);
+    const name = profile ? getLiteral(profile, FOAF.name)?.value || "" : "";
 
     if (!profileDataset || !session.webId || !profile) {
         return <Loading/>
