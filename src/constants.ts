@@ -76,7 +76,42 @@ export const REACT_GUIDE: Guide = {
     logoAlt: "Logo of React",
     logoPreferredHeight: 192,
     name: "React",
-    recommendations: [],
+    recommendations: [{
+        title: "React",
+        href: "https://react.dev/",
+        note: "Official website",
+        type: "URL"
+    }, {
+        title: "Writing Markup with JSX",
+        href: "https://react.dev/learn/writing-markup-with-jsx",
+        note: "Documentation for JSX",
+        type: "URL"
+    }, {
+        title: "Built-in React Hooks",
+        href: "https://react.dev/reference/react",
+        note: "Documentation for React Hooks",
+        type: "URL"
+    }, {
+        title: "React State Management Libraries and How to Choose",
+        href: "https://daveceddia.com/react-state-management/",
+        note: "An interesting long-read by Dave Ceddia on state management in React",
+        type: "URL"
+    }, {
+        title: "Tao of React - Software Design, Architecture & Best Practices",
+        href: "https://alexkondov.com/tao-of-react/",
+        note: "Good long-read by Alex Kondov with a lot of tips for React",
+        type: "URL"
+    }, {
+        title: "React Tutorial for Beginners",
+        href: "https://www.youtube.com/watch?v=SqcY0GlETPk",
+        note: "Long but good introduction video",
+        type: "YouTube"
+    }, {
+        title: "How A Small Team of Developers Created React at Facebook | React.js: The Documentary",
+        href: "https://www.youtube.com/watch?v=8pDqJVdNa44",
+        note: "It seems successful tools need their own documentary. This one is quite good though.",
+        type: "YouTube"
+    }],
 };
 export const SHEX_GUIDE: Guide = {
     href: "/shex",
