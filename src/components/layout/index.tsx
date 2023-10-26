@@ -10,10 +10,10 @@ export default function Layout() {
             <main className={styles.main}>
                 <div className="message is-info is-small">
                     <div className="message-body">
-                        This website is currently being review before final launch. If you have any feedback on this
+                        This website is currently being reviewed for quality control. If you have any feedback on this
                         website that you want to share with me, I would appreciate it if you send me a message (on a
-                        channel you know me) or create an issue on the&nbsp;
-                        <a href="https://github.com/megoth/rdfjs/issues">website's project page</a>.
+                        channel you know me) or create an issue on the <a
+                        href="https://github.com/megoth/rdfjs/issues">website's project page</a>.
                     </div>
                 </div>
                 <Outlet/>
