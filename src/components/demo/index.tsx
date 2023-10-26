@@ -14,11 +14,7 @@ export interface FormData {
 }
 
 export default function Demo({name, onSubmit}: Props) {
-    const {
-        register,
-        handleSubmit,
-        setValue
-    } = useForm<FormData>();
+    const {register, handleSubmit, setValue} = useForm<FormData>();
     const {notify} = useNotification();
     const [isSyncing, setIsSyncing] = useState(false);
 

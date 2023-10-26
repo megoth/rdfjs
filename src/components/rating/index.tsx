@@ -18,7 +18,7 @@ export default function Rating({className, rating, ...props}: Props) {
                     ? <BsFillHeartFill className={styles.icon}/>
                     : (normRating === -0.5
                             ? <BsFillHeartFill className={styles.icon} style={{width: "0.75em"}}/>
-                            : <BsFillHeartFill className={styles.icon} style={{fill: "transparent"}}/>
+                            : null
                     )
                 }
             </Fragment>

@@ -30,14 +30,17 @@ export default function SolidWarning() {
                 <Content>
                     <p>
                         The Solid demos allow you to change the name described in your WebID profile. This means the app
-                        will need at least <strong>READ</strong> and <strong>APPEND</strong> access to your WebID
+                        will need at least <strong>READ</strong> and <strong>WRITE</strong> access to your WebID
                         resource. The latter access mode provides a lot of possibilities for an app with malicious
                         intent. Although I can promise I won't betray that trust (and I do, pinky promise!), you
                         might want to consider using this app (and other experimental apps like it) with a WebID that
                         isn't vulnerable (e.g. use a test account).
                     </p>
 
-                    <p>If you want, you can log in here, to verify that everything connects as it should.</p>
+                    <p>
+                        If you do trust in this website (i.e. me, Arne Hassel, the creator), you can log in here, to
+                        verify that everything connects as it should.
+                    </p>
                 </Content>
                 <Login login={login} className="is-warning is-small"/>
             </div>

@@ -417,7 +417,7 @@ export const LOCAL_DEMOS: Array<Demo> = [
         icon: "/inrupt.webp",
         iconAlt: "Logo for Inrupt",
         library: LIBRARY_INRUPT,
-        slogan: "Inrupt's JS libraries can be used locally as well",
+        slogan: "Inrupt's JS libraries can be used locally using N3.js",
         text: "Inrupt"
     },
     {

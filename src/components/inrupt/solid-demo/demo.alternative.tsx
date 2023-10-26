@@ -14,7 +14,7 @@ export default function InruptSolidAlternativeDemo() {
     const profile = profileDataset && session.webId && getThing(profileDataset, session.webId);
     const name = profile ? getLiteral(profile, FOAF.name)?.value || "" : "";
 
-    if (!profileDataset || !session.webId || !profile) {
+    if (!profile) {
         return <Loading/>
     }
 

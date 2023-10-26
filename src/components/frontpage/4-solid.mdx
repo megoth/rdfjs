@@ -8,10 +8,10 @@ import {NavLink} from "react-router-dom";
         <GiTechnoHeart style={{fill: "#7C4DFF"}}/>
     </h2>
 
-    In the first series of demos I've focused on working locally in the browser by storing the data in local storage.
+    In the first series of demos I've focused on working locally in the browser by storing the data in the browser.
     But RDF is designed to live on the web and be, well, linked! (Hence the popular synonym Linked Data.) The problem
     with this approach is that it requires us to synchronize our data with a web server. Meaning we need some sort of
-    authorization on the resources involved, which in turn probably would require some authentication.
+    authorization on the resources involved, which in turn might require some authentication.
 
     Luckily, all of this is solved by using <NavLink to="/solid">Solid</NavLink>! As promoted on
     [solidproject.org](https://solidproject.org/):
@@ -24,10 +24,9 @@ import {NavLink} from "react-router-dom";
 
     Do note that even though I've chosen Solid for these demos, most of these should also work nicely with other
     Linked Data-based systems. You might use another form of authentication, or another server API altogether, but
-    as long as they use RDF and SPARQL, they should be somewhat compatible.
+    as long as they use RDF and SPARQL, they should be somewhat interoperable.
 
-    When working with Solid, I want to present all libraries presented on this website. Again I've implemented the
-    same demo, but this time with the twist that it retrieves and updates the name that's retrieved from your WebID
-    resource. This introduces some latency between client and server, and you'll experience some loading states when
-    retrieving and submitting data.
+    Using Solid I've reimplemented the demos using it as storage. These demos retrieve and update the name that's
+    located in your WebID resource. This introduces some latency between client and server, and you'll experience some
+    loading states when retrieving and posting data.
 </Content>

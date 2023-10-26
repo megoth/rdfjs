@@ -4,8 +4,10 @@ import {useSolidAuth} from "@ldo/solid-react";
 
 export default function useStore() {
     const {fetch} = useSolidAuth();
-    const store = useMemo(() => graph() as LiveStore, []);
-    useMemo(() => new Fetcher(store, {fetch}), [fetch, store]);
-    useMemo(() => new UpdateManager(store), [store]);
-    return store;
+    return useMemo(() => {
+        const store = graph() as LiveStore;
+        new Fetcher(store, {fetch});
+        new UpdateManager(store);
+        return store;
+    }, [fetch]);
 }

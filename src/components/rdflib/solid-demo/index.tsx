@@ -6,9 +6,10 @@ import {NAME_NODE} from "../../../constants.ts";
 
 export default function RdflibSolidDemo() {
     const {session, fetch} = useSolidAuth();
-    const store = useMemo(() => graph(), []);
-    const fetcher = useMemo(() => new Fetcher(store, {fetch}), [store, fetch]);
-    const updater = useMemo(() => new UpdateManager(store), [store]);
+    const [store, fetcher, updater] = useMemo(() => {
+        const store = graph();
+        return [store, new Fetcher(store, {fetch}), new UpdateManager(store)];
+    }, [fetch]);
     const [name, setName] = useState("");
     const profileNode = namedNode(session.webId!);
 

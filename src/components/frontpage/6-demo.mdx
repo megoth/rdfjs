@@ -29,31 +29,30 @@ import Walkthrough from "../walkthrough";
     <Walkthrough>
         <tr>
             <td>
-                <CodeLink id="FrontpageDemoCode" lines={["11-13", "16-20", "24", "36", "40"]}>Form handling</CodeLink>
+                <CodeLink id="FrontpageDemoCode" lines={["12-14", "17", "21", "33", "37"]}>Form handling</CodeLink>
             </td>
             <td>
                 We're making use of [React Hook Form](https://www.react-hook-form.com/)'s `useForm`.
                 The `FormData` interface only has one attribute: name. This hook provides us with functionality that
-                manages the data flow of the form element at line 36. Also note `useEffect` at line 24, that updates the
+                manages the data flow of the form element at line 33. Also note `useEffect` at line 21, that updates the
                 value of name in the form if name is updated elsewhere.
             </td>
         </tr>
         <tr>
-            <td><CodeLink id="FrontpageDemoCode" lines={["21", "31"]}>Notifications</CodeLink></td>
+            <td><CodeLink id="FrontpageDemoCode" lines={["18", "28"]}>Notifications</CodeLink></td>
             <td>Whenever the name successfully submits, we want to notify the user.</td>
         </tr>
         <tr>
             <td>
-                <CodeLink id="FrontpageDemoCode" lines={["22", "27-30", "34", "44", "48"]}>Throttling submits</CodeLink>
+                <CodeLink id="FrontpageDemoCode" lines={["19", "24-27", "41"]}>Throttling submits</CodeLink>
             </td>
             <td>
                 Whenever we're working with the Solid demos, there might be a delay when communicating with the Solid
-                servers. Given this behavior, I want to limit when a user can submit updates. At line 34 and 48 you'll
-                see that whenever a name isn't defined yet, I simply show the `Loading` component.
+                servers. Given this behavior, I want to limit when a user can submit updates.
             </td>
         </tr>
         <tr>
-            <td><CodeLink id="FrontpageDemoCode" lines={["29", "36"]}>Handling submits</CodeLink></td>
+            <td><CodeLink id="FrontpageDemoCode" lines={["16", "26"]}>Relaying submits</CodeLink></td>
             <td>
                 We pass the data submitted to the parent demo code, which provide the specific logic that should
                 be done when form is submitted.

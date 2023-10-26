@@ -4,6 +4,7 @@ import localDemoCode from "./index.tsx?raw";
 import Walkthrough from "../../walkthrough";
 import CodeLink from "../../code-link";
 import {PROFILE_TURTLE} from "../../../constants";
+import {NavLink} from "react-router-dom";
 
 <Content>
     <h2 className="subtitle">Code</h2>
@@ -12,6 +13,11 @@ import {PROFILE_TURTLE} from "../../../constants";
 </Content>
 
 <Code language="turtle" id="DefaultTurtle" code={PROFILE_TURTLE} noCopy={true}/>
+
+<Content>
+    (If the above code doesn't make sense for you, you might want to consider reading the <NavLink to={"/rdf"}>guide on
+    RDF</NavLink>.)
+</Content>
 
 <Code language="tsx" id="InruptLocalDemo" code={localDemoCode} className="line-numbers">
     <Walkthrough>
