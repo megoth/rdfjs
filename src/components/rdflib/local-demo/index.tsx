@@ -11,7 +11,6 @@ export default function RdflibLocalDemo() {
 
     useEffect(() => {
         if (!store) return;
-
         parse(turtle, store, PROFILE_URI, "text/turtle", (_, updatedStore) => {
             const name = updatedStore?.any(PROFILE_NODE, NAME_NODE, null)?.value || "";
             setName(name);
