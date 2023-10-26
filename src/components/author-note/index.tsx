@@ -1,17 +1,17 @@
-import {ReactNode} from "react";
+import {HTMLAttributes, ReactNode} from "react";
 import styles from "./style.module.css";
 import {clsx} from "clsx";
 import Card from "../card";
 import Content from "../content";
 
-interface Props {
+interface Props extends Omit<HTMLAttributes<HTMLDivElement>, "title"> {
     children: ReactNode;
     title?: ReactNode;
 }
 
-export default function AuthorNote({children, title}: Props) {
+export default function AuthorNote({children, title, ...props}: Props) {
     return (
-        <Card className={styles.card}>
+        <Card className={styles.card} {...props}>
             <div className="card-content">
                 <div className={clsx("media", styles.media)}>
                     <div className={clsx("media-content", styles.mediaContent)}>
