@@ -1,0 +1,20 @@
+import Content from "../content";
+import Code from "../code";
+import modelCode from "./model.ts?raw";
+import CodeStep from "../code/step";
+
+<Content>
+    A vital part of Soukai is defining models by extending the `Model` class in `soukai`, but to enable support for RDF
+    we make use of the `SolidModel` class in `soukai-solid`.
+
+    For our demos we've created the model `PersonModel` that is reused by both demos:
+</Content>
+
+<Code id="PersonModel" language="typescript" code={modelCode} noCopy={true} className="line-numbers">
+    <CodeStep lines={["5"]} title={"Setting type"}>
+        By setting the static field `rdfsClasses` we tell Soukai the types for this model.
+    </CodeStep>
+    <CodeStep lines={["8-12"]} title={"Defining field name"}>
+        Again we only define attribute for the model, name, which is not required.
+    </CodeStep>
+</Code>

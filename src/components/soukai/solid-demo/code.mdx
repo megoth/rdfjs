@@ -1,11 +1,36 @@
-<h2 className="subtitle">Code</h2>
+import Content from "../../content";
+import Code from "../../code";
+import solidDemoCode from "./index.tsx?raw";
+import CodeStep from "../../code/step";
 
-A pellentesque sit amet porttitor eget dolor. Enim nunc faucibus a pellentesque sit amet porttitor eget. Praesent
-tristique magna sit amet purus gravida. Feugiat scelerisque varius morbi enim nunc faucibus a. Accumsan in nisl nisi
-scelerisque eu ultrices. Eget nulla facilisi etiam dignissim diam quis enim. Risus nec feugiat in fermentum posuere
-urna nec. Egestas maecenas pharetra convallis posuere morbi leo urna molestie. Accumsan in nisl nisi scelerisque eu
-ultrices vitae auctor. Feugiat pretium nibh ipsum consequat nisl vel. Mauris pharetra et ultrices neque ornare aenean
-euismod elementum. Risus in hendrerit gravida rutrum quisque non tellus orci. Urna molestie at elementum eu facilisis
-sed odio morbi. Ullamcorper malesuada proin libero nunc consequat interdum varius sit amet. Convallis tellus id
-interdum velit laoreet id. Quam id leo in vitae turpis massa sed. Eget nunc scelerisque viverra mauris in aliquam sem
-fringilla. Morbi non arcu risus quis varius quam quisque. Faucibus in ornare quam viverra.
+<Content>
+    <h2 className="subtitle">Code</h2>
+
+    This demo requires you to authenticate yourself using a Solid account.
+</Content>
+
+<Code language="tsx" id="SoukaiSolidDemo" code={solidDemoCode} className="line-numbers">
+    <CodeStep lines={["9-10", "16"]} title="Bootstrapping model">
+        We need to bootstrap Soukai with the models and engine of choice, `SolidEngine` from soukai-solid. Note that we
+        set the engine inside our component this time, since we're dependent on the fetch-variable `useSolidAuth`.
+    </CodeStep>
+    <CodeStep lines={["14"]} title="Preparing model">
+        We're using the same model as the local demo, `PersonModel`. While we wait for it to be read we set it to
+        `null`.
+    </CodeStep>
+    <CodeStep lines={["19-20"]} title="Loading model">
+        Using `PersonModel.find` we fetch the data from the online resource.
+    </CodeStep>
+    <CodeStep lines={["23-25"]} title="Loading state">
+        Retrieving the online resource can take some time, so we make sure to show the `Loading` component while we wait
+        for it to complete.
+    </CodeStep>
+    <CodeStep lines={["28-30"]} title="Updating online resource">
+        Once the form is submitted, we make sure to update the name for the `PersonModel` and update the online
+        resource. Once that's complete, we update our local reference to `PersonModel`.
+    </CodeStep>
+    <CodeStep lines={["33"]} title="Reading name">
+        Whenever we have a `PersonModel` loaded, we make sure to extract the existing name so that it can be passed to
+        the `Demo` component.
+    </CodeStep>
+</Code>

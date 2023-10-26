@@ -4,19 +4,20 @@ import {bootModels, setEngine} from 'soukai';
 import {useEffect, useState} from "react";
 import Loading from "../../loading";
 import Demo, {FormData} from "../../demo";
-import {Person} from "../local-demo";
+import {PersonModel} from "../model.ts";
 
 bootSolidModels();
-bootModels({Person});
+bootModels({Person: PersonModel});
 
 export default function SoukaiSolidDemo() {
     const {session, fetch} = useSolidAuth();
-    const [person, setPerson] = useState<Person | null>(null);
+    const [person, setPerson] = useState<PersonModel | null>(null);
 
     useEffect(() => setEngine(new SolidEngine(fetch)), [fetch]);
 
     useEffect(() => {
-        Person.find(session.webId!).then((person) => setPerson(person))
+        if (!session.webId) return;
+        PersonModel.find(session.webId).then((person) => setPerson(person))
     }, [session.webId]);
 
     if (!person) {
@@ -25,9 +26,10 @@ export default function SoukaiSolidDemo() {
 
     const onSubmit = async (data: FormData) => {
         person.setAttribute("name", data.name);
-        const savedPerson = await person.save(session.webId!);
+        const savedPerson = await person.save(session.webId);
         setPerson(savedPerson);
     };
 
-    return <Demo name={person.getAttributeValue("name")} onSubmit={onSubmit}/>
+    const name = person.getAttributeValue("name")?.toString() || "";
+    return <Demo name={name} onSubmit={onSubmit}/>
 }

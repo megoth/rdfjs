@@ -1,0 +1,25 @@
+import AuthorNote from "../author-note";
+import {LIBRARY_SOUKAI, RATING_CRITERIA} from "../../constants";
+import RatingCriteriaTitle from "../rating-criteria-title";
+import Content from "../content";
+import {NavLink} from "react-router-dom";
+
+<AuthorNote id="review" title="Should you choose Soukai?">
+    I haven't worked enough with Soukai to write a proper review. You should check out the official website and maybe
+    even talk with its creator, [Noel De Martin](https://noeldemartin.com/), to figure out whether this library is good
+    choice for you.
+
+    That being said, my impression of Soukai is that it gets far in its goal to describe what is essentially shapes,
+    but doing it by using JavaScript syntax. In that way it's somewhat similar to <NavLink to="/ldo">LDO</NavLink>,
+    although LDO takes it a step further (in the right direction IMO) by using a shape standard, ShEx.
+
+    There are arguments for and against this choice:
+
+    * **Pro:** By using the syntax of the programming language your developers will use you lessen the amount of new
+    technology your developers need to learn.
+    * **Con:** By not using a standard you might make it harder for people who don't have a JS-background but who're
+    going to work together with you on the data model.
+
+    I'm also of the impression that the adoption of Soukai ODM is a bit limited, so I'm not sure about the size of its
+    community.
+</AuthorNote>
