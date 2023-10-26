@@ -25,10 +25,12 @@ export default function ReviewHeader({library}: Props) {
                 ))}
                 </tbody>
             </table>
-            <p className="notification is-info is-light is-small">
-                <strong>Disclaimer:</strong> This review is a personal assertion, and not in any way linked to the <a
-                href="https://github.com/rdfjs">W3C RDF/JS CG</a>.
-            </p>
+            <div className="message is-info is-light is-small">
+                <div className="message-body">
+                    <strong>Disclaimer:</strong> This review is a personal assertion, and not in any way linked to
+                    the <a href="https://github.com/rdfjs">W3C RDF/JS CG</a>.
+                </div>
+            </div>
         </>
     ) : null;
 }
