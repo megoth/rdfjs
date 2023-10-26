@@ -1,4 +1,3 @@
-import {SubmitHandler} from "react-hook-form";
 import {useEffect, useState} from "react";
 import {SolidProfile, SolidProfileShapeType} from "ldo-solid-profile";
 import Loading from "../../loading";
@@ -22,7 +21,7 @@ export default function LDOLocalDemo() {
         return <Loading/>
     }
 
-    const onSubmit: SubmitHandler<FormData> = async (data) => {
+    const onSubmit = async (data: FormData) => {
         profile.name = data.name;
         setTurtle(await toTurtle(profile));
     };

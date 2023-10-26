@@ -1,4 +1,3 @@
-import {SubmitHandler} from "react-hook-form";
 import {useEffect, useState} from "react";
 import {
     getLiteral, getSolidDataset, getThing, saveSolidDatasetAt, setLiteral, setThing, SolidDataset
@@ -25,7 +24,7 @@ export default function InruptSolidDemo() {
         return <Loading/>
     }
 
-    const onSubmit: SubmitHandler<FormData> = async (data) => {
+    const onSubmit = async (data: FormData) => {
         const updatedProfile = setLiteral(profile, FOAF.name, lit(data.name) as Literal);
         const updatedDataset = setThing(dataset, updatedProfile);
         const savedDataset = await saveSolidDatasetAt(session.webId!, updatedDataset, {fetch});

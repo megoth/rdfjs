@@ -1,4 +1,3 @@
-import {SubmitHandler} from "react-hook-form";
 import {getLiteral, getThing, setLiteral, setThing} from "@inrupt/solid-client";
 import {FOAF} from "@inrupt/vocab-common-rdf";
 import {Literal} from "@rdfjs/types"
@@ -18,7 +17,7 @@ export default function InruptSolidAlternativeDemo() {
         return <Loading/>
     }
 
-    const onSubmit: SubmitHandler<FormData> = async (data) => {
+    const onSubmit = async (data: FormData) => {
         const updatedProfile = setLiteral(profile, FOAF.name, lit(data.name) as Literal);
         const updatedDataset = setThing(profileDataset, updatedProfile);
         await saveProfileDataset(updatedDataset);

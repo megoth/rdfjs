@@ -1,5 +1,4 @@
-import {SubmitHandler} from "react-hook-form";
-import {useEffect, useMemo, useState} from "react";
+import {useEffect, useState} from "react";
 import {
     fromRdfJsDataset, getLiteral, getThing, setLiteral, setThing, SolidDataset, toRdfJsDataset
 } from "@inrupt/solid-client";
@@ -15,8 +14,8 @@ import Loading from "../../loading";
 export default function InruptLocalDemo() {
     const [dataset, setDataset] = useState<SolidDataset | null>(null);
     const [turtle, setTurtle] = useLocalStorage(STORAGE_KEYS.PROFILE_INRUPT, PROFILE_TURTLE);
-    const profile = useMemo(() => dataset && getThing(dataset, PROFILE_URI), [dataset]);
-    const name = useMemo(() => profile ? getLiteral(profile, FOAF.name)?.value || "" : "", [profile]);
+    const profile = dataset && getThing(dataset, PROFILE_URI);
+    const name = profile ? getLiteral(profile, FOAF.name)?.value || "" : "";
 
     useEffect(() => {
         const parser = new N3.Parser({baseIRI: PROFILE_URI, format: "text/turtle"});
@@ -31,7 +30,7 @@ export default function InruptLocalDemo() {
         return <Loading/>
     }
 
-    const onSubmit: SubmitHandler<FormData> = async (data) => {
+    const onSubmit = async (data: FormData) => {
         const updatedProfile = setLiteral(profile, FOAF.name, lit(data.name) as Literal);
         const updatedDataset = setThing(dataset, updatedProfile);
         const writer = new N3.Writer();

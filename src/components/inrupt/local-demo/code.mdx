@@ -23,7 +23,7 @@ import {NavLink} from "react-router-dom";
     <Walkthrough>
         <tr>
             <td>
-                <CodeLink id="InruptLocalDemo" lines={["16-17"]}>Setting up dataset and turtle</CodeLink>
+                <CodeLink id="InruptLocalDemo" lines={["15-16"]}>Setting up dataset and turtle</CodeLink>
             </td>
             <td>
                 The type of objects that we usually start with is `SolidDataset` from the
@@ -34,7 +34,7 @@ import {NavLink} from "react-router-dom";
         </tr>
         <tr>
             <td>
-                <CodeLink id="InruptLocalDemo" lines={["18-19"]}>Getting profile and name</CodeLink>
+                <CodeLink id="InruptLocalDemo" lines={["17-18"]}>Getting profile and name</CodeLink>
             </td>
             <td>
                 We also set up the variables `profile` and `name`, which respectively represent the thing retrieved as
@@ -44,7 +44,7 @@ import {NavLink} from "react-router-dom";
         </tr>
         <tr>
             <td>
-                <CodeLink id="InruptLocalDemo" lines={["22-27"]}>Parsing turtle and updating dataset</CodeLink>
+                <CodeLink id="InruptLocalDemo" lines={["21-26"]}>Parsing turtle and updating dataset</CodeLink>
             </td>
             <td>
                 @inrupt/solid-client doesn't provide all the tools necessary for loading a turtle locally, so we've made
@@ -54,19 +54,21 @@ import {NavLink} from "react-router-dom";
         </tr>
         <tr>
             <td>
-                <CodeLink id="InruptLocalDemo" lines={["30-32"]}>Loading state</CodeLink>
+                <CodeLink id="InruptLocalDemo" lines={["29-31"]}>Loading state</CodeLink>
             </td>
             <td>
-                Since parsing the initial turtle string can take a little time, we show the `Loading` component while we
-                wait for it to complete and update the dataset. Usually this goes very fast though.
+                <Content>
+                    Since parsing the initial turtle string can take a little time, we show the `Loading` component
+                    while we wait for it to complete and update the dataset. Usually this goes very fast though.
 
-                Do note that the error handling here is bad, since there are changes that the dataset or profile turns
-                up `null`. But I've simplified the code for readability, so I accept this flaw.
+                    Do note that the error handling here is bad, since there are changes that the dataset or profile
+                    turns up `null`. But I've simplified the code for readability, so I accept this flaw.
+                </Content>
             </td>
         </tr>
         <tr>
             <td>
-                <CodeLink id="InruptLocalDemo" lines={["35-42"]}>Updating RDF upon submit</CodeLink>
+                <CodeLink id="InruptLocalDemo" lines={["34-41"]}>Updating RDF upon submit</CodeLink>
             </td>
             <td>
                 When submitting we get get thing we want to update, the profile, and update the literal that was set for
