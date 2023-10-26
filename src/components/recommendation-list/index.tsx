@@ -25,7 +25,7 @@ export default function RecommendationList({guide}: Props) {
                 </thead>
                 <tbody>
                 {guide.recommendations.map(({href, note, title, type}) => (
-                    <tr>
+                    <tr key={href}>
                         <td>
                             {type === "URL" && <AiOutlineLink/>}
                             {type === "YouTube" && <AiFillYoutube style={{fill: "red"}}/>}
