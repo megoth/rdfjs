@@ -1,11 +1,42 @@
-<h2 className="subtitle">Code</h2>
+import Content from "../../content";
+import Code from "../../code";
+import localDemoCode from "./index.tsx?raw";
+import CodeStep from "../../code/step";
+import {PROFILE_JSON} from "../../../constants";
 
-A pellentesque sit amet porttitor eget dolor. Enim nunc faucibus a pellentesque sit amet porttitor eget. Praesent
-tristique magna sit amet purus gravida. Feugiat scelerisque varius morbi enim nunc faucibus a. Accumsan in nisl nisi
-scelerisque eu ultrices. Eget nulla facilisi etiam dignissim diam quis enim. Risus nec feugiat in fermentum posuere
-urna nec. Egestas maecenas pharetra convallis posuere morbi leo urna molestie. Accumsan in nisl nisi scelerisque eu
-ultrices vitae auctor. Feugiat pretium nibh ipsum consequat nisl vel. Mauris pharetra et ultrices neque ornare aenean
-euismod elementum. Risus in hendrerit gravida rutrum quisque non tellus orci. Urna molestie at elementum eu facilisis
-sed odio morbi. Ullamcorper malesuada proin libero nunc consequat interdum varius sit amet. Convallis tellus id
-interdum velit laoreet id. Quam id leo in vitae turpis massa sed. Eget nunc scelerisque viverra mauris in aliquam sem
-fringilla. Morbi non arcu risus quis varius quam quisque. Faucibus in ornare quam viverra.
+<Content>
+    <h2 className="subtitle">Code</h2>
+
+    This demo saves the underlying JSON-LD in `localStorage`. If no JSON-LD is found, a default one is used:
+</Content>
+
+<Code language="json" id="ProfileJsonLD" code={JSON.stringify(PROFILE_JSON, null, 2)} noCopy={true}/>
+
+<Code language="tsx" id="SoukaiLocalDemo" code={localDemoCode} className="line-numbers">
+    <CodeStep lines={["10-12"]} title="Bootstrapping">
+        We need to bootstrap Soukai with the models and engine of choice, `InMemoryEngine`.
+    </CodeStep>
+    <CodeStep lines={["15-16"]} title="Setting up person and JSON-LD">
+        We're using `localStorage` to store our RDF for this demo, but opting to store the RDF as
+        [JSON-LD](https://json-ld.org/) instead of Turtle (simply because Soukai doesn't support Turtle).
+
+        We're going to work with the model we've defined early, so we set this up in anticipation of loading an existing
+        profile from the stored JSON.
+    </CodeStep>
+    <CodeStep lines={["19-22"]} title="Parsing JSON-LD">
+        Once we have our JSON-LD retrieved from `localStorage` (or simply set as an empty string), we parse it (or
+        create an new instance with the default data.)
+    </CodeStep>
+    <CodeStep lines={["25-27"]} title="Loading state">
+        As with all other examples that include some parsing it might take some time, so we ensure that we have the data
+        loaded before continuing.
+    </CodeStep>
+    <CodeStep lines={["30-31"]} title="Updating JSON-LD">
+        Upon submitting the form, we update the name in our model and simply serialize the JSON-LD into a string using
+        `JSON.stringify`.
+    </CodeStep>
+    <CodeStep lines={["34"]} title="Reading name">
+        Whenever we have a `PersonModel` loaded, we make sure to extract the existing name so that it can be passed to
+        the `Demo` component.
+    </CodeStep>
+</Code>

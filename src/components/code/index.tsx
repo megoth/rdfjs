@@ -14,7 +14,7 @@ interface CodeProps extends HTMLAttributes<HTMLPreElement> {
     code: string;
     noCopy?: boolean;
     id: string;
-    language: "sparql" | "tsx" | "turtle" | "typescript";
+    language: "json" | "sparql" | "tsx" | "turtle" | "typescript";
     url?: string;
 }
 

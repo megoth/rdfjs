@@ -19,14 +19,16 @@ export default function ReviewList() {
                 <tbody>
                 {LIBRARIES.map(({href, review, text}) => (
                     <tr key={href}>
-                        <td>{text}</td>
-                        {RATING_CRITERIA.map(([id], index) => (
+                        <td>
+                            <NavLink to={`${href}#review`}>{text}</NavLink>
+                        </td>
+                        {review ? RATING_CRITERIA.map(([id], index) => (
                             <td key={`${href}-${id}`}>
                                 <NavLink to={`${href}#${id}`}>
                                     <Rating rating={review[index]}/>
                                 </NavLink>
                             </td>
-                        ))}
+                        )) : <td colSpan={5}>No review available</td> }
                     </tr>
                 ))}
                 </tbody>

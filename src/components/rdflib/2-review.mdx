@@ -7,7 +7,7 @@ import ReviewHeader from "../review-header";
 <AuthorNote id="review" title="Should you choose rdflib.js?">
     <ReviewHeader library={LIBRARY_RDFLIB}/>
 
-    <RatingCriteriaTitle index={0} rating={LIBRARY_RDFLIB.review[0]}/>
+    <RatingCriteriaTitle index={0} rating={LIBRARY_RDFLIB.review?.[0]}/>
     <Content id={RATING_CRITERIA[0][0]}>
         The API is extensive, and should cover most of your RDF-related needs. It has limited
         [SPARQL](https://www.w3.org/TR/sparql11-query/) support, allowing a subset of queries. That said, working with
@@ -15,14 +15,14 @@ import ReviewHeader from "../review-header";
         libraries like React.
     </Content>
 
-    <RatingCriteriaTitle index={1} rating={LIBRARY_RDFLIB.review[1]}/>
+    <RatingCriteriaTitle index={1} rating={LIBRARY_RDFLIB.review?.[1]}/>
     <Content id={RATING_CRITERIA[1][0]}>
         The documentation is useful, but it's not complete and a bit hard to navigate at times. Also, the project can
         be confused by [Python's rdflib](https://pypi.org/project/rdflib/) when using a search engine, especially if
         you're new to RDF, which is less than ideal.
     </Content>
 
-    <RatingCriteriaTitle index={2} rating={LIBRARY_RDFLIB.review[2]}/>
+    <RatingCriteriaTitle index={2} rating={LIBRARY_RDFLIB.review?.[2]}/>
     <Content id={RATING_CRITERIA[2][0]}>
         The community for rdflib.js is not very active, but there are people out there that will step in to help if you
         have problems (usually through channels like
@@ -34,13 +34,13 @@ import ReviewHeader from "../review-header";
         time, and it has proven reliable in preserving it's APIs.
     </Content>
 
-    <RatingCriteriaTitle index={3} rating={LIBRARY_RDFLIB.review[3]}/>
+    <RatingCriteriaTitle index={3} rating={LIBRARY_RDFLIB.review?.[3]}/>
     <Content id={RATING_CRITERIA[3][0]}>
         rdflib.js is probably the oldest JavaScript library that supports RDF. Hence, it's sports a test and tried API
         that you can be sure have most bugs discovered.
     </Content>
 
-    <RatingCriteriaTitle index={4} rating={LIBRARY_RDFLIB.review[4]}/>
+    <RatingCriteriaTitle index={4} rating={LIBRARY_RDFLIB.review?.[4]}/>
     <Content id={RATING_CRITERIA[4][0]}>
         rdflib.js offers a robust experience that allows you to engage with RDF in a low-level manner. It requires you
         to know how RDF works to use it, but rewards you with an stable and safe API. In my opinion the API also suffers

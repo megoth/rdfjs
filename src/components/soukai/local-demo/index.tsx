@@ -1,33 +1,24 @@
 import {useEffect, useState} from "react";
-import {bootModels, FieldType, InMemoryEngine, setEngine} from "soukai";
+import {bootModels, InMemoryEngine, setEngine} from "soukai";
 import Loading from "../../loading";
-import {bootSolidModels, SolidModel} from "soukai-solid";
+import {bootSolidModels} from "soukai-solid";
 import useLocalStorage from "use-local-storage";
-import {PERSON_JSON, STORAGE_KEYS} from "../../../constants.ts";
+import {PROFILE_JSON, STORAGE_KEYS} from "../../../constants.ts";
 import Demo, {FormData} from "../../demo";
-
-export class Person extends SolidModel {
-
-    static rdfsClasses = ['http://xmlns.com/foaf/0.1/Person'];
-
-    static fields = {
-        name: {
-            type: FieldType.String,
-            rdfProperty: 'http://xmlns.com/foaf/0.1/name',
-        },
-    };
-}
+import {PersonModel} from "../model.ts";
 
 bootSolidModels();
-bootModels({Person});
+bootModels({Person: PersonModel});
 setEngine(new InMemoryEngine())
 
 export default function SoukaiLocalDemo() {
-    const [person, setPerson] = useState<Person | null>(null);
     const [json, setJson] = useLocalStorage(STORAGE_KEYS.PROFILE_SOUKAI, "");
+    const [person, setPerson] = useState<PersonModel | null>(null);
 
     useEffect(() => {
-        const matchedPersonPromise = json.length ? Person.createFromJsonLD(JSON.parse(json)) : Person.create(PERSON_JSON);
+        const matchedPersonPromise = json.length
+            ? PersonModel.createFromJsonLD(JSON.parse(json))
+            : PersonModel.create(PROFILE_JSON);
         matchedPersonPromise.then(setPerson);
     }, [json]);
 
@@ -40,5 +31,6 @@ export default function SoukaiLocalDemo() {
         setJson(JSON.stringify(person.toJsonLD()))
     };
 
-    return <Demo name={person.getAttributeValue("name")} onSubmit={onSubmit}/>
+    const name = person.getAttributeValue("name")?.toString() || "";
+    return <Demo name={name} onSubmit={onSubmit}/>
 }

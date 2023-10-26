@@ -327,7 +327,7 @@ export interface Library {
     name: string;
     published: boolean;
     recommendation: string;
-    review: Array<RatingScore>;
+    review?: Array<RatingScore>;
     text: string;
     websiteName: string;
     websiteUrl: string;
@@ -341,9 +341,8 @@ export const LIBRARY_COMUNICA: Library = {
     iconAlt: "Logo for Comunica",
     iconPreferredHeight: 240,
     name: "Comunica",
-    published: false,
+    published: true,
     recommendation: "Large systems based on SPARQL",
-    review: [2, 3, 3, 3, 2.5],
     text: "Comunica",
     websiteName: "Official website",
     websiteUrl: "https://comunica.dev/"
@@ -401,9 +400,8 @@ export const LIBRARY_SOUKAI: Library = {
     iconAlt: "Logo for Soukai ODM",
     iconPreferredHeight: 192,
     name: "Soukai ODM",
-    published: false,
+    published: true,
     recommendation: "Experimental apps",
-    review: [3, 3, 3, 2, 3],
     text: "Soukai",
     websiteName: "Official website",
     websiteUrl: "https://soukai.js.org/"
@@ -473,7 +471,7 @@ export const NAME_NODE = namedNode(NS.foaf("name"));
 export const PROFILE_URI = "https://example.com/profile";
 export const PROFILE_NODE = namedNode(PROFILE_URI);
 
-export const PERSON_JSON = {
+export const PROFILE_JSON = {
     "@id": PROFILE_URI,
     name: "Soukai Test"
 };

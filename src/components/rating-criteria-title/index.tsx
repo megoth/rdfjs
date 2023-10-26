@@ -5,7 +5,7 @@ import styles from "./style.module.css";
 
 interface Props {
     index: 0 | 1 | 2 | 3 | 4;
-    rating: RatingScore
+    rating?: RatingScore
 }
 
 export default function RatingCriteriaTitle({index, rating}: Props) {

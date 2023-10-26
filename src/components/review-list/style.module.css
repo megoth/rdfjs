@@ -5,7 +5,7 @@
     }
 
     & th:last-child,
-    & td:last-child {
+    & td:last-child:not([colspan]) {
         background: #eeeeee;
     }
 }
