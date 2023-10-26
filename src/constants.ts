@@ -410,7 +410,7 @@ export const LIBRARY_SOUKAI: Library = {
     iconAlt: "Logo for Soukai",
     iconPreferredHeight: 192,
     name: "Soukai",
-    published: false,
+    published: true,
     recommendation: "Experimental apps",
     text: "Soukai",
     websiteName: "Official website",
