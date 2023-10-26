@@ -1,31 +1,25 @@
-import demoCode from "./demo/index.tsx?raw";
-import Code from "../code";
-import IntroSection from "./intro.mdx";
-import CodeSection from "./code.mdx";
+import CodeSection from "./demo/code.mdx";
 import Content from "../content";
 import ComunicaDemo from "./demo";
-import {useSolidAuth} from "@ldo/solid-react";
 import LogoutButton from "../logout-button";
-import Login from "../login";
-import Review from "./review.mdx";
+import Intro from "./1-intro.mdx";
+import Review from "./2-review.mdx";
 import {LIBRARY_COMUNICA} from "../../constants.ts";
 import LibraryLayout from "../library-layout";
+import LoginGate from "../login-gate";
 
 export default function Comunica() {
-    const {login, session} = useSolidAuth();
-
     return (
         <LibraryLayout library={LIBRARY_COMUNICA}>
-            <Content><IntroSection/></Content>
-            <div id="solid">
-                <Content><h2 className="subtitle is-3">Solid demo</h2></Content>
-                {session.isLoggedIn ? <>
-                    <ComunicaDemo/>
-                    <LogoutButton/>
-                </> : <Login login={login}/>}
-                <Content><CodeSection/></Content>
-                <Code language={"tsx"} id="ComunicaSolidDemo" code={demoCode}/>
-            </div>
+            <Intro/>
+            <Content id="solid">
+                <h2 className="subtitle">Solid demo</h2>
+            </Content>
+            <LoginGate redirectId="solid">
+                <ComunicaDemo/>
+                <LogoutButton/>
+            </LoginGate>
+            <CodeSection/>
             <Review/>
         </LibraryLayout>
     )
