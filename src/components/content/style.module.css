@@ -11,4 +11,8 @@
     :global(.image) {
         margin-bottom: 1em;
     }
+
+    :global(.table-container) {
+        margin-top: 1.5rem;
+    }
 }
