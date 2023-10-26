@@ -25,7 +25,7 @@ export default function ReviewHeader({library}: Props) {
                 ))}
                 </tbody>
             </table>
-            <div className="message is-info is-light is-small">
+            <div className="message is-info is-small">
                 <div className="message-body">
                     <strong>Disclaimer:</strong> This review is a personal assertion, and not in any way linked to
                     the <a href="https://github.com/rdfjs">W3C RDF/JS CG</a>.
