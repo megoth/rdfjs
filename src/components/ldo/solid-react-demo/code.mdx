@@ -1,8 +1,7 @@
 import Content from "../../content";
 import Code from "../../code";
 import solidReactDemoCode from "./index.tsx?raw";
-import CodeLink from "../../code-link";
-import Walkthrough from "../../walkthrough";
+import CodeStep from "../../code/step";
 
 <Content>
     <h2 className="subtitle">Code</h2>
@@ -11,42 +10,23 @@ import Walkthrough from "../../walkthrough";
 </Content>
 
 <Code language="tsx" id="LDOSolidDemo" code={solidReactDemoCode} className="line-numbers">
-    <Walkthrough>
-        <tr>
-            <td>
-                <CodeLink id="LDOSolidDemo" lines={["9-10"]}>Loading resource and retrieving profile</CodeLink>
-            </td>
-            <td>
-                <Content>
-                    `useResource` and `useSubject` are a couple of handy hooks from
-                    [@ldo/solid-react](https://github.com/o-development/ldobjects/tree/main/packages/solid-react) that
-                    allow us to 1) fetch the WebID resource, and 2) retrieve it packaged as a `SolidProfile`. This is
-                    another example of the ease LDO allow you to express your code.
+    <CodeStep lines={["9-10"]} title="Loading resource and retrieving profile">
+        `useResource` and `useSubject` are a couple of handy hooks from
+        [@ldo/solid-react](https://github.com/o-development/ldobjects/tree/main/packages/solid-react) that
+        allow us to 1) fetch the WebID resource, and 2) retrieve it packaged as a `SolidProfile`. This is
+        another example of the ease LDO allow you to express your code.
 
-                    We set `reloadOnMount` to make sure that LDO always reloads the online resource when the demo is
-                    shown. I have to do this since the demos don't tell LDO that the online resource has been updated.
-                </Content>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <CodeLink id="LDOSolidDemo" lines={["12-14"]}>Loading state</CodeLink>
-            </td>
-            <td>
-                While we wait for the resource to be fetched we show the `Loading` component. The test-statements could
-                probably be improved, but I think it's expressive enough.
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <CodeLink id="LDOSolidDemo" lines={["17-19"]}>Updating resource</CodeLink>
-            </td>
-            <td>
-                Using `changeData` and `commitData` we tell LDO to handle the underlying updates in the graph and make a
-                fetch request to update the online resource.
-            </td>
-        </tr>
-    </Walkthrough>
+        We set `reloadOnMount` to make sure that LDO always reloads the online resource when the demo is
+        shown. I have to do this since the demos don't tell LDO that the online resource has been updated.
+    </CodeStep>
+    <CodeStep lines={["12-14"]} title="Loading state">
+        While we wait for the resource to be fetched we show the `Loading` component. The test-statements could
+        probably be improved, but I think it's expressive enough.
+    </CodeStep>
+    <CodeStep lines={["17-19"]} title="Updating resource">
+        Using `changeData` and `commitData` we tell LDO to handle the underlying updates in the graph and make a
+        fetch request to update the online resource.
+    </CodeStep>
 </Code>
 
 <Content>

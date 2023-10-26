@@ -1,8 +1,7 @@
 import Content from "../../content";
 import Code from "../../code";
 import solidDemoCode from "./index.tsx?raw";
-import Walkthrough from "../../walkthrough";
-import CodeLink from "../../code-link";
+import CodeStep from "../../code/step";
 
 <Content>
     <h2 className="subtitle">Code</h2>
@@ -12,35 +11,18 @@ import CodeLink from "../../code-link";
 
 <Code language="tsx" id="RdflibSolidDemo" code={solidDemoCode} className="line-numbers"
       url="https://github.com/megoth/rdfjs/blob/main/src/components/rdflib/solid-demo/index.tsx">
-    <Walkthrough>
-        <tr>
-            <td>
-                <CodeLink id="RdflibSolidDemo" lines={["9-12"]}>Store setup</CodeLink>
-            </td>
-            <td>
-                When working with online resources we want to make use of `Fetcher` and `UpdateManager` to respectively
-                load and update the resources.
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <CodeLink id="RdflibSolidDemo" lines={["18"]}>Loading data and setting name</CodeLink>
-            </td>
-            <td>
-                Using the fetcher we load the resource, and once it's done fetching we find the name (if set). An
-                important side-effect here is that `store` is updated as well with `fetcher.load`.
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <CodeLink id="RdflibSolidDemo" lines={["22-25"]}>Submitting data and updating name</CodeLink>
-            </td>
-            <td>
-                Upon submitting the form, a new triple with the name is inserted while the old name is removed in
-                another triple. The updated store is then posted to the online resource, where rdflib.js will break
-                down the updates into a [SPARQL Update](https://www.w3.org/TR/sparql11-update/) query. After
-                successfully updating the resource, we make sure to update the name internally.
-            </td>
-        </tr>
-    </Walkthrough>
+    <CodeStep lines={["9-12"]} title="Store setup">
+        When working with online resources we want to make use of `Fetcher` and `UpdateManager` to respectively
+        load and update the resources.
+    </CodeStep>
+    <CodeStep lines={["18"]} title="Loading data and setting name">
+        Using the fetcher we load the resource, and once it's done fetching we find the name (if set). An
+        important side-effect here is that `store` is updated as well with `fetcher.load`.
+    </CodeStep>
+    <CodeStep lines={["22-25"]} title="Submitting data and updating name">
+        Upon submitting the form, a new triple with the name is inserted while the old name is removed in
+        another triple. The updated store is then posted to the online resource, where rdflib.js will break
+        down the updates into a [SPARQL Update](https://www.w3.org/TR/sparql11-update/) query. After
+        successfully updating the resource, we make sure to update the name internally.
+    </CodeStep>
 </Code>

@@ -1,10 +1,9 @@
 import Content from "../../content";
 import Code from "../../code";
 import localDemoCode from "./index.tsx?raw";
-import Walkthrough from "../../walkthrough";
-import CodeLink from "../../code-link";
 import {PROFILE_TURTLE} from "../../../constants";
 import {NavLink} from "react-router-dom";
+import CodeStep from "../../code/step";
 
 <Content>
     <h2 className="subtitle">Code</h2>
@@ -20,61 +19,31 @@ import {NavLink} from "react-router-dom";
 </Content>
 
 <Code language="tsx" id="InruptLocalDemo" code={localDemoCode} className="line-numbers">
-    <Walkthrough>
-        <tr>
-            <td>
-                <CodeLink id="InruptLocalDemo" lines={["15-16"]}>Setting up dataset and turtle</CodeLink>
-            </td>
-            <td>
-                The type of objects that we usually start with is `SolidDataset` from the
-                [resource/solidDataset](https://docs.inrupt.com/developer-tools/api/javascript/solid-client/modules/resource_solidDataset.html)
-                module. We also prepare a turtle string since we're working locally.
+    <CodeStep lines={["15-16"]} title="Setting up dataset and turtle">
+        The type of objects that we usually start with is `SolidDataset` from the
+        [resource/solidDataset](https://docs.inrupt.com/developer-tools/api/javascript/solid-client/modules/resource_solidDataset.html)
+        module. We also prepare a turtle string since we're working locally.
+    </CodeStep>
+    <CodeStep lines={["17-18"]} title="Getting profile and name">
+        We also set up the variables `profile` and `name`, which respectively represent the thing retrieved as
+        profile and the literal name. The latter is important to pass on for the `Demo` component we fetch the
+        profile from the dataset that's currently used.
+    </CodeStep>
+    <CodeStep lines={["21-26"]} title="Parsing turtle and updating dataset">
+        @inrupt/solid-client doesn't provide all the tools necessary for loading a turtle locally, so we've made
+        use of [N3.js](https://github.com/rdfjs/N3.js) to parse the turtle string. Since N3 returns [RDF/JS
+        Dataset](https://rdf.js.org/dataset-spec/), we can parse it using `fromRdfJsDataset`.
+    </CodeStep>
+    <CodeStep lines={["29-31"]} title="Loading state">
+        Since parsing the initial turtle string can take a little time, we show the `Loading` component
+        while we wait for it to complete and update the dataset. Usually this goes very fast though.
 
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <CodeLink id="InruptLocalDemo" lines={["17-18"]}>Getting profile and name</CodeLink>
-            </td>
-            <td>
-                We also set up the variables `profile` and `name`, which respectively represent the thing retrieved as
-                profile and the literal name. The latter is important to pass on for the `Demo` component we fetch the
-                profile from the dataset that's currently used.
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <CodeLink id="InruptLocalDemo" lines={["21-26"]}>Parsing turtle and updating dataset</CodeLink>
-            </td>
-            <td>
-                @inrupt/solid-client doesn't provide all the tools necessary for loading a turtle locally, so we've made
-                use of [N3.js](https://github.com/rdfjs/N3.js) to parse the turtle string. Since N3 returns [RDF/JS
-                Dataset](https://rdf.js.org/dataset-spec/), we can parse it using `fromRdfJsDataset`.
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <CodeLink id="InruptLocalDemo" lines={["29-31"]}>Loading state</CodeLink>
-            </td>
-            <td>
-                <Content>
-                    Since parsing the initial turtle string can take a little time, we show the `Loading` component
-                    while we wait for it to complete and update the dataset. Usually this goes very fast though.
-
-                    Do note that the error handling here is bad, since there are changes that the dataset or profile
-                    turns up `null`. But I've simplified the code for readability, so I accept this flaw.
-                </Content>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <CodeLink id="InruptLocalDemo" lines={["34-41"]}>Updating RDF upon submit</CodeLink>
-            </td>
-            <td>
-                When submitting we get get thing we want to update, the profile, and update the literal that was set for
-                `foaf:name`. We then update the dataset with the updated thing, and proceed to serialize the updated
-                dataset, again with the help of N3.js.
-            </td>
-        </tr>
-    </Walkthrough>
+        Do note that the error handling here is bad, since there are changes that the dataset or profile
+        turns up `null`. But I've simplified the code for readability, so I accept this flaw.
+    </CodeStep>
+    <CodeStep lines={["34-41"]} title="Updating RDF upon submit">
+        When submitting we get get thing we want to update, the profile, and update the literal that was set for
+        `foaf:name`. We then update the dataset with the updated thing, and proceed to serialize the updated
+        dataset, again with the help of N3.js.
+    </CodeStep>
 </Code>

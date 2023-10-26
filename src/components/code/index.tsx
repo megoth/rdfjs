@@ -1,4 +1,4 @@
-import {HTMLAttributes, ReactNode, useEffect, useState} from "react";
+import {createContext, HTMLAttributes, ReactNode, useEffect, useState} from "react";
 import {NavLink, useLocation, useSearchParams} from "react-router-dom";
 import usePrism from "../../hooks/use-prism";
 import {clsx} from "clsx";
@@ -23,6 +23,12 @@ export function toCodePart(id: string, line: string, ...lines: string[]): string
     return `?${dataLines}#${id}`;
 }
 
+
+export const CodeContext = createContext<{
+    id: string
+}>({
+    id: ""
+});
 
 export default function Code({children, className, code, noCopy, id, language, url, ...props}: CodeProps) {
     const highlightAll = usePrism();
@@ -53,7 +59,26 @@ export default function Code({children, className, code, noCopy, id, language, u
 
     return (
         <div id={id} className={styles.container}>
-            {children}
+            {children && (
+                <CodeContext.Provider value={{id}}>
+                    <div className="message is-hidden-widescreen is-warning">
+                        <div className="message-header">A note on smaller screens</div>
+                        <div className="message-body">
+                            These walkthroughes are best consumed at larger screens. If you are on smaller screens, note that
+                            you might have to scroll down a bit to see the actual highlighted code.
+                        </div>
+                    </div>
+                    <table className="table is-striped">
+                        <thead>
+                        <tr>
+                            <th>Part of logic</th>
+                            <th>Explanation</th>
+                        </tr>
+                        </thead>
+                        <tbody>{children}</tbody>
+                    </table>
+                </CodeContext.Provider>
+            )}
             <div className={clsx("field is-grouped is-grouped-right is-grouped-multiline", styles.field)}>
                 {dataLine.length > 0 && <p className="control">
                     <NavLink to={`#${id}`} className={"button is-small is-danger is-light"}

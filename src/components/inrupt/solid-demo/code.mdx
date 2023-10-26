@@ -3,8 +3,8 @@ import Code from "../../code";
 import solidDemoCode from "./index.tsx?raw";
 import useSolidDataset from "./useSolidDataset.ts?raw";
 import solidAlternativeDemo from "./demo.alternative.tsx?raw";
-import Walkthrough from "../../walkthrough";
 import CodeLink from "../../code-link";
+import CodeStep from "../../code/step";
 
 <Content>
     <h2 className="subtitle">Code</h2>
@@ -13,48 +13,25 @@ import CodeLink from "../../code-link";
 </Content>
 
 <Code language="tsx" id="InruptSolidDemo" code={solidDemoCode} className="line-numbers">
-    <Walkthrough>
-        <tr>
-            <td>
-                <CodeLink id="InruptSolidDemo" lines={["13-14"]}>Setting up dataset and session</CodeLink>
-            </td>
-            <td>
-                Like with the local demo we set up the `SolidDataset`, but this time we make use of `useSolidAuth` to
-                retrieve data about the WebID.
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <CodeLink id="InruptSolidDemo" lines={["15-16"]}>Getting profile and name</CodeLink>
-            </td>
-            <td>
-                This part is also similar to the local part, but since there are some more moving parts with the actual
-                fetching of online resources we need to put in some more safeguards.
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <CodeLink id="InruptSolidDemo" lines={["19-20"]}>Fetching resource and parsing dataset</CodeLink>
-            </td>
-            <td>Using `getSolidDataset` we have an easy, asynchronous function to get the dataset.</td>
-        </tr>
-        <tr>
-            <td>
-                <CodeLink id="InruptSolidDemo" lines={["23-25"]}>Loading state</CodeLink>
-            </td>
-            <td>Again, similar approach like the local demo (as well as same flaw, same excuse).</td>
-        </tr>
-        <tr>
-            <td>
-                <CodeLink id="InruptSolidDemo" lines={["28-31"]}>Updating online resources upon submit</CodeLink>
-            </td>
-            <td>
-                Once we submit a name we make sure to update the profile with the updated name, then update the dataset
-                with the updated profile, and making a request using `saveSolidDatasetAt` to save the changes to the
-                online resource. We then update our local copy of the dataset to make sure all is updated.
-            </td>
-        </tr>
-    </Walkthrough>
+    <CodeStep lines={["13-14"]} title="Setting up dataset and session">
+        Like with the local demo we set up the `SolidDataset`, but this time we make use of `useSolidAuth` to
+        retrieve data about the WebID.
+    </CodeStep>
+    <CodeStep lines={["15-16"]} title="Getting profile and name">
+        This part is also similar to the local part, but since there are some more moving parts with the actual
+        fetching of online resources we need to put in some more safeguards.
+    </CodeStep>
+    <CodeStep lines={["19-20"]} title="Fetching resource and parsing dataset">
+        Using `getSolidDataset` we have an easy, asynchronous function to get the dataset.
+    </CodeStep>
+    <CodeStep lines={["23-25"]} title="Loading state">
+        Again, similar approach like the local demo (as well as same flaw, same excuse).
+    </CodeStep>
+    <CodeStep lines={["28-31"]} title="Updating online resources upon submit">
+        Once we submit a name we make sure to update the profile with the updated name, then update the dataset
+        with the updated profile, and making a request using `saveSolidDatasetAt` to save the changes to the
+        online resource. We then update our local copy of the dataset to make sure all is updated.
+    </CodeStep>
 </Code>
 
 <Content>
