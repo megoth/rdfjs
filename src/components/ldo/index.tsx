@@ -8,18 +8,15 @@ import SolidReactCodeSection from "./solid-react-demo/code.mdx";
 import Content from "../content";
 import LDOSolidReactDemo from "./solid-react-demo";
 import LogoutButton from "../logout-button";
-import Login from "../login";
-import {useSolidAuth} from "@ldo/solid-react";
 import {LIBRARY_LDO} from "../../constants.ts";
 import LibraryLayout from "../library-layout";
-import Box from "../box";
+import LoginGate from "../login-gate";
 
 export default function LDO() {
-    const {login, session} = useSolidAuth();
     return (
         <LibraryLayout library={LIBRARY_LDO}>
             <Intro/>
-            <Shapes />
+            <Shapes/>
             <Content id="local">
                 <h2 className="subtitle is-3">Local demo</h2>
             </Content>
@@ -28,15 +25,13 @@ export default function LDO() {
             <Content id="solid-react">
                 <h2 className="subtitle is-3">@ldo/solid-react demo</h2>
             </Content>
-            {session.isLoggedIn ? <>
+            <LoginGate redirectId="solid-react">
                 <LDOSolidReactDemo/>
                 <LogoutButton/>
-            </> : <Box>
-                <Login login={(issuer) => login(issuer, {redirectUrl: location.href.replace(/#\S+$/, "")})}/>
-            </Box>}
+            </LoginGate>
             <SolidReactCodeSection/>
             <Review/>
-            <Bias />
+            <Bias/>
         </LibraryLayout>
     )
 }

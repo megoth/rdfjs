@@ -4,15 +4,20 @@ import {SolidProfileShapeType} from "ldo-solid-profile";
 import Loading from "../loading";
 import LogoutButton from "../logout-button";
 import Content from "../content";
+import {hijackLogin} from "../../libs/location.ts";
+import {useHref, useLocation} from "react-router-dom";
 
 export default function SolidWarning() {
     const {session, login} = useSolidAuth();
+    const routerLocation = useLocation();
     useResource(session.webId, {reloadOnMount: true});
     const profile = useSubject(SolidProfileShapeType, session.webId);
+    const href = useHref(routerLocation.pathname);
+    const onLogin = hijackLogin(login, routerLocation, location, href, "SolidWarning");
 
     return session.isLoggedIn ? (
             profile?.name ?
-                <div className="message is-success">
+                <div className="message is-success" id="SolidWarning">
                     <div className="message-body">
                         <Content>
                             <p>
@@ -25,7 +30,7 @@ export default function SolidWarning() {
                 </div> :
                 <Loading/>
         ) :
-        <div className="message is-warning">
+        <div className="message is-warning" id="SolidWarning">
             <div className="message-body">
                 <Content>
                     <p>
@@ -42,7 +47,7 @@ export default function SolidWarning() {
                         verify that everything connects as it should.
                     </p>
                 </Content>
-                <Login login={login} className="is-warning is-small"/>
+                <Login login={onLogin} className="is-warning is-small"/>
             </div>
         </div>
 }
