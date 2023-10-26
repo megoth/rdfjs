@@ -1,0 +1,31 @@
+import Content from "../../content";
+import demoCode from "./index.tsx?raw";
+import Code from "../../code";
+import CodeStep from "../../code/step";
+
+<Content>
+    <h2 className="subtitle">Code</h2>
+
+    This demo requires you to authenticate with a Solid account.
+</Content>
+
+<Code language="tsx" id="ComunicaSolidDemo" code={demoCode} className="line-numbers">
+    <CodeStep lines={["6"]} title="Bootstrapping engine">
+        This is usually executed somewhere outside the component (like part of a global bootstrapping process for the
+        app), but for our demo we do it like this.
+    </CodeStep>
+    <CodeStep lines={["10", "26", "43"]} title="Tracking name state">
+        The values we want to work with are not packaged into any abstractions, so we use `useState` to track this value
+        explicitly.
+    </CodeStep>
+    <CodeStep lines={["15-24"]} title="Retrieving name">
+        This is where we execute our first query, using `engine.queryBindings`. This returns a stream of data where we
+        can retrieve the name. Comunica is designed to handle streams of data, so you could start working on results
+        that contain a large amount of data before it's done downloading it all. For our case we deal with so little
+        data that we simply use `stream.toArray` to get into our data.
+    </CodeStep>
+    <CodeStep lines={["33-41"]} title="Updating online graph">
+        This is where we execute our second query, using `engine.queryVoid`. In this query we make a SPARQL Update
+        query, which means we don't expect a result beside whether or not it was able to execute the query or not.
+    </CodeStep>
+</Code>
