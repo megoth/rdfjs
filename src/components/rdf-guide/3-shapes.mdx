@@ -1,0 +1,20 @@
+import Content from "../content";
+import {NavLink} from "react-router-dom";
+
+<Content>
+    <h2 className="subtitle">Shapes</h2>
+
+    Shapes are standards that describe which attributes a RDF graph should have. They can be used to validate RDF
+    graphs (e.g. graphs with values that we've created using user input), but more importantly they allow a human
+    interface to what could be an otherwise complex data model. (Don't fret though, shapes can be very complex as well,
+    some things are just really hard to describe.)
+
+    The two prominent shapes standard today are [ShEx](https://shex.io/) and [SHACL](https://shacl.org/). They have
+    different goals and features, but a lot of the core is the same. I would argue that ShEx is easier to get into and
+    read, but that SHACL has a wider feature set. I don't have the expertise to advise you on which you should choose,
+    but the trust is probably something like "it depends".
+
+    I've written a <NavLink to="/shex">guide on ShEx</NavLink>, as it's a standard used by <NavLink
+    to="/ldo">LDO</NavLink>. I personally find ShEx easier, and therefore better, to use in general, but I also don't
+    have to much experience with SHACL, so I might be wrong.
+</Content>
