@@ -540,6 +540,31 @@ export interface YouTubeRecommendation extends BaseRecommendation {
 
 export type Recommendation = URLRecommendation | YouTubeRecommendation;
 
+interface Serialization {
+    name: string;
+    logo: string;
+}
+
+export const SERIALIZATIONS: Array<Serialization> = [{
+    name: "Turtle",
+    logo: "/turtle.svg"
+}, {
+    name: "JSON-LD",
+    logo: "/json-ld-logo-64.png"
+}, {
+    name: "RDFa",
+    logo: "/rdfa.svg"
+}, {
+    name: "RDF/XML",
+    logo: "/rdf-xml.svg"
+}, {
+    name: "N-Triples",
+    logo: "/n-triple.svg"
+}, {
+    name: "N3 (Notation 3)",
+    logo: "/n3_small.gif"
+}]
+
 export const SOLID_DEMOS: Array<Demo> = [
     {
         title: "rdflib.js",
