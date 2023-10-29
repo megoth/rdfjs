@@ -542,26 +542,33 @@ export type Recommendation = URLRecommendation | YouTubeRecommendation;
 
 interface Serialization {
     name: string;
+    url: string;
     logo: string;
 }
 
 export const SERIALIZATIONS: Array<Serialization> = [{
     name: "Turtle",
+    url: "https://www.w3.org/TR/turtle/",
     logo: "/turtle.svg"
 }, {
     name: "JSON-LD",
+    url: "https://json-ld.org/",
     logo: "/json-ld-logo-64.png"
 }, {
     name: "RDFa",
+    url: "https://rdfa.info/",
     logo: "/rdfa.svg"
 }, {
     name: "RDF/XML",
+    url: "https://www.w3.org/TR/rdf-syntax-grammar/",
     logo: "/rdf-xml.svg"
 }, {
     name: "N-Triples",
+    url: "https://www.w3.org/TR/n-triples/",
     logo: "/n-triple.svg"
 }, {
     name: "N3 (Notation 3)",
+    url: "https://www.w3.org/TeamSubmission/n3/",
     logo: "/n3_small.gif"
 }]
 
