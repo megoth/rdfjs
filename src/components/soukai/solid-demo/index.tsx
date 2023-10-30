@@ -7,11 +7,11 @@ import Demo, {FormData} from "../../demo";
 import Person from "../Person.ts";
 
 bootSolidModels();
-bootModels({Person: PersonModel});
+bootModels({Person});
 
 export default function SoukaiSolidDemo() {
     const {session, fetch} = useSolidAuth();
-    const [person, setPerson] = useState<PersonModel | null>(null);
+    const [person, setPerson] = useState<Person | null>(null);
 
     useEffect(() => setEngine(new SolidEngine(fetch)), [fetch]);
 
