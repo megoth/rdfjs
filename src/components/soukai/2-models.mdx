@@ -1,6 +1,6 @@
 import Content from "../content";
 import Code from "../code";
-import modelCode from "./model.ts?raw";
+import PersonCode from "./Person.ts?raw";
 import CodeStep from "../code/step";
 
 <Content>
@@ -10,7 +10,7 @@ import CodeStep from "../code/step";
     For our demos we've created the model `PersonModel` that is reused by both demos:
 </Content>
 
-<Code id="PersonModel" language="typescript" code={modelCode} noCopy={true} className="line-numbers">
+<Code id="PersonModel" language="typescript" code={PersonCode} noCopy={true} className="line-numbers">
     <CodeStep lines={["5"]} title={"Setting type"}>
         By setting the static field `rdfsClasses` we tell Soukai the types for this model.
     </CodeStep>

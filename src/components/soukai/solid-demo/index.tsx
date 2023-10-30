@@ -4,32 +4,27 @@ import {bootModels, setEngine} from 'soukai';
 import {useEffect, useState} from "react";
 import Loading from "../../loading";
 import Demo, {FormData} from "../../demo";
-import {PersonModel} from "../model.ts";
+import Person from "../Person.ts";
 
 bootSolidModels();
-bootModels({Person: PersonModel});
+bootModels({Person});
 
 export default function SoukaiSolidDemo() {
     const {session, fetch} = useSolidAuth();
-    const [person, setPerson] = useState<PersonModel | null>(null);
+    const [person, setPerson] = useState<Person | null>(null);
 
     useEffect(() => setEngine(new SolidEngine(fetch)), [fetch]);
 
     useEffect(() => {
         if (!session.webId) return;
-        PersonModel.find(session.webId).then((person) => setPerson(person))
+        Person.find(session.webId).then((person) => setPerson(person));
     }, [session.webId]);
 
     if (!person) {
         return <Loading/>
     }
 
-    const onSubmit = async (data: FormData) => {
-        person.setAttribute("name", data.name);
-        const savedPerson = await person.save(session.webId);
-        setPerson(savedPerson);
-    };
+    const onSubmit = (data: FormData) => person.update({ name: data.name });
 
-    const name = person.getAttributeValue("name")?.toString() || "";
-    return <Demo name={name} onSubmit={onSubmit}/>
+    return <Demo name={person.name ?? '(Unknown)'} onSubmit={onSubmit}/>
 }
