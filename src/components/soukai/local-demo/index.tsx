@@ -1,36 +1,45 @@
 import {useEffect, useState} from "react";
-import {bootModels, InMemoryEngine, setEngine} from "soukai";
+import {bootModels, LocalStorageEngine, setEngine} from "soukai";
 import Loading from "../../loading";
 import {bootSolidModels} from "soukai-solid";
-import useLocalStorage from "use-local-storage";
-import {PROFILE_JSON, STORAGE_KEYS} from "../../../constants.ts";
+import {PROFILE_JSON, PROFILE_URI} from "../../../constants.ts";
 import Demo, {FormData} from "../../demo";
-import {PersonModel} from "../model.ts";
+import Person from "../Person.ts";
 
 bootSolidModels();
-bootModels({Person: PersonModel});
-setEngine(new InMemoryEngine())
+bootModels({Person});
+setEngine(new LocalStorageEngine())
 
 export default function SoukaiLocalDemo() {
-    const [json, setJson] = useLocalStorage(STORAGE_KEYS.PROFILE_SOUKAI, "");
-    const [person, setPerson] = useState<PersonModel | null>(null);
+    const [person, setPerson] = useState<Person | null>(null);
 
     useEffect(() => {
-        const matchedPersonPromise = json.length
-            ? PersonModel.createFromJsonLD(JSON.parse(json))
-            : PersonModel.create(PROFILE_JSON);
-        matchedPersonPromise.then(setPerson);
-    }, [json]);
+        // Find the model by its url.
+        Person.find(PROFILE_URI).then((person) => {
+            if (!person) {
+                // Create the model if it's not already in the storage
+                // (won't be added to the storage until saved, if you wanted to store it you could do Person.create() instead).
+                setPerson(new Person({
+                    url: PROFILE_URI,
+                    name: PROFILE_JSON.name,
+                }));
+
+                return;
+            }
+
+            setPerson(person);
+        });
+    }, []);
 
     if (!person) {
         return <Loading/>
     }
 
-    const onSubmit = async (data: FormData) => {
-        person.setAttribute("name", data.name);
-        setJson(JSON.stringify(person.toJsonLD()))
-    };
+    // Calling the update method also saves the changes to storage database.
+    // (it's the equivalent of calling setAttributes() + save())
+    const onSubmit = (data: FormData) => person.update({ name: data.name });
 
-    const name = person.getAttributeValue("name")?.toString() || "";
-    return <Demo name={name} onSubmit={onSubmit}/>
+    // Given that name is not required, we must provide a default value
+    // or the UI is stuck loading.
+    return <Demo name={person.name ?? '(Unknown)'} onSubmit={onSubmit}/>
 }
