@@ -12,7 +12,7 @@ export default function RecommendationList({guide}: Props) {
             <Content id="recommendations">
                 <h2 className="subtitle">Recommended resources</h2>
 
-                For more insights into this topic, I recommend checking out these resources.
+                For more insights into {guide.name}, I recommend checking out these resources.
             </Content>
 
             <table className={"table is-striped is-fullwidth"}>
