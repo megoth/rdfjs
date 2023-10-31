@@ -2,7 +2,6 @@ import Content from "../../content";
 import Code from "../../code";
 import localDemoCode from "./index.tsx?raw";
 import {PROFILE_TURTLE} from "../../../constants";
-import {NavLink} from "react-router-dom";
 import CodeStep from "../../code/step";
 
 <Content>
@@ -12,11 +11,6 @@ import CodeStep from "../../code/step";
 </Content>
 
 <Code language="turtle" id="DefaultTurtle" code={PROFILE_TURTLE} noCopy={true}/>
-
-<Content>
-    (If the above code doesn't make sense for you, you might want to consider reading the <NavLink to={"/rdf"}>guide on
-    RDF</NavLink>.)
-</Content>
 
 <Code language="tsx" id="InruptLocalDemo" code={localDemoCode} className="line-numbers">
     <CodeStep lines={["15-16"]} title="Setting up dataset and turtle">
