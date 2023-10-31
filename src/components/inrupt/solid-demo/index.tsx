@@ -3,11 +3,10 @@ import {
     getLiteral, getSolidDataset, getThing, saveSolidDatasetAt, setLiteral, setThing, SolidDataset
 } from "@inrupt/solid-client";
 import {FOAF} from "@inrupt/vocab-common-rdf";
-import {Literal} from "@rdfjs/types"
-import {lit} from "rdflib";
 import {useSolidAuth} from "@ldo/solid-react";
 import Demo, {FormData} from "../../demo";
 import Loading from "../../loading";
+import {createLiteral} from "../../../libs/rdf.ts";
 
 export default function InruptSolidDemo() {
     const {session, fetch} = useSolidAuth();
@@ -25,7 +24,7 @@ export default function InruptSolidDemo() {
     }
 
     const onSubmit = async (data: FormData) => {
-        const updatedProfile = setLiteral(profile, FOAF.name, lit(data.name) as Literal);
+        const updatedProfile = setLiteral(profile, FOAF.name, createLiteral(data.name));
         const updatedDataset = setThing(dataset, updatedProfile);
         const savedDataset = await saveSolidDatasetAt(session.webId!, updatedDataset, {fetch});
         setDataset(savedDataset);
