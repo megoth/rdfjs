@@ -9,14 +9,15 @@ import {NavLink} from "react-router-dom";
     <h1 className="title">RDF</h1>
 
     There are <NavLink to="#recommendations">several resources I can recommend to get you started</NavLink> (and I do
-    encourage you to check them out), but for the purpose of this website I'll give you a quick introduction to what RDF is all about.
+    encourage you to check them out), but for the purpose of this website I'll give you a quick introduction to what RDF
+    is all about.
 
     RDF is an abbreviation for **Resource Description Framework**. It's a framework for representing information on the
-    web. It's a semantic technology in that its fundamental building stone, the triple, is based of the human language.
+    web. It's a semantic technology in that its fundamental building stone, the triple, is based on the human language.
     This allows us to express relationships using human language, where entities such as persons can be represented as
-    nodes and the relationships going from one to the other as edges. These directed graphs are what we call RDF graphs.
-    They describe a set of statements, which themselves consists of three parts - a triple. These parts are the Subject,
-    the Predicate, and the Object.
+    nodes and the relationships going from one to the other as edges. These directed graphs are what we call **RDF
+    graphs**. They describe a set of statements, which themselves consists of three parts - a **triple**. These parts
+    are the **Subject**, the **Predicate**, and the **Object**.
 
     A classic depiction of this is:
 
@@ -25,7 +26,7 @@ import {NavLink} from "react-router-dom";
              alt={`A diagram representing a triple with the Subject, the Predicate, and the Object.`}/>
     </picture>
 
-    Another important feature of RDF is that nodes and edges are IRIs (similar to URLs) that represent them, and all
+    Another important feature of RDF is that **nodes and edges are IRIs** (similar to URLs) that represent them, and all
     denoted things have unique IRIs. So another way of expressing the depiction above is with text:
 </Content>
 
@@ -59,7 +60,7 @@ import {NavLink} from "react-router-dom";
 </Content>
 
 <AuthorNote title={"Why are RDF, Linked Data, and the Semantic Web sometimes used interchangeably?"}>
-    When you hear people talk about RDF, they might interchangeably use Linked Data and/or the Semantic Web to refer to
+    When people talk about RDF, they might interchangeably use Linked Data and/or the Semantic Web to refer to
     it. Linked Data and the Semantic Web are popular branding terms for RDF throughout the years, so if anything you
     might infer when a person was acquainted to RDF by which synonym they use. None of the terms are wrong to use. My
     personal preference is Linked Data, but I'll stick to RDF for this website.
