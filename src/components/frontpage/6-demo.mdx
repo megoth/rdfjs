@@ -7,9 +7,9 @@ import CodeStep from "../code/step";
 <Content id="demo">
     <h2 className="subtitle is-3">How does the demo work?</h2>
 
-    All of the demos use the same component, The `Demo` component. It takes two arguments, `name` and `onSubmit`. The
-    component presents a form with one simple text input. This input presents the name that is given to the user. The
-    form can be submitted, at which point the function `onSubmit` will be called.
+    All of the demos use the same component, the `Demo` component. It takes two properties, `name` and `onSubmit`. The
+    component presents a form with one simple text input, which presents the name. The form can be submitted, at which
+    point the function `onSubmit` will be called.
 
     The demo below will not store anything, so refreshing the webpage will reset all changes.
 </Content>
@@ -19,7 +19,7 @@ import CodeStep from "../code/step";
 <Content>
     This code is written in [TSX](https://www.typescriptlang.org/docs/handbook/jsx.html), a language that combines
     Typescript and ESM files. It's specifically written with React in mind, and relies a lot on [React
-    Hooks](https://react.dev/reference/react). That said, I think the overall abstractions are clear, and I'll walk
+    Hooks](https://react.dev/reference/react). That said, I think the overall abstractions are clear, and I'll walk you
     through the various parts:
 </Content>
 
@@ -35,8 +35,9 @@ import CodeStep from "../code/step";
         Whenever the name successfully submits, we want to notify the user.
     </CodeStep>
     <CodeStep lines={["19", "24-27", "41"]} title="Throttling submits">
-        Whenever we're working with the Solid demos, there might be a delay when communicating with the Solid
-        servers. Given this behavior, I want to limit when a user can submit updates.
+        Whenever we're working with asynchronous functionality when submitting, there might be a delay when
+        where things are being updated. Given this behavior, I want to limit when a user can submit updates so that they
+        cannot spam the submit-button.
     </CodeStep>
     <CodeStep lines={["16", "26"]} title="Relaying name and onSubmit">
         We pass the data submitted to the parent demo code, which provide the specific logic that should

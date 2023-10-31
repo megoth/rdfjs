@@ -597,7 +597,7 @@ export const SOLID_DEMOS: Array<Demo> = [
         icon: "/inrupt.webp",
         iconAlt: "Logo for Inrupt",
         library: LIBRARY_INRUPT,
-        slogan: "Inrupt offers an impressive suite of JavaScript libraries that offer developers a lot of features",
+        slogan: "Inrupt's JS libraries have been made with RDF and Solid in mind, and provide an extensive API to allow you to manage data",
         text: "Inrupt"
     },
     {
