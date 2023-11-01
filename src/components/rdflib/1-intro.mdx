@@ -2,12 +2,13 @@ import Content from "../content";
 
 <Content>
     Rdflib.js is probably _the_ longest ongoing project that allow developers to manage RDF. It's used in many projects,
-    such as [the SolidOS project](https://github.com/SolidOS/solidos). Its API is mostly low-level, requiring you to
-    understand quite a bit of RDF to use it. I would also argue that the form of some of the functions are outdated,
+    such as [the SolidOS project](https://github.com/SolidOS/solidos). Its API consists of low-level and high-level
+    parts. The lower level API requires a healthy bit of understanding RDF, while the higher level API allows you to
+    interact with RDF resources more easily. I would argue that the form of some of the functions are a bit outdated,
     such as `serialize` where the last parameter is a callback function. This eludes back to how callbacks were handled
-    before promises were a thing in the JS.
+    before promises were a thing in JavaScript.
 
-    The API is extensive, and should have you covered in most situations. But it's dated and low-level API does not
-    bring me joy when working with it, and in general I would recommend _not_ using it for front-end projects. (As the
-    underlying engine for a library that sports its own API on top of it though, that might be a perfect fit.)
+    The API is extensive, and should have you covered in most situations. The low-level API does not bring me joy when
+    working with it, so in general I would recommend _not_ using it for front-end projects, unless you're very dependent
+    on working with a very stable API.
 </Content>

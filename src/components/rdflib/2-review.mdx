@@ -31,7 +31,7 @@ import ReviewHeader from "../review-header";
 
         Although the response can be good, and the people welcoming, the code base of rdflib.js is quite hard to manage
         at times. This means that bug can take a long time to be fixed. Luckily, the library has been out for a long
-        time, and it has proven reliable in preserving it's APIs.
+        time, and it has proven reliable in preserving its APIs.
     </Content>
 
     <RatingCriteriaTitle index={3} rating={LIBRARY_RDFLIB.review[3]}/>
@@ -42,14 +42,15 @@ import ReviewHeader from "../review-header";
 
     <RatingCriteriaTitle index={4} rating={LIBRARY_RDFLIB.review[4]}/>
     <Content id={RATING_CRITERIA[4][0]}>
-        rdflib.js offers a robust experience that allows you to engage with RDF in a low-level manner. It requires you
-        to know how RDF works to use it, but rewards you with an stable and safe API. In my opinion the API also suffers
-        from its age, most prominently shown in asynchronous functions like `parse` and `serialize` that relies on
-        callbacks. It's philosophy on having a global store is also not necessarily aligned with component-specific
-        scopes, but since it's forced upon you, it's not a big problem.
+        rdflib.js offers a robust experience that allows you to engage with RDF with a low-level API, but also interact
+        with RDF resources with a high-level API. It requires you to know how RDF works to use most of it, but rewards
+        you with a stable and reliant API. In my opinion the API also suffers from its age, most prominently shown in
+        asynchronous functions like `parse` and `serialize` that relies on callbacks. It's philosophy on having a global
+        store is also not necessarily aligned with component-specific scopes, but since it's not forced upon you, it's
+        not a big problem.
 
-        I <u>**would use**</u> rdflib.js if you're dependent on a stable library with a low-level API plus some helper
-        utility for online features. I <u>**would not use**</u> it in most web apps since it forces you to get into the
-        nitty gritty of low-level RDF data management.
+        I <u>**would use**</u> rdflib.js if you're dependent on a stable library with an extensive low-level API plus
+        some useful helper utilities for online interaction. I <u>**would not use**</u> it in most web apps since it
+        forces you to get into the nitty gritty of low-level RDF data management.
     </Content>
 </AuthorNote>
