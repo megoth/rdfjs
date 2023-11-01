@@ -1,5 +1,5 @@
 {
-  "rewrites":  [
-    {"source": "/(.*)", "destination": "/"}
-  ]
+  "functions": {
+    "start": "node dist/server/index.js"
+  }
 }
