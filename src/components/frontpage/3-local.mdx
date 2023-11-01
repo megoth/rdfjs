@@ -1,9 +1,14 @@
 import Content from "../content";
 import styles from "./style.module.css";
+import {lazy} from "react";
+import {ClientSuspense} from "rakkasjs";
 
 <Content>
     <h2 className="subtitle is-3" className={styles.localTitle}>
         <span>RDF + JS + `localStorage` = </span>
+        {((Icon) => <ClientSuspense fallback>
+            <Icon style={{fill: "rgb(232, 30, 30)"}}/>
+        </ClientSuspense>)(lazy(() => import("./local-heart")))}
     </h2>
 
     I'll start by showing how RDF can be manipulated locally in your browser. For each library I've implemented the same

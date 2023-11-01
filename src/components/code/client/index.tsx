@@ -1,9 +1,7 @@
-import {HTMLAttributes, ReactNode, useEffect, useState} from "react";
+import {HTMLAttributes, lazy, ReactNode, useEffect, useState} from "react";
 import styles from "../style.module.css";
 import {clsx} from "clsx";
-import {MdOutlineClear} from "react-icons/md";
-import {IoExitOutline} from "react-icons/io5";
-import {StyledLink} from "rakkasjs";
+import {ClientSuspense, StyledLink} from "rakkasjs";
 import {useCopyToClipboard} from "../../../hooks/use-copy-to-clipboard";
 import useNotification from "../../../hooks/use-notification";
 import usePrism from "../../../hooks/use-prism";
@@ -18,13 +16,18 @@ export interface CodeProps extends HTMLAttributes<HTMLPreElement> {
     url?: string;
 }
 
+const CrossIcon = lazy(() => import("./cross-icon"));
+const ExitIcon = lazy(() => import("./exit-icon"));
+const CopyIcon = lazy(() => import("./copy-icon"));
+const CopiedIcon = lazy(() => import("./copied-icon"));
+
 export default function CodeClient({children, className, code, noCopy, id, language, url, ...props}: CodeProps) {
     const highlightAll = usePrism();
     const {notify} = useNotification();
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [_, copy] = useCopyToClipboard();
     const [dataLine, setDataLine] = useState<string[]>([]);
-    const { hash, search } = location;
+    const {hash, search} = location;
 
     useEffect(() => {
         setDataLine([]);
@@ -41,7 +44,12 @@ export default function CodeClient({children, className, code, noCopy, id, langu
 
     const copyCode = async () => {
         await copy(code);
-        notify(<>Copied code to clipboard</>)
+        notify(<>
+            <span>Copied code to clipboard </span>
+            <ClientSuspense fallback>
+                {<CopiedIcon/>}
+            </ClientSuspense>
+        </>)
     }
 
     return (
@@ -68,18 +76,31 @@ export default function CodeClient({children, className, code, noCopy, id, langu
             <div className={clsx("field is-grouped is-grouped-right is-grouped-multiline", styles.field)}>
                 {dataLine.length > 0 && <p className="control">
                     <StyledLink href={`?#${id}`} className={"button is-small is-danger is-light"}>
-                        <span className="icon is-small"><MdOutlineClear/></span>
+                        <span className="icon is-small">
+                            <ClientSuspense fallback>
+                                {<CrossIcon/>}
+                            </ClientSuspense>
+                        </span>
                         <span>Clear highlighted code</span>
                     </StyledLink>
                 </p>}
                 {url && <p className="control">
                     <a href={url} className={"button is-small is-light"}>
-                        <span className="icon is-small"><IoExitOutline/></span>
+                        <span className="icon is-small">
+                            <ClientSuspense fallback>
+                                {<ExitIcon/>}
+                            </ClientSuspense>
+                        </span>
                         <span>Go to code in project's GH repo</span>
                     </a>
                 </p>}
                 {!noCopy && <p className="control">
                     <button className="button is-small is-light" onClick={() => copyCode()}>
+                        <span className="icon is-small">
+                            <ClientSuspense fallback>
+                                {<CopyIcon/>}
+                            </ClientSuspense>
+                        </span>
                         <span>Copy code</span>
                     </button>
                 </p>}

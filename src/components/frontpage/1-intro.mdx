@@ -1,9 +1,14 @@
 import Content from "../content";
 import LibraryList from "../library-list";
+import {lazy} from "react";
+import {ClientSuspense} from "rakkasjs";
 
 <Content id="intro">
     <h1 className="title" style={{display: "flex", gap: "0.25rem", alignItems: "center"}}>
         <span>RDF + JS = </span>
+        {((Icon) => <ClientSuspense fallback>
+            <Icon style={{fill: "rgb(232, 30, 30)"}}/>
+        </ClientSuspense>)(lazy(() => import("./intro-heart")))}
     </h1>
 
     Welcome to this website that documents and reviews various ways you can work with RDF using JavaScript libraries.

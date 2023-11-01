@@ -1,10 +1,14 @@
 import {Guide} from "../../constants.ts";
 import Content from "../content";
-import {AiFillYoutube, AiOutlineLink} from "react-icons/ai";
+import {ClientSuspense} from "rakkasjs";
+import {lazy} from "react";
 
 interface Props {
     guide: Guide
 }
+
+const UrlIcon = lazy(() => import("./url-icon"));
+const YouTubeIcon = lazy(() => import("./youtube-icon"));
 
 export default function RecommendationList({guide}: Props) {
     return guide.recommendations.length ? (
@@ -27,8 +31,8 @@ export default function RecommendationList({guide}: Props) {
                 {guide.recommendations.map(({href, note, title, type}) => (
                     <tr key={href}>
                         <td>
-                            {type === "URL" && <AiOutlineLink/>}
-                            {type === "YouTube" && <AiFillYoutube style={{fill: "red"}}/>}
+                            {type === "URL" && <ClientSuspense fallback>{<UrlIcon />}</ClientSuspense>}
+                            {type === "YouTube" && <ClientSuspense fallback>{<YouTubeIcon style={{fill: "red"}}/>}</ClientSuspense>}
                         </td>
                         <td>
                             <a href={href}>{title}</a>
