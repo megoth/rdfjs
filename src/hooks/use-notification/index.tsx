@@ -1,5 +1,5 @@
-import {createContext, ReactNode, useContext, useState} from "react";
-import NotificationList from "../../components/notification-list";
+import {createContext, lazy, ReactNode, useContext, useState} from "react";
+import {ClientSuspense} from "rakkasjs";
 
 const NotificationContext = createContext<{
     hide: (id: string) => void;
@@ -10,6 +10,8 @@ const NotificationContext = createContext<{
     notifications: [],
     notify: () => undefined,
 });
+
+const ClientComponent = lazy(() => import("../../components/notification-list"));
 
 interface Props {
     children: ReactNode;
@@ -38,7 +40,9 @@ export function NotificationContextProvider({children}: Props) {
     return (
         <NotificationContext.Provider value={{hide, notifications, notify}}>
             {children}
-            <NotificationList/>
+            <ClientSuspense fallback={""}>
+                {<ClientComponent />}
+            </ClientSuspense>
         </NotificationContext.Provider>
     )
 }
