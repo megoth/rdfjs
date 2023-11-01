@@ -1,5 +1,11 @@
 import Content from "../content";
 import {NavLink} from "react-router-dom";
+import nameInteroperabilityTurtle from "./name-interoperability.ttl?raw";
+import organizationTurtle from "./organization.ttl?raw";
+import personTurtle from "./person.ttl?raw";
+import person2Turtle from "./person2.ttl?raw";
+import personShape from "./person-shape.shex?raw";
+import Code from "../code";
 
 <Content>
     <h2 className="subtitle">Shapes</h2>
@@ -18,3 +24,56 @@ import {NavLink} from "react-router-dom";
     to="/ldo">LDO</NavLink>. I personally find ShEx easier, and therefore better, to use in general, but I also don't
     have to much experience with SHACL, so I might be wrong.
 </Content>
+
+<Content>
+    <h3 className="subtitle">Interoperability</h3>
+
+    As mentioned in the section on vocabularies, interoperability is a core tenet of RDF. Lets show this with some
+    examples.
+</Content>
+
+<Code code={personTurtle} id="EX1_personTurtle" language="turtle" noCopy={true}/>
+<Code code={organizationTurtle} id="EX1_organizationTurtle" language="turtle" noCopy={true}/>
+
+<Content>
+    These RDF graphs don't share any attributes, so they are *not interoperable*. But if you were to merge the following
+    graph:
+</Content>
+
+<Code code={nameInteroperabilityTurtle} id="EX1_nameInteroperabilityTurtle" language="turtle" noCopy={true}/>
+
+<Content>
+    Now we would now have interoperability for the names of these entities. Granted, these examples are a bit
+    constructed, but you could easily imagine apps using two vocabularies from two different organizations being able to
+    merge the data used by the vocabularies in a *meaningful, semantic way*.
+</Content>
+
+<Content>
+    <h4 className="subtitle">Shapes and interoperability</h4>
+
+    But whereas vocabularies *allow* RDF to be interoperable, shapes *ensures* that it actually *is* interoperable.
+    Let's see some more examples:
+</Content>
+
+<Code code={personTurtle} id="EX2_personTurtle" language="turtle" noCopy={true}/>
+<Code code={person2Turtle} id="EX2_person2Turtle" language="turtle" noCopy={true}/>
+
+<Content>
+    Again we see a turtle for person named "Arne" in example 1, and a person named "Tim" in example 2. The different
+    types might indicate that these graphs are not interoperable, while the reuse of `foaf:name` might indicate that
+    they are. And what about `foaf:knows`, should that be a requirement?
+
+    To answer these questions we can use a ShEx-shape to describe the following:
+</Content>
+
+<Code code={personShape} id="EX2_personShape" language="turtle" noCopy={true}/>
+
+<Content>
+    This shape tells us that we want a graph that has *either* `foaf:Person` or `schema:Person` (or *both*), but both
+    uses `foaf:name` Also notice that it doesn't say anything about `foaf:knows`, which means that for the purposes of
+    that shape, it doesn't care about it. But it doesn't exclude the use of it either, so using this shape we could say
+    that the RDF graphs describing the persons are interoperable.
+
+    (If you want to learn more about shapes, you could read the <NavLink to="/shex">guide on ShEx</NavLink>.)
+</Content>
+

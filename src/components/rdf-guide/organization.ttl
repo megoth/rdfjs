@@ -1,0 +1,5 @@
+@prefix : <#> .
+@prefix schema: <http://schema.org/> .
+
+:solidProject a schema:Organization ;
+    schema:name "Solid Project" .
