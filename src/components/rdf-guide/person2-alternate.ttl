@@ -1,0 +1,7 @@
+@prefix : <#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix myVocabulary: <https://example.com/myVocabulary#> .
+@prefix schema: <http://schema.org/> .
+
+:tim a schema:Person, myVocabulary:Legend ;
+    foaf:name "Tim" .

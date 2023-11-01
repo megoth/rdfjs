@@ -1,5 +1,11 @@
 @prefix : <#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix schema: <http://schema.org/> .
 
-:me a foaf:Person ;
-    foaf:name "Arne" .
+:arne a foaf:Person ;
+    foaf:name "Arne" ;
+    schema:jobTitle "Senior Consultant"@en, "Seniorkonsulent"@nb-no ;
+    schema:worksFor :capgemini .
+
+:capgemini a schema:Organization ;
+    schema:name "Capgemini" .
