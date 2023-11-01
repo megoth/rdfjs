@@ -233,7 +233,7 @@ export const SOLID_GUIDE: Guide = {
         type: "URL"
     }, {
         title: "Solid - A Better Web (Simply Explained)",
-        href: "https://www.youtube.com/watch?v=V-9cOJ6SUHI",
+        href: "https://www.youtube.com/watch?v=qWVTjMsv7AE",
         note: "If you only have five minutes",
         type: "YouTube"
     }],

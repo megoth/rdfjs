@@ -1,4 +1,4 @@
-import {NavLink} from "react-router-dom";
+import {StyledLink} from "rakkasjs";
 import {clsx} from "clsx";
 import {useState} from "react";
 import styles from "./style.module.css";
@@ -10,11 +10,11 @@ export default function Navigation() {
         <nav className="navbar" role="navigation" aria-label="main navigation">
             <div className="container">
                 <div className="navbar-brand">
-                    <NavLink to={"/"} className={clsx("navbar-item", styles.homeLink)}
-                             onClick={() => setMenuIsActive(false)}>
-                        <img src="/rdfjs.png" alt={"Logo for rdf.js.org"}/>
+                    <StyledLink href={"/"} className={clsx("navbar-item", styles.homeLink)}
+                                onClick={() => setMenuIsActive(false)}>
+                        <img src="/rdfjs.png" alt="Logo for rdf.js.org"/>
                         <span>Home</span>
-                    </NavLink>
+                    </StyledLink>
                     <button className={clsx("navbar-burger", {
                         "is-active": menuIsActive
                     })} aria-label="menu" aria-expanded="false" type="button"
@@ -29,11 +29,10 @@ export default function Navigation() {
                 })}>
                     <div className="navbar-start">
                         {LIBRARIES.map(({href, name}) => (
-                            <NavLink to={href} key={href}
-                                     className={({isActive}) => clsx("navbar-item", {"is-active": isActive})}
-                                     onClick={() => setMenuIsActive(false)}>
+                            <StyledLink href={href} key={href} className="navbar-item"
+                                        onClick={() => setMenuIsActive(false)}>
                                 {name}
-                            </NavLink>)
+                            </StyledLink>)
                         )}
                     </div>
                 </div>

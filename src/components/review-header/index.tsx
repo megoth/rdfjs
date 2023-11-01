@@ -1,5 +1,5 @@
 import Rating from "../rating";
-import {NavLink} from "react-router-dom";
+import {StyledLink} from "rakkasjs";
 import {Library, RATING_CRITERIA} from "../../constants.ts";
 
 interface Props {
@@ -17,9 +17,9 @@ export default function ReviewHeader({library}: Props) {
                             <Rating rating={rating}/>
                         </td>
                         <td className="is-full">
-                            <NavLink to={`#${RATING_CRITERIA[index][0]}`}>
+                            <StyledLink href={`#${RATING_CRITERIA[index][0]}`}>
                                 {RATING_CRITERIA[index][1]}
-                            </NavLink>
+                            </StyledLink>
                         </td>
                     </tr>
                 ))}

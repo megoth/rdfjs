@@ -2,7 +2,7 @@ import Content from "../../content";
 import Code from "../../code";
 import localDemoCode from "./index.tsx?raw";
 import {PROFILE_TURTLE} from "../../../constants";
-import {NavLink} from "react-router-dom";
+import {StyledLink} from "rakkasjs";
 import CodeStep from "../../code/step";
 
 <Content>
@@ -14,8 +14,8 @@ import CodeStep from "../../code/step";
 <Code language="turtle" id="DefaultTurtle" code={PROFILE_TURTLE} noCopy={true}/>
 
 <Content>
-    (If the above code doesn't make sense for you, you might want to consider reading the <NavLink to={"/rdf"}>guide on
-    RDF</NavLink>.)
+    (If the above code doesn't make sense for you, you might want to consider reading the <StyledLink href={"/rdf"}>guide
+    on RDF</StyledLink>.)
 </Content>
 
 <Code language="tsx" id="LDOLocalDemo" code={localDemoCode} className="line-numbers">

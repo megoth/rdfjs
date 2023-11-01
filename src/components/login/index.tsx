@@ -2,9 +2,9 @@ import {PROVIDERS} from "../../constants.ts";
 import styles from "./style.module.css"
 import {clsx} from "clsx";
 import {HTMLAttributes} from "react";
-import {useHref, useLocation} from "react-router-dom";
-import {hijackLogin} from "../../libs/location.ts";
+import {getRedirectUrl} from "../../libs/location.ts";
 import {LoginOptions} from "@ldo/solid-react/src/SolidAuthContext.ts";
+import {useLocation} from "rakkasjs";
 
 interface Props extends HTMLAttributes<HTMLButtonElement> {
     login: (issuer: string, loginOptions?: LoginOptions) => Promise<void>,
@@ -12,14 +12,17 @@ interface Props extends HTMLAttributes<HTMLButtonElement> {
 }
 
 export default function Login({className, login, redirectId, ...props}: Props) {
-    const routerLocation = useLocation();
-    const href = useHref(routerLocation.pathname);
-    const onProviderClick = hijackLogin(login, routerLocation, location, href, redirectId);
+    const location = useLocation();
+
+    const onProviderClick = async (issuerUrl: string) => {
+        const redirectUrl = getRedirectUrl(location.current, redirectId);
+        await login(issuerUrl, {redirectUrl})
+    }
 
     const onCustomProviderClick = async () => {
         const providerUrl = prompt("Please provide Solid Provider URL");
         if (!providerUrl || !(new URL(providerUrl).href)) return;
-        await onProviderClick(providerUrl);
+        return onProviderClick(providerUrl);
     };
 
     return (
@@ -35,7 +38,7 @@ export default function Login({className, login, redirectId, ...props}: Props) {
             <button type="button"
                     {...props}
                     className={clsx("button", className || "is-info")}
-                    onClick={onCustomProviderClick}>
+                    onClick={() => onCustomProviderClick()}>
                 Custom Solid Provider
             </button>
         </div>

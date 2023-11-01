@@ -1,8 +1,8 @@
 import {Demo} from "../../constants.ts";
 import styles from "./style.module.css";
 import {clsx} from "clsx";
-import {NavLink} from "react-router-dom";
 import Card from "../card";
+import {StyledLink} from "rakkasjs";
 
 interface Props {
     list: Array<Demo>
@@ -14,7 +14,7 @@ export default function DemoList({list}: Props) {
         <div className={styles.demoList}>
             <ul className={clsx("columns", styles.columns)}>
                 {demoList.map(({title, subtitle, href, icon, iconAlt, slogan}) => (
-                    <NavLink to={href} key={href} className={clsx("column", styles.column)}>
+                    <StyledLink href={href} key={href} className={clsx("column", styles.column)}>
                         <Card>
                             <div className={clsx("card-content", styles.cardContent)}>
                                 <div className="media">
@@ -36,7 +36,7 @@ export default function DemoList({list}: Props) {
                                 </div>
                             </div>
                         </Card>
-                    </NavLink>
+                    </StyledLink>
                 ))}
             </ul>
         </div>

@@ -1,5 +1,5 @@
 import {Guide, GUIDES} from "../../constants.ts";
-import {NavLink} from "react-router-dom";
+import {StyledLink} from "rakkasjs";
 import styles from "./style.module.css";
 import {clsx} from "clsx";
 import {useMemo} from "react";
@@ -17,7 +17,7 @@ export default function GuideList({exclude}: Props) {
     return (
         <div className={clsx("columns", styles.columns)}>
             {guides.map(({href, logo, logoAlt, name}) => (
-                <NavLink key={href} to={href} className={clsx("column", styles.column)}>
+                <StyledLink key={href} href={href} className={clsx("column", styles.column)}>
                     <Card>
                         <div className="card-content">
                             <div className={clsx("media", styles.media)}>
@@ -32,7 +32,7 @@ export default function GuideList({exclude}: Props) {
                             </div>
                         </div>
                     </Card>
-                </NavLink>
+                </StyledLink>
             ))}
         </div>
     )

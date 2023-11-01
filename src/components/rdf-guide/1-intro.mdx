@@ -3,14 +3,14 @@ import tripleTurtle from "./triple.ttl?raw";
 import profileTurtle from "./person.ttl?raw";
 import Code from "../code";
 import AuthorNote from "../author-note";
-import {NavLink} from "react-router-dom";
+import {StyledLink} from "rakkasjs";
 
 <Content>
     <h1 className="title">RDF</h1>
 
-    There are <NavLink to="#recommendations">several resources I can recommend to get you started</NavLink> (and I do
-    encourage you to check them out), but for the purpose of this website I'll give you a quick introduction to what RDF
-    is all about.
+    There are <StyledLink href="#recommendations">several resources I can recommend to get you started</StyledLink> (and
+    I do encourage you to check them out), but for the purpose of this website I'll give you a quick introduction to
+    what RDF is all about.
 
     RDF is an abbreviation for **Resource Description Framework**. It's a framework for representing information on the
     web. It's a semantic technology in that its fundamental building stone, the triple, is based on the human language.

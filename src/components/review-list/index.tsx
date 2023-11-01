@@ -1,6 +1,6 @@
 import {LIBRARIES, RATING_CRITERIA} from "../../constants.ts";
 import Rating from "../rating";
-import {NavLink} from "react-router-dom";
+import {StyledLink} from "rakkasjs";
 import {clsx} from "clsx";
 import styles from "./style.module.css";
 
@@ -22,9 +22,9 @@ export default function ReviewList() {
                         <td>{text}</td>
                         {RATING_CRITERIA.map(([id], index) => (
                             <td key={`${href}-${id}`}>
-                                <NavLink to={`${href}#${id}`}>
+                                <StyledLink href={`${href}#${id}`}>
                                     <Rating rating={review[index]}/>
-                                </NavLink>
+                                </StyledLink>
                             </td>
                         ))}
                     </tr>

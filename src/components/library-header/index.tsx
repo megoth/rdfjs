@@ -10,7 +10,7 @@ export default function LibraryHeader({library}: Props) {
     return (
         <>
             <picture className={clsx("image", styles.image)}>
-                <img src={library.icon} alt={library.iconAlt} style={{maxHeight: library.iconPreferredHeight}}/>
+                <img src={library.icon} alt={library.iconAlt} style={{maxHeight: library.iconPreferredHeight, width: "auto"}}/>
             </picture>
             <header className="content">
                 <h1 className="title">{library.name}</h1>

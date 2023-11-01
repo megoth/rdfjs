@@ -1,6 +1,6 @@
-import {NavLink} from "react-router-dom";
-import {toCodePart} from "../code";
+import {StyledLink} from "rakkasjs";
 import {ReactNode} from "react";
+import {toCodePart} from "../../libs/urls.ts";
 
 interface Props {
     children?: ReactNode
@@ -9,5 +9,5 @@ interface Props {
 }
 
 export default function CodeLink({children, id, lines}: Props) {
-    return <NavLink to={toCodePart(id, lines[0], ...lines.slice(1))} preventScrollReset={true}>{children}</NavLink>
+    return <StyledLink href={toCodePart(id, lines[0], ...lines.slice(1))}>{children}</StyledLink>
 }

@@ -1,5 +1,5 @@
 import {LIBRARIES, Library} from "../../constants.ts";
-import {NavLink} from "react-router-dom";
+import {StyledLink} from "rakkasjs";
 import styles from "./style.module.css";
 import {clsx} from "clsx";
 import Card from "../card";
@@ -16,7 +16,7 @@ export default function LibraryList({exclude}: Props) {
         <div className={clsx("menu", styles.libraryList)}>
             <ul className={clsx("columns", styles.columns)}>
                 {libraries.map(({creator, href, icon, iconAlt, name}) => (
-                    <NavLink key={href} to={href} className={clsx("column", styles.column)}>
+                    <StyledLink key={href} href={href} className={clsx("column", styles.column)}>
                         <Card className={clsx("card", styles.card)}>
                             <div className="card-image">
                                 <picture className={clsx("image", styles.image)}>
@@ -32,7 +32,7 @@ export default function LibraryList({exclude}: Props) {
                                 </div>
                             </div>
                         </Card>
-                    </NavLink>
+                    </StyledLink>
                 ))}
             </ul>
         </div>

@@ -1,5 +1,3 @@
-import LocalDemo from "./local-demo";
-import SolidDemo from "./solid-demo";
 import Intro from "./1-intro.mdx";
 import Review from "./2-review.mdx";
 import Bias from "./3-bias.mdx";
@@ -10,6 +8,11 @@ import LogoutButton from "../logout-button";
 import {LIBRARY_INRUPT} from "../../constants.ts";
 import LibraryLayout from "../library-layout";
 import LoginGate from "../login-gate";
+import {lazy} from "react";
+import {ClientSuspense} from "rakkasjs";
+
+const LDOLocalDemoComponent = lazy(() => import("./local-demo"));
+const LDOSolidDemoComponent = lazy(() => import("./solid-demo"));
 
 export default function Inrupt() {
     return (
@@ -18,13 +21,17 @@ export default function Inrupt() {
             <Content id="local">
                 <h2 className="subtitle is-3">Local demo</h2>
             </Content>
-            <LocalDemo/>
+            <ClientSuspense fallback={"Loading demo..."}>
+                {<LDOLocalDemoComponent/>}
+            </ClientSuspense>
             <LocalDemoCode/>
             <Content id="solid">
                 <h2 className="subtitle is-3">Solid demo</h2>
             </Content>
             <LoginGate redirectId="solid-react">
-                <SolidDemo/>
+                <ClientSuspense fallback={"Loading demo..."}>
+                    {<LDOSolidDemoComponent/>}
+                </ClientSuspense>
                 <LogoutButton/>
             </LoginGate>
             <SolidDemoCode/>

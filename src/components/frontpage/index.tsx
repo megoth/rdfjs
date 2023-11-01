@@ -9,6 +9,7 @@ import {LOCAL_DEMOS, SOLID_DEMOS} from "../../constants.ts";
 import Demo from "./6-demo.mdx";
 import About from "./7-about.mdx";
 import Content from "../content";
+import { Head } from "rakkasjs";
 
 export default function Frontpage() {
     return (
