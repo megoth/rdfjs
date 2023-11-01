@@ -7,7 +7,7 @@
     "dev": "rakkas",
     "build": "tsc && rakkas build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "rakkas preview"
   },
   "dependencies": {
     "@comunica/query-sparql": "^2.9.0",
@@ -15,6 +15,7 @@
     "@inrupt/vocab-common-rdf": "^1.0.5",
     "@inrupt/vocab-solid": "^1.0.4",
     "@ldo/solid-react": "^0.0.1-alpha.16",
+    "@vercel/edge": "^1.1.0",
     "bulma": "^0.9.4",
     "clsx": "^2.0.0",
     "ldo": "^1.0.3",

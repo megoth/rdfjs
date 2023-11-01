@@ -3,7 +3,6 @@ import styles from "../style.module.css";
 import {clsx} from "clsx";
 import {MdOutlineClear} from "react-icons/md";
 import {IoExitOutline} from "react-icons/io5";
-import {BsFillClipboardCheckFill, BsFillClipboardPlusFill} from "react-icons/bs";
 import {StyledLink} from "rakkasjs";
 import {useCopyToClipboard} from "../../../hooks/use-copy-to-clipboard";
 import useNotification from "../../../hooks/use-notification";
@@ -42,7 +41,7 @@ export default function CodeClient({children, className, code, noCopy, id, langu
 
     const copyCode = async () => {
         await copy(code);
-        notify(<>Copied code to clipboard <BsFillClipboardCheckFill/></>)
+        notify(<>Copied code to clipboard</>)
     }
 
     return (
@@ -81,7 +80,6 @@ export default function CodeClient({children, className, code, noCopy, id, langu
                 </p>}
                 {!noCopy && <p className="control">
                     <button className="button is-small is-light" onClick={() => copyCode()}>
-                        <span className="icon is-small"><BsFillClipboardPlusFill/></span>
                         <span>Copy code</span>
                     </button>
                 </p>}
