@@ -31,6 +31,7 @@ pre[class*="language-"] {
         background: linear-gradient(to right, rgba(0%, 0%, 0%, 0.2) 70%, rgba(0, 0, 0, 0.3));
     }
 
+    :global(.number),
     :global(.tag) {
         align-items: inherit;
         background-color: transparent;

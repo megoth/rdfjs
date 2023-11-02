@@ -1,5 +1,6 @@
 import Content from "../content";
 import Code from "../code";
+import nameSelect from "./sparql-name-select.sparql?raw"
 import simpleSelect from "./sparql-simple-select.sparql?raw"
 
 <Content>
@@ -12,5 +13,14 @@ import simpleSelect from "./sparql-simple-select.sparql?raw"
 
 <Content>
     In this example we list all triples in a graph. We've assigned the variables `?subject`, `?predicate`, and `?object`
-    to catch the corresponding subjects, predicates, and objects.
+    to catch the corresponding subjects, predicates, and objects. But this example is very generic, so it helps to see a
+    more specific example.
+</Content>
+
+<Code language="sparql" id="SPARQLNameSelect" code={nameSelect} noCopy={true}/>
+
+<Content>
+    In the example we query for the value of `foaf:name` for the subject `https://example.com/profile`. If we were able
+    to execute SPARQL-queries (which [Comunica](https://comunica.dev/) allows us to do), we could use this query by
+    simply swap out the subject with the WebID the user has authenticated themselves with.
 </Content>
