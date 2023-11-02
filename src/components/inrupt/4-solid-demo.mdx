@@ -1,0 +1,16 @@
+import SolidDemo from "./solid-demo";
+import SolidDemoCode from "./solid-demo/code.mdx";
+import Content from "../content";
+import LogoutButton from "../logout-button";
+import LoginGate from "../login-gate";
+
+<Content id="solid">
+    <h2 className="subtitle is-3">Solid demo</h2>
+</Content>
+
+<LoginGate redirectId="solid-react">
+    <SolidDemo/>
+    <LogoutButton/>
+</LoginGate>
+
+<SolidDemoCode/>

@@ -374,7 +374,7 @@ export const LIBRARY_INRUPT: Library = {
     published: true,
     recommendation: "Systems that need to be production-ready soon",
     review: [3, 4, 3, 3, 3],
-    text: "Inrupt JS",
+    text: "Inrupt",
     websiteName: "Official documentation",
     websiteUrl: "https://docs.inrupt.com/developer-tools/javascript/client-libraries/"
 };

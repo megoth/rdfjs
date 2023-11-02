@@ -3,6 +3,20 @@ import {LIBRARY_INRUPT, RATING_CRITERIA} from "../../constants";
 import RatingCriteriaTitle from "../rating-criteria-title";
 import Content from "../content";
 import ReviewHeader from "../review-header";
+import Code from "../code";
+import libCode from "../../libs/rdf?raw"
+
+<section className="message is-warning">
+    <h2 className="message-header">On literals</h2>
+    <div className="message-body">
+        <p>
+            I was unable to find the API for creating literals using Inrupt's library, so I added some functions that
+            comply to the [RDF/JS data model specification](https://rdf.js.org/data-model-spec/).
+        </p>
+    </div>
+</section>
+
+<Code id="RDFJSLib" language="typescript" code={libCode} className="line-numbers" />
 
 <AuthorNote id="review" title="Should you choose Inrupt's JavaScript client libraries?">
     <ReviewHeader library={LIBRARY_INRUPT}/>
