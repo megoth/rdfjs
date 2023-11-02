@@ -4,7 +4,6 @@ import nameInteroperabilityTurtle from "./name-interoperability.ttl?raw";
 import organizationTurtle from "./organization.ttl?raw";
 import personTurtle from "./person1.ttl?raw";
 import person2Turtle from "./person2.ttl?raw";
-import person2AlternateTurtle from "./person2-alternate.ttl?raw";
 import personShape from "./person-shape.shex?raw";
 import Code from "../code";
 
@@ -52,7 +51,7 @@ import Code from "../code";
 <Content>
     <h4 className="subtitle">Shapes and interoperability</h4>
 
-    But whereas vocabularies *allow* RDF to be interoperable, shapes *ensures* that it actually *is* interoperable.
+    Whereas vocabularies *allow* RDF to be interoperable, shapes *ensures* that it actually *is* interoperable.
     Let's see some more examples:
 </Content>
 
@@ -76,24 +75,5 @@ import Code from "../code";
     that the RDF graphs describing the persons are interoperable.
 
     (If you want to learn more about shapes, you could read the <NavLink to="/shex">guide on ShEx</NavLink>.)
-</Content>
-
-<Content>
-    <h4 className="subtitle">Extendability</h4>
-
-    I've mentioned a couple of times that RDF can be extended. But what does that actually look like. Well, let's look
-    at another example:
-</Content>
-
-<Code code={person2AlternateTurtle} id="EX2_person2AlternateShape" language="turtle" noCopy={true}/>
-
-<Content>
-    In this example we've added another triple (`:tim a myVocabulary:Legend .`) which introduces a new vocabulary,
-    `myVocabulary`. This is an entirely fictional vocabulary, but as long as I'd the possibility of adding a resource to
-    example.org (which I sadly don't), I could mint any vocabulary I felt necessary.
-
-    Theoretically we could also merge the graphs from the example above with any other graphs, and we would still have a
-    valid RDF graph. (And if we had used something like OWL to formally define our vocabulary, we could also automate
-    how the graphs are merged as well, but that's outside the scope of this guide.)
 </Content>
 

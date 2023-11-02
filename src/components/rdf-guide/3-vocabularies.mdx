@@ -1,5 +1,7 @@
 import Content from "../content";
 import AuthorNote from "../author-note";
+import person2AlternateTurtle from "./person2-alternate.ttl?raw";
+import Code from "../code";
 
 <Content>
     <h2 className="subtitle">Vocabularies</h2>
@@ -7,18 +9,28 @@ import AuthorNote from "../author-note";
     RDF is designed to be extended, and one way of grouping these extensions are what we call vocabularies. Vocabularies
     are useful sets of terms that describes useful properties for a data model. Using these vocabularies we can ensure
     that our data is **interoperable**, which is a core tenet of RDF.
+
+    Vocabularies have an important role in **client-to-client standards**, as the metadata it describes can be used by
+    developers to ensure that their data is correctly attributed. But there's one thing missing to make sure that apps
+    can be interoperable, and that is a way to describe how our graph should *look*. For this we have shapes.
+
+    But *how* is RDF extended through vocabularies? Well, let's look at another example:
+</Content>
+
+<Code code={person2AlternateTurtle} id="EX2_person2AlternateShape" language="turtle" noCopy={true}/>
+
+<Content>
+    In this example we have a triple (`:tim a myVocabulary:Legend .`) which introduces a new vocabulary,
+    `myVocabulary`. This is an entirely fictional vocabulary, but as long as I can add resources to a web server, I can
+    mint as many vocabularies as I feel is necessary. And this is part of the power of RDF (which leads from a property
+    of the web in general): There is no authority that controls which vocabularies you use to describe your data. But if
+    we want to ensure that our data stays interoperable between apps we have another tool to help us, namely **shapes**.
 </Content>
 
 <AuthorNote title="Ontologies">
-    People may use the word ontologies interchangeably with the word vocabularies. <abbr
+    People may use the word ontology interchangeably with the word vocabulary. <abbr
     title="As Far As I Know">AFAIK</abbr> there is no formal distinction between the two terms in how they're used
     within RDF, but some people like to attribute a stricter formal model to ontologies, like using using <a
-    href="https://www.w3.org/OWL/"><abbr title="Web Ontology Language">OWL</abbr></a> to describe formal logic. Again, I
+    href="https://www.w3.org/OWL/"><abbr title="Web Ontology Language">OWL</abbr></a> to describe formal logic. I
     don't think there's anything wrong with using the terms interchangeably, but it's good to be aware.
 </AuthorNote>
-
-<Content>
-    Vocabularies have an important role in **client-to-client standards**, as the metadata it describes can be used by
-    developers to ensure that their data is correctly attributed. But there's one thing missing to make sure that apps
-    can be interoperable, and that is a way to describe how our graph should *look*. For this we have **shapes**.
-</Content>
