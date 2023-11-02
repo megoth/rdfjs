@@ -398,9 +398,9 @@ export const LIBRARY_SOUKAI: Library = {
     creatorUrl: "https://noeldemartin.com/",
     href: "/soukai",
     icon: "/soukai.svg",
-    iconAlt: "Logo for Soukai",
+    iconAlt: "Logo for Soukai ODM",
     iconPreferredHeight: 192,
-    name: "Soukai",
+    name: "Soukai ODM",
     published: false,
     recommendation: "Experimental apps",
     review: [3, 3, 3, 2, 3],
@@ -459,7 +459,7 @@ export const LOCAL_DEMOS: Array<Demo> = [
         title: "Soukai",
         href: "/soukai#local",
         icon: "/soukai.svg",
-        iconAlt: "Logo for Soukai",
+        iconAlt: "Logo for Soukai ODM",
         library: LIBRARY_SOUKAI,
         slogan: "A JavaScript-based Object Document Mapper that also works with RDF",
         text: "Soukai"
@@ -606,7 +606,7 @@ export const SOLID_DEMOS: Array<Demo> = [
         icon: "/soukai-solid.svg",
         iconAlt: "Logo for Soukai Solid",
         library: LIBRARY_SOUKAI,
-        slogan: "The creator of Soukai has also created a Solid engine that allows you to use Soukai with Solid",
+        slogan: "The creator of Soukai ODM has also created a Solid engine that allows you to use Soukai with Solid",
         text: "Soukai Solid"
     },
     {
