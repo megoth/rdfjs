@@ -79,27 +79,29 @@ export default function Code({children, className, code, noCopy, id, language, u
                     </table>
                 </CodeContext.Provider>
             )}
-            <div className={clsx("field is-grouped is-grouped-right is-grouped-multiline", styles.field)}>
-                {dataLine.length > 0 && <p className="control">
-                    <NavLink to={`#${id}`} className={"button is-small is-danger is-light"}
-                             preventScrollReset={true}>
-                        <span className="icon is-small"><MdOutlineClear/></span>
-                        <span>Clear highlighted code</span>
-                    </NavLink>
-                </p>}
-                {url && <p className="control">
-                    <a href={url} className={"button is-small is-light"}>
-                        <span className="icon is-small"><IoExitOutline/></span>
-                        <span>Go to code in project's GH repo</span>
-                    </a>
-                </p>}
-                {!noCopy && <p className="control">
-                    <button className="button is-small is-light" onClick={() => copyCode()}>
-                        <span className="icon is-small"><BsFillClipboardPlusFill/></span>
-                        <span>Copy code</span>
-                    </button>
-                </p>}
-            </div>
+            {(dataLine.length > 0 || url || !noCopy) && (
+                <div className={clsx("field is-grouped is-grouped-right is-grouped-multiline", styles.field)}>
+                    {dataLine.length > 0 && <p className="control">
+                        <NavLink to={`#${id}`} className={"button is-small is-danger is-light"}
+                                 preventScrollReset={true}>
+                            <span className="icon is-small"><MdOutlineClear/></span>
+                            <span>Clear highlighted code</span>
+                        </NavLink>
+                    </p>}
+                    {url && <p className="control">
+                        <a href={url} className={"button is-small is-light"}>
+                            <span className="icon is-small"><IoExitOutline/></span>
+                            <span>Go to code in project's GH repo</span>
+                        </a>
+                    </p>}
+                    {!noCopy && <p className="control">
+                        <button className="button is-small is-light" onClick={() => copyCode()}>
+                            <span className="icon is-small"><BsFillClipboardPlusFill/></span>
+                            <span>Copy code</span>
+                        </button>
+                    </p>}
+                </div>
+            )}
             <pre className={clsx(`language-${language}`, alteredClassName, styles.code)} {...props} {...dataLineProps}>
                 <code className={`language-${language}`}>
                     {code}
