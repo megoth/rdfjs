@@ -1,12 +1,12 @@
 interface Props {
-    error: Error
+    error?: Error
 }
 
 export default function ErrorMessage({ error }: Props) {
     return (
         <article className="message is-danger is-light is-small">
             <div className="message-header">Error</div>
-            <div className="message-body">{error.message || error.name}</div>
+            <div className="message-body">{error?.message || error?.name || "Error happened (lost context)"}</div>
         </article>
     );
 }
