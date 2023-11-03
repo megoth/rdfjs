@@ -9,10 +9,10 @@ import ErrorMessage from "../../error-message";
 import {useLdo} from "@ldo/solid-react";
 
 export default function LDOLocalDemo() {
-    const [profile, setProfile] = useState<SolidProfile | null>(null);
+    const {createData} = useLdo();
+    const [profile, setProfile] = useState<SolidProfile>(createData(SolidProfileShapeType, PROFILE_URI));
     const [turtle, setTurtle] = useLocalStorage(STORAGE_KEYS.PROFILE_LDO, PROFILE_TURTLE);
     const [error, setError] = useState<Error | null>(null);
-    const {createData} = useLdo();
 
     useEffect(() => {
         parseRdf(turtle, {baseIRI: PROFILE_URI})
@@ -25,9 +25,8 @@ export default function LDOLocalDemo() {
     }
 
     const onSubmit = async (data: FormData) => {
-        const oldProfile = profile || createData(SolidProfileShapeType, PROFILE_URI);
-        oldProfile.name = data.name;
-        const turtle = await toTurtle(oldProfile).catch(setError);
+        profile.name = data.name;
+        const turtle = await toTurtle(profile).catch(setError);
         if (turtle) setTurtle(turtle);
     };
 
