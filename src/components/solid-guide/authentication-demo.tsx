@@ -2,12 +2,12 @@ import {useSolidAuth} from "@ldo/solid-react";
 import Login from "../login";
 
 export default function AuthenticationDemo() {
-    const {login, logout, session} = useSolidAuth();
+    const {login, logout, session: {isLoggedIn, webId}} = useSolidAuth();
 
-    return session.isLoggedIn
+    return isLoggedIn
         ? <>
             <div className="notification is-success is-light">
-                You're authenticated with <a href={session.webId}>{session.webId}</a>
+                You're authenticated with <a href={webId}>{webId}</a>
             </div>
             <button className="button" onClick={logout}>Log out</button>
         </>

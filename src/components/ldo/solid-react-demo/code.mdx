@@ -10,7 +10,7 @@ import CodeStep from "../../code/step";
 </Content>
 
 <Code language="tsx" id="LDOSolidDemo" code={solidReactDemoCode} className="line-numbers">
-    <CodeStep lines={["9-10"]} title="Loading resource and retrieving profile">
+    <CodeStep lines={["10-11"]} title="Loading resource and retrieving profile">
         `useResource` and `useSubject` are a couple of handy hooks from
         [@ldo/solid-react](https://github.com/o-development/ldobjects/tree/main/packages/solid-react) that
         allow us to 1) fetch the WebID resource, and 2) retrieve it packaged as a `SolidProfile`. This is
@@ -19,11 +19,16 @@ import CodeStep from "../../code/step";
         We set `reloadOnMount` to make sure that LDO always reloads the online resource when the demo is
         shown. I have to do this since the demos don't tell LDO that the online resource has been updated.
     </CodeStep>
-    <CodeStep lines={["12-14"]} title="Loading state">
+    <CodeStep lines={["12", "19", "24", "27-28"]} title="Error handling">
+        In this demo there's a couple of things that can go wrong. The first is that something might go wrong when
+        retrieving the data (which is shown on line 26), the second is when committing the data back to the online
+        resource. If there's any error we pass it on the `Demo` component.
+    </CodeStep>
+    <CodeStep lines={["14-16"]} title="Loading state">
         While we wait for the resource to be fetched we show the `Loading` component. The test-statements could
         probably be improved, but I think it's expressive enough.
     </CodeStep>
-    <CodeStep lines={["17-19"]} title="Updating resource">
+    <CodeStep lines={["20-24"]} title="Updating resource">
         Using `changeData` and `commitData` we tell LDO to handle the underlying updates in the graph and make a
         fetch request to update the online resource.
     </CodeStep>
@@ -31,7 +36,7 @@ import CodeStep from "../../code/step";
 
 <Content>
     I cannot overemphasize how much I enjoy working with Solid resources using LDO in code like this. It's also the
-    smallest demo I've written (23 lines vs usually 30-40 on the rest), and I'm very happy with the readability of it
+    smallest demo I've written (28 lines vs mostly 35+ on the rest), and I'm very happy with the readability of it
     all. For me, this simple fact outweighs the cost of setting up, and if anything it encourages me to think more about
     reusing vocabularies instead of having to define my own.
 </Content>

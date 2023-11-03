@@ -19,23 +19,25 @@ import CodeStep from "../../code/step";
 </Content>
 
 <Code language="tsx" id="LDOLocalDemo" code={localDemoCode} className="line-numbers">
-    <CodeStep lines={["10-11"]} title="Setting up profile and turtle">
-        We're setting a `null` for profile until we've loaded one from storage. For the turtle we have a
-        default turtle that we use if none is stored in `localStorage`.
+    <CodeStep lines={["12-13"]} title="Setting up profile and turtle">
+        We're creating an artificial profile until we've loaded the proper one from storage (or as fallback in case it
+        fails to load). For the turtle we have a default turtle that we use if none is stored in `localStorage`.
     </CodeStep>
-    <CodeStep lines={["14-17"]} title="Parsing turtle and updating profile">
+    <CodeStep lines={["14", "19", "27", "29", "33"]} title="Error handling">
+        There are a couple of things that can go wrong when working with this demo. First, there might go something
+        wrong when parsing, e.g. the turtle text could be invalid. Second, something might go wrong when we serialize
+        the RDF graph back to turtle text. Any error is passed to the `Demo` component.
+    </CodeStep>
+    <CodeStep lines={["17-18"]} title="Parsing turtle and updating profile">
         When we have some turtle to process, we parse it with LDO's `parseRdf`, an asynchronous function that
         returns `ldoDataset`, a variable of type `LdoDataset`, which is a very useful LDO object. From this
         dataset we retrieve the object representing a subject in the dataset. This way we can retrieve the
         profile, and update our code.
     </CodeStep>
-    <CodeStep lines={["20-22"]} title="Loading state">
-        While we wait for the turtle to parse, we simply show the `Loading` component. One drawback of this
-        solution is that we might simply not find a profile object, in which case we would show the demo to be
-        loading indefinitely. So there should be some error handling here, but I wanted to keep this code
-        simple.
+    <CodeStep lines={["22-24"]} title="Loading state">
+        While we wait for the turtle to parse, we simply show the `Loading` component.
     </CodeStep>
-    <CodeStep lines={["25-26"]} title="Updating name and storage">
+    <CodeStep lines={["28-30"]} title="Updating name and storage">
         These is where the beauty of LDO really shines through. Updating name is as simple as setting a new
         value to `profile.name`. Next, we simply serialize the updated turtle using `toTurtle`.
     </CodeStep>
