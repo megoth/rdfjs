@@ -1,15 +1,8 @@
 import {useEffect, useState} from "react";
 import {
-    createSolidDataset,
-    createThing,
-    fromRdfJsDataset,
-    getLiteral,
-    getThing,
-    setLiteral,
-    setThing,
-    type SolidDataset,
-    toRdfJsDataset
+    createSolidDataset, createThing, fromRdfJsDataset, getLiteral, getThing, setLiteral, setThing, toRdfJsDataset
 } from "@inrupt/solid-client";
+import {type SolidDataset} from "@inrupt/solid-client"
 import {FOAF} from "@inrupt/vocab-common-rdf";
 import Demo, {FormData} from "../../demo";
 import {PROFILE_TURTLE, PROFILE_URI, STORAGE_KEYS} from "../../../constants.ts";
@@ -17,7 +10,6 @@ import useLocalStorage from "use-local-storage";
 import N3 from "n3";
 import Loading from "../../loading";
 import {createLiteral} from "../../../libs/rdf.ts";
-import ErrorMessage from "../../error-message";
 
 export default function InruptLocalDemo() {
     const [dataset, setDataset] = useState<SolidDataset>(createSolidDataset());
@@ -60,7 +52,5 @@ export default function InruptLocalDemo() {
         }));
     };
 
-    return error
-        ? <ErrorMessage error={error}/>
-        : <Demo name={name || ""} onSubmit={onSubmit}/>
+    return <Demo error={error} name={name || ""} onSubmit={onSubmit}/>
 }

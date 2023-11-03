@@ -3,7 +3,6 @@ import {NAME_NODE, PROFILE_NODE, PROFILE_TURTLE, PROFILE_URI, STORAGE_KEYS} from
 import {useEffect, useMemo, useState} from "react";
 import useLocalStorage from "use-local-storage";
 import Demo, {FormData} from "../../demo";
-import ErrorMessage from "../../error-message";
 import Loading from "../../loading";
 
 export default function RdflibLocalDemo() {
@@ -30,9 +29,7 @@ export default function RdflibLocalDemo() {
         }));
     };
 
-    return error
-        ? <ErrorMessage error={error}/>
-        : name !== undefined
-            ? <Demo name={name} onSubmit={onSubmit}/>
-            : <Loading/>
+    return name !== undefined
+        ? <Demo error={error} name={name} onSubmit={onSubmit}/>
+        : <Loading/>
 }

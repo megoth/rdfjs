@@ -8,7 +8,6 @@ import {useSolidAuth} from "@ldo/solid-react";
 import Demo, {FormData} from "../../demo";
 import Loading from "../../loading";
 import {createLiteral} from "../../../libs/rdf.ts";
-import ErrorMessage from "../../error-message";
 import {PROFILE_URI} from "../../../constants.ts";
 
 export default function InruptSolidDemo() {
@@ -38,7 +37,5 @@ export default function InruptSolidDemo() {
         if (savedDataset) setDataset(savedDataset);
     };
 
-    return error
-        ? <ErrorMessage error={error}/>
-        : <Demo name={name || ""} onSubmit={onSubmit}/>
+    return <Demo error={error} name={name || ""} onSubmit={onSubmit}/>
 }

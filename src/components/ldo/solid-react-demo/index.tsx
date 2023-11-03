@@ -3,7 +3,6 @@ import Loading from "../../loading";
 import {useLdo, useResource, useSolidAuth, useSubject} from "@ldo/solid-react";
 import Demo, {FormData} from "../../demo";
 import {useState} from "react";
-import ErrorMessage from "../../error-message";
 
 export default function LDOSolidReactDemo() {
     const {session: {webId}} = useSolidAuth();
@@ -24,9 +23,6 @@ export default function LDOSolidReactDemo() {
         await commitData(updatedProfile).catch(setError);
     };
 
-    return error || profileResource.isError
-        ? (error
-            ? <ErrorMessage error={error}/>
-            : <ErrorMessage error={new Error("Error loading resource")}/>)
-        : <Demo name={profile?.name || ""} onSubmit={onSubmit}/>
+    return <Demo error={error || (profileResource.isError ? new Error("Error loading resource") : null)}
+                 name={profile?.name || ""} onSubmit={onSubmit}/>
 }

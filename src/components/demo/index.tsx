@@ -6,6 +6,7 @@ import ErrorMessage from "../error-message";
 import {clsx} from "clsx";
 
 interface Props {
+    error?: Error | null,
     name: string,
     onSubmit: SubmitHandler<FormData>
 }
@@ -14,7 +15,7 @@ export interface FormData {
     name: string;
 }
 
-export default function Demo({name, onSubmit}: Props) {
+export default function Demo({error, name, onSubmit}: Props) {
     const {
         register,
         handleSubmit,
@@ -36,7 +37,8 @@ export default function Demo({name, onSubmit}: Props) {
 
     return <Box>
         <form onSubmit={handleSubmit(onSubmitIntermediate)}>
-            {!name && <ErrorMessage error={new Error("No name found. Please enter a name.")}/>}
+            {(error || !name) && <ErrorMessage
+                error={error || new Error("No name found. We'll set the name for you when you submit.")}/>}
             <div className="field">
                 <label className="label">Name</label>
                 <div className="control">

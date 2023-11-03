@@ -3,7 +3,6 @@ import {useEffect, useMemo, useState} from "react";
 import {useSolidAuth} from "@ldo/solid-react";
 import Demo, {FormData} from "../../demo";
 import {NAME_NODE} from "../../../constants.ts";
-import ErrorMessage from "../../error-message";
 import Loading from "../../loading";
 
 export default function RdflibSolidDemo() {
@@ -33,9 +32,7 @@ export default function RdflibSolidDemo() {
         }));
     };
 
-    return error
-        ? <ErrorMessage error={error}/>
-        : name !== undefined
-            ? <Demo name={name} onSubmit={onSubmit}/>
-            : <Loading/>
+    return name !== undefined
+        ? <Demo error={error} name={name} onSubmit={onSubmit}/>
+        : <Loading/>
 }

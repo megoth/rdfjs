@@ -7,7 +7,6 @@ import useSolidDataset from "./useSolidDataset.ts";
 import {createLiteral} from "../../../libs/rdf.ts";
 import {useState} from "react";
 import {PROFILE_URI} from "../../../constants.ts";
-import ErrorMessage from "../../error-message";
 
 export default function InruptSolidAlternativeDemo() {
     const [error, setError] = useState<Error | null>(null);
@@ -27,7 +26,5 @@ export default function InruptSolidAlternativeDemo() {
         await saveProfileDataset(updatedDataset);
     };
 
-    return error
-        ? <ErrorMessage error={error}/>
-        : <Demo name={name || ""} onSubmit={onSubmit}/>
+    return <Demo error={error} name={name || ""} onSubmit={onSubmit}/>
 }
