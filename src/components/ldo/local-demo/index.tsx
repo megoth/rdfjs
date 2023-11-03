@@ -18,7 +18,7 @@ export default function LDOLocalDemo() {
             .catch((error) => setError(error));
     }, [turtle]);
 
-    if (!profile) {
+    if (!profile || !error) {
         return <Loading/>
     }
 
