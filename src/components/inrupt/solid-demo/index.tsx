@@ -1,7 +1,8 @@
 import {useEffect, useState} from "react";
 import {
-    createThing, getLiteral, getSolidDataset, getThing, saveSolidDatasetAt, setLiteral, setThing, SolidDataset
+    createSolidDataset, createThing, getLiteral, getSolidDataset, getThing, saveSolidDatasetAt, setLiteral, setThing,
 } from "@inrupt/solid-client";
+import {type SolidDataset} from "@inrupt/solid-client";
 import {FOAF} from "@inrupt/vocab-common-rdf";
 import {useSolidAuth} from "@ldo/solid-react";
 import Demo, {FormData} from "../../demo";
@@ -12,7 +13,7 @@ import {PROFILE_URI} from "../../../constants.ts";
 
 export default function InruptSolidDemo() {
     const {session, fetch} = useSolidAuth();
-    const [dataset, setDataset] = useState<SolidDataset | null>(null);
+    const [dataset, setDataset] = useState<SolidDataset>(createSolidDataset());
     const profile = (dataset && session.webId && getThing(dataset, session.webId))
         || createThing({url: session.webId || PROFILE_URI});
     const name = profile && getLiteral(profile, FOAF.name)?.value;
@@ -25,7 +26,7 @@ export default function InruptSolidDemo() {
             .catch(setError);
     }, [fetch, session.webId]);
 
-    if (!dataset || !session.webId) {
+    if (!error && (!dataset || !session.webId)) {
         return <Loading/>
     }
 

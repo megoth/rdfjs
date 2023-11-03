@@ -1,11 +1,13 @@
 import {useEffect, useState} from "react";
 import {
+    createSolidDataset,
+    createThing,
     fromRdfJsDataset,
     getLiteral,
     getThing,
     setLiteral,
     setThing,
-    SolidDataset,
+    type SolidDataset,
     toRdfJsDataset
 } from "@inrupt/solid-client";
 import {FOAF} from "@inrupt/vocab-common-rdf";
@@ -18,23 +20,27 @@ import {createLiteral} from "../../../libs/rdf.ts";
 import ErrorMessage from "../../error-message";
 
 export default function InruptLocalDemo() {
-    const [dataset, setDataset] = useState<SolidDataset | null>(null);
+    const [dataset, setDataset] = useState<SolidDataset>(createSolidDataset());
     const [turtle, setTurtle] = useLocalStorage(STORAGE_KEYS.PROFILE_INRUPT, PROFILE_TURTLE);
-    const profile = dataset && getThing(dataset, PROFILE_URI);
+    const profile = dataset && getThing(dataset, PROFILE_URI) || createThing({url: PROFILE_URI});
     const name = profile && getLiteral(profile, FOAF.name)?.value;
     const [error, setError] = useState<Error | null>(null);
 
     useEffect(() => {
         const parser = new N3.Parser({baseIRI: PROFILE_URI, format: "text/turtle"});
         const store = new N3.Store();
-        const parsed = parser.parse(turtle, null, (error) => setError(new Error(error)));
-        for (const {subject, predicate, object, graph} of parsed) {
-            store.addQuad(subject, predicate, object, graph);
+        try {
+            const parsed = parser.parse(turtle);
+            for (const {subject, predicate, object, graph} of parsed) {
+                store.addQuad(subject, predicate, object, graph);
+            }
+        } catch (error) {
+            setError(error as Error);
         }
         setDataset(fromRdfJsDataset(store));
     }, [turtle]);
 
-    if (!dataset || !profile) {
+    if (!error && (!dataset || !profile)) {
         return <Loading/>
     }
 
