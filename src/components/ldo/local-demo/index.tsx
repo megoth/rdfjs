@@ -17,7 +17,7 @@ export default function LDOLocalDemo() {
     useEffect(() => {
         parseRdf(turtle, {baseIRI: PROFILE_URI})
             .then((ldoDataset) => setProfile(ldoDataset.usingType(SolidProfileShapeType).fromSubject(PROFILE_URI)))
-            .catch((error) => setError(error));
+            .catch(setError);
     }, [turtle]);
 
     if (!profile && !error) {
