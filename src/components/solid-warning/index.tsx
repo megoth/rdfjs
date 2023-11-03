@@ -16,20 +16,19 @@ export default function SolidWarning() {
     const onLogin = hijackLogin(login, routerLocation, location, href, "SolidWarning");
 
     return isLoggedIn
-        ? (profile?.name
-                ? <div className="message is-success" id="SolidWarning">
-                    <div className="message-body">
-                        <Content>
-                            <p>
-                                Thank you, <strong>{profile?.name || "Stranger"}</strong>, you're all good!
-                                (Thanks for trusting me btw, I won't abuse that trust.)
-                            </p>
-                        </Content>
-                        <LogoutButton/>
-                    </div>
+        ? profile?.name
+            ? <div className="message is-success" id="SolidWarning">
+                <div className="message-body">
+                    <Content>
+                        <p>
+                            Thank you, <strong>{profile?.name || "Stranger"}</strong>, you're all good!
+                            (Thanks for trusting me btw, I won't abuse that trust.)
+                        </p>
+                    </Content>
+                    <LogoutButton/>
                 </div>
-                : <Loading/>
-        )
+            </div>
+            : <Loading/>
         : <div className="message is-warning" id="SolidWarning">
             <div className="message-body">
                 <Content>
