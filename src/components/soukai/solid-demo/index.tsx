@@ -10,21 +10,27 @@ bootSolidModels();
 bootModels({Person});
 
 export default function SoukaiSolidDemo() {
-    const {session, fetch} = useSolidAuth();
+    const {session: {webId}, fetch} = useSolidAuth();
     const [person, setPerson] = useState<Person | null>(null);
+    const [error, setError] = useState<Error | null>(null);
 
     useEffect(() => setEngine(new SolidEngine(fetch)), [fetch]);
 
     useEffect(() => {
-        if (!session.webId) return;
-        Person.find(session.webId).then((person) => setPerson(person));
-    }, [session.webId]);
+        if (!webId) return;
+        Person.find(webId).then((person) => setPerson(person || new Person({
+            url: webId,
+        }))).catch(setError);
+    }, [webId]);
 
     if (!person) {
         return <Loading/>
     }
 
-    const onSubmit = (data: FormData) => person.update({ name: data.name });
+    const onSubmit = (data: FormData) => {
+        setError(null);
+        return person.update({name: data.name}).catch(setError);
+    };
 
-    return <Demo name={person.name ?? '(Unknown)'} onSubmit={onSubmit}/>
+    return <Demo error={error} name={person.name ?? ""} onSubmit={onSubmit}/>
 }

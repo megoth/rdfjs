@@ -1,11 +1,11 @@
 import CodeLink from "../../code-link";
-import {HTMLAttributes, useContext} from "react";
+import {HTMLAttributes, ReactNode, useContext} from "react";
 import Content from "../../content";
 import {CodeContext} from "../index.tsx";
 
-interface Props extends HTMLAttributes<HTMLTableDataCellElement> {
+interface Props extends Omit<HTMLAttributes<HTMLTableDataCellElement>, "title"> {
     lines: string[];
-    title: string;
+    title: ReactNode;
 }
 
 export default function CodeStep({children, lines, title, ...props}: Props) {

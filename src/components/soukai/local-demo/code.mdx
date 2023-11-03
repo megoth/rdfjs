@@ -13,29 +13,29 @@ import {PROFILE_JSON} from "../../../constants";
 <Code language="json" id="ProfileJsonLD" code={JSON.stringify(PROFILE_JSON, null, 2)} noCopy={true}/>
 
 <Code language="tsx" id="SoukaiLocalDemo" code={localDemoCode} className="line-numbers">
-    <CodeStep lines={["10-12"]} title="Bootstrapping">
-        We need to bootstrap Soukai with the models and engine of choice, `InMemoryEngine`.
+    <CodeStep lines={["9-11"]} title="Bootstrapping">
+        We need to bootstrap Soukai with the models and engine of choice, `LocalStorageEngine`. (In a proper app this
+        would probably be a global setting, but it's nice to have the flexibility.)
     </CodeStep>
-    <CodeStep lines={["15-16"]} title="Setting up person and JSON-LD">
-        We're using `localStorage` to store our RDF for this demo, but opting to store the RDF as
-        [JSON-LD](https://json-ld.org/) instead of Turtle (simply because Soukai doesn't support Turtle).
-
+    <CodeStep lines={["14", "18-21"]} title="Setting up person">
         We're going to work with the model we've defined early, so we set this up in anticipation of loading an existing
-        profile from the stored JSON.
+        profile from the `localStorage` (via `LocalStorageEngine`).
+
+        In lines 18-21 we try to find the person, but if we're unsuccessful we default to some fallback values.
     </CodeStep>
-    <CodeStep lines={["19-22"]} title="Parsing JSON-LD">
-        Once we have our JSON-LD retrieved from `localStorage` (or simply set as an empty string), we parse it (or
-        create an new instance with the default data.)
+    <CodeStep lines={["15", "21", "29-30", "33"]} title="Error handling">
+        We might expect a couple of sources of errors when interacting with the outside world. First, something might go
+        awry when trying to find the person that represents our logged-in user. Second, something can go wrong when we
+        post our updates to the online resource. Any error is passed to the `Demo` component.
     </CodeStep>
-    <CodeStep lines={["25-27"]} title="Loading state">
+    <CodeStep lines={["24-25"]} title="Loading state">
         As with all other examples that include some parsing it might take some time, so we ensure that we have the data
         loaded before continuing.
     </CodeStep>
-    <CodeStep lines={["30-31"]} title="Updating JSON-LD">
-        Upon submitting the form, we update the name in our model and simply serialize the JSON-LD into a string using
-        `JSON.stringify`.
+    <CodeStep lines={["28"]} title="Updating model">
+        Upon submitting the form, we update the JSON in our `localStorage`.
     </CodeStep>
-    <CodeStep lines={["34"]} title="Reading name">
+    <CodeStep lines={["33"]} title="Reading name">
         Whenever we have a `PersonModel` loaded, we make sure to extract the existing name so that it can be passed to
         the `Demo` component.
     </CodeStep>

@@ -1,0 +1,16 @@
+import CodeSection from "./solid-demo/code.mdx";
+import Content from "../content";
+import ComunicaDemo from "./solid-demo";
+import LogoutButton from "../logout-button";
+import LoginGate from "../login-gate";
+
+<Content id="solid">
+    <h2 className="subtitle">Solid demo</h2>
+</Content>
+
+<LoginGate redirectId="solid">
+    <ComunicaDemo/>
+    <LogoutButton/>
+</LoginGate>
+
+<CodeSection/>

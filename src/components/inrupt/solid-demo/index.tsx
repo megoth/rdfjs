@@ -38,5 +38,5 @@ export default function InruptSolidDemo() {
         if (savedDataset) setDataset(savedDataset);
     };
 
-    return <Demo error={error} name={name || ""} onSubmit={onSubmit}/>
+    return <Demo error={error} name={name ?? ""} onSubmit={onSubmit}/>
 }
