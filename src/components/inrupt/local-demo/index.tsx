@@ -38,6 +38,7 @@ export default function InruptLocalDemo() {
     }
 
     const onSubmit = async (data: FormData) => {
+        setError(null);
         const updatedProfile = setLiteral(profile, FOAF.name, createLiteral(data.name));
         const updatedDataset = setThing(dataset, updatedProfile);
         const writer = new N3.Writer();

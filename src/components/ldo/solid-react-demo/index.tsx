@@ -16,6 +16,7 @@ export default function LDOSolidReactDemo() {
     }
 
     const onSubmit = async (data: FormData) => {
+        setError(null);
         if (!webId) return;
         const oldProfile = profile || createData(SolidProfileShapeType, webId);
         const updatedProfile = changeData(oldProfile, profileResource);
@@ -23,6 +24,6 @@ export default function LDOSolidReactDemo() {
         await commitData(updatedProfile).catch(setError);
     };
 
-    return <Demo error={error || (profileResource.isError ? new Error("Error loading resource") : null)}
-                 name={profile?.name || ""} onSubmit={onSubmit}/>
+    const compoundedError = error || (profileResource.isError ? new Error("Error loading resource") : null);
+    return <Demo error={compoundedError} name={profile?.name || ""} onSubmit={onSubmit}/>
 }

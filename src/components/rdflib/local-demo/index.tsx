@@ -20,6 +20,7 @@ export default function RdflibLocalDemo() {
 
 
     const onSubmit = async (data: FormData): Promise<void> => {
+        setError(null);
         store.remove(store.match(PROFILE_NODE, NAME_NODE, null));
         store.add(st(PROFILE_NODE, NAME_NODE, lit(data.name)));
         return new Promise((resolve) => serialize(null, store, null, 'text/turtle', (error, result) => {

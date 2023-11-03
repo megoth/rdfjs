@@ -14,7 +14,7 @@ import CodeStep from "../../code/step";
         When working with online resources we want to make use of `Fetcher` and `UpdateManager` to respectively
         load and update the resources.
     </CodeStep>
-    <CodeStep lines={["16", "21", "27", "31"]} title="Error handling">
+    <CodeStep lines={["16", "21", "25", "29", "36"]} title="Error handling">
         There are a couple of scenarios where we can expect errors. The RDF resource might be corrupted, or the request
         caused in some unexpected error, and we should handle those. In our code the errors arise from retrieving and
         updating the data, so if any of these calls throw an error, we catch it and show it to the user.

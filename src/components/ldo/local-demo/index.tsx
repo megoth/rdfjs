@@ -24,6 +24,7 @@ export default function LDOLocalDemo() {
     }
 
     const onSubmit = async (data: FormData) => {
+        setError(null);
         profile.name = data.name;
         const turtle = await toTurtle(profile).catch(setError);
         if (turtle) setTurtle(turtle);

@@ -24,14 +24,18 @@ import CodeStep from "../code/step";
 </Content>
 
 <Code id="FrontpageDemoCode" language="tsx" code={demoCode} className="line-numbers">
-    <CodeStep lines={["8-11", "17", "27", "32", "39"]} title="Relaying name and onSubmit">
+    <CodeStep lines={["8-12", "18", "28", "33", "40"]} title="Relaying error, name and onSubmit">
         We pass the data submitted to the parent demo code through `onSubmit`, which provide the specific logic that
         should be done when form is submitted.
 
         The important part of all of this is that `name` is actually handled in the parent element. In the case that it
         turns out to be an empty string we show an error message, as it's an unexpected value.
+
+        We also relay errors that might arise in the various demos. Although there are cases where an error cannot be
+        resolved using this demo, there is a lot of resilience if handled correctly it should be able to fix the RDF
+        graph by submitting a name.
     </CodeStep>
-    <CodeStep lines={["14-16", "19-24", "27", "38", "43", "45"]} title="Form handling">
+    <CodeStep lines={["14-16", "19-24", "28", "39", "44", "46"]} title="Form handling">
         I'm making use of [React Hook Form](https://www.react-hook-form.com/)'s `useForm` to handle form states.
         The `FormData` interface only has one attribute: name. This hook provides us with functionality that
         manages the data flow of the form element at line 33. Also note `useEffect` at line 27, that updates the
@@ -39,10 +43,10 @@ import CodeStep from "../code/step";
 
         We also make sure that users don't submit empty strings by showing them an error if they try.
     </CodeStep>
-    <CodeStep lines={["24", "34"]} title="Notifications">
+    <CodeStep lines={["25", "35"]} title="Notifications">
         Whenever the name successfully submits, we want to notify the user.
     </CodeStep>
-    <CodeStep lines={["25", "30-31", "33", "48"]} title="Throttling submits">
+    <CodeStep lines={["26", "31-32", "34", "49"]} title="Throttling submits">
         Whenever we're working with asynchronous functionality when submitting, there might be a delay when
         where things are being updated. Given this behavior, I want to limit when a user can submit updates so that they
         cannot spam the submit-button.

@@ -20,18 +20,20 @@ import CodeStep from "../../code/step";
 </Content>
 
 <Code language="tsx" id="RdflibLocalDemo" code={localDemoCode} className="line-numbers">
-    <CodeStep lines={["8"]} title="Store setup">
+    <CodeStep lines={["9"]} title="Store setup">
         Setting up the store that's going to contain our data.
     </CodeStep>
-    <CodeStep lines={["16", "18"]} title="Parsing turtle and loading name">
-        Loading existing data from either default turtle or saved turtle from `localStorage`. Notice the fallback `"[no
-        name found]"` if no value was found for `foaf:name`.
+    <CodeStep lines={["12", "16", "23", "27", "34"]} title="Error handling">
+        We might expect two errors when working with this demo. First, when we parse the turtle (e.g. the text might
+        invalid turtle). Second, something might go wrong when we serialize the RDF graph back into turtle text. Any
+        error are passed onto the `Demo` component.
     </CodeStep>
-    <CodeStep lines={["24-26", "28-30"]} title="Updating turtle in `localStorage` and name">
+    <CodeStep lines={["15-18", "33", "35"]} title="Parsing turtle and loading name">
+        Loading existing data from either default turtle or saved turtle from `localStorage`. Until a name is found we
+        show the `Loading` component.
+    </CodeStep>
+    <CodeStep lines={["24-30"]} title="Updating turtle in `localStorage` and name">
         Upon submitting the form, a new triple with the name is inserted while the old name is removed in
         another triple. The store is then serialized and `localStorage` is updated with the new Turtle string.
-    </CodeStep>
-    <CodeStep lines={["12", "17", "27", "33-34"]} title="Error handling">
-        There might arise errors when parsing the turtle, and if that happens we want to reflect that.
     </CodeStep>
 </Code>

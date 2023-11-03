@@ -30,6 +30,7 @@ export default function InruptSolidDemo() {
     }
 
     const onSubmit = async (data: FormData) => {
+        setError(null);
         const updatedProfile = setLiteral(profile, FOAF.name, createLiteral(data.name));
         const updatedDataset = setThing(dataset, updatedProfile);
         const savedDataset = await saveSolidDatasetAt(webId!, updatedDataset, {fetch})
