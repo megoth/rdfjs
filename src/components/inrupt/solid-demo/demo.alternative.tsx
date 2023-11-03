@@ -11,10 +11,10 @@ import ErrorMessage from "../../error-message";
 
 export default function InruptSolidAlternativeDemo() {
     const [error, setError] = useState<Error | null>(null);
-    const {session} = useSolidAuth();
-    const [profileDataset, saveProfileDataset] = useSolidDataset(session.webId, setError);
-    const profile = (profileDataset && session.webId && getThing(profileDataset, session.webId))
-        || createThing({url: session.webId || PROFILE_URI});
+    const {session: {webId}} = useSolidAuth();
+    const [profileDataset, saveProfileDataset] = useSolidDataset(webId, setError);
+    const profile = (profileDataset && webId && getThing(profileDataset, webId))
+        || createThing({url: webId || PROFILE_URI});
     const name = profile && getLiteral(profile, FOAF.name)?.value;
 
     if (!profileDataset) {
@@ -28,6 +28,6 @@ export default function InruptSolidAlternativeDemo() {
     };
 
     return error
-        ? <ErrorMessage error={error} />
+        ? <ErrorMessage error={error}/>
         : <Demo name={name || ""} onSubmit={onSubmit}/>
 }

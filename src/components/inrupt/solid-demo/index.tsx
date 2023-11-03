@@ -12,28 +12,28 @@ import ErrorMessage from "../../error-message";
 import {PROFILE_URI} from "../../../constants.ts";
 
 export default function InruptSolidDemo() {
-    const {session, fetch} = useSolidAuth();
+    const {session: {webId}, fetch} = useSolidAuth();
     const [dataset, setDataset] = useState<SolidDataset>(createSolidDataset());
-    const profile = (dataset && session.webId && getThing(dataset, session.webId))
-        || createThing({url: session.webId || PROFILE_URI});
+    const profile = (dataset && webId && getThing(dataset, webId))
+        || createThing({url: webId || PROFILE_URI});
     const name = profile && getLiteral(profile, FOAF.name)?.value;
     const [error, setError] = useState<Error | null>(null);
 
     useEffect(() => {
-        if (!session.webId) return;
-        getSolidDataset(session.webId, {fetch})
+        if (!webId) return;
+        getSolidDataset(webId, {fetch})
             .then(setDataset)
             .catch(setError);
-    }, [fetch, session.webId]);
+    }, [fetch, webId]);
 
-    if (!error && (!dataset || !session.webId)) {
+    if (!error && (!dataset || !webId)) {
         return <Loading/>
     }
 
     const onSubmit = async (data: FormData) => {
         const updatedProfile = setLiteral(profile, FOAF.name, createLiteral(data.name));
         const updatedDataset = setThing(dataset, updatedProfile);
-        const savedDataset = await saveSolidDatasetAt(session.webId!, updatedDataset, {fetch})
+        const savedDataset = await saveSolidDatasetAt(webId!, updatedDataset, {fetch})
             .catch(setError);
         if (savedDataset) setDataset(savedDataset);
     };

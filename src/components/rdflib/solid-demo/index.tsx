@@ -7,13 +7,13 @@ import ErrorMessage from "../../error-message";
 import Loading from "../../loading";
 
 export default function RdflibSolidDemo() {
-    const {session, fetch} = useSolidAuth();
+    const {session: {webId}, fetch} = useSolidAuth();
     const [store, fetcher, updater] = useMemo(() => {
         const store = graph();
         return [store, new Fetcher(store, {fetch}), new UpdateManager(store)];
     }, [fetch]);
     const [name, setName] = useState<string | undefined>();
-    const profileNode = namedNode(session.webId!);
+    const profileNode = namedNode(webId!);
     const [error, setError] = useState<Error | null>(null);
 
     useEffect(() => {
