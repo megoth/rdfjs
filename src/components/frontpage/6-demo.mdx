@@ -25,26 +25,27 @@ import CodeStep from "../code/step";
 
 <Code id="FrontpageDemoCode" language="tsx" code={demoCode} className="line-numbers"
       url="https://github.com/megoth/semtechjs-demo/blob/main/src/components/demo/index.tsx">
-    <CodeStep lines={["12-14", "17", "21", "33", "37"]} title="Form handling">
+    <CodeStep lines={["8-11", "17", "27", "32", "39"]} title="Relaying name and onSubmit">
+        We pass the data submitted to the parent demo code through `onSubmit`, which provide the specific logic that
+        should be done when form is submitted.
+
+        The important part of all of this is that `name` is actually handled in the parent element. In the case that it
+        turns out to be an empty string we show an error message, as it's an unexpected value.
+    </CodeStep>
+    <CodeStep lines={["14-16", "19-24", "27", "38", "43", "45"]} title="Form handling">
         I'm making use of [React Hook Form](https://www.react-hook-form.com/)'s `useForm` to handle form states.
         The `FormData` interface only has one attribute: name. This hook provides us with functionality that
-        manages the data flow of the form element at line 33. Also note `useEffect` at line 21, that updates the
+        manages the data flow of the form element at line 33. Also note `useEffect` at line 27, that updates the
         value of name in the form if name is updated elsewhere.
+
+        We also make sure that users don't submit empty strings by showing them an error if they try.
     </CodeStep>
-    <CodeStep lines={["18", "28"]} title="Notifications">
+    <CodeStep lines={["24", "34"]} title="Notifications">
         Whenever the name successfully submits, we want to notify the user.
     </CodeStep>
-    <CodeStep lines={["19", "24-27", "41"]} title="Throttling submits">
+    <CodeStep lines={["25", "30-31", "33", "48"]} title="Throttling submits">
         Whenever we're working with asynchronous functionality when submitting, there might be a delay when
         where things are being updated. Given this behavior, I want to limit when a user can submit updates so that they
         cannot spam the submit-button.
-    </CodeStep>
-    <CodeStep lines={["16", "26"]} title="Relaying name and onSubmit">
-        We pass the data submitted to the parent demo code, which provide the specific logic that should
-        be done when form is submitted.
-
-        The important part of all of this is that `name` is actually handled in the parent element, which is where
-        the logic of the demo resides (and which I'll show in the respective code section). It basically only
-        provides a form that calls on `onSubmit` when submitted.
     </CodeStep>
 </Code>

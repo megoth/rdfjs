@@ -3,17 +3,19 @@ import {NAME_NODE, PROFILE_NODE, PROFILE_TURTLE, PROFILE_URI, STORAGE_KEYS} from
 import {useEffect, useMemo, useState} from "react";
 import useLocalStorage from "use-local-storage";
 import Demo, {FormData} from "../../demo";
+import ErrorMessage from "../../error-message";
+import Loading from "../../loading";
 
 export default function RdflibLocalDemo() {
     const store = useMemo(() => graph(), []);
-    const [name, setName] = useState("");
+    const [name, setName] = useState<string | undefined>();
     const [turtle, setTurtle] = useLocalStorage(STORAGE_KEYS.PROFILE_RDFLIB, PROFILE_TURTLE);
+    const [error, setError] = useState<Error | null>(null);
 
     useEffect(() => {
-        if (!store) return;
-        parse(turtle, store, PROFILE_URI, "text/turtle", (_, updatedStore) => {
-            const name = updatedStore?.any(PROFILE_NODE, NAME_NODE, null)?.value || "";
-            setName(name);
+        parse(turtle, store, PROFILE_URI, "text/turtle", (error, updatedStore) => {
+            if (error) setError(error);
+            setName(updatedStore?.any(PROFILE_NODE, NAME_NODE, null)?.value || "");
         })
     }, [store, turtle]);
 
@@ -21,12 +23,16 @@ export default function RdflibLocalDemo() {
     const onSubmit = async (data: FormData): Promise<void> => {
         store.remove(store.match(PROFILE_NODE, NAME_NODE, null));
         store.add(st(PROFILE_NODE, NAME_NODE, lit(data.name)));
-        return new Promise((resolve, reject) => serialize(null, store, null, 'text/turtle', (error, result) => {
-            if (error) return reject(error);
+        return new Promise((resolve) => serialize(null, store, null, 'text/turtle', (error, result) => {
+            if (error) return setError(error);
             setTurtle(result);
             resolve();
         }));
     };
 
-    return <Demo name={name} onSubmit={onSubmit}/>
+    return error
+        ? <ErrorMessage error={error}/>
+        : name !== undefined
+            ? <Demo name={name} onSubmit={onSubmit}/>
+            : <Loading/>
 }

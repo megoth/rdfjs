@@ -3,6 +3,8 @@ import {useEffect, useMemo, useState} from "react";
 import {useSolidAuth} from "@ldo/solid-react";
 import Demo, {FormData} from "../../demo";
 import {NAME_NODE} from "../../../constants.ts";
+import ErrorMessage from "../../error-message";
+import Loading from "../../loading";
 
 export default function RdflibSolidDemo() {
     const {session, fetch} = useSolidAuth();
@@ -10,20 +12,30 @@ export default function RdflibSolidDemo() {
         const store = graph();
         return [store, new Fetcher(store, {fetch}), new UpdateManager(store)];
     }, [fetch]);
-    const [name, setName] = useState("");
+    const [name, setName] = useState<string | undefined>();
     const profileNode = namedNode(session.webId!);
+    const [error, setError] = useState<Error | null>(null);
 
     useEffect(() => {
-        if (!store) return;
-        fetcher.load(profileNode.doc()).then(() => setName(store.any(profileNode, NAME_NODE, null)?.value || ""));
+        fetcher.load(profileNode.doc())
+            .then(() => setName(store.any(profileNode, NAME_NODE, null)?.value || ""))
+            .catch(setError);
     }, [store, profileNode, fetcher]);
 
     const onSubmit = async (data: FormData) => {
+        setError(null);
         const ins = [st(profileNode, NAME_NODE, lit(data.name), profileNode.doc())];
         const del = store.statementsMatching(profileNode, NAME_NODE, null, profileNode.doc());
-        await updater.update(del, ins);
-        setName(data.name);
+        return new Promise((resolve) => updater.update(del, ins, (_uri, _success, errorBody, response) => {
+            if (!_success) setError(new Error(errorBody));
+            setName(data.name);
+            resolve(response);
+        }));
     };
 
-    return <Demo name={name} onSubmit={onSubmit}/>
+    return error
+        ? <ErrorMessage error={error}/>
+        : name !== undefined
+            ? <Demo name={name} onSubmit={onSubmit}/>
+            : <Loading/>
 }

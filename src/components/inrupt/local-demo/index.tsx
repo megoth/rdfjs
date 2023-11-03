@@ -9,23 +9,28 @@ import useLocalStorage from "use-local-storage";
 import N3 from "n3";
 import Loading from "../../loading";
 import {createLiteral} from "../../../libs/rdf.ts";
+import ErrorMessage from "../../error-message";
 
 export default function InruptLocalDemo() {
     const [dataset, setDataset] = useState<SolidDataset | null>(null);
     const [turtle, setTurtle] = useLocalStorage(STORAGE_KEYS.PROFILE_INRUPT, PROFILE_TURTLE);
     const profile = dataset && getThing(dataset, PROFILE_URI);
-    const name = profile ? getLiteral(profile, FOAF.name)?.value || "" : "";
+    const name = profile && getLiteral(profile, FOAF.name)?.value;
+    const [error, setError] = useState<Error | null>(null);
 
     useEffect(() => {
         const parser = new N3.Parser({baseIRI: PROFILE_URI, format: "text/turtle"});
         const store = new N3.Store();
-        for (const {subject, predicate, object, graph} of parser.parse(turtle)) {
+        const parsed = parser.parse(turtle, (error) => {
+            setError(error);
+        }) as unknown as N3.Quad[];
+        for (const {subject, predicate, object, graph} of parsed) {
             store.addQuad(subject, predicate, object, graph);
         }
         setDataset(fromRdfJsDataset(store));
     }, [turtle]);
 
-    if (!dataset || !profile || !name) {
+    if (!dataset || !profile) {
         return <Loading/>
     }
 
@@ -37,8 +42,14 @@ export default function InruptLocalDemo() {
         for (const {subject, predicate, object, graph} of rdfJsDataset) {
             writer.addQuad(subject, predicate, object, graph);
         }
-        writer.end((_, result) => setTurtle(result))
+        return new Promise((resolve) => writer.end((error, result) => {
+            if (error) setError(error);
+            setTurtle(result);
+            resolve(result);
+        }));
     };
 
-    return <Demo name={name} onSubmit={onSubmit}/>
+    return error
+        ? <ErrorMessage error={error}/>
+        : <Demo name={name || ""} onSubmit={onSubmit}/>
 }
