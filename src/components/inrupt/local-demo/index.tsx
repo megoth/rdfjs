@@ -35,7 +35,7 @@ export default function InruptLocalDemo() {
                 store.addQuad(subject, predicate, object, graph);
             }
         } catch (error) {
-            setError(error as Error);
+            setError(new Error(typeof error === "string" ? error as string : "Error occurred while parsing"));
         }
         setDataset(fromRdfJsDataset(store));
     }, [turtle]);
