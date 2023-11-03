@@ -1,6 +1,12 @@
 import {useEffect, useState} from "react";
 import {
-    fromRdfJsDataset, getLiteral, getThing, setLiteral, setThing, SolidDataset, toRdfJsDataset
+    fromRdfJsDataset,
+    getLiteral,
+    getThing,
+    setLiteral,
+    setThing,
+    SolidDataset,
+    toRdfJsDataset
 } from "@inrupt/solid-client";
 import {FOAF} from "@inrupt/vocab-common-rdf";
 import Demo, {FormData} from "../../demo";
@@ -21,9 +27,7 @@ export default function InruptLocalDemo() {
     useEffect(() => {
         const parser = new N3.Parser({baseIRI: PROFILE_URI, format: "text/turtle"});
         const store = new N3.Store();
-        const parsed = parser.parse(turtle, (error) => {
-            setError(error);
-        }) as unknown as N3.Quad[];
+        const parsed = parser.parse(turtle, null, (error) => setError(new Error(error)));
         for (const {subject, predicate, object, graph} of parsed) {
             store.addQuad(subject, predicate, object, graph);
         }
