@@ -1,0 +1,21 @@
+import demoCode from "./index.tsx?raw";
+import Code from "../../code";
+import CodeStep from "../../code/step";
+import Content from "../../content";
+
+<Content>
+    This demo is also very similar to the previous code, so I'll just emphasize the differences.
+</Content>
+
+<Code language="tsx" id="RDFSPARQLBuilderDemo" code={demoCode} className="line-numbers">
+    <CodeStep lines={["21-24"]} title="Building SELECT query">
+        Using the `SELECT` function we start building our query to get a name.
+    </CodeStep>
+    <CodeStep lines={["43-46"]} title="Building UPDATE query">
+        For this query we start off with the `DELETE` function.
+    </CodeStep>
+</Code>
+
+<Content>
+    As you can see, both approaches require a bit of experience with SPARQL.
+</Content>

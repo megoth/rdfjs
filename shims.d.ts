@@ -4,6 +4,11 @@ declare module '*.mdx' {
     export default ReactComponent
 }
 
+declare module "rdf-sparql-builder" {
+    export const deleteQuery: function;
+    export const select: function;
+}
+
 declare module 'solid-namespace' {
     export default () => Record<string, (label: string) => string>;
 }
