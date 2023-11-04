@@ -1,26 +1,26 @@
-import Demo, {FormData} from "../../demo";
+import Demo, {FormData} from "../demo";
 import {QueryEngine} from "@comunica/query-sparql";
 import {useEffect, useState} from "react";
 import {useSolidAuth} from "@ldo/solid-react";
-import Loading from "../../loading";
-import {literal, namedNode} from '@rdfjs/data-model'
-import {DELETE, SELECT} from '@tpluscode/sparql-builder'
+import Loading from "../loading";
+import {literal, namedNode, variable} from '@rdfjs/data-model'
 import namespace from '@rdfjs/namespace'
 import {prefixes} from '@zazuko/rdf-vocabularies'
+import * as sparql from "rdf-sparql-builder";
 
 const engine = new QueryEngine();
 const foaf = namespace(prefixes.foaf)
 
-export default function ComunicaSparqlBuilderDemo() {
+export default function RDFSparqlBuilderDemo() {
     const {fetch, session: {webId}} = useSolidAuth();
     const [name, setName] = useState<string | undefined>();
     const [error, setError] = useState<Error | null>(null);
 
     useEffect(() => {
         if (!webId) return;
-        const query = SELECT`?name`
-            .WHERE`${namedNode(webId)} ${foaf.name} ?name .`
-            .LIMIT(1)
+        const query = sparql.select([variable('name')])
+            .where([[namedNode(webId), foaf.name, variable("name")]])
+            .limit(1)
             .build();
         engine.queryBindings(query, {
             fetch,
@@ -38,11 +38,10 @@ export default function ComunicaSparqlBuilderDemo() {
         setError(null);
         if (!webId) return;
         const webIdNode = namedNode(webId);
-        const name = foaf.name;
         const oldName = literal(name);
-        const query = DELETE`${webIdNode} ${name} ${oldName}`
-            .INSERT`${webIdNode} ${name} ${literal(data.name)}`
-            .WHERE`${webIdNode} ${name} ${oldName}`
+        const query = sparql.deleteQuery([[webIdNode, foaf.name, oldName]])
+            .insert([[webIdNode, foaf.name, literal(data.name)]])
+            .where([[webIdNode, foaf.name, oldName]])
             .build();
         await engine.queryVoid(query, {
             fetch,

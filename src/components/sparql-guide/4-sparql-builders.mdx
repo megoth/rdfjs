@@ -1,0 +1,38 @@
+import Content from "../content";
+import stringCode from "../comunica/solid-demo/queries.ts?raw"
+import rdfSparqlBuilderCode from "../rdf-sparql-builder-demo/queries.ts?raw"
+import sparqlBuilderCode from "../sparql-builder-demo/queries.ts?raw"
+import Code from "../code";
+
+<Content id="SPARQLBuilders">
+    <h2 className="subtitle">SPARQL Builders</h2>
+
+    Writing SPARQL queries in JavaScript can be a bit tedious, even when you're familiar with SPARQL. So to help there
+    are libraries that implement the [Builder pattern](https://www.dofactory.com/javascript/design-patterns/builder),
+    allowing us to build our queries in steps.
+
+    Before we start our examples, lets see how the string-based approach could look:
+</Content>
+
+<Code id="SPARQLStringsCode" language="typescript" code={stringCode}/>
+
+<Content>
+    One way to build your string is to use [rdf-sparql-builder](https://github.com/rdf-ext/rdf-sparql-builder). It
+    provides you with simple API that maps onto the SPARQL queries.
+</Content>
+
+<Code id="RDFSPARQLBuilderCode" language="typescript" code={rdfSparqlBuilderCode}/>
+
+<Content>
+    Another library that provide you with a SPARQL builder API is
+    [@tpluscode/sparql-builder](https://github.com/tpluscode/sparql-builder). This leans more into [template
+    literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals):
+</Content>
+
+<Code id="SPARQLBuilderCode" language="typescript" code={sparqlBuilderCode}/>
+
+<Content>
+    No matter which approach you choose, know that SPARQL is a fundamental part of the semantic web for a reason. If
+    you're going to work with larger RDF graphs you'll inevitably come into needs that SPARQL can meet. So if you're
+    leaning into that RDF is a good thing, you might want to spend some cycles reading up on SPARQL as well.
+</Content>
