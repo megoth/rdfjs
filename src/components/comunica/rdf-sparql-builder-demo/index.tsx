@@ -22,7 +22,6 @@ export default function RDFSparqlBuilderDemo() {
             .where([[namedNode(webId), foaf.name, variable("name")]])
             .limit(1)
             .build();
-        console.log(query);
         engine.queryBindings(query, {
             fetch,
             sources: [webId],
