@@ -1,13 +1,12 @@
 import {SERIALIZATIONS} from "../../constants.ts";
 import Card from "../card";
-import styles from "./styles.module.css";
-import {clsx} from "clsx";
+import Columns from "../columns";
 
 export default function SerializationList() {
     return (
-        <ul className={clsx("columns", styles.columns)}>
+        <Columns>
             {SERIALIZATIONS.map(({name, logo, url}) => (
-                <li key={logo} className="column">
+                <li key={logo}>
                     <Card>
                         <a href={url} className="card-content">
                             <div className="media">
@@ -24,6 +23,6 @@ export default function SerializationList() {
                     </Card>
                 </li>
             ))}
-        </ul>
+        </Columns>
     );
 }

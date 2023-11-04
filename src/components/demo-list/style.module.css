@@ -1,18 +1,3 @@
-.demoList {
-    margin-bottom: 3rem;
-}
-
-.columns {
-    flex-wrap: wrap;
-    justify-content: stretch;
-}
-
-.column {
-    @media screen and (min-width: 769px) {
-        min-width: 33.33%;
-    }
-}
-
 .cardContent {
     flex-grow: 1;
 }

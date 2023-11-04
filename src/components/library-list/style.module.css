@@ -2,22 +2,6 @@
     margin-bottom: 2.5rem;
 }
 
-.columns {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: stretch;
-}
-
-.column {
-    min-width: 100%;
-    @media screen and (min-width: 700px) {
-        min-width: 50%;
-    }
-    @media screen and (min-width: 1200px) {
-        min-width: 33%;
-    }
-}
-
 .image.image.image.image.image {
     height: auto;
     & img {

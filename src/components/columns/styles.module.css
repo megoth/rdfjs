@@ -1,0 +1,14 @@
+.columns.columns {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+    justify-content: stretch;
+    list-style: none;
+    margin-bottom: 1.5rem;
+    @media screen and (min-width: 600px) {
+        grid-template-columns: 1fr 1fr;
+    }
+    @media screen and (min-width: 900px) {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}

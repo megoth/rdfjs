@@ -3,6 +3,7 @@ import {NavLink} from "react-router-dom";
 import styles from "./style.module.css";
 import {clsx} from "clsx";
 import Card from "../card";
+import Columns from "../columns";
 
 export interface Props {
     exclude?: Library;
@@ -14,9 +15,9 @@ export default function LibraryList({exclude}: Props) {
         : LIBRARIES;
     return (
         <div className={clsx("menu", styles.libraryList)}>
-            <ul className={clsx("columns", styles.columns)}>
+            <Columns>
                 {libraries.map(({creator, href, icon, iconAlt, name}) => (
-                    <NavLink key={href} to={href} className={clsx("column", styles.column)}>
+                    <NavLink key={href} to={href}>
                         <Card className={clsx("card", styles.card)}>
                             <div className="card-image">
                                 <picture className={clsx("image", styles.image)}>
@@ -34,7 +35,7 @@ export default function LibraryList({exclude}: Props) {
                         </Card>
                     </NavLink>
                 ))}
-            </ul>
+            </Columns>
         </div>
     );
 }

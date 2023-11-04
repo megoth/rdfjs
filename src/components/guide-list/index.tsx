@@ -4,6 +4,7 @@ import styles from "./style.module.css";
 import {clsx} from "clsx";
 import {useMemo} from "react";
 import Card from "../card";
+import Columns from "../columns";
 
 export interface Props {
     exclude?: Guide
@@ -15,9 +16,9 @@ export default function GuideList({exclude}: Props) {
             : GUIDES,
         [exclude])
     return (
-        <div className={clsx("columns", styles.columns)}>
+        <Columns>
             {guides.map(({href, logo, logoAlt, name}) => (
-                <NavLink key={href} to={href} className={clsx("column", styles.column)}>
+                <NavLink key={href} to={href}>
                     <Card>
                         <div className="card-content">
                             <div className={clsx("media", styles.media)}>
@@ -34,6 +35,6 @@ export default function GuideList({exclude}: Props) {
                     </Card>
                 </NavLink>
             ))}
-        </div>
+        </Columns>
     )
 }
