@@ -2,10 +2,7 @@ import {useSolidAuth} from "@ldo/solid-react";
 import Login from "../login";
 import {HTMLAttributes} from "react";
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
-}
-
-export default function AuthenticationDemo({id, ...props}: Props) {
+export default function AuthenticationDemo({id, ...props}: HTMLAttributes<HTMLDivElement>) {
     const {login, logout, session: {isLoggedIn, webId}} = useSolidAuth();
 
     return isLoggedIn
