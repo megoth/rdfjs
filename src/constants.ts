@@ -172,10 +172,20 @@ export const SOLID_GUIDE: Guide = {
         note: "More chat rooms using the Matrix protocol",
         type: "URL"
     }, {
+        title: "What is Solid?",
+        href: "https://www.womenofsolid.org/what-is-solid",
+        note: "A good introductory read to Solid by Virginia Balseiro",
+        type: "URL"
+    }, {
         title: "How Solid will give back control over your data",
         href: "https://www.youtube.com/watch?v=V-9cOJ6SUHI",
         note: "Good introduction to Solid",
         type: "YouTube"
+    }, {
+        title: "Inherently Social, Decentralised, and for Everyone",
+        href: "https://csarven.ca/presentations/inherently-social-decentralised-and-for-everyone",
+        note: "A good presentation by Sarven Capadisli on Solid and the motivation behind it",
+        type: "URL"
     }, {
         title: "Solid Protocol",
         href: "https://solidproject.org/TR/protocol",
@@ -233,7 +243,7 @@ export const SOLID_GUIDE: Guide = {
         type: "URL"
     }, {
         title: "Solid - A Better Web (Simply Explained)",
-        href: "https://www.youtube.com/watch?v=V-9cOJ6SUHI",
+        href: "https://www.youtube.com/watch?v=qWVTjMsv7AE",
         note: "If you only have five minutes",
         type: "YouTube"
     }],
