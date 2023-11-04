@@ -1,11 +1,13 @@
 import Content from "../content";
 import Code from "../code";
-import PersonModel from "./Person.schema.ts?raw";
+import PersonModel from "./Person.ts?raw";
 import CodeStep from "../code/step";
 
 <Content>
+    <h2 className="subtitle">Models</h2>
+
     A vital part of Soukai is defining models by extending the `Model` class in `soukai`, but to enable support for RDF
-    we make use of the `SolidModel` class in `soukai-solid`.
+    we make use of the `defineSolidModelSchema` function in `soukai-solid`.
 
     For our demos we've created the model `PersonModel` that is reused by both demos:
 </Content>
