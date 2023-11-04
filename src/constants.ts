@@ -486,12 +486,9 @@ export const PROFILE_JSON = {
     name: "Soukai Test"
 };
 
-export const PROFILE_TURTLE = `@prefix ex: <https://example.com/> .
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+export const PROFILE_TURTLE = `@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
-ex:profile a foaf:Person;
-    foaf:name "Test".
-`;
+<${PROFILE_URI}> foaf:name "Test".`;
 
 interface Provider {
     label: string;
