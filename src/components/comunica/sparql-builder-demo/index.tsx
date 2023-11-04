@@ -19,14 +19,15 @@ export default function ComunicaSparqlBuilderDemo() {
     useEffect(() => {
         if (!webId) return;
         const query = SELECT`?name`
-            .WHERE`${namedNode(webId)} ${foaf.name} ?name .
-            `.build();
+            .WHERE`${namedNode(webId)} ${foaf.name} ?name .`
+            .LIMIT(1)
+            .build();
         engine.queryBindings(query, {
             fetch,
             sources: [webId],
         }).then(async (stream) => {
-            const bindings = await stream.toArray();
-            const foundName = bindings[0].get("name")?.value ?? "";
+            const [bindings] = await stream.toArray();
+            const foundName = bindings?.get("name")?.value ?? "";
             setName(foundName);
         }).catch(setError);
     }, [fetch, webId]);
@@ -36,9 +37,12 @@ export default function ComunicaSparqlBuilderDemo() {
     const onSubmit = async (data: FormData) => {
         setError(null);
         if (!webId) return;
-        const query = DELETE`${(namedNode(webId))} ${foaf.name} ${literal(name)}`
-            .INSERT`${(namedNode(webId))} ${foaf.name} ${literal(data.name)}`
-            .WHERE`${(namedNode(webId))} ${foaf.name} ${literal(name)}`
+        const webIdNode = namedNode(webId);
+        const name = foaf.name;
+        const oldName = literal(name);
+        const query = DELETE`${webIdNode} ${name} ${oldName}`
+            .INSERT`${webIdNode} ${name} ${literal(data.name)}`
+            .WHERE`${webIdNode} ${name} ${oldName}`
             .build();
         await engine.queryVoid(query, {
             fetch,
