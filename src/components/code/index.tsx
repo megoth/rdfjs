@@ -1,4 +1,4 @@
-import {createContext, HTMLAttributes, ReactNode, useEffect, useState} from "react";
+import {createContext, HTMLAttributes, ReactNode, useEffect, useMemo, useState} from "react";
 import {NavLink, useLocation, useSearchParams} from "react-router-dom";
 import usePrism from "../../hooks/use-prism";
 import {clsx} from "clsx";
@@ -10,19 +10,14 @@ import {MdOutlineClear} from "react-icons/md";
 import {IoExitOutline} from "react-icons/io5";
 
 interface CodeProps extends HTMLAttributes<HTMLPreElement> {
+    buttons?: ReactNode;
     children?: ReactNode;
     code: string;
     noCopy?: boolean;
-    id: string;
-    language: "json" | "sparql" | "tsx" | "turtle" | "typescript";
+    id?: string;
+    language: "bash" | "json" | "sparql" | "tsx" | "turtle" | "typescript";
     url?: string;
 }
-
-export function toCodePart(id: string, line: string, ...lines: string[]): string {
-    const dataLines = [line, ...lines].map((value) => `data-line=${value}`).join("&");
-    return `?${dataLines}#${id}`;
-}
-
 
 export const CodeContext = createContext<{
     id: string
@@ -30,7 +25,7 @@ export const CodeContext = createContext<{
     id: ""
 });
 
-export default function Code({children, className, code, noCopy, id, language, url, ...props}: CodeProps) {
+export default function Code({buttons, children, className, code, noCopy, language, url, ...props}: CodeProps) {
     const highlightAll = usePrism();
     const location = useLocation();
     const [searchParams] = useSearchParams();
@@ -38,6 +33,7 @@ export default function Code({children, className, code, noCopy, id, language, u
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [_value, copy] = useCopyToClipboard();
     const {notify} = useNotification();
+    const id = useMemo(() => props.id || crypto.randomUUID(), [props.id]);
 
     useEffect(() => {
         setDataLine([]);
@@ -79,8 +75,9 @@ export default function Code({children, className, code, noCopy, id, language, u
                     </table>
                 </CodeContext.Provider>
             )}
-            {(dataLine.length > 0 || url || !noCopy) && (
+            {(buttons || dataLine.length > 0 || url || !noCopy) && (
                 <div className={clsx("field is-grouped is-grouped-right is-grouped-multiline", styles.field)}>
+                    {buttons}
                     {dataLine.length > 0 && <p className="control">
                         <NavLink to={`#${id}`} className={"button is-small is-danger is-light"}
                                  preventScrollReset={true}>

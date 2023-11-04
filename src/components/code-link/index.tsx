@@ -1,11 +1,15 @@
 import {NavLink} from "react-router-dom";
-import {toCodePart} from "../code";
 import {ReactNode} from "react";
 
 interface Props {
     children?: ReactNode
     id: string
     lines: string[];
+}
+
+function toCodePart(id: string, line: string, ...lines: string[]): string {
+    const dataLines = [line, ...lines].map((value) => `data-line=${value}`).join("&");
+    return `?${dataLines}#${id}`;
 }
 
 export default function CodeLink({children, id, lines}: Props) {

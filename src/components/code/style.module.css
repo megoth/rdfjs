@@ -3,6 +3,9 @@
 }
 
 .field.field {
+    :global(.field) {
+        margin-bottom: 0;
+    }
     &:global(.is-grouped-multiline.is-grouped-multiline) {
         gap: 0.5rem;
 
