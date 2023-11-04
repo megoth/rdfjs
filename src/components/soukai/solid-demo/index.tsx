@@ -11,16 +11,16 @@ bootModels({Person});
 
 export default function SoukaiSolidDemo() {
     const {session: {webId}, fetch} = useSolidAuth();
-    const [person, setPerson] = useState<Person | null>(null);
+    const [person, setPerson] = useState(new Person({url: webId}));
     const [error, setError] = useState<Error | null>(null);
 
     useEffect(() => setEngine(new SolidEngine(fetch)), [fetch]);
 
     useEffect(() => {
         if (!webId) return;
-        Person.find(webId).then((person) => setPerson(person || new Person({
-            url: webId,
-        }))).catch(setError);
+        Person.find(webId).then((person) => {
+            if (person) setPerson(person);
+        }).catch(setError);
     }, [webId]);
 
     if (!person) {

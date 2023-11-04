@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import {bootModels, LocalStorageEngine, setEngine} from "soukai";
 import Loading from "../../loading";
 import {bootSolidModels} from "soukai-solid";
-import {PROFILE_JSON, PROFILE_URI} from "../../../constants.ts";
+import {PROFILE_JSON} from "../../../constants.ts";
 import Demo, {FormData} from "../../demo";
 import Person from "../Person.ts";
 
@@ -11,14 +11,16 @@ bootModels({Person});
 setEngine(new LocalStorageEngine())
 
 export default function SoukaiLocalDemo() {
-    const [person, setPerson] = useState<Person | null>(null);
+    const [person, setPerson] = useState(new Person({
+        url: PROFILE_JSON["@id"],
+        name: PROFILE_JSON.name,
+    }));
     const [error, setError] = useState<Error | null>(null);
 
     useEffect(() => {
-        Person.find(PROFILE_URI).then((person) => setPerson(person || new Person({
-            url: PROFILE_URI,
-            name: PROFILE_JSON.name,
-        }))).catch(setError);
+        Person.find(PROFILE_JSON["@id"]).then((person) => {
+            if (person) setPerson(person);
+        }).catch(setError);
     }, []);
 
     if (!person) {
