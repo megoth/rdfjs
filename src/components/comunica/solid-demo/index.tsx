@@ -13,7 +13,6 @@ export default function ComunicaDemo() {
 
     useEffect(() => {
         if (!session.webId) return;
-
         engine.queryBindings(`
         PREFIX foaf:  <http://xmlns.com/foaf/0.1/>
         SELECT ?name WHERE {
@@ -33,7 +32,6 @@ export default function ComunicaDemo() {
     const onSubmit = async (data: FormData) => {
         setError(null);
         if (!session.webId) return;
-
         await engine.queryVoid(`
         PREFIX foaf:  <http://xmlns.com/foaf/0.1/>
         DELETE { <${session.webId}> foaf:name "${name}" }

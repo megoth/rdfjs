@@ -15,6 +15,8 @@
     "@inrupt/vocab-common-rdf": "^1.0.5",
     "@inrupt/vocab-solid": "^1.0.4",
     "@ldo/solid-react": "^0.0.1-alpha.16",
+    "@tpluscode/sparql-builder": "^0.3.31",
+    "@zazuko/rdf-vocabularies": "^2023.1.19",
     "bulma": "^0.9.4",
     "clsx": "^2.0.0",
     "ldo": "^1.0.3",

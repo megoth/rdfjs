@@ -14,22 +14,22 @@ import CodeStep from "../../code/step";
         This is usually executed somewhere outside the component (like part of a global bootstrapping process for the
         app), but for our demo we do it like this.
     </CodeStep>
-    <CodeStep lines={["11", "26-27", "46"]} title="Tracking name state">
+    <CodeStep lines={["11", "24-26", "44"]} title="Tracking name state">
         The values we want to work with are not packaged into any abstractions, so we use `useState` to track this value
         explicitly.
     </CodeStep>
-    <CodeStep lines={["12", "28", "45", "49"]} title="Error handling">
+    <CodeStep lines={["12", "27", "43", "47"]} title="Error handling">
         There are a couple of things that can go wrong outside of this demo. First, something can go wrong when
         retrieving the WebID resource. Second, something can go wrong when submitting the SPARQL Update query. Any error
         is passed onto the `Demo` component.
     </CodeStep>
-    <CodeStep lines={["17-28"]} title="Retrieving name">
+    <CodeStep lines={["16-27"]} title="Retrieving name">
         This is where we execute our first query, using `engine.queryBindings`. This returns a stream of data where we
         can retrieve the name. Comunica is designed to handle streams of data, so you could start working on results
         that contain a large amount of data before it's done downloading it all. For our case we deal with so little
         data that we simply use `stream.toArray` to get into our data.
     </CodeStep>
-    <CodeStep lines={["37-45"]} title="Updating online graph">
+    <CodeStep lines={["35-43"]} title="Updating online graph">
         This is where we execute our second query, using `engine.queryVoid`. In this query we make a SPARQL Update
         query, which means we don't expect a result beside whether or not it was able to execute the query or not.
     </CodeStep>
