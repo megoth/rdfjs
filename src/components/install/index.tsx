@@ -3,30 +3,33 @@ import {useMemo, useState} from "react";
 import {clsx} from "clsx";
 import usePrism from "../../hooks/use-prism";
 
+type installType = "developer";
+
 interface Props {
     name: string
+    type?: installType
 }
 
 interface PackageManager {
     name: string;
-    getInstall: (name: string) => string;
+    getInstall: (name: string, type?: installType) => string;
 }
 
 const PACKAGE_MANAGERS: Array<PackageManager> = [{
     name: "npm",
-    getInstall: (name) => `npm i -S ${name}`
+    getInstall: (name, type) => `npm i -${type && type === "developer" ? "D" : "S"} ${name}`
 }, {
     name: "yarn",
-    getInstall: (name) => `yarn add ${name}`
+    getInstall: (name, type) => `yarn add ${name}${type && type === "developer" ? " -D" : ""}`
 }, {
     name: "pnpm",
-    getInstall: (name) => `pnpm add ${name}`
+    getInstall: (name, type) => `pnpm add ${type && type === "developer" ? "-D " : ""}${name}`
 }]
 
-export default function Install({name}: Props) {
+export default function Install({name, type}: Props) {
     const highlightAll = usePrism();
     const [currentManager, setCurrentManager] = useState(0);
-    const code = useMemo(() => PACKAGE_MANAGERS[currentManager].getInstall(name), [currentManager])
+    const code = useMemo(() => PACKAGE_MANAGERS[currentManager].getInstall(name, type), [currentManager])
     const onClick = (index: number) => () => {
         setCurrentManager(index);
         highlightAll();
