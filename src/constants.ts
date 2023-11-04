@@ -521,12 +521,6 @@ export const PROVIDERS: Array<Provider> = [
         loginIri: "https://inrupt.net/",
         signupIri: "https://inrupt.net/register",
     },
-    {
-        label: "Inrupt Pod Spaces",
-        logoSrc: "/logos/inrupt-ps-logo.png",
-        loginIri: "https://broker.pod.inrupt.com/",
-        signupIri: "https://signup.pod.inrupt.com/",
-    },
 ];
 
 export const RATING_CRITERIA: Array<[string, string]> = [
