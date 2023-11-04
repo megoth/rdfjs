@@ -4,9 +4,9 @@ import {useSolidAuth} from "@ldo/solid-react";
 import Demo, {FormData} from "../../demo";
 import Loading from "../../loading";
 import useSolidDataset from "./useSolidDataset.ts";
-import {createLiteral} from "../../../libs/rdf.ts";
 import {useState} from "react";
 import {PROFILE_URI} from "../../../constants.ts";
+import {literal} from "@rdfjs/data-model";
 
 export default function InruptSolidAlternativeDemo() {
     const [error, setError] = useState<Error | null>(null);
@@ -21,7 +21,7 @@ export default function InruptSolidAlternativeDemo() {
     }
 
     const onSubmit = async (data: FormData) => {
-        const updatedProfile = setLiteral(profile, FOAF.name, createLiteral(data.name));
+        const updatedProfile = setLiteral(profile, FOAF.name, literal(data.name));
         const updatedDataset = setThing(profileDataset, updatedProfile);
         await saveProfileDataset(updatedDataset);
     };

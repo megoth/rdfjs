@@ -9,7 +9,7 @@ import {PROFILE_TURTLE, PROFILE_URI, STORAGE_KEYS} from "../../../constants.ts";
 import useLocalStorage from "use-local-storage";
 import N3 from "n3";
 import Loading from "../../loading";
-import {createLiteral} from "../../../libs/rdf.ts";
+import {literal} from "@rdfjs/data-model";
 
 export default function InruptLocalDemo() {
     const [dataset, setDataset] = useState<SolidDataset>(createSolidDataset());
@@ -39,7 +39,7 @@ export default function InruptLocalDemo() {
 
     const onSubmit = async (data: FormData) => {
         setError(null);
-        const updatedProfile = setLiteral(profile, FOAF.name, createLiteral(data.name));
+        const updatedProfile = setLiteral(profile, FOAF.name, literal(data.name));
         const updatedDataset = setThing(dataset, updatedProfile);
         const writer = new N3.Writer();
         const rdfJsDataset = toRdfJsDataset(updatedDataset);

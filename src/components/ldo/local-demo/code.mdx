@@ -6,8 +6,6 @@ import {NavLink} from "react-router-dom";
 import CodeStep from "../../code/step";
 
 <Content>
-    <h2 className="subtitle">Code</h2>
-
     This demo saves the underlying turtle in `localStorage`. It no turtle is found, a default one is used:
 </Content>
 
@@ -19,7 +17,7 @@ import CodeStep from "../../code/step";
 </Content>
 
 <Code language="tsx" id="LDOLocalDemo" code={localDemoCode} className="line-numbers">
-    <CodeStep lines={["12-13"]} title="Setting up profile and turtle">
+    <CodeStep lines={["10-12"]} title="Setting up profile and turtle">
         We're creating an artificial profile until we've loaded the proper one from storage (or as fallback in case it
         fails to load). For the turtle we have a default turtle that we use if none is stored in `localStorage`.
     </CodeStep>
