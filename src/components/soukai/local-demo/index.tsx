@@ -1,44 +1,36 @@
 import {useEffect, useState} from "react";
-import {bootModels, FieldType, InMemoryEngine, setEngine} from "soukai";
+import {bootModels, LocalStorageEngine, setEngine} from "soukai";
 import Loading from "../../loading";
-import {bootSolidModels, SolidModel} from "soukai-solid";
-import useLocalStorage from "use-local-storage";
-import {PERSON_JSON, STORAGE_KEYS} from "../../../constants.ts";
+import {bootSolidModels} from "soukai-solid";
+import {PROFILE_JSON} from "../../../constants.ts";
 import Demo, {FormData} from "../../demo";
-
-export class Person extends SolidModel {
-
-    static rdfsClasses = ['http://xmlns.com/foaf/0.1/Person'];
-
-    static fields = {
-        name: {
-            type: FieldType.String,
-            rdfProperty: 'http://xmlns.com/foaf/0.1/name',
-        },
-    };
-}
+import Person from "../Person.ts";
 
 bootSolidModels();
 bootModels({Person});
-setEngine(new InMemoryEngine())
+setEngine(new LocalStorageEngine())
 
 export default function SoukaiLocalDemo() {
-    const [person, setPerson] = useState<Person | null>(null);
-    const [json, setJson] = useLocalStorage(STORAGE_KEYS.PROFILE_SOUKAI, "");
+    const [person, setPerson] = useState(new Person({
+        url: PROFILE_JSON["@id"],
+        name: PROFILE_JSON.name,
+    }));
+    const [error, setError] = useState<Error | null>(null);
 
     useEffect(() => {
-        const matchedPersonPromise = json.length ? Person.createFromJsonLD(JSON.parse(json)) : Person.create(PERSON_JSON);
-        matchedPersonPromise.then(setPerson);
-    }, [json]);
+        Person.find(PROFILE_JSON["@id"]).then((person) => {
+            if (person) setPerson(person);
+        }).catch(setError);
+    }, []);
 
     if (!person) {
         return <Loading/>
     }
 
-    const onSubmit = async (data: FormData) => {
-        person.setAttribute("name", data.name);
-        setJson(JSON.stringify(person.toJsonLD()))
+    const onSubmit = (data: FormData) => {
+        setError(null);
+        return person.update({name: data.name}).catch(setError);
     };
 
-    return <Demo name={person.getAttributeValue("name")} onSubmit={onSubmit}/>
+    return <Demo error={error} name={person.name ?? ""} onSubmit={onSubmit}/>
 }

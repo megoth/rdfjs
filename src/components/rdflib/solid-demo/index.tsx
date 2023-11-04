@@ -17,7 +17,7 @@ export default function RdflibSolidDemo() {
 
     useEffect(() => {
         fetcher.load(profileNode.doc())
-            .then(() => setName(store.any(profileNode, NAME_NODE, null)?.value || ""))
+            .then(() => setName(store.any(profileNode, NAME_NODE, null)?.value ?? ""))
             .catch(setError);
     }, [store, profileNode, fetcher]);
 

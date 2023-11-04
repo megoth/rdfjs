@@ -41,6 +41,7 @@ pre[class*="language-"] {
         font-size: inherit;
         height: auto;
         line-height: inherit;
+        margin: 0;
         padding: 0;
         text-align: inherit;
     }

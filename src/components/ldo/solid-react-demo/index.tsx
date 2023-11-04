@@ -25,5 +25,5 @@ export default function LDOSolidReactDemo() {
     };
 
     const compoundedError = error || (profileResource.isError ? new Error("Error loading resource") : null);
-    return <Demo error={compoundedError} name={profile?.name || ""} onSubmit={onSubmit}/>
+    return <Demo error={compoundedError} name={profile?.name ?? ""} onSubmit={onSubmit}/>
 }

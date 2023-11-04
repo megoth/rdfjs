@@ -1,0 +1,27 @@
+import Content from "../content";
+import Code from "../code";
+import PersonModel from "./Person.ts?raw";
+import CodeStep from "../code/step";
+
+<Content>
+    <h2 className="subtitle">Models</h2>
+
+    A vital part of Soukai is defining models by extending the `Model` class in `soukai`, but to enable support for RDF
+    we make use of the `defineSolidModelSchema` function in `soukai-solid`.
+
+    For our demos we've created the model `Person` that is reused by both demos:
+</Content>
+
+<Code id="PersonModel" language="typescript" code={PersonModel} className="line-numbers">
+    <CodeStep lines={["5-6"]} title={"Setting context and type"}>
+        We need to provide the context for the class of this model, which is `foaf:Person`.
+    </CodeStep>
+    <CodeStep lines={["7"]} title={"Disabling timestamps"}>
+        By default [Soukai adds timestamps to our
+        models](https://soukai.js.org/guide/defining-models.html#automatic-timestamps), but this is not necessary for
+        us.
+    </CodeStep>
+    <CodeStep lines={["9"]} title={"Describing name"}>
+        We only work with one field in this model, `name`.
+    </CodeStep>
+</Code>

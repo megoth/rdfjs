@@ -26,5 +26,5 @@ export default function InruptSolidAlternativeDemo() {
         await saveProfileDataset(updatedDataset);
     };
 
-    return <Demo error={error} name={name || ""} onSubmit={onSubmit}/>
+    return <Demo error={error} name={name ?? ""} onSubmit={onSubmit}/>
 }

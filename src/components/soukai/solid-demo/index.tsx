@@ -4,30 +4,33 @@ import {bootModels, setEngine} from 'soukai';
 import {useEffect, useState} from "react";
 import Loading from "../../loading";
 import Demo, {FormData} from "../../demo";
-import {Person} from "../local-demo";
+import Person from "../Person.ts";
 
 bootSolidModels();
 bootModels({Person});
 
 export default function SoukaiSolidDemo() {
-    const {session, fetch} = useSolidAuth();
-    const [person, setPerson] = useState<Person | null>(null);
+    const {session: {webId}, fetch} = useSolidAuth();
+    const [person, setPerson] = useState(new Person({url: webId}));
+    const [error, setError] = useState<Error | null>(null);
 
     useEffect(() => setEngine(new SolidEngine(fetch)), [fetch]);
 
     useEffect(() => {
-        Person.find(session.webId!).then((person) => setPerson(person))
-    }, [session.webId]);
+        if (!webId) return;
+        Person.find(webId).then((person) => {
+            if (person) setPerson(person);
+        }).catch(setError);
+    }, [webId]);
 
     if (!person) {
         return <Loading/>
     }
 
-    const onSubmit = async (data: FormData) => {
-        person.setAttribute("name", data.name);
-        const savedPerson = await person.save(session.webId!);
-        setPerson(savedPerson);
+    const onSubmit = (data: FormData) => {
+        setError(null);
+        return person.update({name: data.name}).catch(setError);
     };
 
-    return <Demo name={person.getAttributeValue("name")} onSubmit={onSubmit}/>
+    return <Demo error={error} name={person.name ?? ""} onSubmit={onSubmit}/>
 }

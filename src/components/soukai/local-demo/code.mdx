@@ -1,11 +1,40 @@
-<h2 className="subtitle">Code</h2>
+import Content from "../../content";
+import Code from "../../code";
+import localDemoCode from "./index.tsx?raw";
+import CodeStep from "../../code/step";
+import {PROFILE_JSON} from "../../../constants";
 
-A pellentesque sit amet porttitor eget dolor. Enim nunc faucibus a pellentesque sit amet porttitor eget. Praesent
-tristique magna sit amet purus gravida. Feugiat scelerisque varius morbi enim nunc faucibus a. Accumsan in nisl nisi
-scelerisque eu ultrices. Eget nulla facilisi etiam dignissim diam quis enim. Risus nec feugiat in fermentum posuere
-urna nec. Egestas maecenas pharetra convallis posuere morbi leo urna molestie. Accumsan in nisl nisi scelerisque eu
-ultrices vitae auctor. Feugiat pretium nibh ipsum consequat nisl vel. Mauris pharetra et ultrices neque ornare aenean
-euismod elementum. Risus in hendrerit gravida rutrum quisque non tellus orci. Urna molestie at elementum eu facilisis
-sed odio morbi. Ullamcorper malesuada proin libero nunc consequat interdum varius sit amet. Convallis tellus id
-interdum velit laoreet id. Quam id leo in vitae turpis massa sed. Eget nunc scelerisque viverra mauris in aliquam sem
-fringilla. Morbi non arcu risus quis varius quam quisque. Faucibus in ornare quam viverra.
+<Content>
+    This demo saves the underlying JSON-LD in `localStorage`. If no JSON-LD is found, a default one is used:
+</Content>
+
+<Code language="json" id="ProfileJsonLD" code={JSON.stringify(PROFILE_JSON, null, 2)} noCopy={true}/>
+
+<Code language="tsx" id="SoukaiLocalDemo" code={localDemoCode} className="line-numbers">
+    <CodeStep lines={["9-11"]} title="Bootstrapping">
+        We need to bootstrap Soukai with the models and engine of choice, `LocalStorageEngine`. (In a proper app this
+        would probably be a global setting, but it's nice to have the flexibility.)
+    </CodeStep>
+    <CodeStep lines={["14-17", "21-23"]} title="Loading person">
+        We're going to work with the model we've defined early, so we set this up in anticipation of loading an existing
+        profile from the `localStorage` (via `LocalStorageEngine`).
+
+        In lines 18-21 we try to find the person, but if we're unsuccessful we default to some fallback values.
+    </CodeStep>
+    <CodeStep lines={["18", "23", "31-32", "35"]} title="Error handling">
+        We might expect a couple of sources of errors when interacting with the outside world. First, something might go
+        awry when trying to find the person that represents our logged-in user. Second, something can go wrong when we
+        post our updates to the online resource. Any error is passed to the `Demo` component.
+    </CodeStep>
+    <CodeStep lines={["26-28"]} title="Loading state">
+        As with all other examples that include some parsing it might take some time, so we ensure that we have the data
+        loaded before continuing.
+    </CodeStep>
+    <CodeStep lines={["32"]} title="Updating model">
+        Upon submitting the form, we update the JSON in our `localStorage`.
+    </CodeStep>
+    <CodeStep lines={["35"]} title="Reading name">
+        Whenever we have a `Person` loaded, we make sure to extract the existing name so that it can be passed to
+        the `Demo` component.
+    </CodeStep>
+</Code>

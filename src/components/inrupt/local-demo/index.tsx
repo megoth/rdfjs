@@ -53,5 +53,5 @@ export default function InruptLocalDemo() {
         }));
     };
 
-    return <Demo error={error} name={name || ""} onSubmit={onSubmit}/>
+    return <Demo error={error} name={name ?? ""} onSubmit={onSubmit}/>
 }

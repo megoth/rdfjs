@@ -7,3 +7,12 @@ declare module '*.mdx' {
 declare module 'solid-namespace' {
     export default () => Record<string, (label: string) => string>;
 }
+
+declare module '@tpluscode/sparql-builder' {
+    export const DELETE: function;
+    export const SELECT: function;
+}
+
+declare module '@zazuko/rdf-vocabularies' {
+    export const prefixes: Record<string, string>
+}

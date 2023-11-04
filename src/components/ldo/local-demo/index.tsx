@@ -30,5 +30,5 @@ export default function LDOLocalDemo() {
         if (turtle) setTurtle(turtle);
     };
 
-    return <Demo error={error} name={profile?.name || ""} onSubmit={onSubmit}/>
+    return <Demo error={error} name={profile?.name ?? ""} onSubmit={onSubmit}/>
 }
