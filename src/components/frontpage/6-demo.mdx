@@ -4,6 +4,8 @@ import Code from "../code";
 import demoCode from "../demo/index.tsx?raw"
 import CodeStep from "../code/step";
 import AuthorNote from "../author-note";
+import Install from "../install";
+import {NavLink} from "react-router-dom";
 
 <Content id="demo">
     <h2 className="subtitle is-3">How does the demo work?</h2>
@@ -12,6 +14,17 @@ import AuthorNote from "../author-note";
     component presents a form with one simple text input, which presents the name. The form can be submitted, at which
     point the function `onSubmit` will be called.
 
+    If you want to use the code examples in your own code, there are some dependencies that you should install:
+</Content>
+
+<Install name="react @ldo/solid-react react-hook-form use-local-storage bulma clsx"/>
+
+<Content>
+    Also, you should check out the <NavLink to="/react">guide on React</NavLink> if you want to know more about setting
+    this website up yourself.
+</Content>
+
+<Content>
     The demo below will not store anything, so refreshing the webpage will reset all changes.
 </Content>
 
