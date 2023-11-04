@@ -49,3 +49,9 @@ pre[class*="language-"] {
         text-align: inherit;
     }
 }
+
+.smallScreenMessage {
+    @media screen and (min-width: 600px) {
+        display: none;
+    }
+}
