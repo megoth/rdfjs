@@ -478,7 +478,7 @@ export const NS = namespace();
 export const NAME_NODE = namedNode(NS.foaf("name"));
 
 
-export const PROFILE_URI = "https://example.com/profile";
+export const PROFILE_URI = "https://megothcapgemini.solidcommunity.net/profile/card#me";
 export const PROFILE_NODE = namedNode(PROFILE_URI);
 
 export const PROFILE_JSON = {
