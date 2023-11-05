@@ -7,9 +7,10 @@ interface Props {
 }
 
 export default function GuideHeader({guide}: Props) {
-    return (
+    return <>
         <picture className={clsx("image", styles.image)}>
             <img src={guide.logo} alt={guide.logoAlt} style={{maxHeight: guide.logoPreferredHeight}}/>
         </picture>
-    );
+        <h1 className={clsx("title", styles.title)}>{guide.name}</h1>
+    </>;
 }
