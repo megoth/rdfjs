@@ -57,7 +57,7 @@ export default function Code({buttons, children, className, code, noCopy, langua
         <div id={id} className={styles.container}>
             {children && (
                 <CodeContext.Provider value={{id}}>
-                    <div className={clsx("message is-warning", styles.smallScreenMessage)}>
+                    <div className={clsx("message is-small is-warning", styles.smallScreenMessage)}>
                         <div className="message-header">A note on smaller screens</div>
                         <div className="message-body">
                             These walkthroughes are best consumed at larger screens. If you are on smaller screens, note that

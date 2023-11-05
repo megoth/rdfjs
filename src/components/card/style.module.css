@@ -3,6 +3,14 @@
     flex-direction: column;
     height: 100%;
 
+    :global(.card-content) {
+        padding: 0.75rem;
+
+        @media screen and (min-width: 500px) {
+            padding: 1.5rem;
+        }
+    }
+
     :global(.media.media) {
         align-items: center;
         flex-wrap: wrap;

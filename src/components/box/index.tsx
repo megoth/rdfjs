@@ -1,9 +1,7 @@
 import {HTMLAttributes} from "react";
 import {clsx} from "clsx";
+import styles from "./style.module.css";
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
-}
-
-export default function Box({children, className, ...props}: Props) {
-    return <section className={clsx("box", className)} {...props}>{children}</section>
+export default function Box({children, className, ...props}: HTMLAttributes<HTMLDivElement>) {
+    return <section className={clsx("box", styles.box, className)} {...props}>{children}</section>
 }
