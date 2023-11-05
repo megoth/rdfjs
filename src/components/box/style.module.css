@@ -1,4 +1,4 @@
-.box {
+.box.box {
     padding: 0.75rem;
 
     @media screen and (min-width: 500px) {
