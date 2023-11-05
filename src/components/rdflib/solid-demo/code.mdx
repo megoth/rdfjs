@@ -21,7 +21,7 @@ import CodeStep from "../../code/step";
         Using the fetcher we load the resource, and once it's done fetching we find the name (if set). An
         important side-effect here is that `store` is updated as well with `fetcher.load`.
     </CodeStep>
-    <CodeStep lines={["25-28"]} title="Submitting data and updating name">
+    <CodeStep lines={["26-32"]} title="Submitting data and updating name">
         Upon submitting the form, a new triple with the name is inserted while the old name is removed in
         another triple. The updated store is then posted to the online resource, where rdflib.js will break
         down the updates into a [SPARQL Update](https://www.w3.org/TR/sparql11-update/) query. After
