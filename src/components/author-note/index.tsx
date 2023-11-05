@@ -23,7 +23,7 @@ export default function AuthorNote({children, title, ...props}: Props) {
                         </figure>
                     </div>
                 </div>
-                <Content>
+                <Content className={styles.content}>
                     {children}
                 </Content>
             </div>
