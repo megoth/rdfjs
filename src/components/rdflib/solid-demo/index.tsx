@@ -25,10 +25,10 @@ export default function RdflibSolidDemo() {
         setError(null);
         const ins = [st(profileNode, NAME_NODE, lit(data.name), profileNode.doc())];
         const del = store.statementsMatching(profileNode, NAME_NODE, null, profileNode.doc());
-        return new Promise((resolve) => updater.update(del, ins, (_uri, _success, errorBody, response) => {
+        return new Promise((resolve) => updater.update(del, ins, (_uri, _success, errorBody) => {
             if (!_success) setError(new Error(errorBody));
             setName(data.name);
-            resolve(response);
+            resolve(data.name);
         }));
     };
 

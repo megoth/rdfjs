@@ -8,11 +8,11 @@ interface Props extends HTMLAttributes<HTMLDivElement>{
     redirectId?: string
 }
 
-export default function LoginGate({children, redirectId, ...props}: Props) {
+export default function LoginGate({children, id, redirectId, ...props}: Props) {
     const {session, login} = useSolidAuth();
     return session.isLoggedIn ? children : (
-        <Box {...props}>
-            <Login login={login} redirectId={redirectId}/>
+        <Box id={id} {...props}>
+            <Login login={login} redirectId={id || redirectId}/>
         </Box>
     );
 }

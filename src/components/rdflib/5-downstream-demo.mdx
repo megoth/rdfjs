@@ -1,0 +1,17 @@
+import Content from "../content";
+import LogoutButton from "../logout-button";
+import LoginGate from "../login-gate";
+import RdflibDownstreamDemo from "./downstream-demo";
+import styles from "./styles.module.css";
+
+<Content>
+    <h2 className="subtitle is-3">Downstream demo</h2>
+</Content>
+
+<LoginGate id="downstreamDemo">
+    <div className={styles.downstreamDemoContainer}>
+        <RdflibDownstreamDemo id={"DEMO_LEFT"}/>
+        <RdflibDownstreamDemo id={"DEMO_RIGHT"}/>
+    </div>
+    <LogoutButton/>
+</LoginGate>
