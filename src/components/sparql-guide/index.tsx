@@ -1,5 +1,5 @@
 import GuideLayout from "../guide-layout";
-import {SPARQL_GUIDE} from "../../constants.ts";
+import {SPARQL_GUIDE} from "../../constants";
 import Intro from "./1-intro.mdx";
 import Read from "./2-read.mdx";
 import Write from "./3-write.mdx";

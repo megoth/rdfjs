@@ -5,7 +5,7 @@ import {
 import {type SolidDataset} from "@inrupt/solid-client"
 import {FOAF} from "@inrupt/vocab-common-rdf";
 import Demo, {FormData} from "../../demo";
-import {PROFILE_TURTLE, PROFILE_URI, STORAGE_KEYS} from "../../../constants.ts";
+import {PROFILE_TURTLE, PROFILE_URI, STORAGE_KEYS} from "../../../constants";
 import useLocalStorage from "use-local-storage";
 import N3 from "n3";
 import Loading from "../../loading";

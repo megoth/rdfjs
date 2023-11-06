@@ -1,4 +1,4 @@
-import {SERIALIZATIONS} from "../../constants.ts";
+import {SERIALIZATIONS} from "../../constants";
 import Card from "../card";
 import Columns from "../columns";
 

@@ -1,5 +1,5 @@
 import GuideLayout from "../guide-layout";
-import {TYPESCRIPT_GUIDE} from "../../constants.ts";
+import {TYPESCRIPT_GUIDE} from "../../constants";
 import Intro from "./1-intro.mdx";
 import Install from "./2-install.mdx";
 import Types from "./3-types.mdx";

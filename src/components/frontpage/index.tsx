@@ -5,7 +5,7 @@ import Solid from "./4-solid.mdx";
 import Reviews from "./5.0-reviews.mdx";
 import SolidWarning from "../solid-warning";
 import DemoList from "../demo-list";
-import {LOCAL_DEMOS, SOLID_DEMOS} from "../../constants.ts";
+import {LOCAL_DEMOS, SOLID_DEMOS} from "../../constants";
 import Demo from "./6-demo.mdx";
 import About from "./7-about.mdx";
 import Content from "../content";

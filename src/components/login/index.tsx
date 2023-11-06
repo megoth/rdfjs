@@ -1,4 +1,4 @@
-import {PROVIDERS} from "../../constants.ts";
+import {PROVIDERS} from "../../constants";
 import styles from "./style.module.css"
 import {clsx} from "clsx";
 import {HTMLAttributes} from "react";

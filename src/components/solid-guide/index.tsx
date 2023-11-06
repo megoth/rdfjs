@@ -1,5 +1,5 @@
 import GuideLayout from "../guide-layout";
-import {SOLID_GUIDE} from "../../constants.ts";
+import {SOLID_GUIDE} from "../../constants";
 import Intro from "./1-intro.mdx";
 import Authentication from "./2-authentication.mdx";
 import Authorization from "./3-authorization.mdx";

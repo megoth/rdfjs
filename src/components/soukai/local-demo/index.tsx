@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import {bootModels, LocalStorageEngine, setEngine} from "soukai";
 import Loading from "../../loading";
 import {bootSolidModels} from "soukai-solid";
-import {PROFILE_JSON} from "../../../constants.ts";
+import {PROFILE_JSON} from "../../../constants";
 import Demo, {FormData} from "../../demo";
 import Person from "../Person.ts";
 

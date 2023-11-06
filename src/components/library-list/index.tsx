@@ -1,4 +1,4 @@
-import {LIBRARIES, Library} from "../../constants.ts";
+import {LIBRARIES, Library} from "../../constants";
 import {NavLink} from "react-router-dom";
 import styles from "./style.module.css";
 import {clsx} from "clsx";

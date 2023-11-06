@@ -1,6 +1,6 @@
 import Rating from "../rating";
 import {NavLink} from "react-router-dom";
-import {Library, RATING_CRITERIA} from "../../constants.ts";
+import {Library, RATING_CRITERIA} from "../../constants";
 
 interface Props {
     library: Library;

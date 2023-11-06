@@ -4,7 +4,7 @@ import SolidDemo from "./3-solid-demo.mdx";
 import SPARQLBuilderDemo from "./4-sparql-builder-demo.mdx";
 import RDFSPARQLBuilderDemo from "./5-rdf-sparql-builder-demo.mdx";
 import Review from "./6-review.mdx";
-import {LIBRARY_COMUNICA} from "../../constants.ts";
+import {LIBRARY_COMUNICA} from "../../constants";
 import LibraryLayout from "../library-layout";
 
 export default function Comunica() {

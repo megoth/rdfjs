@@ -1,5 +1,5 @@
 import {graph, lit, parse, serialize, st} from "rdflib";
-import {NAME_NODE, PROFILE_NODE, PROFILE_TURTLE, PROFILE_URI, STORAGE_KEYS} from "../../../constants.ts";
+import {NAME_NODE, PROFILE_NODE, PROFILE_TURTLE, PROFILE_URI, STORAGE_KEYS} from "../../../constants";
 import {useEffect, useMemo, useState} from "react";
 import useLocalStorage from "use-local-storage";
 import Demo, {FormData} from "../../demo";

@@ -1,4 +1,4 @@
-import {Guide} from "../../constants.ts";
+import {Guide} from "../../constants";
 import Content from "../content";
 import {AiFillYoutube, AiOutlineLink} from "react-icons/ai";
 

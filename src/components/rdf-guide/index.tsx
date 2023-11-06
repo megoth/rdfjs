@@ -4,7 +4,7 @@ import Vocabularies from "./3-vocabularies.mdx";
 import Shapes from "./4-shapes.mdx";
 import Querying from "./5-querying.mdx";
 import BeyondRDF from "./6-beyond-rdf.mdx";
-import {RDF_GUIDE} from "../../constants.ts";
+import {RDF_GUIDE} from "../../constants";
 import GuideLayout from "../guide-layout";
 
 export default function RDFGuide() {

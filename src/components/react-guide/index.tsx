@@ -1,5 +1,5 @@
 import GuideLayout from "../guide-layout";
-import {REACT_GUIDE} from "../../constants.ts";
+import {REACT_GUIDE} from "../../constants";
 import Intro from "./1-intro.mdx";
 import Install from "./2-install.mdx";
 import JSX from "./3-jsx.mdx";

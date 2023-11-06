@@ -1,4 +1,4 @@
-import {Guide} from "../../constants.ts";
+import {Guide} from "../../constants";
 import {ReactNode} from "react";
 import GuideHeader from "../guide-header";
 import RecommendationList from "../recommendation-list";

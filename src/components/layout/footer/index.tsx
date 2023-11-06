@@ -1,7 +1,7 @@
 import {HTMLAttributes} from "react";
 import styles from "./style.module.css";
 import {clsx} from "clsx";
-import {GUIDES} from "../../../constants.ts";
+import {GUIDES} from "../../../constants";
 import {NavLink} from "react-router-dom";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {

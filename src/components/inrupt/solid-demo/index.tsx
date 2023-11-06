@@ -7,7 +7,7 @@ import {FOAF} from "@inrupt/vocab-common-rdf";
 import {useSolidAuth} from "@ldo/solid-react";
 import Demo, {FormData} from "../../demo";
 import Loading from "../../loading";
-import {PROFILE_URI} from "../../../constants.ts";
+import {PROFILE_URI} from "../../../constants";
 import {literal} from "@rdfjs/data-model";
 
 export default function InruptSolidDemo() {

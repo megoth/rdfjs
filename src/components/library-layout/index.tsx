@@ -1,5 +1,5 @@
 import LibraryHeader from "../library-header";
-import {Library} from "../../constants.ts";
+import {Library} from "../../constants";
 import LibrarySection from "../library-section";
 import GuideSection from "../guide-section";
 import {ReactNode} from "react";

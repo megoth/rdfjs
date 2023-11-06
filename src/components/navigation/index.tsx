@@ -2,7 +2,7 @@ import {NavLink} from "react-router-dom";
 import {clsx} from "clsx";
 import {useState} from "react";
 import styles from "./style.module.css";
-import {LIBRARIES} from "../../constants.ts";
+import {LIBRARIES} from "../../constants";
 
 export default function Navigation() {
     const [menuIsActive, setMenuIsActive] = useState<boolean>(false);

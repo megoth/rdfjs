@@ -1,4 +1,4 @@
-import {LIBRARIES, RATING_CRITERIA} from "../../constants.ts";
+import {LIBRARIES, RATING_CRITERIA} from "../../constants";
 import Rating from "../rating";
 import {NavLink} from "react-router-dom";
 import {clsx} from "clsx";

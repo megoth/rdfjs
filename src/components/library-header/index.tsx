@@ -1,4 +1,4 @@
-import {Library} from "../../constants.ts";
+import {Library} from "../../constants";
 import {clsx} from "clsx";
 import styles from "./style.module.css";
 

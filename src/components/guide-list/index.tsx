@@ -1,4 +1,4 @@
-import {Guide, GUIDES} from "../../constants.ts";
+import {Guide, GUIDES} from "../../constants";
 import {NavLink} from "react-router-dom";
 import styles from "./style.module.css";
 import {clsx} from "clsx";

@@ -1,4 +1,4 @@
-import {Guide} from "../../constants.ts";
+import {Guide} from "../../constants";
 import {clsx} from "clsx";
 import styles from "./style.module.css";
 

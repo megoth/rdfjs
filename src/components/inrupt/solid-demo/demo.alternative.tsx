@@ -5,7 +5,7 @@ import Demo, {FormData} from "../../demo";
 import Loading from "../../loading";
 import useSolidDataset from "./useSolidDataset.ts";
 import {useState} from "react";
-import {PROFILE_URI} from "../../../constants.ts";
+import {PROFILE_URI} from "../../../constants";
 import {literal} from "@rdfjs/data-model";
 
 export default function InruptSolidAlternativeDemo() {

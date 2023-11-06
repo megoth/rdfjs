@@ -2,7 +2,7 @@ import {Fetcher, graph, lit, namedNode, st, UpdateManager} from "rdflib";
 import {useEffect, useMemo, useState} from "react";
 import {useSolidAuth} from "@ldo/solid-react";
 import Demo, {FormData} from "../../demo";
-import {NAME_NODE} from "../../../constants.ts";
+import {NAME_NODE} from "../../../constants";
 import Loading from "../../loading";
 
 export default function RdflibSolidDemo() {

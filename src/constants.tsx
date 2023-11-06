@@ -1,6 +1,7 @@
 import {namedNode} from "rdflib";
 import namespace from "solid-namespace";
 import {RatingScore} from "./components/rating";
+import {ReactNode} from "react";
 
 
 export interface Guide {
@@ -429,7 +430,7 @@ export interface Demo {
     icon: string;
     iconAlt: string;
     library: Library;
-    slogan: string;
+    slogan: ReactNode;
     subtitle?: string;
     text: string;
     title: string;
@@ -442,7 +443,7 @@ export const LOCAL_DEMOS: Array<Demo> = [
         icon: "/rdf.svg",
         iconAlt: "Logo for Read-Write Linked Data",
         library: LIBRARY_RDFLIB,
-        slogan: "The OG JavaScript library to manage RDF data",
+        slogan: <>The <abbr title="Original">OG</abbr> JavaScript library to manage RDF data</>,
         text: "rdflib.js"
     },
     {
