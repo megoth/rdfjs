@@ -41,8 +41,9 @@ export default function SolidWarning() {
                         isn't vulnerable (e.g. use a test account).
                     </p>
                     <p>
-                        If you do trust in this website (i.e. me, Arne Hassel, the creator), you can log in here, to
-                        verify that everything connects as it should.
+                        If you do trust in this website (i.e. me, Arne Hassel, the creator), you can log in with
+                        whichever Pod provider you created your Pod with, to verify that everything connects as it
+                        should.
                     </p>
                 </Content>
                 <Login login={onLogin} className="is-warning is-small"/>

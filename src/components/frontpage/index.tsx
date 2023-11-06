@@ -18,7 +18,10 @@ export default function Frontpage() {
             <Local/>
             <DemoList list={LOCAL_DEMOS}/>
             <Content>
-                <p>Note that each demo has its own storage, so none of the local demos "bleed" into each other.</p>
+                <p>
+                    Note that each demo uses its own isolated storage, so none of these local demos "bleed" into each
+                    other.
+                </p>
             </Content>
             <Solid/>
             <SolidWarning/>
