@@ -10,13 +10,13 @@ import {useHref, useLocation} from "react-router-dom";
 export default function SolidWarning() {
     const {session: {isLoggedIn, webId}, login} = useSolidAuth();
     const routerLocation = useLocation();
-    useResource(webId, {reloadOnMount: true});
+    const profileResource = useResource(webId, {reloadOnMount: true});
     const profile = useSubject(SolidProfileShapeType, webId);
     const href = useHref(routerLocation.pathname);
     const onLogin = hijackLogin(login, routerLocation, location, href, "SolidWarning");
 
     return isLoggedIn
-        ? profile?.name
+        ? profileResource && !profileResource.isLoading()
             ? <div className="message is-success" id="SolidWarning">
                 <div className="message-body">
                     <Content>
