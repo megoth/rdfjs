@@ -1,4 +1,4 @@
-import {PROVIDERS} from "../../constants";
+import {Provider, PROVIDERS} from "../../constants";
 import styles from "./style.module.css"
 import {clsx} from "clsx";
 import {HTMLAttributes} from "react";
@@ -8,10 +8,11 @@ import {LoginOptions} from "@ldo/solid-react/src/SolidAuthContext.ts";
 
 interface Props extends HTMLAttributes<HTMLButtonElement> {
     login: (issuer: string, loginOptions?: LoginOptions) => Promise<void>,
+    providers?: Array<Provider>;
     redirectId?: string;
 }
 
-export default function Login({className, login, redirectId, ...props}: Props) {
+export default function Login({className, login, providers, redirectId, ...props}: Props) {
     const routerLocation = useLocation();
     const href = useHref(routerLocation.pathname);
     const onProviderClick = hijackLogin(login, routerLocation, location, href, redirectId);
@@ -24,7 +25,7 @@ export default function Login({className, login, redirectId, ...props}: Props) {
 
     return (
         <div className={styles.login}>
-            {PROVIDERS.map((provider) => (
+            {(providers || PROVIDERS).map((provider) => (
                 <button key={provider.loginIri} type="button"
                         {...props}
                         className={clsx("button", className || "is-info")}
@@ -32,12 +33,12 @@ export default function Login({className, login, redirectId, ...props}: Props) {
                     {provider.label}
                 </button>
             ))}
-            <button type="button"
+            {!providers && <button type="button"
                     {...props}
                     className={clsx("button", className || "is-info")}
                     onClick={onCustomProviderClick}>
                 Custom Solid Provider
-            </button>
+            </button>}
         </div>
     );
 }

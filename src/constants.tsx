@@ -491,7 +491,7 @@ export const PROFILE_TURTLE = `@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
 <${PROFILE_URI}> foaf:name "Test".`;
 
-interface Provider {
+export interface Provider {
     label: string;
     logoSrc: string;
     loginIri: string;
@@ -518,6 +518,13 @@ export const PROVIDERS: Array<Provider> = [
         signupIri: "https://inrupt.net/register",
     },
 ];
+
+export const INRUPT_POD_SPACES: Provider = {
+    label: "Inrupt Pod Spaces",
+    logoSrc: "/logos/inrupt-ps-logo.png",
+    loginIri: "https://login.inrupt.com/",
+    signupIri: "https://start.inrupt.com/",
+};
 
 export const RATING_CRITERIA: Array<[string, string]> = [
     ["developerExperience", "Developer Experience"],

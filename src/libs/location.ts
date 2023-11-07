@@ -31,7 +31,7 @@ export function hijackLogin(
         const redirectUrl = location.origin + href + serializeSearch(queries);
         await login(issuer, {
             clientName: "RDF + JS: Learning how to manage RDF graphs with JavaScript",
-            redirectUrl
+            redirectUrl,
         })
     };
 }
