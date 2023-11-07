@@ -1,0 +1,34 @@
+import Content from "../content";
+import Code from "../code";
+import synchronousCode from "./8-synchronous.js?raw";
+import asynchronousCode from "./8-asynchronous.js?raw";
+
+<Content>
+    <h3 className="subtitle">Asynchronous code</h3>
+
+    One last concept that I want to introduce to you is **asynchronous code**. This is a useful concept to know when
+    dealing with online resources, since they introduce latency and doesn't work in the normal, synchronous way.
+
+    But what does it mean that our code is asynchronous? To understand that better, let's look at synchronous code:
+</Content>
+
+<Code language="typescript" code={synchronousCode}/>
+
+<Content>
+    In this code we simply do one thing after another. This code is very easy to read and follow.
+
+    Asynchronous code can be harder to follow:
+</Content>
+
+<Code language="typescript" code={asynchronousCode}/>
+
+<Content>
+    In this code we introduce `setTimeout`, which is a method on the `window` API. This allows us to indicate a number
+    of milliseconds (1000 in our case, meaning 1 second). This means that the order of the outputted strings are: `foo`,
+    `baz`, `bar`.
+
+    Another important API for asynchronous code are
+    [Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise), which is a
+    handy way of abstracting something (a promise) that will be **resolved** at *some point in the future*, e.g. loading
+    a resource over an internet connection.
+</Content>

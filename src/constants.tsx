@@ -13,6 +13,34 @@ export interface Guide {
     recommendations: Array<Recommendation>;
 }
 
+export const JAVASCRIPT_GUIDE: Guide = {
+    href: "/javascript",
+    logo: "./javascript.png",
+    logoAlt: "Logo of JavaScript",
+    logoPreferredHeight: 192,
+    name: "JavaScript",
+    recommendations: [{
+        title: "JavaScript Guide | MDN",
+        href: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide",
+        note: "Lots of good resources to get you started learning JavaScript",
+        type: "URL"
+    }, {
+        title: "The Modern JavaScript Tutorial",
+        href: "https://javascript.info/",
+        note: "Many good tutorials to get you started on JavaScript",
+        type: "URL"
+    }, {
+        title: "All I need to know about ECMAScript modules",
+        href: "https://www.valentinog.com/blog/es-modules/",
+        note: "Good read on ES modules",
+        type: "URL"
+    }, {
+        title: "wtf.js",
+        href: "https://wtfjs.com/",
+        note: "Fun site with lots of weird JS-code",
+        type: "URL"
+    }],
+};
 export const RDF_GUIDE: Guide = {
     href: "/rdf",
     logo: "./rdf.png",
@@ -324,6 +352,7 @@ export const GUIDES = [
     SHEX_GUIDE,
     SPARQL_GUIDE,
     SOLID_GUIDE,
+    JAVASCRIPT_GUIDE,
     TYPESCRIPT_GUIDE,
     REACT_GUIDE
 ];

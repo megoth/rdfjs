@@ -1,0 +1,28 @@
+import Content from "../content";
+import functionsSyntax from "./4-functions.js?raw";
+import Code from "../code";
+import CodeStep from "../code/step";
+
+<Content>
+    <h3 className="subtitle">Functions</h3>
+</Content>
+
+<Code id="FunctionSyntax" language="typescript" code={functionsSyntax} noCopy={true} className="line-numbers">
+    <CodeStep lines={["1-3"]} title={<code>function</code>}>
+        Functions are very useful parts of our code, and we can pass them around as we want. This and the next example
+        are probably the most common ways of writing functions.
+    </CodeStep>
+    <CodeStep lines={["5"]} title={"Anonymous functions"}>
+        A shorthand way of writing functions can be seen on line 5. Anonymous functions don't have a name, so they
+        aren't as convenient to call as named functions, but they can be assigned to anything, so we can
+    </CodeStep>
+    <CodeStep lines={["7-13"]} title={"Methods"}>
+        When we have functions as properties on objects/maps, we call them methods. We also get access to the `this`
+        syntax in methods, which refers to the object they're assigned to. `this` is a powerful feature of JS (like
+        any <abbr title="Object-Oriented">OO</abbr>-based programming language), but should be used with care, as it can
+        be hard to know what exactly `this` refers to.
+
+        In general I would advise programming styles that avoid the use of `this` (functional programming has a lot to
+        offer in this regard).
+    </CodeStep>
+</Code>

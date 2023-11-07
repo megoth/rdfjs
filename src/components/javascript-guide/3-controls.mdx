@@ -1,0 +1,45 @@
+import Content from "../content";
+import controlsSyntax from "./3-controls.js?raw";
+import Code from "../code";
+import CodeStep from "../code/step";
+
+<Content>
+    <h3 className="subtitle">Control structures</h3>
+
+    Control structures are ways of managing the flow of our application, e.g. based on the values of certain variables
+    we might want to show one thing and hide another thing.
+</Content>
+
+<Code id="ControlJavaScriptSyntax" language="typescript" code={controlsSyntax} noCopy={true} className="line-numbers">
+    <CodeStep lines={["1-7"]} title={<code>if</code>}>
+        Ifs are a well-known control syntax in many programming languages, and JS have them as well. They can be used
+        with `else if` and `else` tokens, and you can have as many `else if`-conditions that you want.
+
+        We also introduce `console.log` here, which is a useful API for browsers (most browsers have a developer
+        toolbar, and console is part of that toolbar; console.logs are useful for quick debugging and to give us a
+        snapshot of states by outputting them when we need it to).
+    </CodeStep>
+    <CodeStep lines={["9-19"]} title={<code>switch</code>}>
+        An alternative to `if` is `switch`. It allows you to chain cases together, and might allow more readable code.
+    </CodeStep>
+    <CodeStep lines={["21-23"]} title={<code>for...of</code>}>
+        JS offers multiple ways of looping over variables. One way is `for...of` which lets you easily loop over arrays.
+        Our example will print out `42`, `"Some text"`, [date-object with a timestamp from the moment it was created],
+        and `true`.
+    </CodeStep>
+    <CodeStep lines={["25-27"]} title={<code>for...in</code>}>
+        `for...in` is another way to iterate data structures, and this one is more geared toward maps/objects. This will
+        print out the same as above, but with the addition of the key of each entry as well.
+    </CodeStep>
+    <CodeStep lines={["29-31"]} title={<code>for</code>}>
+        The `for` loop consists of three optional statements and gives us an easy way of looping over data structures
+        (usually arrays);
+    </CodeStep>
+    <CodeStep lines={["33-37"]} title={<code>while</code>}>
+        While loops are useful ways to iterate over an array of variables.
+    </CodeStep>
+    <CodeStep lines={["38-42"]} title={<code>do...while</code>}>
+        This is very similar to the `while`-loop, but differs in that it will always execute the `do`-block at least
+        once before testing the condition provided in line 42.
+    </CodeStep>
+</Code>
