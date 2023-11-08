@@ -2,7 +2,10 @@ function functionName(arg1, arg2) {
     return arg1 + arg2;
 }
 
-const anonymousFunction = (arg1, arg2) => arg1 + arg2;
+const anonymousFunction1 = function (arg1, arg2) {
+    return arg1 + arg2;
+};
+const anonymousFunction2 = (arg1, arg2) => arg1 + arg2;
 
 const objectWithMethods = {
     foo: functionName,
