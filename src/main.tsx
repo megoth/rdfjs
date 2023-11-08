@@ -21,6 +21,7 @@ import SPARQLGuide from "./components/sparql-guide";
 import SolidGuide from "./components/solid-guide";
 import TypeScriptGuide from "./components/typescript-guide";
 import ReactGuide from "./components/react-guide";
+import JavascriptGuide from "./components/javascript-guide";
 
 const router = createBrowserRouter([{
     path: "/",
@@ -37,6 +38,10 @@ const router = createBrowserRouter([{
         {
             path: "/inrupt",
             element: <Inrupt/>,
+        },
+        {
+            path: "/javascript",
+            element: <JavascriptGuide/>,
         },
         {
             path: "/ldo",

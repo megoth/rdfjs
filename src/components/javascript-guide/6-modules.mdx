@@ -1,0 +1,41 @@
+import Content from "../content";
+import modulesSyntax from "./6-modules.js?raw";
+import Code from "../code";
+import CodeStep from "../code/step";
+
+<Content>
+    <h3 className="subtitle">Modules</h3>
+
+    Modules have been JavaScript for a long time, but there has been some debate as to how they should be formalized.
+    For this reason there are actually multiple standards for writing modules in JS. This can quickly become very
+    complex, which is beyond the scope of this guide. But if you want to learn more about it, I recommend reading this
+    <a href={"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules"}>document on JavaScript Modules
+        at <abbr title="Mozilla Developer Network">MDN</abbr></a>.
+
+    For this guide we'll limit outselves to `import` and `export` which is part of the [ECMAScript
+    modules](https://www.valentinog.com/blog/es-modules/) syntax.
+</Content>
+
+<Code id="ModulesSyntax" language="typescript" code={modulesSyntax} noCopy={true} className="line-numbers">
+    <CodeStep lines={["1-2"]} title={<code>import</code>}>
+        When we want to import code from other modules we use `import`.
+    </CodeStep>
+    <CodeStep lines={["4"]} title={<code>export default</code>}>
+        This is how we export the default part of our exported module. Here we also see an example of aliases, where
+        `aliasDoSomething` becomes an alias for `doSomethingElse`. There can only be one default export in each module.
+    </CodeStep>
+    <CodeStep lines={["5-6"]} title={<code>export</code>}>
+        If we want to export multiple things from a module, this is how we can do that.
+    </CodeStep>
+</Code>
+
+<Content>
+    <h4 className="subtitle">NPM</h4>
+
+    Modules are very handy ways of sharing code, and [Node Packaging Module](https://www.npmjs.com/) is a popular system
+    to publish and download JS packages. Although it has it flaws, it's still a very useful tool, and is the default way
+    of handling dependencies in Node-based systems.
+
+    There are also alternatives to NPM, such as [Yarn](https://yarnpkg.com/) and [pnpm](https://pnpm.io/). Going into
+    details into any of these are beyond the scope of this guide, but it can be useful to know about the alternatives.
+</Content>

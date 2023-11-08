@@ -1,0 +1,20 @@
+import Content from "../content";
+import classesSyntax from "./5-classes.js?raw";
+import Code from "../code";
+import CodeStep from "../code/step";
+
+<Content>
+    <h3 className="subtitle">Classes</h3>
+
+    Although similar functionality has been achieved with alternative syntax before, `class` is a recent part of the
+    standardized syntax that allows there to be a standardized way of encapsulating values in objects.
+</Content>
+
+<Code id="ClassesSyntax" language="typescript" code={classesSyntax} noCopy={true} className="line-numbers">
+    <CodeStep lines={["1-5"]} title={<code>class</code>}>
+        The `class` syntax is a recent entry to JS, and provides a way to describe objects with common interfaces.
+    </CodeStep>
+    <CodeStep lines={["7-12"]} title={"Extended class"}>
+        Classes can be extended so that you can partition your code into hierarchical structures.
+    </CodeStep>
+</Code>

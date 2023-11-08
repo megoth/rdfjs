@@ -1,0 +1,60 @@
+import Content from "../content";
+import basicSyntax from "./2-basics.js?raw";
+import Code from "../code";
+import CodeStep from "../code/step";
+import CodeLink from "../code-link";
+
+<Content>
+    <h2 className="subtitle">Basic syntax</h2>
+
+    JavaScript supports a small set of literals (strings, numbers, dates, date-times) and data structures (arrays,
+    maps, sets). They all extends the basic datatype in JavaScript, `Object`, through what we call
+    [prototypical
+    inheritance](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain) (this is
+    beyond the scope of this guide, but I'll mention it in case you want to know more). Functions are also
+    object-oriented in that they're treated as first-class objects, amd they can be passed around to facilitate a
+    functional programming style.
+
+    JavaScript code is composed by statements, which is composed of tokens. A simple rule is to keep one statement per
+    line, but JavaScript has a lot of short-hand syntax that allow you to write powerful lines of code (which is not
+    necessarily advisable in all situations).
+
+    Below are some types of syntax that you can see throughout JavaScript programmes (the important thing here is not to
+    memorize this, but to understand what you can do with the basics of JavaScript).
+</Content>
+
+<Code id="BasicJavaScriptSyntax" language="typescript" code={basicSyntax} noCopy={true} className="line-numbers">
+    <CodeStep lines={["1-3"]} title={"Variables"}>
+        JS offers multiple types of variables, `var`, `let`, and `const`. They differ in their affordances, e.g.
+        `var` and `let` are similar in that they both can be changed (i.e. they are not constants), but `let` is
+        narrower in that they're scoped by the immediate enclosing block denoted by `{}`, not the whole function body.
+        (This might sound cryptic, but the only thing you need to know for now is that they are useful distinctions, and
+        that you should stick to `let` and `const` if you can.)
+
+        `const` are constants, and cannot be changed once they're set. But one important thing to note here is that for
+        data structures the constant is only the initial reference. That means that even though `foo` is a constant
+        in `const foo = {}`, we can still do `foo.bar = 42` to append the attribute `bar` with the value `42` the object
+        `foo`.
+    </CodeStep>
+    <CodeStep lines={["5-8"]} title={"Literals"}>
+        There are many types of literals in JavaScript that represent useful values. These offer ways to be combined,
+        but might also lead to some WTF-moments ([wtfjs.com](https://wtfjs.com/) is a very amusing website to explore in
+        this regard).
+
+        Do also note that there are multiple ways of representing string; You can use single quotation marks, double
+        quotations marks, or [Template
+        Literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals). Especially the
+        latter is useful when you need larger strings that go over multiple lines, and when you want to replace parts
+        of the string with variables. I've shown examples of these different types of strings in <CodeLink
+        id="BasicJavaScriptSyntax" lines={["29", "33", "36"]}>lines 29, 33, and 36</CodeLink>.
+    </CodeStep>
+    <CodeStep lines={["10-17"]} title={"Data structures"}>
+        You can combine variables and literals as you like in arrays, maps (which are the same as key-value objects),
+        and sets. JavaScript is dynamic, so you can mix and match as you want (but you probably shouldn't - it's easier
+        to keep tracks of arrays and maps when their values are of the same form. That said, there are many situations
+        where it's useful to have dynamic values, and JS provides that.
+
+        An important feature of `Set` is that all entries are unique. So in the case we see at line 17 we'll get a set
+        with two entries, `numberVariable` (which we tried to add twice) and `stringVariable`.
+    </CodeStep>
+</Code>
