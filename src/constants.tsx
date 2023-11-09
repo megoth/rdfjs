@@ -738,98 +738,21 @@ export type Unpromise<T extends Promise<unknown>> = T extends Promise<infer U> ?
 export interface TagModel {
     name: string;
     label: string;
-    description: ReactNode;
 }
 
-export const TAG_AI = {
-    name: "ai",
-    label: "Artificial Intelligence",
-    description: <p>
-        Artificial Intelligence (AI) has become all the rage lately through implementations of generative AI such as <a
-        href="https://openai.com/chatgpt">ChatGPT</a>, <a href="https://openai.com/dall-e-2">Dall-E 2</a>, and <a
-        href="https://www.midjourney.com/home">Midjourney</a>. Knowledge graphs can be useful as input for AI, and
-        Linked Data with it's semantics inherently part of it, providing "smart" data with useful relationships.
-    </p>,
-};
-export const TAG_FRONTEND = {
-    name: "frontend",
-    label: "Front-end",
-    description: <p>
-        Frontend applications using JavaScript already supports a variety of rich user experiences throughout the world,
-        and with knowledge graphs we can enrich those experiences even more.
-    </p>,
-};
 export const TAG_INTEROPERABILITY = {
     name: "interoperability",
     label: "Interoperability",
-    description: <p>
-        These use cases builds on the fact that Linked Data offers interoperability. Achieving interoperability is still
-        a social process (that can be very hard), but with Linked Data you can at least start that work.
-    </p>,
 };
 export const TAG_LANGUAGE = {
     name: "language",
     label: "Language/Semantics",
-    description: <>
-        <p>
-            These use cases rely on the fact that human language and semantics, i.e. what terms *formally means*, are
-            the basics of Linked Data. The idea is that everything that <em>can be represented can be represented using
-            Linked Data</em>.
-        </p>
-        <p>
-            This is an easy thing to overlook, but the power of this in terms of how it can be communicated shouldn't be
-            understated. Compare this to working with relational databases, where everything has to be translated into
-            tables and relationships between tables. This is a very useful way of storing data (as proven its success),
-            but not very human friendly.
-        </p>
-        <p>
-            It can be very hard to formally describe terms and names in an organization, but my experience is that it's
-            a necessary, painful step to achieve a better understanding of the organization overall, and
-            maybe, <em>maybe</em> you'll be able to resolve that organizational dispute that's been going on for forever
-            because nobody is using the same language.
-        </p>
-    </>,
-};
-export const TAG_MACHINE_LEARNING = {
-    name: "MachineLearning",
-    label: "Machine Learning",
-    description: <p>
-        Knowledge graphs are useful input for machine learning algorithms, as they provide a useful data points and
-        relationships. Linked Data are even more useful with its human language-based abstraction to data, rich
-        semantics, and ability to merge large knowledge graphs.
-    </p>,
 };
 export const TAG_PATTERN_ANALYSIS = {
     name: "pattern_analysis",
     label: "Pattern Analysis",
-    description: <p>
-        Knowledge graphs are useful tools for pattern analysis in general. Since nodes and relationships are easily
-        traversed and powerful queries can be executed, we gain the ability of running analysis that would've taken
-        humans a long time to do.
-    </p>,
 };
 export const TAG_SHAPES = {
     name: "shapes",
     label: "Shapes",
-    description: <>
-        <p>
-            Although shapes have a technical meaning (check <NavLink to="/shex">the guide on ShEx</NavLink> if you want
-            to learn more), the concept of shapes are useful to elevate for use cases as well.
-            People <em>understand</em> the concept of shapes, and if you're able to teach them to visualize knowledge
-            graphs as visual entities, they can understand how to apply shapes conceptually.
-        </p>
-        <p>
-            This concept makes shapes a very useful tool when communicating with domain experts, so that they can
-            describe with natural, human language what the constraints are on the models they work with.
-        </p>
-    </>,
 };
-export const TAGS: Array<TagModel> = [
-    TAG_AI,
-    TAG_FRONTEND,
-    TAG_INTEROPERABILITY,
-    TAG_LANGUAGE,
-    TAG_MACHINE_LEARNING,
-    TAG_PATTERN_ANALYSIS,
-    TAG_SHAPES,
-];
