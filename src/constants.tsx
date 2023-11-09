@@ -60,6 +60,14 @@ export const CRDT_GUIDE: Guide = {
         type: "YouTube"
     }],
 };
+export const BUSINESS_GUIDE: Guide = {
+    href: "/business",
+    logo: "./business.png",
+    logoAlt: "Icon with various currency, indicating business",
+    logoPreferredHeight: 256,
+    name: "Business",
+    recommendations: [],
+};
 export const JAVASCRIPT_GUIDE: Guide = {
     href: "/javascript",
     logo: "./javascript.png",
@@ -403,6 +411,8 @@ export const GUIDES = [
     TYPESCRIPT_GUIDE,
     REACT_GUIDE,
     CRDT_GUIDE,
+    REACT_GUIDE,
+    BUSINESS_GUIDE,
 ];
 
 export interface Library {

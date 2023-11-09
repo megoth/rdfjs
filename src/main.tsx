@@ -25,6 +25,7 @@ import {NotificationContextProvider} from "./hooks/use-notification/provider.tsx
 import MLd from "./components/m-ld";
 import MLdPeer from "./components/m-ld/peer";
 import CRDTGuide from "./components/crdt-guide";
+import BusinessGuide from "./components/business-guide";
 
 const router = createBrowserRouter([
     {
@@ -94,6 +95,10 @@ const router = createBrowserRouter([
             {
                 path: "/react",
                 element: <ReactGuide/>,
+            },
+            {
+                path: "/business",
+                element: <BusinessGuide/>,
             },
         ]
     },
