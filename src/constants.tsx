@@ -13,6 +13,14 @@ export interface Guide {
     recommendations: Array<Recommendation>;
 }
 
+export const BUSINESS_GUIDE: Guide = {
+    href: "/business",
+    logo: "./business.png",
+    logoAlt: "Icon with various currency, indicating business",
+    logoPreferredHeight: 256,
+    name: "Business",
+    recommendations: [],
+};
 export const JAVASCRIPT_GUIDE: Guide = {
     href: "/javascript",
     logo: "./javascript.png",
@@ -354,7 +362,8 @@ export const GUIDES = [
     SOLID_GUIDE,
     JAVASCRIPT_GUIDE,
     TYPESCRIPT_GUIDE,
-    REACT_GUIDE
+    REACT_GUIDE,
+    BUSINESS_GUIDE,
 ];
 
 export interface Library {

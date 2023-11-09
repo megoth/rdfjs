@@ -22,6 +22,7 @@ import TypeScriptGuide from "./components/typescript-guide";
 import ReactGuide from "./components/react-guide";
 import JavascriptGuide from "./components/javascript-guide";
 import {NotificationContextProvider} from "./hooks/use-notification/provider.tsx";
+import BusinessGuide from "./components/business-guide";
 
 const router = createBrowserRouter([{
     path: "/",
@@ -78,6 +79,10 @@ const router = createBrowserRouter([{
         {
             path: "/react",
             element: <ReactGuide/>,
+        },
+        {
+            path: "/business",
+            element: <BusinessGuide/>,
         },
     ]
 }]);

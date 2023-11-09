@@ -25,6 +25,11 @@ export default function Footer({className, ...props}: Props) {
                 <div className={styles.footerItem}>
                     <a href="https://icanhasweb.net">Coded by Arne Hassel</a>
                 </div>
+                <div className={styles.footerItem}>
+                    <a href="https://www.flaticon.com/free-icons/financing" title="financing icons">
+                        Financing icons created by surang - Flaticon
+                    </a>
+                </div>
             </nav>
         </footer>
     )
