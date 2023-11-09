@@ -4,10 +4,12 @@ import Install from "../install";
 <Content>
     <h2 className="subtitle">Installation</h2>
 
-    To get started with TypeScript, install it using your favorite package manager.
+    To get started with TypeScript, install it using your favorite package manager. Note that it's installed as a
+    local development dependency, as you don't need to push any remains of TypeScript (unless you want
+    [sourcemaps](https://www.typescriptlang.org/tsconfig#sourceMap) of course).
 </Content>
 
-<Install name={"typescript"}/>
+<Install name={"typescript"} type="developer"/>
 
 <Content>
     TypeScript is integrated in many <abbr title="Integrated Development Environment">IDEs</abbr>, so you should
@@ -25,4 +27,4 @@ import Install from "../install";
     For this website it means installing a couple of developer dependencies in addition to the libraries themselves:
 </Content>
 
-<Install name="@types/react @types/react-dom" type="developer" />
+<Install name="@types/react @types/react-dom" type="developer"/>
