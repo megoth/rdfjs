@@ -738,21 +738,68 @@ export type Unpromise<T extends Promise<unknown>> = T extends Promise<infer U> ?
 export interface TagModel {
     name: string;
     label: string;
+    description: ReactNode;
 }
 
 export const TAG_INTEROPERABILITY = {
     name: "interoperability",
     label: "Interoperability",
+    description: <p>
+        These use cases builds on the fact that Linked Data offers interoperability. Achieving interoperability is still
+        a social process (that can be very hard), but with Linked Data you can at least start that work.
+    </p>,
 };
 export const TAG_LANGUAGE = {
     name: "language",
     label: "Language/Semantics",
+    description: <>
+        <p>
+            These use cases rely on the fact that human language and semantics, i.e. what terms *formally means*, are
+            the basics of Linked Data. The idea is that everything that <em>can be represented can be represented using
+            Linked Data</em>.
+        </p>
+        <p>
+            This is an easy thing to overlook, but the power of this in terms of how it can be communicated shouldn't be
+            understated. Compare this to working with relational databases, where everything has to be translated into
+            tables and relationships between tables. This is a very useful way of storing data (as proven its success),
+            but not very human friendly.
+        </p>
+        <p>
+            It can be very hard to formally describe terms and names in an organization, but my experience is that it's
+            a necessary, painful step to achieve a better understanding of the organization overall, and maybe, *maybe*
+            you'll be able to resolve that organizational dispute that's been going on for forever because nobody is
+            using the same language.
+        </p>
+    </>,
 };
 export const TAG_PATTERN_ANALYSIS = {
     name: "pattern_analysis",
     label: "Pattern Analysis",
+    description: <p>
+        Knowledge graphs are useful tools for pattern analysis in general. Since nodes and relationships are easily
+        traversed and powerful queries can be executed, we gain the ability of running analysis that would've taken
+        humans a long time to do.
+    </p>,
 };
 export const TAG_SHAPES = {
     name: "shapes",
     label: "Shapes",
+    description: <>
+        <p>
+            Although shapes have a technical meaning (check <NavLink to="/shex">the guide on ShEx</NavLink> if you want
+            to learn more), the concept of shapes are useful to elevate for use cases as well. People *understand* the
+            concept of shapes, and if you're able to teach them to visualize knowledge graphs as visual entities, they
+            can understand how to apply shapes conceptually.
+        </p>
+        <p>
+            This concept makes shapes a very useful tool when communicating with domain experts, so that they can
+            describe with natural, human language what the constraints are on the models they work with.
+        </p>
+    </>,
 };
+export const TAGS: Array<TagModel> = [
+    TAG_PATTERN_ANALYSIS,
+    TAG_INTEROPERABILITY,
+    TAG_LANGUAGE,
+    TAG_SHAPES,
+];
