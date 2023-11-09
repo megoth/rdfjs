@@ -667,3 +667,25 @@ export const STORAGE_KEYS = {
     "PROFILE_RDFLIB": "profileRdflib",
     "PROFILE_SOUKAI": "profileSoukai",
 }
+
+export interface TagModel {
+    name: string;
+    label: string;
+}
+
+export const TAG_INTEROPERABILITY = {
+    name: "interoperability",
+    label: "Interoperability",
+};
+export const TAG_LANGUAGE = {
+    name: "language",
+    label: "Language/Semantics",
+};
+export const TAG_PATTERN_ANALYSIS = {
+    name: "pattern_analysis",
+    label: "Pattern Analysis",
+};
+export const TAG_SHAPES = {
+    name: "shapes",
+    label: "Shapes",
+};
