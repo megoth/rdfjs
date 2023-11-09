@@ -18,12 +18,20 @@ export default function Footer({className, ...props}: Props) {
                     ))}
                 </nav>
             </div>
-            <div className={styles.footerItem}>
-                <a href="https://github.com/megoth/semtechjs-demo">GitHub repo</a>
-            </div>
-            <div className={styles.footerItem}>
-                Coded by <a href="https://icanhasweb.net">Arne Hassel</a>
-            </div>
+            <nav className={styles.footerMeta}>
+                <div className={styles.footerItem}>
+                    <a href="https://github.com/megoth/semtechjs-demo">GitHub repo</a>
+                </div>
+                <div className={styles.footerItem}>
+                    <a href="https://icanhasweb.net">Coded by Arne Hassel</a>
+                </div>
+                <div className={styles.footerItem}>
+                    <a href="https://www.flaticon.com/free-icons/financing" title="financing icons">
+                        Financing icons created by surang - Flaticon
+                    </a>
+                </div>
+            </nav>
+
         </footer>
     )
 }
