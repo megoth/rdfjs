@@ -3,7 +3,7 @@
 @prefix schema: <http://schema.org/> .
 
 :arne a foaf:Person ;
-    foaf:name "Arne" ;
+    foaf:name "Arne Hassel" ;
     schema:jobTitle "Senior Consultant"@en, "Seniorkonsulent"@nb-no ;
     schema:worksFor :capgemini .
 
