@@ -1,22 +1,25 @@
 import Content from "../content";
-import DataLakes from "./use-cases/data-lakes.mdx";
-import DataPreparation from "./use-cases/data-preparation.mdx";
-import SemanticAnalysis from "./use-cases/semantic-analysis.mdx";
-import FraudDetection from "./use-cases/fraud-detection.mdx";
-import InteroperableAppsAndWebpages from "./use-cases/interoperable-apps-and-webpages.mdx";
-import ImproveSEO from "./use-cases/improve-seo.mdx";
 import Tags from "../tags";
 import {TAGS} from "../../constants";
 import Tag from "../tag";
 import AuthorNote from "../author-note";
 import {NavLink} from "react-router-dom";
+import BusinessGuideUseCases from "./use-cases";
 
 <Content>
     <h2 className="subtitle">Use Cases</h2>
 
     I've listed some common use cases you'll see for Linked Data. I'll describe how knowledge graphs are useful for each
     use case, and how Linked Data is even more useful.
+
+    I've tagged all of the use cases so you can more easily skim for the topics that you're interested in. You can click
+    the tags for each use case, or you can select from the list below (there's a <NavLink to="#tags-description">list
+    of descriptions for each tag</NavLink> below if you want to know more specifically what they denote).
+
+    <Tags>{TAGS.map((tag) => <Tag key={tag.name} link={true} tag={tag}/>)}</Tags>
 </Content>
+
+<BusinessGuideUseCases/>
 
 <AuthorNote title="On the term use case">
     I won't be using use cases as described in [software and systems
@@ -24,23 +27,6 @@ import {NavLink} from "react-router-dom";
     [UML](https://en.wikipedia.org/wiki/Unified_Modeling_Language)-diagrams and such, but a more informal description of
     cases where knowledge graphs are useful ways to solve the problem.
 </AuthorNote>
-
-<Content>
-    <h3 className="subtitle">Tags</h3>
-    I've tagged all of the use cases so you can more easily skim for the topics that you're interested in. You can click
-    the tags for each use case, or you can select from the list below:
-
-    <Tags>{TAGS.map((tag) => <Tag tag={tag}/>)}</Tags>
-
-    There's a <NavLink to="#tags-description">list of descriptions</NavLink> of each tag after the use cases.
-</Content>
-
-<DataLakes/>
-<FraudDetection/>
-<ImproveSEO/>
-<DataPreparation/>
-<InteroperableAppsAndWebpages/>
-<SemanticAnalysis/>
 
 <Content id="tags-description">
     <h3 className="subtitle">Description of tags</h3>
@@ -53,8 +39,8 @@ import {NavLink} from "react-router-dom";
         </tr>
         </thead>
         <tbody>
-        {TAGS.map(({label, description}) => (
-            <tr>
+        {TAGS.map(({name, label, description}) => (
+            <tr key={name}>
                 <td>{label}</td>
                 <td>{description}</td>
             </tr>

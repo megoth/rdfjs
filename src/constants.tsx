@@ -3,7 +3,11 @@ import namespace from "solid-namespace";
 import {RatingScore} from "./components/rating";
 import {ReactNode} from "react";
 import {NavLink} from "react-router-dom";
-
+import DataLakes from "./components/business-guide/use-cases/data-lakes.mdx";
+import FraudDetection from "./components/business-guide/use-cases/fraud-detection.mdx";
+import ImproveSeo from "./components/business-guide/use-cases/improve-seo.mdx";
+import DataPreparation from "./components/business-guide/use-cases/data-preparation.mdx";
+import InteroperableApps from "./components/business-guide/use-cases/interoperable-apps.mdx";
 
 export interface Guide {
     href: string;
@@ -833,3 +837,61 @@ export const TAGS: Array<TagModel> = [
     TAG_PATTERN_ANALYSIS,
     TAG_SHAPES,
 ];
+
+export interface UseCase {
+    title: string
+    image: string
+    imageAlt: string
+    tags: Array<TagModel>
+    body: ReactNode
+}
+export const USE_CASE_DATA_LAKES: UseCase = {
+    title: "Data Lakes",
+    image: "data-lakes.jpg",
+    imageAlt: "A visualization of a graph with several nodes going into one central node",
+    tags: [TAG_INTEROPERABILITY],
+    body: <DataLakes />,
+}
+export const USE_CASE_DATA_PREPARATION: UseCase = {
+    title: "Data Preparation",
+    image: "data-preparation.jpg",
+    imageAlt: "A visualization of someone feeding data into a machine",
+    tags: [TAG_AI, TAG_MACHINE_LEARNING, TAG_PATTERN_ANALYSIS],
+    body: <DataPreparation />,
+}
+export const USE_CASE_FRAUD_DETECTION: UseCase = {
+    title: "Fraud Detection",
+    image: "fraud-detection.jpg",
+    imageAlt: "An image of computer and security-related icons",
+    tags: [TAG_PATTERN_ANALYSIS, TAG_MACHINE_LEARNING, TAG_AI],
+    body: <FraudDetection />,
+}
+export const USE_CASE_IMPROVE_SEO: UseCase = {
+    title: "Improve SEO",
+    image: "seo.jpg",
+    imageAlt: "An image with SEO in large letters",
+    tags: [TAG_FRONTEND, TAG_INTEROPERABILITY, TAG_LANGUAGE],
+    body: <ImproveSeo />,
+}
+export const USE_CASE_INTEROPERABLE_APPS: UseCase = {
+    title: "Interoperable Apps",
+    image: "interoperability.jpg",
+    imageAlt: "An image of a robot scanning intertwined cogs",
+    tags: [TAG_FRONTEND, TAG_INTEROPERABILITY, TAG_SHAPES],
+    body: <InteroperableApps />,
+}
+export const USE_CASE_SEMANTIC_ANALYSIS: UseCase = {
+    title: "Semantic Analysis",
+    image: "semantics.jpg",
+    imageAlt: "A visualization of data in cloud and graphs",
+    tags: [TAG_FRONTEND, TAG_INTEROPERABILITY, TAG_SHAPES],
+    body: <InteroperableApps />,
+}
+export const USE_CASES: Array<UseCase> = [
+    USE_CASE_DATA_LAKES,
+    USE_CASE_FRAUD_DETECTION,
+    USE_CASE_IMPROVE_SEO,
+    USE_CASE_DATA_PREPARATION,
+    USE_CASE_INTEROPERABLE_APPS,
+    USE_CASE_SEMANTIC_ANALYSIS,
+]

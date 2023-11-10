@@ -1,6 +1,4 @@
 import {Demo} from "../../constants";
-import styles from "./style.module.css";
-import {clsx} from "clsx";
 import {NavLink} from "react-router-dom";
 import Card from "../card";
 import Columns from "../columns";
@@ -16,7 +14,7 @@ export default function DemoList({list}: Props) {
             {demoList.map(({title, subtitle, href, icon, iconAlt, slogan}) => (
                 <NavLink to={href} key={href}>
                     <Card>
-                        <div className={clsx("card-content", styles.cardContent)}>
+                        <div className="card-content">
                             <div className="media">
                                 <div className="media-left">
                                     <figure className="image">
@@ -31,7 +29,7 @@ export default function DemoList({list}: Props) {
                             <div className="content">{slogan}</div>
                         </div>
                         <div className="card-footer">
-                            <div className={clsx("card-footer-item button is-info", styles.link)}>
+                            <div className="card-footer-item button is-info">
                                 Check out demo
                             </div>
                         </div>

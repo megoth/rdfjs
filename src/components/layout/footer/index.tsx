@@ -30,6 +30,9 @@ export default function Footer({className, ...props}: Props) {
                         Financing icons created by surang - Flaticon
                     </a>
                 </div>
+                <div className={styles.footerItem}>
+                    <a href="https://www.freepik.com/">Images from Freepik</a>
+                </div>
             </nav>
         </footer>
     )

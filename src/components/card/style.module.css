@@ -3,6 +3,19 @@
     flex-direction: column;
     height: 100%;
 
+    :global(.card-content) {
+        flex-grow: 1;
+
+        :global(h1),
+        :global(h2),
+        :global(h3),
+        :global(h4),
+        :global(h5),
+        :global(h6) {
+            margin-top: 0;
+        }
+    }
+
     :global(.media.media) {
         align-items: center;
         flex-wrap: wrap;
@@ -21,9 +34,9 @@
         height: 48px;
 
         & img {
-            height: 100%;
-            max-width: none;
-            width: auto;
+            /*height: 100%;*/
+            /*max-width: none;*/
+            /*width: auto;*/
         }
     }
 
