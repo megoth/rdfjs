@@ -741,6 +741,24 @@ export interface TagModel {
     description: ReactNode;
 }
 
+export const TAG_AI = {
+    name: "ai",
+    label: "Artificial Intelligence",
+    description: <p>
+        Artificial Intelligence (AI) has become all the rage lately through implementations of generative AI such as <a
+        href="https://openai.com/chatgpt">ChatGPT</a>, <a href="https://openai.com/dall-e-2">Dall-E 2</a>, and <a
+        href="https://www.midjourney.com/home">Midjourney</a>. Knowledge graphs can be useful as input for AI, and
+        Linked Data with it's semantics inherently part of it, providing "smart" data with useful relationships.
+    </p>,
+};
+export const TAG_FRONTEND = {
+    name: "frontend",
+    label: "Front-end",
+    description: <p>
+        Frontend applications using JavaScript already supports a variety of rich user experiences throughout the world,
+        and with knowledge graphs we can enrich those experiences even more.
+    </p>,
+};
 export const TAG_INTEROPERABILITY = {
     name: "interoperability",
     label: "Interoperability",
@@ -772,6 +790,15 @@ export const TAG_LANGUAGE = {
         </p>
     </>,
 };
+export const TAG_MACHINE_LEARNING = {
+    name: "MachineLearning",
+    label: "Machine Learning",
+    description: <p>
+        Knowledge graphs are useful input for machine learning algorithms, as they provide a useful data points and
+        relationships. Linked Data are even more useful with its human language-based abstraction to data, rich
+        semantics, and ability to merge large knowledge graphs.
+    </p>,
+};
 export const TAG_PATTERN_ANALYSIS = {
     name: "pattern_analysis",
     label: "Pattern Analysis",
@@ -798,6 +825,8 @@ export const TAG_SHAPES = {
     </>,
 };
 export const TAGS: Array<TagModel> = [
+    TAG_AI,
+    TAG_FRONTEND,
     TAG_PATTERN_ANALYSIS,
     TAG_INTEROPERABILITY,
     TAG_LANGUAGE,
