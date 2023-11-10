@@ -784,9 +784,9 @@ export const TAG_LANGUAGE = {
         </p>
         <p>
             It can be very hard to formally describe terms and names in an organization, but my experience is that it's
-            a necessary, painful step to achieve a better understanding of the organization overall, and maybe, *maybe*
-            you'll be able to resolve that organizational dispute that's been going on for forever because nobody is
-            using the same language.
+            a necessary, painful step to achieve a better understanding of the organization overall, and
+            maybe, <em>maybe</em> you'll be able to resolve that organizational dispute that's been going on for forever
+            because nobody is using the same language.
         </p>
     </>,
 };
@@ -814,9 +814,9 @@ export const TAG_SHAPES = {
     description: <>
         <p>
             Although shapes have a technical meaning (check <NavLink to="/shex">the guide on ShEx</NavLink> if you want
-            to learn more), the concept of shapes are useful to elevate for use cases as well. People *understand* the
-            concept of shapes, and if you're able to teach them to visualize knowledge graphs as visual entities, they
-            can understand how to apply shapes conceptually.
+            to learn more), the concept of shapes are useful to elevate for use cases as well.
+            People <em>understand</em> the concept of shapes, and if you're able to teach them to visualize knowledge
+            graphs as visual entities, they can understand how to apply shapes conceptually.
         </p>
         <p>
             This concept makes shapes a very useful tool when communicating with domain experts, so that they can
@@ -827,8 +827,9 @@ export const TAG_SHAPES = {
 export const TAGS: Array<TagModel> = [
     TAG_AI,
     TAG_FRONTEND,
-    TAG_PATTERN_ANALYSIS,
     TAG_INTEROPERABILITY,
     TAG_LANGUAGE,
+    TAG_MACHINE_LEARNING,
+    TAG_PATTERN_ANALYSIS,
     TAG_SHAPES,
 ];
