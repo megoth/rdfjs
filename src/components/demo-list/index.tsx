@@ -2,6 +2,7 @@ import {Demo} from "../../constants";
 import {NavLink} from "react-router-dom";
 import Card from "../card";
 import Columns from "../columns";
+import Image from "../image";
 
 interface Props {
     list: Array<Demo>
@@ -17,9 +18,9 @@ export default function DemoList({list}: Props) {
                         <div className="card-content">
                             <div className="media">
                                 <div className="media-left">
-                                    <figure className="image">
+                                    <Image>
                                         <img src={icon} alt={iconAlt}/>
-                                    </figure>
+                                    </Image>
                                 </div>
                                 <div className="media-content">
                                     <p className="title is-4">{title}</p>

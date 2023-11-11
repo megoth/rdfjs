@@ -1,6 +1,7 @@
 import {SERIALIZATIONS} from "../../constants";
 import Card from "../card";
 import Columns from "../columns";
+import Image from "../image";
 
 export default function SerializationList() {
     return (
@@ -11,9 +12,9 @@ export default function SerializationList() {
                         <a href={url} className="card-content">
                             <div className="media">
                                 <div className="media-left">
-                                    <figure className="image">
+                                    <Image>
                                         <img src={logo} alt={`Logo of $${name}`}/>
-                                    </figure>
+                                    </Image>
                                 </div>
                                 <div className="media-content">
                                     <p className="title is-4">{name}</p>

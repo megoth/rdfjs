@@ -1,0 +1,9 @@
+.image.image {
+     height: 48px;
+
+     & img {
+         height: 100%;
+         max-width: none;
+         width: auto;
+     }
+}

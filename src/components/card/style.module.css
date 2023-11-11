@@ -30,16 +30,6 @@
         overflow-y: hidden;
     }
 
-    :global(.image.image) {
-        height: 48px;
-
-        & img {
-            /*height: 100%;*/
-            /*max-width: none;*/
-            /*width: auto;*/
-        }
-    }
-
     :global(.card-footer-item.button) {
         border-radius: 0 0 4px 4px;
     }

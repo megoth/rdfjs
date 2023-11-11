@@ -4,6 +4,7 @@ import styles from "./style.module.css";
 import {clsx} from "clsx";
 import Card from "../card";
 import Columns from "../columns";
+import Image from "../image";
 
 export interface Props {
     exclude?: Library;
@@ -20,9 +21,9 @@ export default function LibraryList({exclude}: Props) {
                     <NavLink key={href} to={href}>
                         <Card className={clsx("card", styles.card)}>
                             <div className="card-image">
-                                <picture className={clsx("image", styles.image)}>
+                                <Image className={styles.image}>
                                     <img src={icon} alt={iconAlt}/>
-                                </picture>
+                                </Image>
                             </div>
                             <div className={clsx("card-content", styles.cardContent)}>
                                 <div className={clsx("media", styles.media)}>

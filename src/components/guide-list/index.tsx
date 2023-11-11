@@ -5,6 +5,7 @@ import {clsx} from "clsx";
 import {useMemo} from "react";
 import Card from "../card";
 import Columns from "../columns";
+import Image from "../image";
 
 export interface Props {
     exclude?: Guide
@@ -23,9 +24,9 @@ export default function GuideList({exclude}: Props) {
                         <div className="card-content">
                             <div className={clsx("media", styles.media)}>
                                 <div className="media-left">
-                                    <figure className="image">
+                                    <Image>
                                         <img src={logo} alt={logoAlt} />
-                                    </figure>
+                                    </Image>
                                 </div>
                                 <div className="media-content">
                                     <p className="title is-4">{name}</p>
