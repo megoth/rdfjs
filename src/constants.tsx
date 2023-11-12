@@ -417,6 +417,20 @@ export const LIBRARY_INRUPT: Library = {
     websiteName: "Official documentation",
     websiteUrl: "https://docs.inrupt.com/developer-tools/javascript/client-libraries/"
 };
+export const LIBRARY_M_LD: Library = {
+    creator: "George Svarovsky",
+    creatorUrl: "https://github.com/gsvarovsky",
+    href: "/m-ld",
+    icon: "/m-ld.svg",
+    iconAlt: "Logo for m-ld",
+    iconPreferredHeight: 192,
+    name: "m-ld JavaScript Engine",
+    published: true,
+    recommendation: "None yet",
+    text: "m-ld",
+    websiteName: "Official website",
+    websiteUrl: "https://js.m-ld.org/"
+};
 export const LIBRARY_RDFLIB: Library = {
     creator: "rdflib.js team",
     creatorUrl: "https://github.com/linkeddata/rdflib.js/graphs/contributors",
@@ -452,6 +466,7 @@ export const LIBRARIES: Array<Library> = [
     LIBRARY_INRUPT,
     LIBRARY_SOUKAI,
     LIBRARY_COMUNICA,
+    LIBRARY_M_LD,
 ].filter(({published}) => published);
 
 export interface Demo {

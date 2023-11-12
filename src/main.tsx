@@ -22,6 +22,7 @@ import TypeScriptGuide from "./components/typescript-guide";
 import ReactGuide from "./components/react-guide";
 import JavascriptGuide from "./components/javascript-guide";
 import {NotificationContextProvider} from "./hooks/use-notification/provider.tsx";
+import MLd from "./components/m-ld";
 
 const router = createBrowserRouter([{
     path: "/",
@@ -46,6 +47,10 @@ const router = createBrowserRouter([{
         {
             path: "/ldo",
             element: <LDO/>,
+        },
+        {
+            path: "/m-ld",
+            element: <MLd/>,
         },
         {
             path: "/rdflib",
