@@ -1,0 +1,57 @@
+import AuthorNote from "../author-note";
+import {LIBRARY_INRUPT, RATING_CRITERIA} from "../../constants";
+import RatingCriteriaTitle from "../rating-criteria-title";
+import Content from "../content";
+import ReviewHeader from "../review-header";
+
+<AuthorNote id="review" title="Should you choose Inrupt's JavaScript client libraries?">
+    <ReviewHeader library={LIBRARY_INRUPT}/>
+
+    <Content id={RATING_CRITERIA[0][0]}>
+        <RatingCriteriaTitle index={0} rating={LIBRARY_INRUPT.review?.[0]}/>
+
+        @inrupt/solid-client, which is the library that you will be using most, offers an extensive API for managing RDF
+        in the style of functional programming. While I do enjoy the abstractions into `SolidDataset` and `Thing`, it
+        still requires me to understand quite a bit of RDF.
+
+        For example, to know which attribute to read and update name we must know of `foaf:name`. This is definitely
+        something developers _should_ know when they're working with RDF, but I would argue that it's suboptimal if
+        there is an alternative where you don't need to know it (i.e. like LDO allows).
+    </Content>
+
+    <Content id={RATING_CRITERIA[1][0]}>
+        <RatingCriteriaTitle index={1} rating={LIBRARY_INRUPT.review?.[1]}/>
+
+        The documentation of Inrupt is really good. It can be a bit overwhelming at first because of the sheer size of
+        the API (again, focusing on @inrupt/solid-client), but once you understand its logic (which is test and tried
+        format used in many other documentations), you get around quickly.
+    </Content>
+
+    <Content id={RATING_CRITERIA[2][0]}>
+        <RatingCriteriaTitle index={2} rating={LIBRARY_INRUPT.review?.[2]}/>
+
+        Although there isn't an active community around Inrupt's JavaScript client libraries, some of its developers
+        hang around the [forum](https://forum.solidproject.org/) and other places where questions of the library might
+        be asked, and are quick to answer.
+    </Content>
+
+    <Content id={RATING_CRITERIA[3][0]}>
+        <RatingCriteriaTitle index={3} rating={LIBRARY_INRUPT.review?.[3]}/>
+
+        The libraries in Inrupt's portfolio have mostly been around for some years now. There might pop up a bug from
+        time to time, but the developer team is fairly quick to respond.
+    </Content>
+
+    <Content id={RATING_CRITERIA[4][0]}>
+        <RatingCriteriaTitle index={4} rating={LIBRARY_INRUPT.review?.[4]}/>
+
+        Overall I enjoy using Inrupt's JavaScript client libraries, and I certainly appreciate what it and its
+        developers have done to the Solid community. But I'm not especially fond of functional programming, and the
+        sequential feel of it all feels a bit like working with boxes within boxes within boxes. You have to explicitly
+        package and un-package each box for things you want to do, and ironically it doesn't provide a good flow for me.
+
+        But in the end, Inrupt provides a stable API that gets the job done. It's abstractions are higher than
+        rdflib.js, and doesn't require as much from developers to get into. And if you like the functional programming
+        style, you'll love this library.
+    </Content>
+</AuthorNote>

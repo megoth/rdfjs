@@ -447,6 +447,20 @@ export const LIBRARY_LDO: Library = {
     websiteName: "GitHub repo",
     websiteUrl: "https://github.com/o-development/ldo/"
 };
+export const LIBRARY_GRAPOI: Library = {
+    creator: "Thomas Bergwinkl (RDF-Ext)",
+    creatorUrl: "https://github.com/bergos/",
+    href: "/grapoi",
+    icon: "/rdf-ext.png",
+    iconAlt: "Logo for RDF-Ext",
+    iconPreferredHeight: 200,
+    name: "grapoi",
+    published: true,
+    recommendation: "none yet",
+    text: "grapoi",
+    websiteName: "GitHub repo",
+    websiteUrl: "https://github.com/rdf-ext/grapoi"
+};
 export const LIBRARY_INRUPT: Library = {
     creator: "Inrupt",
     creatorUrl: "https://inrupt.com",
@@ -512,6 +526,7 @@ export const LIBRARIES: Array<Library> = [
     LIBRARY_SOUKAI,
     LIBRARY_COMUNICA,
     LIBRARY_M_LD,
+    LIBRARY_GRAPOI,
 ].filter(({published}) => published);
 
 export interface Demo {

@@ -25,6 +25,7 @@ import {NotificationContextProvider} from "./hooks/use-notification/provider.tsx
 import MLd from "./components/m-ld";
 import MLdPeer from "./components/m-ld/peer";
 import CRDTGuide from "./components/crdt-guide";
+import Grapoi from "./components/grapoi";
 
 const router = createBrowserRouter([
     {
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
             {
                 path: "/crdt",
                 element: <CRDTGuide/>,
+            },
+            {
+                path: "/grapoi",
+                element: <Grapoi/>,
             },
             {
                 path: "/inrupt",
