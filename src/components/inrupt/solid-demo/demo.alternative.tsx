@@ -16,15 +16,16 @@ export default function InruptSolidAlternativeDemo() {
         || createThing({url: webId || PROFILE_URI});
     const name = profile && getLiteral(profile, FOAF.name)?.value;
 
-    if (!profileDataset) {
+    if (!profileDataset && !error) {
         return <Loading/>
     }
 
     const onSubmit = async (data: FormData) => {
+        if (!profileDataset) return;
         const updatedProfile = setLiteral(profile, FOAF.name, literal(data.name));
         const updatedDataset = setThing(profileDataset, updatedProfile);
         await saveProfileDataset(updatedDataset);
     };
 
-    return <Demo error={error} name={name ?? ""} onSubmit={onSubmit}/>
+    return <Demo error={error} name={name || ""} onSubmit={onSubmit}/>
 }

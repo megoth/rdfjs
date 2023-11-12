@@ -19,7 +19,7 @@ import CodeStep from "../../code/step";
         This part is also similar to the local part, but since there are some more moving parts with the actual
         fetching of online resources we need to put in some more safeguards.
     </CodeStep>
-    <CodeStep lines={["19", "25", "33", "37", "41"]} title="Error handling">
+    <CodeStep lines={["19", "25", "33", "38", "42"]} title="Error handling">
         There are a couple of things that can go wrong when we interact with a RDF resource in a Solid Pod. First,
         something can go wrong when fetching and parsing the turtle text. Second, something can go wrong when we try
         to update the online resource. If there's any error we pass it on the `Demo` component.
@@ -30,7 +30,7 @@ import CodeStep from "../../code/step";
     <CodeStep lines={["28-30"]} title="Loading state">
         Again, similar approach like the local demo.
     </CodeStep>
-    <CodeStep lines={["34-38"]} title="Updating online resources upon submit">
+    <CodeStep lines={["34-39"]} title="Updating online resources upon submit">
         Once we submit a name we make sure to update the profile with the updated name, then update the dataset
         with the updated profile, and making a request using `saveSolidDatasetAt` to save the changes to the
         online resource. We then update our local copy of the dataset to make sure all is updated.

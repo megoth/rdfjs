@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import {
-    createSolidDataset, createThing, fromRdfJsDataset, getLiteral, getThing, setLiteral, setThing, toRdfJsDataset
+    createThing, fromRdfJsDataset, getLiteral, getThing, setLiteral, setThing, toRdfJsDataset
 } from "@inrupt/solid-client";
 import {type SolidDataset} from "@inrupt/solid-client"
 import {FOAF} from "@inrupt/vocab-common-rdf";
@@ -12,7 +12,7 @@ import Loading from "../../loading";
 import {literal} from "@rdfjs/data-model";
 
 export default function InruptLocalDemo() {
-    const [dataset, setDataset] = useState<SolidDataset>(createSolidDataset());
+    const [dataset, setDataset] = useState<SolidDataset | null>();
     const [turtle, setTurtle] = useLocalStorage(STORAGE_KEYS.PROFILE_INRUPT, PROFILE_TURTLE);
     const profile = dataset && getThing(dataset, PROFILE_URI) || createThing({url: PROFILE_URI});
     const name = profile && getLiteral(profile, FOAF.name)?.value;
@@ -26,19 +26,20 @@ export default function InruptLocalDemo() {
             for (const {subject, predicate, object, graph} of parsed) {
                 store.addQuad(subject, predicate, object, graph);
             }
+            setDataset(fromRdfJsDataset(store));
         } catch (error) {
             const message = error && typeof error === "string" ? error as string : "Error occurred while parsing";
             setError(new Error(message));
         }
-        setDataset(fromRdfJsDataset(store));
     }, [turtle]);
 
-    if (!error && (!dataset || !profile)) {
+    if (!dataset && !error) {
         return <Loading/>
     }
 
     const onSubmit = async (data: FormData) => {
         setError(null);
+        if (!dataset) return;
         const updatedProfile = setLiteral(profile, FOAF.name, literal(data.name));
         const updatedDataset = setThing(dataset, updatedProfile);
         const writer = new N3.Writer();
@@ -53,5 +54,5 @@ export default function InruptLocalDemo() {
         }));
     };
 
-    return <Demo error={error} name={name ?? ""} onSubmit={onSubmit}/>
+    return <Demo error={error} name={name || ""} onSubmit={onSubmit}/>
 }

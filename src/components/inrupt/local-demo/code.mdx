@@ -27,12 +27,12 @@ import {NavLink} from "react-router-dom";
         profile and the literal name. The latter is important to pass on for the `Demo` component we fetch the
         profile from the dataset that's currently used.
     </CodeStep>
-    <CodeStep lines={["19", "29-32", "41", "50", "56"]} title="Error handling">
+    <CodeStep lines={["19", "30-33", "51", "57"]} title="Error handling">
         A couple of things can go wrong when we're doing this demo. First, there might be something wrong with the
         turtle we want to serialize. Second, something might go wrong when we serialize back to turtle. Any error is
         passed to the `Demo` component.
     </CodeStep>
-    <CodeStep lines={["22-23", "25-28", "33"]} title="Parsing turtle and updating dataset">
+    <CodeStep lines={["22-23", "25-29"]} title="Parsing turtle and updating dataset">
         @inrupt/solid-client doesn't provide all the tools necessary for loading a turtle locally, so we've made
         use of [N3.js](https://github.com/rdfjs/N3.js) to parse the turtle string. Since N3 returns [RDF/JS
         Dataset](https://rdf.js.org/dataset-spec/), we can parse it using `fromRdfJsDataset`.
@@ -41,7 +41,7 @@ import {NavLink} from "react-router-dom";
         Since parsing the initial turtle string can take a little time, we show the `Loading` component
         while we wait for it to complete and update the dataset. Usually this goes very fast though.
     </CodeStep>
-    <CodeStep lines={["42-53"]} title="Updating RDF upon submit">
+    <CodeStep lines={["42-54"]} title="Updating RDF upon submit">
         When submitting we get get thing we want to update, the profile, and update the literal that was set for
         `foaf:name`. We then update the dataset with the updated thing, and proceed to serialize the updated
         dataset, again with the help of N3.js.

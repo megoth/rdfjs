@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import {
-    createSolidDataset, createThing, getLiteral, getSolidDataset, getThing, saveSolidDatasetAt, setLiteral, setThing,
+    createThing, getLiteral, getSolidDataset, getThing, saveSolidDatasetAt, setLiteral, setThing,
 } from "@inrupt/solid-client";
 import {type SolidDataset} from "@inrupt/solid-client";
 import {FOAF} from "@inrupt/vocab-common-rdf";
@@ -12,7 +12,7 @@ import {literal} from "@rdfjs/data-model";
 
 export default function InruptSolidDemo() {
     const {session: {webId}, fetch} = useSolidAuth();
-    const [dataset, setDataset] = useState<SolidDataset>(createSolidDataset());
+    const [dataset, setDataset] = useState<SolidDataset | null>(null);
     const profile = (dataset && webId && getThing(dataset, webId))
         || createThing({url: webId || PROFILE_URI});
     const name = profile && getLiteral(profile, FOAF.name)?.value;
@@ -25,12 +25,13 @@ export default function InruptSolidDemo() {
             .catch(setError);
     }, [fetch, webId]);
 
-    if (!error && (!dataset || !webId)) {
+    if (!dataset && !error) {
         return <Loading/>
     }
 
     const onSubmit = async (data: FormData) => {
         setError(null);
+        if (!dataset) return;
         const updatedProfile = setLiteral(profile, FOAF.name, literal(data.name));
         const updatedDataset = setThing(dataset, updatedProfile);
         const savedDataset = await saveSolidDatasetAt(webId!, updatedDataset, {fetch})
@@ -38,5 +39,5 @@ export default function InruptSolidDemo() {
         if (savedDataset) setDataset(savedDataset);
     };
 
-    return <Demo error={error} name={name ?? ""} onSubmit={onSubmit}/>
+    return <Demo error={error} name={name || ""} onSubmit={onSubmit}/>
 }
