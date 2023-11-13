@@ -13,7 +13,8 @@ export default function MldP2PDemo() {
     const domainId = useMemo(() => uuid(), []);
     const domainUrl = useMemo(() => `${domainId}.public.gw.m-ld.org`, [domainId]);
     const [peerLoaded, setPeerLoaded] = useState<boolean>(false);
-    const {notify} = useNotification()
+    const {notify} = useNotification();
+    const [init, setInit] = useState<boolean>(false);
 
     useEffect(() => {
         clone(new MemoryLevel(), IoRemotes, {
@@ -38,6 +39,8 @@ export default function MldP2PDemo() {
             .then(() => setPeerLoaded(true))
             .catch(setError);
     }, [domainId, domainUrl, notify]);
+
+    if (!init) return <button className="button is-large" onClick={() => setInit(true)}>Start demo</button>
 
     if (!peerLoaded && !error) return <Loading/>
 

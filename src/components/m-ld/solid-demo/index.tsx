@@ -20,6 +20,7 @@ export default function MldSolidDemo() {
     const domainUrl = useMemo(() => `${domainId}.public.gw.m-ld.org`, [domainId]);
     const [peerLoaded, setPeerLoaded] = useState<boolean>(false);
     const {notify} = useNotification()
+    const [init, setInit] = useState<boolean>(false);
 
     useEffect(() => {
         if (!profileResource || profileResource.isLoading()) return;
@@ -54,6 +55,8 @@ export default function MldSolidDemo() {
             .then(() => setPeerLoaded(true))
             .catch(setError);
     }, [changeData, commitData, createData, domainId, domainUrl, notify, profile, profileResource, webId]);
+
+    if (!init) return <button className="button is-large" onClick={() => setInit(true)}>Start demo</button>
 
     if (!peerLoaded && !error) return <Loading/>
 
