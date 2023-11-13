@@ -24,7 +24,7 @@ export default function MLdSolidDemo() {
     const notifyName = useCallback((state: MeldReadState) => state.get(domainId).then(async (profile) => {
         const name = profile?.name as string;
         if (name) notify(<>Name updated: <strong>{name}</strong></>);
-    }), [domainId]); // DO NOT ADD notify AS dependency
+    }), [domainId, notify]);
 
     useEffect(() => {
         clone(new MemoryLevel(), IoRemotes, config)
@@ -34,7 +34,7 @@ export default function MLdSolidDemo() {
                     "name": "P2P test",
                 }),
                 peer.read(
-                    notifyName,
+                    () => {},
                     (_update, state) => notifyName(state),
                 )
             ]))

@@ -33,7 +33,7 @@ export default function MLdP2PDemoPeer() {
         }).catch(setError);
     }, [domainId, domainUrl]);
 
-    if (!profile && !error) return <Loading/>
+    if (!profile && !error) return <Loading className={styles.box}/>
 
     const onSubmit = async (data: FormData) => {
         if (!peer || !domainId) return;
@@ -46,6 +46,6 @@ export default function MLdP2PDemoPeer() {
     }
 
     return error
-        ? <ErrorMessage error={error}/>
+        ? <ErrorMessage className={styles.box} error={error}/>
         : <Demo className={styles.box} name={profile?.name?.toString() || ""} onSubmit={onSubmit} noNotify={true}/>
 }
