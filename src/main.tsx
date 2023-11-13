@@ -23,9 +23,13 @@ import ReactGuide from "./components/react-guide";
 import JavascriptGuide from "./components/javascript-guide";
 import {NotificationContextProvider} from "./hooks/use-notification/provider.tsx";
 import MLd from "./components/m-ld";
-import MLdP2PDemoPeer from "./components/m-ld/p2p-demo/peer";
+import MLdPeer from "./components/m-ld/peer";
 
 const router = createBrowserRouter([
+    {
+        path: "/m-ld/:domainId",
+        element: <MLdPeer/>,
+    },
     {
         path: "/",
         element: <BrowserSolidLdoProvider><Layout/></BrowserSolidLdoProvider>,
@@ -87,10 +91,6 @@ const router = createBrowserRouter([
                 element: <ReactGuide/>,
             },
         ]
-    },
-    {
-        path: "/m-ld/:domainId",
-        element: <MLdP2PDemoPeer/>,
     },
 ]);
 

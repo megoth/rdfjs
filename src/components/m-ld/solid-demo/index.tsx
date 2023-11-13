@@ -9,6 +9,7 @@ import useNotification from "../../../hooks/use-notification";
 import {BASE_CONFIG} from "../constants.ts";
 import {useLdo, useResource, useSolidAuth, useSubject} from "@ldo/solid-react";
 import {SolidProfileShapeType} from "ldo-solid-profile";
+import MLdInitStep from "../init-step";
 
 export default function MldSolidDemo() {
     const {session: {webId}} = useSolidAuth();
@@ -56,7 +57,9 @@ export default function MldSolidDemo() {
             .catch(setError);
     }, [changeData, commitData, createData, domainId, domainUrl, init, notify, profile, profileResource, webId]);
 
-    if (!init) return <button className="button is-large" onClick={() => setInit(true)}>Start demo</button>
+    if (!init) {
+        return <MLdInitStep setInit={setInit} />
+    }
 
     if (!peerLoaded && !error) return <Loading/>
 

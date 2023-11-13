@@ -7,6 +7,7 @@ import styles from "./styles.module.css";
 import ErrorMessage from "../../error-message";
 import useNotification from "../../../hooks/use-notification";
 import {BASE_CONFIG} from "../constants.ts";
+import MLdInitStep from "../init-step";
 
 export default function MldP2PDemo() {
     const [error, setError] = useState<Error | null>(null);
@@ -40,7 +41,9 @@ export default function MldP2PDemo() {
             .catch(setError);
     }, [domainId, domainUrl, notify]);
 
-    if (!init) return <button className="button is-large" onClick={() => setInit(true)}>Start demo</button>
+    if (!init) {
+        return <MLdInitStep setInit={setInit} />
+    }
 
     if (!peerLoaded && !error) return <Loading/>
 
