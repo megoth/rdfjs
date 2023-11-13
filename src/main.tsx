@@ -14,7 +14,6 @@ import Inrupt from "./components/inrupt";
 import Soukai from "./components/soukai";
 import Comunica from "./components/comunica";
 
-import {NotificationContextProvider} from "./hooks/use-notification";
 import RDFGuide from "./components/rdf-guide";
 import ShExGuide from "./components/shex-guide";
 import SPARQLGuide from "./components/sparql-guide";
@@ -22,6 +21,7 @@ import SolidGuide from "./components/solid-guide";
 import TypeScriptGuide from "./components/typescript-guide";
 import ReactGuide from "./components/react-guide";
 import JavascriptGuide from "./components/javascript-guide";
+import {NotificationContextProvider} from "./hooks/use-notification/provider.tsx";
 
 const router = createBrowserRouter([{
     path: "/",

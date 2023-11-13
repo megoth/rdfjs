@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import {clsx} from "clsx";
-import useNotification, {NotificationModel} from "../../hooks/use-notification";
+import useNotification from "../../hooks/use-notification";
+import {NotificationModel} from "../../hooks/use-notification/context.tsx";
 
 interface Props {
     index: number;
