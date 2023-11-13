@@ -23,7 +23,7 @@ export default function MldSolidDemo() {
     const [init, setInit] = useState<boolean>(false);
 
     useEffect(() => {
-        if (!profileResource || profileResource.isLoading()) return;
+        if (!profileResource || profileResource.isLoading() || !init) return;
         if (!profile) {
             setError(new Error("Unable to load profile"));
             return;
@@ -54,7 +54,7 @@ export default function MldSolidDemo() {
             ]))
             .then(() => setPeerLoaded(true))
             .catch(setError);
-    }, [changeData, commitData, createData, domainId, domainUrl, notify, profile, profileResource, webId]);
+    }, [changeData, commitData, createData, domainId, domainUrl, init, notify, profile, profileResource, webId]);
 
     if (!init) return <button className="button is-large" onClick={() => setInit(true)}>Start demo</button>
 
