@@ -1,13 +1,13 @@
 import Demo, {FormData} from "../../../demo";
 import {useEffect, useMemo, useState} from "react";
 import {IoRemotes} from "@m-ld/m-ld/ext/socket.io";
-import {clone, MeldConfig, uuid, GraphSubject} from "@m-ld/m-ld";
+import {clone, uuid, GraphSubject} from "@m-ld/m-ld";
 import {MemoryLevel} from "memory-level";
 import Loading from "../../../loading";
 import {useParams} from "react-router-dom";
 import styles from "./styles.module.css";
 import {Unpromise} from "../../../../constants";
-import {baseConfig} from "../constants";
+import {BASE_CONFIG} from "../constants";
 import ErrorMessage from "../../../error-message";
 
 export default function MLdP2PDemoPeer() {
@@ -20,24 +20,26 @@ export default function MLdP2PDemoPeer() {
     useEffect(() => {
         if (!domainId) return;
         clone(new MemoryLevel(), IoRemotes, {
-            ...baseConfig,
+            ...BASE_CONFIG,
             '@id': uuid(),
             '@domain': domainUrl,
             genesis: false,
-        } as MeldConfig).then(async (peer) => {
-            await peer.read(
-                (state) => state.get(domainId).then(setProfile),
-                (_update, state) => state.get(domainId).then(setProfile)
-            );
-            setPeer(peer);
-        }).catch(setError);
+        })
+            .then(async (peer) => {
+                await peer.read(
+                    (state) => state.get(domainId).then(setProfile),
+                    (_update, state) => state.get(domainId).then(setProfile)
+                );
+                setPeer(peer);
+            })
+            .catch(setError);
     }, [domainId, domainUrl]);
 
-    if (!profile && !error) return <Loading className={styles.box}/>
+    if (!profile && !error) return <Loading className={styles.container}/>
 
     const onSubmit = async (data: FormData) => {
-        if (!peer || !domainId) return;
         setError(null);
+        if (!peer || !domainId) return;
         await peer.delete(domainId);
         await peer.write({
             "@id": domainId,
@@ -45,7 +47,9 @@ export default function MLdP2PDemoPeer() {
         })
     }
 
+    const name = profile?.name?.toString() || "";
+
     return error
-        ? <ErrorMessage className={styles.box} error={error}/>
-        : <Demo className={styles.box} name={profile?.name?.toString() || ""} onSubmit={onSubmit} noNotify={true}/>
+        ? <ErrorMessage className={styles.container} error={error}/>
+        : <Demo className={styles.container} name={name} onSubmit={onSubmit} noNotify={true}/>
 }
