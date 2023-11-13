@@ -7,7 +7,7 @@ import Loading from "../../../loading";
 import {useParams} from "react-router-dom";
 import styles from "./styles.module.css";
 import {Unpromise} from "../../../../constants";
-import {BASE_CONFIG} from "../constants";
+import {BASE_CONFIG} from "../../constants.ts";
 import ErrorMessage from "../../../error-message";
 
 export default function MLdP2PDemoPeer() {

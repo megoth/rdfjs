@@ -28,7 +28,7 @@ import MLdP2PDemoPeer from "./components/m-ld/p2p-demo/peer";
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <Layout/>,
+        element: <BrowserSolidLdoProvider><Layout/></BrowserSolidLdoProvider>,
         children: [
             {
                 index: true,
@@ -96,10 +96,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
-        <BrowserSolidLdoProvider>
-            <NotificationContextProvider>
-                <RouterProvider router={router}/>
-            </NotificationContextProvider>
-        </BrowserSolidLdoProvider>
+        <NotificationContextProvider>
+            <RouterProvider router={router}/>
+        </NotificationContextProvider>
     </React.StrictMode>,
 )
