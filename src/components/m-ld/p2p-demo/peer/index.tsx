@@ -50,6 +50,9 @@ export default function MLdP2PDemoPeer() {
     const name = profile?.name?.toString() || "";
 
     return error
-        ? <ErrorMessage className={styles.container} error={error}/>
+        ? <div className={styles.container}>
+            <ErrorMessage error={error}/>
+            <button className="button" onClick={() => location.reload()}>Reload demo</button>
+        </div>
         : <Demo className={styles.container} name={name} onSubmit={onSubmit} noNotify={true}/>
 }
