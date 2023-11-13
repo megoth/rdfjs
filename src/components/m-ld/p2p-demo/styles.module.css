@@ -10,7 +10,7 @@
         height: 200px;
     }
 
-    :global(iframe) {
+    & > iframe {
         height: 100%;
         width: 100%;
     }
