@@ -424,7 +424,7 @@ export const LIBRARY_M_LD: Library = {
     icon: "/m-ld.svg",
     iconAlt: "Logo for m-ld",
     iconPreferredHeight: 192,
-    name: "m-ld JavaScript Engine",
+    name: "m-ld",
     published: true,
     recommendation: "None yet",
     text: "m-ld",
@@ -673,3 +673,5 @@ export const STORAGE_KEYS = {
     "PROFILE_RDFLIB": "profileRdflib",
     "PROFILE_SOUKAI": "profileSoukai",
 }
+
+export type Unpromise<T extends Promise<unknown>> = T extends Promise<infer U> ? U : never;

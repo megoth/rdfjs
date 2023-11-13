@@ -1,0 +1,17 @@
+.container.container {
+    display: grid;
+    height: 400px;
+    margin-bottom: 1.5rem;
+    margin-left: -0.75rem;
+    margin-right: -0.75rem;
+
+    @media screen and (min-width: 600px) {
+        grid-template-columns: 1fr 1fr;
+        height: 200px;
+    }
+
+    :global(iframe) {
+        height: 100%;
+        width: 100%;
+    }
+}

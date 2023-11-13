@@ -23,69 +23,76 @@ import ReactGuide from "./components/react-guide";
 import JavascriptGuide from "./components/javascript-guide";
 import {NotificationContextProvider} from "./hooks/use-notification/provider.tsx";
 import MLd from "./components/m-ld";
+import MLdP2PDemoPeer from "./components/m-ld/p2p-demo/peer";
 
-const router = createBrowserRouter([{
-    path: "/",
-    element: <Layout/>,
-    children: [
-        {
-            index: true,
-            element: <Frontpage/>,
-        },
-        {
-            path: "/comunica",
-            element: <Comunica/>,
-        },
-        {
-            path: "/inrupt",
-            element: <Inrupt/>,
-        },
-        {
-            path: "/javascript",
-            element: <JavascriptGuide/>,
-        },
-        {
-            path: "/ldo",
-            element: <LDO/>,
-        },
-        {
-            path: "/m-ld",
-            element: <MLd/>,
-        },
-        {
-            path: "/rdflib",
-            element: <Rdflib/>,
-        },
-        {
-            path: "/soukai",
-            element: <Soukai/>,
-        },
-        {
-            path: "/rdf",
-            element: <RDFGuide/>,
-        },
-        {
-            path: "/shex",
-            element: <ShExGuide/>,
-        },
-        {
-            path: "/solid",
-            element: <SolidGuide/>,
-        },
-        {
-            path: "/sparql",
-            element: <SPARQLGuide/>,
-        },
-        {
-            path: "/typescript",
-            element: <TypeScriptGuide/>,
-        },
-        {
-            path: "/react",
-            element: <ReactGuide/>,
-        },
-    ]
-}]);
+const router = createBrowserRouter([
+    {
+        path: "/",
+        element: <Layout/>,
+        children: [
+            {
+                index: true,
+                element: <Frontpage/>,
+            },
+            {
+                path: "/comunica",
+                element: <Comunica/>,
+            },
+            {
+                path: "/inrupt",
+                element: <Inrupt/>,
+            },
+            {
+                path: "/javascript",
+                element: <JavascriptGuide/>,
+            },
+            {
+                path: "/ldo",
+                element: <LDO/>,
+            },
+            {
+                path: "/m-ld",
+                element: <MLd/>,
+            },
+            {
+                path: "/rdflib",
+                element: <Rdflib/>,
+            },
+            {
+                path: "/soukai",
+                element: <Soukai/>,
+            },
+            {
+                path: "/rdf",
+                element: <RDFGuide/>,
+            },
+            {
+                path: "/shex",
+                element: <ShExGuide/>,
+            },
+            {
+                path: "/solid",
+                element: <SolidGuide/>,
+            },
+            {
+                path: "/sparql",
+                element: <SPARQLGuide/>,
+            },
+            {
+                path: "/typescript",
+                element: <TypeScriptGuide/>,
+            },
+            {
+                path: "/react",
+                element: <ReactGuide/>,
+            },
+        ]
+    },
+    {
+        path: "/m-ld/:domainId",
+        element: <MLdP2PDemoPeer/>,
+    },
+]);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
