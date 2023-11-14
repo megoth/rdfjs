@@ -1,4 +1,4 @@
-import {useEffect, useMemo, useState} from "react";
+import {useLayoutEffect, useMemo, useState} from "react";
 import Loading from "../../loading";
 import {clone, uuid} from '@m-ld/m-ld';
 import {MemoryLevel} from 'memory-level';
@@ -23,15 +23,13 @@ export default function MldSolidDemo() {
     const {notify} = useNotification()
     const [init, setInit] = useState<boolean>(false);
 
-    useEffect(() => {
-        if (!profileResource || profileResource.isLoading() || !init) return;
-        if (!profile) {
-            setError(new Error("Unable to load profile"));
-            return;
-        }
+    useLayoutEffect(() => {
+        if (!profileResource || profileResource.isLoading() || !init || !webId) return;
+        if (!profile) return setError(new Error("Unable to load profile"));
+
         clone(new MemoryLevel(), IoRemotes, {
             ...BASE_CONFIG,
-            '@id': domainId,
+            '@id': webId,
             '@domain': domainUrl,
             genesis: true,
         })
@@ -57,9 +55,7 @@ export default function MldSolidDemo() {
             .catch(setError);
     }, [changeData, commitData, createData, domainId, domainUrl, init, notify, profile, profileResource, webId]);
 
-    if (!init) {
-        return <MLdInitStep setInit={setInit} />
-    }
+    if (!init) return <MLdInitStep onClick={() => setInit(true)}/>
 
     if (!peerLoaded && !error) return <Loading/>
 

@@ -1,15 +1,13 @@
 import Content from "../../content";
 import Box from "../../box";
+import {HTMLAttributes} from "react";
+import {clsx} from "clsx";
 
-interface Props {
-    setInit: (value: boolean) => void
-}
-
-export default function MLdInitStep({setInit}: Props) {
+export default function MLdInitStep({className, ...props}: HTMLAttributes<HTMLButtonElement>) {
     return <Box>
         <Content>
             <p>This demo requires a bit of setup, so please start it by pressing the button.</p>
         </Content>
-        <button className="button is-primary" onClick={() => setInit(true)}>Start demo</button>
+        <button className={clsx("button is-primary", className)} {...props}>Start demo</button>
     </Box>
 }

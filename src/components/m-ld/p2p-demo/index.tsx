@@ -18,9 +18,10 @@ export default function MldP2PDemo() {
     const [init, setInit] = useState<boolean>(false);
 
     useEffect(() => {
+        if (!init) return;
         clone(new MemoryLevel(), IoRemotes, {
             ...BASE_CONFIG,
-            '@id': domainId,
+            '@id': uuid(),
             '@domain': domainUrl,
             genesis: true,
         })
@@ -39,11 +40,9 @@ export default function MldP2PDemo() {
             ]))
             .then(() => setPeerLoaded(true))
             .catch(setError);
-    }, [domainId, domainUrl, notify]);
+    }, [domainId, domainUrl, init, notify]);
 
-    if (!init) {
-        return <MLdInitStep setInit={setInit} />
-    }
+    if (!init) return <MLdInitStep onClick={() => setInit(true)}/>
 
     if (!peerLoaded && !error) return <Loading/>
 
