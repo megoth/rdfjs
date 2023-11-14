@@ -37,12 +37,9 @@ export default function SparqlBuilderDemo() {
     const onSubmit = async (data: FormData) => {
         setError(null);
         if (!webId) return;
-        const webIdNode = namedNode(webId);
-        const name = foaf.name;
-        const oldName = literal(name);
-        const query = DELETE`${webIdNode} ${name} ${oldName}`
-            .INSERT`${webIdNode} ${name} ${literal(data.name)}`
-            .WHERE`${webIdNode} ${name} ${oldName}`
+        const query = DELETE`${(namedNode(webId))} ${foaf.name} ${(literal(name))}`
+            .INSERT`${(namedNode(webId))} ${foaf.name} ${literal(data.name)}`
+            .WHERE`${(namedNode(webId))} ${foaf.name} ${(literal(name))}`
             .build();
         await engine.queryVoid(query, {
             fetch,

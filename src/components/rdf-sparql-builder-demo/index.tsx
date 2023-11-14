@@ -37,11 +37,9 @@ export default function RDFSparqlBuilderDemo() {
     const onSubmit = async (data: FormData) => {
         setError(null);
         if (!webId) return;
-        const webIdNode = namedNode(webId);
-        const oldName = literal(name);
-        const query = sparql.deleteQuery([[webIdNode, foaf.name, oldName]])
-            .insert([[webIdNode, foaf.name, literal(data.name)]])
-            .where([[webIdNode, foaf.name, oldName]])
+        const query = sparql.deleteQuery([[namedNode(webId), foaf.name, literal(name)]])
+            .insert([[namedNode(webId), foaf.name, literal(data.name)]])
+            .where([[namedNode(webId), foaf.name, literal(name)]])
             .build();
         await engine.queryVoid(query, {
             fetch,
