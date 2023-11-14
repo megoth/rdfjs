@@ -9,12 +9,13 @@ import BusinessGuideUseCases from "./use-cases";
 <Content>
     <h2 className="subtitle">Use Cases</h2>
 
-    I've listed some common use cases you'll see for semantic knowledge graphs. I'll describe how knowledge graphs are
-    useful for each use case, and how semantic knowledge graphs are even more useful.
+    Below I've listed some common stereotypical use cases that knowledge graphs and semantic knowledge graphs are
+    well-suited to handle. I'll describe how knowledge graphs are useful for each use case, and how semantic
+    knowledge graphs are even more useful.
 
-    I've tagged all of the use cases so you can more easily skim for the topics that you're interested in. You can click
-    the tags for each use case, or you can select from the list below (there's a <NavLink to="#tags-description">list
-    of descriptions for each tag</NavLink> below if you want to know more specifically what they denote).
+    I've tagged all of the use cases so you can more easily skim the topics that you're interested in. (There's
+    a <NavLink to="#tags-description">list of descriptions for each tag</NavLink> at the bottom if you want to know more
+    about what they denote).
 
     <Tags>{TAGS.map((tag) => <Tag key={tag.name} link={true} tag={tag}/>)}</Tags>
 </Content>

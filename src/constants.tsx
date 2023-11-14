@@ -752,7 +752,8 @@ export const TAG_AI = {
         Artificial Intelligence (AI) has become all the rage lately through implementations of generative AI such as <a
         href="https://openai.com/chatgpt">ChatGPT</a>, <a href="https://openai.com/dall-e-2">Dall-E 2</a>, and <a
         href="https://www.midjourney.com/home">Midjourney</a>. Knowledge graphs can be useful as input for AI, and
-        Linked Data with it's semantics inherently part of it, providing "smart" data with useful relationships.
+        semantic knowledge graphs with their semantics are inherently a part of it, providing "smart" data with useful
+        relationships.
     </p>,
 };
 export const TAG_FRONTEND = {
@@ -767,8 +768,9 @@ export const TAG_INTEROPERABILITY = {
     name: "interoperability",
     label: "Interoperability",
     description: <p>
-        These use cases builds on the fact that Linked Data offers interoperability. Achieving interoperability is still
-        a social process (that can be very hard), but with Linked Data you can at least start that work.
+        These use cases builds on the fact that semantic knowledge graphs offer interoperability. Achieving
+        interoperability is still a social process (that can be very hard), but with semantic knowledge graphs you can
+        at least start that work.
     </p>,
 };
 export const TAG_LANGUAGE = {
@@ -777,8 +779,8 @@ export const TAG_LANGUAGE = {
     description: <>
         <p>
             These use cases rely on the fact that human language and semantics, i.e. what terms *formally means*, are
-            the basics of Linked Data. The idea is that everything that <em>can be represented can be represented using
-            Linked Data</em>.
+            the basics of semantic knowledge graphs. The idea is that everything that <em>can be represented can be
+            represented using semantic knowledge graphs</em>.
         </p>
         <p>
             This is an easy thing to overlook, but the power of this in terms of how it can be communicated shouldn't be
@@ -799,8 +801,8 @@ export const TAG_MACHINE_LEARNING = {
     label: "Machine Learning",
     description: <p>
         Knowledge graphs are useful input for machine learning algorithms, as they provide a useful data points and
-        relationships. Linked Data are even more useful with its human language-based abstraction to data, rich
-        semantics, and ability to merge large knowledge graphs.
+        relationships. Semantic knowledge graphs are even more useful with its human language-based abstraction to data,
+        rich semantics, and ability to merge large knowledge graphs.
     </p>,
 };
 export const TAG_PATTERN_ANALYSIS = {
@@ -845,47 +847,48 @@ export interface UseCase {
     tags: Array<TagModel>
     body: ReactNode
 }
+
 export const USE_CASE_DATA_LAKES: UseCase = {
     title: "Data Lakes",
     image: "data-lakes.jpg",
     imageAlt: "A visualization of a graph with several nodes going into one central node",
     tags: [TAG_INTEROPERABILITY],
-    body: <DataLakes />,
+    body: <DataLakes/>,
 }
 export const USE_CASE_DATA_PREPARATION: UseCase = {
     title: "Data Preparation",
     image: "data-preparation.jpg",
     imageAlt: "A visualization of someone feeding data into a machine",
     tags: [TAG_AI, TAG_MACHINE_LEARNING, TAG_PATTERN_ANALYSIS],
-    body: <DataPreparation />,
+    body: <DataPreparation/>,
 }
 export const USE_CASE_FRAUD_DETECTION: UseCase = {
     title: "Fraud Detection",
     image: "fraud-detection.jpg",
     imageAlt: "An image of computer and security-related icons",
     tags: [TAG_PATTERN_ANALYSIS, TAG_MACHINE_LEARNING, TAG_AI],
-    body: <FraudDetection />,
+    body: <FraudDetection/>,
 }
 export const USE_CASE_IMPROVE_SEO: UseCase = {
     title: "Improve SEO",
     image: "seo.jpg",
     imageAlt: "An image with SEO in large letters",
     tags: [TAG_FRONTEND, TAG_INTEROPERABILITY, TAG_LANGUAGE],
-    body: <ImproveSeo />,
+    body: <ImproveSeo/>,
 }
 export const USE_CASE_INTEROPERABLE_APPS: UseCase = {
     title: "Interoperable Apps",
     image: "interoperability.jpg",
     imageAlt: "An image of a robot scanning intertwined cogs",
     tags: [TAG_FRONTEND, TAG_INTEROPERABILITY, TAG_SHAPES],
-    body: <InteroperableApps />,
+    body: <InteroperableApps/>,
 }
 export const USE_CASE_SEMANTIC_ANALYSIS: UseCase = {
     title: "Semantic Analysis",
     image: "semantics.jpg",
     imageAlt: "A visualization of data in cloud and graphs",
     tags: [TAG_FRONTEND, TAG_INTEROPERABILITY, TAG_SHAPES],
-    body: <InteroperableApps />,
+    body: <InteroperableApps/>,
 }
 export const USE_CASES: Array<UseCase> = [
     USE_CASE_DATA_LAKES,
