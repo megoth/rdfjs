@@ -13,6 +13,19 @@ export interface Guide {
     recommendations: Array<Recommendation>;
 }
 
+export const CRDT_GUIDE: Guide = {
+    href: "/crdt",
+    logo: "./crdt.png",
+    logoAlt: "Logo of CRDT",
+    logoPreferredHeight: 200,
+    name: "CRDT",
+    recommendations: [{
+        title: "CRDT.tech",
+        href: "https://crdt.tech/",
+        note: "Good website to learn about CRDT",
+        type: "URL"
+    }],
+};
 export const JAVASCRIPT_GUIDE: Guide = {
     href: "/javascript",
     logo: "./javascript.png",
@@ -354,7 +367,8 @@ export const GUIDES = [
     SOLID_GUIDE,
     JAVASCRIPT_GUIDE,
     TYPESCRIPT_GUIDE,
-    REACT_GUIDE
+    REACT_GUIDE,
+    CRDT_GUIDE,
 ];
 
 export interface Library {

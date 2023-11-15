@@ -24,6 +24,7 @@ import JavascriptGuide from "./components/javascript-guide";
 import {NotificationContextProvider} from "./hooks/use-notification/provider.tsx";
 import MLd from "./components/m-ld";
 import MLdPeer from "./components/m-ld/peer";
+import CRDTGuide from "./components/crdt-guide";
 
 const router = createBrowserRouter([
     {
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
             {
                 path: "/comunica",
                 element: <Comunica/>,
+            },
+            {
+                path: "/crdt",
+                element: <CRDTGuide/>,
             },
             {
                 path: "/inrupt",
