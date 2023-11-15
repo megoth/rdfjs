@@ -10,5 +10,15 @@ import Install from "../install";
 <Install name="@m-ld/m-ld"/>
 
 <Content>
-    To understand how all of these can be used, check out the demos.
+    You might also need to shim some Node APIs that the library requires, i.e. the [Buffer
+    module](https://nodejs.org/api/buffer.html). How you do this depends on the build setup you have, but using Vite (or
+    rather, Rollup) I managed to do it with
+    [@esbuild-plugins/node-globals-polyfill](https://www.npmjs.com/package/@esbuild-plugins/node-globals-polyfill),
+    [@esbuild-plugins/node-modules-polyfill](https://www.npmjs.com/package/@esbuild-plugins/node-modules-polyfill), and
+    [rollup-plugin-polyfill-node](https://www.npmjs.com/package/rollup-plugin-polyfill-node). To see how I used this to
+    make Vite work, see the [vite.config.ts](https://github.com/megoth/rdfjs/blob/main/vite.config.ts) for this website.
 </Content>
+
+<Install
+    name="@esbuild-plugins/node-globals-polyfill @esbuild-plugins/node-modules-polyfill rollup-plugin-polyfill-node"
+    type="developer"/>
