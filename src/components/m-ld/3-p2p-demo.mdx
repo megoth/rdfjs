@@ -20,8 +20,9 @@ import MLdDemoCode from "./demo/code.mdx";
     might look a bit janky, especially if there are errors). In each of the iframe I then initiate a peer demo, which is
     explained in the next code section.
 
-    Last, note that the demos pass JSON-objects that use [`foaf:name`](http://xmlns.com/foaf/0.1/#term_name) to show
-    that you can use vocabularies and ensure interoperability that way.
+    Last, note that the demos pass JSON-objects that use `foaf:name` to ensure interoperability using the [FOAF
+    vocabulary](http://xmlns.com/foaf/0.1/) - the same vocabulary I've used in some way in all the other demos. (If you
+    think this is unnecessary, you could simply pass an JSON object - just remember the `@id`-property.)
 </Content>
 
 <P2PDemo/>
