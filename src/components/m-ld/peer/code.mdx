@@ -1,6 +1,36 @@
 import Code from "../../code";
 import peerDemoCode from "./index.tsx?raw";
+import CodeStep from "../../code/step";
 
 <Code language="tsx" id="PeerDemoCode" code={peerDemoCode} className="line-numbers">
-
+    <CodeStep lines={["15-16"]} title={<>Getting <code>domainId</code> and setting <code>domainUrl</code></>}>
+        As I mentioned in the previous demo, `domainId` is passed as part of the URL. `useParams` allows us to get the
+        part of the URL that contains the `domainId`, and we make sure that we get the same URL for `domainUrl` as the
+        genesis clone. We also use `domainId` to indicate the id of the model itself (allows us to only send one
+        variable instead of two).
+    </CodeStep>
+    <CodeStep lines={["17", "23-28", "40"]} title="Connecting to the network">
+        In this part of the code we don't wait for an explicit initiation by the user, as loading the peers implicitly
+        counts as that. Note that we set `genesis` to `false`, and keep a reference to the clone in `peer` so that we
+        can use it later when submitting updates to the name.
+    </CodeStep>
+    <CodeStep lines={["18", "29-40"]} title="Read initial model and updates">
+        We again make use of the `read` API to get the current name. The first handler gets the first write from the
+        genesis clone, while the second handler gets the updates from the other, non-genesis peer. All updates are
+        packaged into an object `profile`.
+    </CodeStep>
+    <CodeStep lines={["50-55", "58"]} title="Submit form and update network">
+        Once we get a submit event from the user, we update the graph by deleting the existing profile and create a new
+        object with the new name.
+    </CodeStep>
+    <CodeStep lines={["19", "42", "48", "56-58", "63-68"]} title="Error handling">
+        Although the error handling is crude (it either succeed or fails, no attempts to mitigate errors
+        that might arise), I've added a reload-button to allow users to more easily refresh the content of the iframes
+        (which might resolve errors that comes from timeouts and not being able to connect to the messaging network).
+    </CodeStep>
+    <CodeStep lines={["69"]} title="Do not notify the user">
+        We've centralized the notification to the genesis peer, so I opt out of the notification for the peer demos by
+        using the `noNotify` property. (The notifications would show up in the upper right corner of the iframe, which
+        doesn't look very good.)
+    </CodeStep>
 </Code>

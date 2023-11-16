@@ -5,14 +5,35 @@ import PeerDemoCode from "./peer/code.mdx";
 
 <Content>
     <h2 className="subtitle">P2P demo</h2>
+
+    This demo requires a bit of setup, as it sets up three *clones*: one *genesis* peer and two *normal* peers. Being a
+    genesis peer simply means being the clone that initiates the session, while the other two connects to the existing
+    session. This creates a [peer-to-peer](https://en.wikipedia.org/wiki/Peer-to-peer) network.
+
+    The demos won't start until explicitly initiated by the user. That's because creating clones has a slight
+    overhead, and I don't want to have to do that *every time* the user reloads the page (also, React can be a bit
+    finicky on the state handling here, so it's easier to wait for the user's initiation).
+
+    Also, the demo requires the use of **iframes** since it uses websockets, which is designed for cross-browser
+    connections (luckily the demo-setup is somewhat rigid, which allows me to set a fixed height for iframes - but it
+    might look a bit janky, especially if there are errors). In each of the iframe I then initiate a peer demo, which is
+    explained in the next code section.
 </Content>
 
 <P2PDemo/>
+
+<Content>
+    Note that this demo don't store the value, but simply passes the change from one form to another.
+</Content>
 
 <P2PDemoCode/>
 
 <Content>
     <h3 className="subtitle">Peer demo</h3>
+
+    The peers are loaded into separate iframe, but uses the same codebase as this website. To see how the latter
+    part is done, check the [main.tsx](https://github.com/megoth/rdfjs/blob/main/src/main.tsx) file that this website
+    uses to manage routes.
 </Content>
 
-<PeerDemoCode />
+<PeerDemoCode/>

@@ -36,10 +36,12 @@ export default function Demo({error, name, noNotify, onSubmit, ...props}: Props)
         if (!noNotify) notify(<>Name updated: <strong>{data.name}</strong></>);
     }
 
+    const compoundedError = error
+        || !name && new Error("No name found. We'll set the name for you when you submit.");
+
     return <Box {...props}>
         <form onSubmit={handleSubmit(onSubmitIntermediate)}>
-            {(error || !name) && <ErrorMessage
-                error={error || new Error("No name found. We'll set the name for you when you submit.")}/>}
+            {compoundedError && <ErrorMessage error={compoundedError}/>}
             <div className="field">
                 <label className="label">Name</label>
                 <div className="control">
