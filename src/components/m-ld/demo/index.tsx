@@ -16,8 +16,8 @@ export default function MLdDemo({domainId, error}: Props) {
             </div>
             <div className="message is-info is-small">
                 <div className="message-body">
-                    You might also consider <a href={`/m-ld/${domainId}`} target={"_blank"}>initiate a peer</a> in a
-                    separate window.
+                    You can also <a href={`/m-ld/${domainId}`} target={"_blank"}>open a peer demo</a> in a separate
+                    window.
                 </div>
             </div>
         </>

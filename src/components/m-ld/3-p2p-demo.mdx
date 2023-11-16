@@ -7,9 +7,9 @@ import MLdDemoCode from "./demo/code.mdx";
 <Content>
     <h2 className="subtitle">P2P demo</h2>
 
-    This demo requires a bit of setup, as it sets up three *clones*: one *genesis* peer and two *normal* peers. Being a
-    genesis peer simply means being the clone that initiates the session, while the other two connects to the existing
-    session. This creates a [peer-to-peer](https://en.wikipedia.org/wiki/Peer-to-peer) network.
+    This demo requires a bit of setup, as it sets up three *clones*: one *genesis peer* and two *normal peers*. Being a
+    genesis peer simply means being the first clone that initiates the session, while the other two connects to the
+    existing session. This creates a [peer-to-peer](https://en.wikipedia.org/wiki/Peer-to-peer) network.
 
     The demos won't start until explicitly initiated by the user. That's because creating clones has a slight
     overhead, and I don't want to have to do that *every time* the user reloads the page (also, React can be a bit
@@ -19,6 +19,9 @@ import MLdDemoCode from "./demo/code.mdx";
     connections (luckily the demo-setup is somewhat rigid, which allows me to set a fixed height for iframes - but it
     might look a bit janky, especially if there are errors). In each of the iframe I then initiate a peer demo, which is
     explained in the next code section.
+
+    Last, note that the demos pass JSON-objects that use [`foaf:name`](http://xmlns.com/foaf/0.1/#term_name) to show
+    that you can use vocabularies and ensure interoperability that way.
 </Content>
 
 <P2PDemo/>

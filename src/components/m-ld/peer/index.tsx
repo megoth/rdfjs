@@ -10,6 +10,10 @@ import {Unpromise} from "../../../constants.tsx";
 import ErrorMessage from "../../error-message";
 import Content from "../../content";
 import {extractError} from "../../../libs/error.ts";
+import namespace from '@rdfjs/namespace'
+import {prefixes} from '@zazuko/rdf-vocabularies'
+
+const foaf = namespace(prefixes.foaf)
 
 export default function MLdPeer() {
     const {domainId} = useParams();
@@ -51,14 +55,14 @@ export default function MLdPeer() {
             await peer.delete(domainId);
             await peer.write({
                 "@id": domainId,
-                "name": data.name,
+                [foaf.name]: data.name,
             })
         } catch (error) {
             setError(extractError(error, "Error when updating name"));
         }
     }
 
-    const name = profile?.name?.toString() || "";
+    const name = profile?.[foaf.name]?.toString() || "";
 
     return error
         ? <div className={styles.container}>

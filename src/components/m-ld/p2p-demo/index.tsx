@@ -6,6 +6,10 @@ import {IoRemotes, MeldIoConfig} from "@m-ld/m-ld/ext/socket.io";
 import useNotification from "../../../hooks/use-notification";
 import MLdInitStep from "../init-step";
 import MLdDemo from "../demo";
+import namespace from '@rdfjs/namespace'
+import {prefixes} from '@zazuko/rdf-vocabularies'
+
+const foaf = namespace(prefixes.foaf)
 
 export default function MldP2PDemo() {
     const domainId = useMemo(() => uuid(), []);
@@ -26,13 +30,13 @@ export default function MldP2PDemo() {
             .then((peer) => Promise.all([
                 peer.write({
                     "@id": domainId,
-                    "name": "P2P test",
+                    [foaf.name]: "P2P test",
                 }),
                 peer.read(
                     () => undefined,
                     async (_update, state) => {
                         const profile = await state.get(domainId);
-                        const name = profile?.name as string;
+                        const name = profile?.[foaf.name] as string;
                         if (name) notify(<>Name updated: <strong>{name}</strong></>);
                     },
                 )
