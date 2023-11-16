@@ -29,7 +29,7 @@ export const CRDT_GUIDE: Guide = {
         href: "https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type",
         type: "URL"
     }, {
-        title: "Awesome CDRT",
+        title: "Awesome CRDT",
         href: "https://github.com/alangibson/awesome-crdt",
         note: "Lots of good resources on CRDT",
         type: "URL"

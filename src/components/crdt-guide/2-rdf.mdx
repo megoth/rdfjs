@@ -1,21 +1,10 @@
 import Content from "../content";
-import Code from "../code";
-import sparqlUpdate1 from "./sparql-update-name-1.sparql?raw";
-import sparqlUpdate2 from "./sparql-update-name-2.sparql?raw";
 import {NavLink} from "react-router-dom";
 
 <Content>
-    <h3>CRDT and RDF</h3>
+    <h3>CRDT for RDF</h3>
 
-    <abbr title="As Far As I Know">AFAIK</abbr> there is no CRDT-implementation for RDF, which provides some challenges
-    in protocols like Solid when updates come from multiple users. Consider the following SPARQL queries:
-</Content>
-
-<Code language="sparql" code={sparqlUpdate1} noCopy={true}/>
-<Code language="sparql" code={sparqlUpdate2} noCopy={true}/>
-
-<Content>
-    Depending on the order they're executed, the outcome will differ (either `"B"` or `"C"`). For this reason it might
-    be useful to use another system (like <NavLink to="/m-ld">m-ld</NavLink>) to handle these kinds of updates when
-    working with Solid and other RDF-based systems.
+    <abbr title="As Far As I Know">AFAIK</abbr> <NavLink to="/m-ld">m-ld</NavLink> is the only technology that
+    implements a CRDT for RDF. (You might want to talk [George Svarovsky](https://github.com/gsvarovsky), the creator
+    behind m-ld, if you want to learn more about CRDT and RDF ^_^ )
 </Content>

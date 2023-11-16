@@ -1,6 +1,0 @@
-PREFIX ex:  <https://example.com/>
-PREFIX foaf:  <http://xmlns.com/foaf/0.1/>
-
-DELETE { ex:profile foaf:name "A" }
-INSERT { ex:profile foaf:name "B" }
-WHERE { ex:profile foaf:name "A" }
