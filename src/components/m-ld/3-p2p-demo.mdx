@@ -2,6 +2,7 @@ import P2PDemo from "./p2p-demo";
 import Content from "../content";
 import P2PDemoCode from "./p2p-demo/code.mdx";
 import PeerDemoCode from "./peer/code.mdx";
+import MLdDemoCode from "./demo/code.mdx";
 
 <Content>
     <h2 className="subtitle">P2P demo</h2>
@@ -37,3 +38,12 @@ import PeerDemoCode from "./peer/code.mdx";
 </Content>
 
 <PeerDemoCode/>
+
+<Content>
+    <h3 className="subtitle">Demo wrapper</h3>
+
+    Since some of the code is similar between some of the demos on this page, I've extracted some common code into the
+    component `MLdDemo`.
+</Content>
+
+<MLdDemoCode/>

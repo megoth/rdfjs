@@ -3,10 +3,9 @@ import Loading from "../../loading";
 import {clone, uuid} from '@m-ld/m-ld';
 import {MemoryLevel} from 'memory-level';
 import {IoRemotes, MeldIoConfig} from "@m-ld/m-ld/ext/socket.io";
-import styles from "./styles.module.css";
-import ErrorMessage from "../../error-message";
 import useNotification from "../../../hooks/use-notification";
 import MLdInitStep from "../init-step";
+import MLdDemo from "../demo";
 
 export default function MldP2PDemo() {
     const domainId = useMemo(() => uuid(), []);
@@ -46,10 +45,5 @@ export default function MldP2PDemo() {
 
     if (!peerLoaded && !error) return <Loading/>
 
-    return error
-        ? <ErrorMessage error={error}/>
-        : <div className={styles.container}>
-            <iframe src={`/m-ld/${domainId}`}/>
-            <iframe src={`/m-ld/${domainId}`}/>
-        </div>
+    return <MLdDemo domainId={domainId} error={error} />
 }

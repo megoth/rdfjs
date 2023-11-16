@@ -3,12 +3,11 @@ import Loading from "../../loading";
 import {clone, uuid} from '@m-ld/m-ld';
 import {MemoryLevel} from 'memory-level';
 import {IoRemotes, MeldIoConfig} from "@m-ld/m-ld/ext/socket.io";
-import styles from "./styles.module.css";
-import ErrorMessage from "../../error-message";
 import useNotification from "../../../hooks/use-notification";
 import {useLdo, useResource, useSolidAuth, useSubject} from "@ldo/solid-react";
 import {SolidProfileShapeType} from "ldo-solid-profile";
 import MLdInitStep from "../init-step";
+import MLdDemo from "../demo";
 
 export default function MldSolidDemo() {
     const {session: {webId}} = useSolidAuth();
@@ -41,8 +40,8 @@ export default function MldSolidDemo() {
                     () => undefined,
                     async (_update, state) => {
                         setError(null);
+                        if (!webId || !profileResource) return setError(new Error("Unable to load profile"));
                         const p2pProfile = await state.get(domainId)
-                        if (!webId || !profileResource) return;
                         const oldProfile = profile || createData(SolidProfileShapeType, webId);
                         const updatedProfile = changeData(oldProfile, profileResource);
                         updatedProfile.name = p2pProfile?.name as string;
@@ -59,10 +58,5 @@ export default function MldSolidDemo() {
 
     if (!peerLoaded && !error) return <Loading/>
 
-    return error
-        ? <ErrorMessage error={error}/>
-        : <div className={styles.container}>
-            <iframe src={`/m-ld/${domainId}`}/>
-            <iframe src={`/m-ld/${domainId}`}/>
-        </div>
+    return <MLdDemo domainId={domainId} error={error} />
 }

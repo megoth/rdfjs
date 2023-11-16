@@ -1,0 +1,13 @@
+import Code from "../../code";
+import demoCode from "./index.tsx?raw";
+import CodeStep from "../../code/step";
+
+<Code language="tsx" id="MLdDemoCode" code={demoCode} className="line-numbers">
+    <CodeStep lines={["10-11"]} title="Show error">
+        If there's an error, show it using the `ErrorMessage` component.
+    </CodeStep>
+    <CodeStep lines={["12-23"]} title="Show peer demos">
+        This lays out the view that "wraps" around the peer demos, to ensure their layout on various screen sizes, and
+        that provides a link to open the peer demo in a new window.
+    </CodeStep>
+</Code>

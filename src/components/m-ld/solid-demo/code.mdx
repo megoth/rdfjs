@@ -13,12 +13,15 @@ import AuthorNote from "../../author-note";
 </Content>
 
 <Code language="tsx" id="SolidDemo" code={solidDemoCode} className="line-numbers">
-    <CodeStep lines={["14-17", "26-27"]} title="Load resource and profile">
+    <CodeStep lines={["13-16", "25-26"]} title="Load resource and profile">
         I use <NavLink to="/ldo">LDO</NavLink> to load the WebID resource. This allows us to load the profile with the
         name that is already connected to a Solid account. While this is loading we won't start the clone creation.
     </CodeStep>
-    <CodeStep lines={["42-51"]} title="Relaying updates to Solid">
+    <CodeStep lines={["41-50"]} title="Relaying updates to Solid">
         Whenever an updated name is submitted I pass the new value so that the WebID resource is updated.
+    </CodeStep>
+    <CodeStep lines={["43"]} title="Let user know that something went wrong">
+        If for some reason something went wrong when setting up the demo, this should we relayed to the user.
     </CodeStep>
 </Code>
 
