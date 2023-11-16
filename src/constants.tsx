@@ -462,7 +462,7 @@ export const LIBRARY_M_LD: Library = {
     recommendation: "None yet",
     text: "m-ld",
     websiteName: "Official website",
-    websiteUrl: "https://js.m-ld.org/"
+    websiteUrl: "https://m-ld.org/"
 };
 export const LIBRARY_RDFLIB: Library = {
     creator: "rdflib.js team",
