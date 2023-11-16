@@ -24,6 +24,25 @@ export const CRDT_GUIDE: Guide = {
         href: "https://crdt.tech/",
         note: "Good website to learn about CRDT",
         type: "URL"
+    }, {
+        title: "CRDT on Wikipedia",
+        href: "https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type",
+        type: "URL"
+    }, {
+        title: "Awesome CDRT",
+        href: "https://github.com/alangibson/awesome-crdt",
+        note: "Lots of good resources on CRDT",
+        type: "URL"
+    }, {
+        title: "Peritext - A CRDT for rich-text collaboration",
+        href: "https://www.inkandswitch.com/peritext/",
+        note: "One implementation of CRDT using rich-text editors",
+        type: "URL"
+    }, {
+        title: "CRDTs: The Hard Parts",
+        href: "https://www.youtube.com/watch?v=x7drE24geUw",
+        note: "A good talk by Martin Kleppman (on of the creators of Peritext) that goes into details of his work",
+        type: "YouTube"
     }],
 };
 export const JAVASCRIPT_GUIDE: Guide = {
