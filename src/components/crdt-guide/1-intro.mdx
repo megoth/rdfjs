@@ -1,0 +1,19 @@
+import Content from "../content";
+
+<Content>
+    Conflict-free Replicated Data Types are a fascinating technology that provides a protocol for handling replicas in a
+    decentralized network. It doesn't require coordination between peers in the network to ensure consistent data
+    models, but promises convergence *eventually*. These features are worded as the following on
+    [Wikipedia](https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type):
+
+    > 1. The application can update any replica independently, concurrently and without coordinating with other
+    > replicas.
+    > 2. An algorithm (itself part of the data type) automatically resolves any inconsistencies that might occur.
+    > 3. Although replicas may have different state at any particular point in time, they are guaranteed to eventually
+    > converge.
+
+    This means that given given that two or more nodes share the same starting point, e.g. "Helo", should be able to do
+    changes to this value, e.g. "Hello" or "Helo!", and end up with the same state at the end, i.e. "Hello!" given the
+    previous examples. This mean that when we're talking about CRDT implementations, we also need to describe the
+    specific datatype it's for (e.g. CRDT for strings, CRDT for numbers, CRDT for lists).
+</Content>

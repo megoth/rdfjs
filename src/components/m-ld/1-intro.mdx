@@ -1,0 +1,27 @@
+import Content from "../content";
+import {NavLink} from "react-router-dom";
+
+<Content>
+    m-ld (pronounced *meld*) is a decentralised live information sharing component with a JSON-based API. Currently it's
+    only supported in one programming language ([JavaScript](https://js.m-ld.org/)), but the goal for the team behind
+    m-ld is to implement it as a system built on a decentralised protocol that's shares a [standardized
+    API](https://spec.m-ld.org/) across various programming languages and platforms. The idea is that a network of peers
+    can collaborate by sharing <abbr title="Conflict-free Replicated Data Type">CRDT</abbr>s, in essence creating a
+    distributed graph. (I won't be going into details on what CRDTs are here, but I've written <NavLink to="/crdt">a
+    tiny guide</NavLink> on it.)
+
+    Although m-ld uses RDF internally, you might not be aware of that when working with it (although a big hint is in
+    m-*ld*, i.e. Linked Data). That is by design. The data is represented in the APIs by JSON, meaning there are no
+    semantics in the model, but developers can opt into using vocabularies to enable interoperability. It has
+    implemented parts of the [RDF/JS specs](https://rdf.js.org/), such as querying using
+    [json-rql](https://json-rql.org/), which is a JSON-based query language that's based on <NavLink
+    to="/sparql">SPARQL</NavLink>, or you can use tools that return a SPARQL Algebra object (like
+    [SPARQLAlgebra.js](https://www.npmjs.com/package/sparqlalgebrajs)).
+
+    m-ld is agnostic in terms of which messaging technology you must use, and currently support three implementations
+    ([MQTT](https://mqtt.org/), [Ably](https://ably.com/), [Socket.IO](https://socket.io/)). No matter which you choose,
+    we now get *real-time updates* when data changes in another peer's graph. This allows us to merge those updates into
+    our local graph, and work with a (most probably) up-to-date distributed graph. This is useful for a lot of
+    use-cases, such as chatting, real-time collaboration on documents, etc. The team behind m-ld also offers [m-ld
+    gateway](https://gw.m-ld.org/) where you can test out your apps using Socket.io.
+</Content>

@@ -1,0 +1,37 @@
+import Code from "../../code";
+import p2pDemoCode from "./index.tsx?raw";
+import CodeStep from "../../code/step";
+
+<Code language="tsx" id="P2PDemoCode" code={p2pDemoCode} className="line-numbers">
+    <CodeStep lines={["15-16"]} title={<>Setting up <code>domainId</code> and <code>domainUrl</code></>}>
+        I'm making use of the public gateway that the m-ld team provides for testing purposes, which means I need to
+        generate a unique id, which I do with the `uuid` method. The `domainId` is provided to the peers by URLs, and
+        I'll explain how that's used in the peer demo.
+    </CodeStep>
+    <CodeStep lines={["17", "23", "48"]} title="Waiting until user initiates the demo">
+        As explained, starting the demo requires a bit of setup. This is how we wait for the user's explicit request to
+        start the demo. We make use of the `MLdInitStep` component, which simply shows a button that sets `init` to
+        `true` once the user presses the button.
+    </CodeStep>
+    <CodeStep lines={["18", "44", "50"]} title="Waiting until genesis clone is finished setting up">
+        I want to make sure that the initial clone is properly set up before loading in the peers.
+    </CodeStep>
+    <CodeStep lines={["24-43"]} title="Starting genesis clone">
+        Once the user has initiated the demo, we create a genesis clone. Once it's up and going, we start by sending a
+        "default" state with `write`, i.e. set the name to `P2P test`. We also use the `read` API by passing two
+        functions, one for the first read, and the second for updates. Since this peer does initial writing, we simply
+        ignore the first handler. The second function handles the updates that come from the other clones.
+    </CodeStep>
+    <CodeStep lines={["52"]} title="Starting peers">
+        Once we've set up the genesis clone, we load the peers by using the `MLdDemo` component.
+    </CodeStep>
+    <CodeStep lines={["19", "40"]} title="Notifying user">
+        Once an update is provided, this bit simply notifies the user with a message in the upper right corner.
+    </CodeStep>
+    <CodeStep lines={["20", "45", "52"]} title="Error handling">
+        There are quite a few things that can go wrong when working with real-time updates. This is not unlike working
+        with asynchronous, external resources in general, but socket communication introduces some extra challenges as
+        well. This should mostly be handled by m-ld, but in case there are unavoidable errors, I catch them with this
+        part of the code.
+    </CodeStep>
+</Code>

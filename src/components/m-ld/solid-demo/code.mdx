@@ -1,0 +1,39 @@
+import Content from "../../content";
+import Code from "../../code";
+import solidDemoCode from "./index.tsx?raw";
+import CodeStep from "../../code/step";
+import {NavLink} from "react-router-dom";
+import AuthorNote from "../../author-note";
+
+<Content>
+    This demo requires you to authenticate with a Solid account.
+
+    Based on the first demo we can add persistent storage with Solid by adding some logic to the first demo that handles
+    the genesis clone. A lot of the code is the same, so I'll point out the new parts in this walkthrough.
+</Content>
+
+<Code language="tsx" id="SolidDemo" code={solidDemoCode} className="line-numbers">
+    <CodeStep lines={["17-20", "29-30"]} title="Load resource and profile">
+        I use <NavLink to="/ldo">LDO</NavLink> to load the WebID resource. This allows us to load the profile with the
+        name that is already connected to a Solid account. While this is loading we won't start the clone creation.
+    </CodeStep>
+    <CodeStep lines={["45-54"]} title="Relaying updates to Solid">
+        Whenever an updated name is submitted I pass the new value so that the WebID resource is updated.
+    </CodeStep>
+    <CodeStep lines={["47"]} title="Let user know that something went wrong">
+        If for some reason something went wrong when setting up the demo, this should we relayed to the user.
+    </CodeStep>
+</Code>
+
+<AuthorNote title="Solid and real-time updates">
+    Note that when you connect to other storages except the one provided by m-ld, you should make sure that peers
+    connect to unique storages. If multiple peers connect to the same storage, there is a chance that you get feedback
+    effects.
+
+    This demo only connects to one Solid storage, but it could easily be extended to allow each peer to be
+    connected to a separate storage, e.g. for chat clients where each participant want to store parts or the whole
+    exchange of messages in their respective storages.
+
+    Solid servers *might* have some websockets features available, but the specification isn't complete yet, so I would
+    be hesitant to rely only Solid for real-time updates (for now).
+</AuthorNote>

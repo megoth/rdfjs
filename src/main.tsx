@@ -22,72 +22,87 @@ import TypeScriptGuide from "./components/typescript-guide";
 import ReactGuide from "./components/react-guide";
 import JavascriptGuide from "./components/javascript-guide";
 import {NotificationContextProvider} from "./hooks/use-notification/provider.tsx";
+import MLd from "./components/m-ld";
+import MLdPeer from "./components/m-ld/peer";
+import CRDTGuide from "./components/crdt-guide";
 
-const router = createBrowserRouter([{
-    path: "/",
-    element: <Layout/>,
-    children: [
-        {
-            index: true,
-            element: <Frontpage/>,
-        },
-        {
-            path: "/comunica",
-            element: <Comunica/>,
-        },
-        {
-            path: "/inrupt",
-            element: <Inrupt/>,
-        },
-        {
-            path: "/javascript",
-            element: <JavascriptGuide/>,
-        },
-        {
-            path: "/ldo",
-            element: <LDO/>,
-        },
-        {
-            path: "/rdflib",
-            element: <Rdflib/>,
-        },
-        {
-            path: "/soukai",
-            element: <Soukai/>,
-        },
-        {
-            path: "/rdf",
-            element: <RDFGuide/>,
-        },
-        {
-            path: "/shex",
-            element: <ShExGuide/>,
-        },
-        {
-            path: "/solid",
-            element: <SolidGuide/>,
-        },
-        {
-            path: "/sparql",
-            element: <SPARQLGuide/>,
-        },
-        {
-            path: "/typescript",
-            element: <TypeScriptGuide/>,
-        },
-        {
-            path: "/react",
-            element: <ReactGuide/>,
-        },
-    ]
-}]);
+const router = createBrowserRouter([
+    {
+        path: "/m-ld/:domainId",
+        element: <MLdPeer/>,
+    },
+    {
+        path: "/",
+        element: <BrowserSolidLdoProvider><Layout/></BrowserSolidLdoProvider>,
+        children: [
+            {
+                index: true,
+                element: <Frontpage/>,
+            },
+            {
+                path: "/comunica",
+                element: <Comunica/>,
+            },
+            {
+                path: "/crdt",
+                element: <CRDTGuide/>,
+            },
+            {
+                path: "/inrupt",
+                element: <Inrupt/>,
+            },
+            {
+                path: "/javascript",
+                element: <JavascriptGuide/>,
+            },
+            {
+                path: "/ldo",
+                element: <LDO/>,
+            },
+            {
+                path: "/m-ld",
+                element: <MLd/>,
+            },
+            {
+                path: "/rdflib",
+                element: <Rdflib/>,
+            },
+            {
+                path: "/soukai",
+                element: <Soukai/>,
+            },
+            {
+                path: "/rdf",
+                element: <RDFGuide/>,
+            },
+            {
+                path: "/shex",
+                element: <ShExGuide/>,
+            },
+            {
+                path: "/solid",
+                element: <SolidGuide/>,
+            },
+            {
+                path: "/sparql",
+                element: <SPARQLGuide/>,
+            },
+            {
+                path: "/typescript",
+                element: <TypeScriptGuide/>,
+            },
+            {
+                path: "/react",
+                element: <ReactGuide/>,
+            },
+        ]
+    },
+]);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
-        <BrowserSolidLdoProvider>
-            <NotificationContextProvider>
-                <RouterProvider router={router}/>
-            </NotificationContextProvider>
-        </BrowserSolidLdoProvider>
+        <NotificationContextProvider>
+            <RouterProvider router={router}/>
+        </NotificationContextProvider>
     </React.StrictMode>,
 )

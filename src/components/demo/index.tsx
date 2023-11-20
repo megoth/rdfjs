@@ -1,13 +1,14 @@
 import {SubmitHandler, useForm} from "react-hook-form";
-import {useEffect, useState} from "react";
+import {HTMLAttributes, useEffect, useState} from "react";
 import useNotification from "../../hooks/use-notification";
 import Box from "../box";
 import ErrorMessage from "../error-message";
 import {clsx} from "clsx";
 
-interface Props {
-    error?: Error | null,
-    name: string,
+interface Props extends Omit<HTMLAttributes<HTMLDivElement>, "onSubmit"> {
+    error?: Error | null
+    name: string
+    noNotify?: boolean
     onSubmit: SubmitHandler<FormData>
 }
 
@@ -15,7 +16,7 @@ export interface FormData {
     name: string;
 }
 
-export default function Demo({error, name, onSubmit}: Props) {
+export default function Demo({error, name, noNotify, onSubmit, ...props}: Props) {
     const {
         register,
         handleSubmit,
@@ -32,13 +33,15 @@ export default function Demo({error, name, onSubmit}: Props) {
         setIsSyncing(true);
         await onSubmit(data);
         setIsSyncing(false);
-        notify(<>Name updated: <strong>{data.name}</strong></>);
+        if (!noNotify) notify(<>Name updated: <strong>{data.name}</strong></>);
     }
 
-    return <Box>
+    const compoundedError = error
+        || !name && new Error("No name found. We'll set the name for you when you submit.");
+
+    return <Box {...props}>
         <form onSubmit={handleSubmit(onSubmitIntermediate)}>
-            {(error || !name) && <ErrorMessage
-                error={error || new Error("No name found. We'll set the name for you when you submit.")}/>}
+            {compoundedError && <ErrorMessage error={compoundedError}/>}
             <div className="field">
                 <label className="label">Name</label>
                 <div className="control">

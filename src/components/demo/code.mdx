@@ -1,0 +1,34 @@
+import Code from "../code";
+import demoCode from "../demo/index.tsx?raw"
+import CodeStep from "../code/step";
+
+<Code id="FrontpageDemoCode" language="tsx" code={demoCode} className="line-numbers">
+    <CodeStep lines={["8-13", "19", "29", "34", "43"]} title="Relaying error, name and onSubmit">
+        We pass the data submitted to the parent demo code through `onSubmit`, which provide the specific logic that
+        should be done when form is submitted.
+
+        The important part of all of this is that `name` is actually handled in the parent element. In the case that it
+        turns out to be an empty string we show an error message, as it's an unexpected value.
+
+        We also relay errors that might arise in the various demos. Although there are cases where an error cannot be
+        resolved using this demo, there is a lot of resilience if handled correctly it should be able to fix the RDF
+        graph by submitting a name.
+    </CodeStep>
+    <CodeStep lines={["15-17", "20-25", "29"]} title="Form handling">
+        I'm making use of [React Hook Form](https://www.react-hook-form.com/)'s `useForm` to handle form states.
+        The `FormData` interface only has one attribute: name.
+    </CodeStep>
+    <CodeStep lines={["39-40", "44", "50"]} title="Error handling">
+        In addition to the errors that may be passed from the various demos, this component also makes sure to let the
+        user know if there is a value missing altogether.
+    </CodeStep>
+    <CodeStep lines={["26", "36"]} title="Notifications">
+        Whenever the name successfully submits, we want to notify the user. For some demos we want to suppress this
+        behavior though, so I'm passing the the boolean variable `noNotify` for this.
+    </CodeStep>
+    <CodeStep lines={["27", "32-33", "35", "53"]} title="Throttling submits">
+        Whenever we're working with asynchronous functionality when submitting, there might be a delay when
+        where things are being updated. Given this behavior, I want to limit when a user can submit updates so that they
+        cannot spam the submit-button.
+    </CodeStep>
+</Code>

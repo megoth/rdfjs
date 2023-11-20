@@ -10,6 +10,7 @@ import useLocalStorage from "use-local-storage";
 import N3 from "n3";
 import Loading from "../../loading";
 import {literal} from "@rdfjs/data-model";
+import {extractError} from "../../../libs/error.ts";
 
 export default function InruptLocalDemo() {
     const [dataset, setDataset] = useState<SolidDataset | null>();
@@ -28,8 +29,7 @@ export default function InruptLocalDemo() {
             }
             setDataset(fromRdfJsDataset(store));
         } catch (error) {
-            const message = error && typeof error === "string" ? error as string : "Error occurred while parsing";
-            setError(new Error(message));
+            setError(extractError(error, "Error occurred while parsing"));
         }
     }, [turtle]);
 

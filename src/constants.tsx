@@ -13,6 +13,38 @@ export interface Guide {
     recommendations: Array<Recommendation>;
 }
 
+export const CRDT_GUIDE: Guide = {
+    href: "/crdt",
+    logo: "./crdt.png",
+    logoAlt: "Logo of CRDT",
+    logoPreferredHeight: 200,
+    name: "CRDT",
+    recommendations: [{
+        title: "CRDT.tech",
+        href: "https://crdt.tech/",
+        note: "Good website to learn about CRDT",
+        type: "URL"
+    }, {
+        title: "CRDT on Wikipedia",
+        href: "https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type",
+        type: "URL"
+    }, {
+        title: "Awesome CRDT",
+        href: "https://github.com/alangibson/awesome-crdt",
+        note: "Lots of good resources on CRDT",
+        type: "URL"
+    }, {
+        title: "Peritext - A CRDT for rich-text collaboration",
+        href: "https://www.inkandswitch.com/peritext/",
+        note: "One implementation of CRDT using rich-text editors",
+        type: "URL"
+    }, {
+        title: "CRDTs: The Hard Parts",
+        href: "https://www.youtube.com/watch?v=x7drE24geUw",
+        note: "A good talk by Martin Kleppman (on of the creators of Peritext) that goes into details of his work",
+        type: "YouTube"
+    }],
+};
 export const JAVASCRIPT_GUIDE: Guide = {
     href: "/javascript",
     logo: "./javascript.png",
@@ -354,7 +386,8 @@ export const GUIDES = [
     SOLID_GUIDE,
     JAVASCRIPT_GUIDE,
     TYPESCRIPT_GUIDE,
-    REACT_GUIDE
+    REACT_GUIDE,
+    CRDT_GUIDE,
 ];
 
 export interface Library {
@@ -417,6 +450,20 @@ export const LIBRARY_INRUPT: Library = {
     websiteName: "Official documentation",
     websiteUrl: "https://docs.inrupt.com/developer-tools/javascript/client-libraries/"
 };
+export const LIBRARY_M_LD: Library = {
+    creator: "George Svarovsky",
+    creatorUrl: "https://github.com/gsvarovsky",
+    href: "/m-ld",
+    icon: "/m-ld.svg",
+    iconAlt: "Logo for m-ld",
+    iconPreferredHeight: 192,
+    name: "m-ld",
+    published: true,
+    recommendation: "None yet",
+    text: "m-ld",
+    websiteName: "Official website",
+    websiteUrl: "https://m-ld.org/"
+};
 export const LIBRARY_RDFLIB: Library = {
     creator: "rdflib.js team",
     creatorUrl: "https://github.com/linkeddata/rdflib.js/graphs/contributors",
@@ -452,6 +499,7 @@ export const LIBRARIES: Array<Library> = [
     LIBRARY_INRUPT,
     LIBRARY_SOUKAI,
     LIBRARY_COMUNICA,
+    LIBRARY_M_LD,
 ].filter(({published}) => published);
 
 export interface Demo {
@@ -658,3 +706,5 @@ export const STORAGE_KEYS = {
     "PROFILE_RDFLIB": "profileRdflib",
     "PROFILE_SOUKAI": "profileSoukai",
 }
+
+export type Unpromise<T extends Promise<unknown>> = T extends Promise<infer U> ? U : never;
