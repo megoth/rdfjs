@@ -725,6 +725,7 @@ export const SOLID_DEMOS: Array<Demo> = [
 ];
 
 export const STORAGE_KEYS = {
+    "PROFILE_GRAPOI": "profileGrapoi",
     "PROFILE_INRUPT": "profileInrupt",
     "PROFILE_LDO": "profileLdo",
     "PROFILE_RDFLIB": "profileRdflib",

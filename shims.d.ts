@@ -22,3 +22,8 @@ declare module '@tpluscode/sparql-builder' {
 declare module '@zazuko/rdf-vocabularies' {
     export const prefixes: Record<string, string>
 }
+
+declare module 'grapoi' {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    export default (...args: Array<unknown>) => unknown;
+}
