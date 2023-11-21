@@ -25,6 +25,11 @@ export const CRDT_GUIDE: Guide = {
         note: "Good website to learn about CRDT",
         type: "URL"
     }, {
+        title: "An introduction to Conflict-Free Replicated Data Types",
+        href: "https://lars.hupel.info/topics/crdt/01-intro/",
+        note: "A good, interactive tutorial series about CRDT (suggested by gaz009)",
+        type: "URL"
+    }, {
         title: "CRDT on Wikipedia",
         href: "https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type",
         type: "URL"
@@ -34,6 +39,11 @@ export const CRDT_GUIDE: Guide = {
         note: "Lots of good resources on CRDT",
         type: "URL"
     }, {
+        title: "dotJS 2019 - James Long - CRDTs for Mortals",
+        href: "https://www.youtube.com/watch?v=DEcwa68f-jY",
+        note: "Nice presentation of CRDT (suggested by Noel De Martin)",
+        type: "YouTube"
+    }, {
         title: "Peritext - A CRDT for rich-text collaboration",
         href: "https://www.inkandswitch.com/peritext/",
         note: "One implementation of CRDT using rich-text editors",
@@ -42,6 +52,11 @@ export const CRDT_GUIDE: Guide = {
         title: "CRDTs: The Hard Parts",
         href: "https://www.youtube.com/watch?v=x7drE24geUw",
         note: "A good talk by Martin Kleppman (on of the creators of Peritext) that goes into details of his work",
+        type: "YouTube"
+    }, {
+        title: "Local-first software",
+        href: "https://www.inkandswitch.com/local-first/",
+        note: "A good research paper on CRDT (suggested by Noel De Martin)",
         type: "YouTube"
     }],
 };
