@@ -7,9 +7,24 @@ import AuthorNote from "../../author-note";
 
 <Content>
     This demo requires you to authenticate with a Solid account.
+</Content>
 
-    Based on the first demo we can add persistent storage with Solid by adding some logic to the first demo that handles
-    the genesis clone. A lot of the code is the same, so I'll point out the new parts in this walkthrough.
+<div className="message is-info is-small">
+    <div className="message-header">This demo also uses LDO</div>
+    <Content className="message-body">
+        The support for websockets on Solid servers is currently not 100% reliable, so I don't actually connect to a
+        Solid Pod using m-ld. Instead I make use of <NavLink to="/ldo">LDO</NavLink> to communicate the changes to
+        the online resource via the *genesis peer*.
+
+        In the future we might be able to connect m-ld directly to the Solid server, and then everything is handled
+        by m-ld. But until then, we won't see triples in the online resource using something like [CRDT for
+        Solid](https://forum.solidproject.org/t/request-for-comments-crdtish-approach-to-solid/4211).
+    </Content>
+</div>
+
+<Content>
+    Based on the first demo we can add persistent storage with Solid by adding some logic to the first demo that
+    handles the genesis clone. A lot of the code is the same, so I'll point out the new parts in this walkthrough.
 </Content>
 
 <Code language="tsx" id="SolidDemo" code={solidDemoCode} className="line-numbers">
