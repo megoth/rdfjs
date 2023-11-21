@@ -18,7 +18,7 @@ export default function InruptSolidDemo() {
     const [dataset, setDataset] = useState<DatasetExt | null>(null);
     const [error, setError] = useState<Error | null>(null);
     const profile = useMemo(
-        () => webId && dataset && grapoi({dataset, term: namedNode(webId)}),
+        () => webId && dataset && grapoi({dataset, factory: rdf, term: namedNode(webId)}),
         [dataset, webId]
     );
     const name = useMemo(() => profile && profile.out(foaf.name).value, [profile])

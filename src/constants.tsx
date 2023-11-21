@@ -525,8 +525,8 @@ export const LIBRARIES: Array<Library> = [
     LIBRARY_INRUPT,
     LIBRARY_SOUKAI,
     LIBRARY_COMUNICA,
-    LIBRARY_M_LD,
     LIBRARY_GRAPOI,
+    LIBRARY_M_LD,
 ].filter(({published}) => published);
 
 export interface Demo {
