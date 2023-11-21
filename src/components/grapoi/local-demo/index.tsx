@@ -13,7 +13,7 @@ import useLocalStorage from "use-local-storage";
 
 const foaf = namespace(prefixes.foaf);
 
-export default function InruptSolidDemo() {
+export default function GrapoiLocalDemo() {
     const [turtle, setTurtle] = useLocalStorage(STORAGE_KEYS.PROFILE_GRAPOI, PROFILE_TURTLE);
     const [dataset, setDataset] = useState<DatasetExt | null>(null);
     const [error, setError] = useState<Error | null>(null);

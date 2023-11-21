@@ -13,7 +13,7 @@ import {prefixes} from '@zazuko/rdf-vocabularies'
 
 const foaf = namespace(prefixes.foaf);
 
-export default function InruptSolidDemo() {
+export default function GrapoiSolidDemo() {
     const {session: {webId}, fetch} = useSolidAuth();
     const [dataset, setDataset] = useState<DatasetExt | null>(null);
     const [error, setError] = useState<Error | null>(null);
@@ -44,9 +44,30 @@ export default function InruptSolidDemo() {
 
     const onSubmit = async (data: FormData) => {
         setError(null);
+        if (!webId || !dataset) return;
+        // profile.out(foaf.name).replace(literal(data.name));
         profile.deleteOut(foaf.name, [literal(name)]);
         profile.addOut(foaf.name, data.name);
-        return new Promise((resolve) => resolve(null));
+        // profile.replace(foaf.name)
+        // console.log(profile);
+        // const writer = new N3.Writer();
+        for (const {subject, predicate, object, graph} of dataset) {
+            console.log(predicate.value, object.value);
+            if (!predicate.equals(namedNode(foaf.name))) return;
+            console.log(subject, predicate, object, graph);
+        }
+        // return new Promise((resolve) => writer.end((error, body) => {
+        //     if (error) setError(error);
+        //     console.log(body);
+        //     resolve(body);
+        //     // return fetch(webId, {
+        //     //     method: "PUT",
+        //     //     headers: {
+        //     //         "Content-Type": "text/turtle"
+        //     //     },
+        //     //     body,
+        //     // }).catch(setError).then(resolve);
+        // }));
     };
 
     return <Demo error={error} name={name} onSubmit={onSubmit}/>
