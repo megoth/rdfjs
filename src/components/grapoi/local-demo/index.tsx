@@ -23,8 +23,8 @@ export default function GrapoiLocalDemo() {
     useEffect(() => {
         const parser = new N3.Parser({baseIRI: PROFILE_URI, format: "text/turtle"});
         try {
-            const parsed = parser.parse(turtle);
-            setDataset(rdf.dataset(parsed, rdf.namedNode(PROFILE_URI)));
+            const quads = parser.parse(turtle);
+            setDataset(rdf.dataset(quads, rdf.namedNode(PROFILE_URI)));
         } catch (error) {
             const message = error && typeof error === "string" ? error as string : "Error occurred while parsing";
             setError(new Error(message));

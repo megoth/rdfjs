@@ -26,8 +26,8 @@ export default function GrapoiSolidDemo() {
             const parser = new N3.Parser({baseIRI: PROFILE_URI, format: "text/turtle"});
             try {
                 const turtle = await response.text();
-                const parsed = parser.parse(turtle);
-                setDataset(rdf.dataset(parsed, rdf.namedNode(webId)));
+                const quads = parser.parse(turtle);
+                setDataset(rdf.dataset(quads, rdf.namedNode(webId)));
             } catch (error) {
                 const message = error && typeof error === "string" ? error as string : "Error occurred while parsing";
                 setError(new Error(message));
