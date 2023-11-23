@@ -13,14 +13,22 @@ export default function DemoList({list}: Props) {
     const demoList = list.filter(({library}) => library.published);
     return (
         <Columns>
-            {demoList.map(({title, subtitle, href, icon, iconAlt, slogan}) => (
+            {demoList.map(({
+                               title,
+                               subtitle,
+                               href,
+                               library,
+                               icon,
+                               iconAlt,
+                               slogan
+                           }) => (
                 <NavLink to={href} key={href}>
                     <Card>
                         <div className={clsx("card-content", styles.cardContent)}>
                             <div className="media">
                                 <div className="media-left">
                                     <figure className="image">
-                                        <img src={icon} alt={iconAlt}/>
+                                        <img src={icon || library.icon} alt={iconAlt || library.iconAlt}/>
                                     </figure>
                                 </div>
                                 <div className="media-content">

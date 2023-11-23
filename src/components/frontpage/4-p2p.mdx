@@ -1,0 +1,21 @@
+import Content from "../content";
+import styles from "./style.module.css";
+import {BsHearts} from "react-icons/bs";
+import DemoList from "../demo-list";
+import {P2P_DEMOS} from "../../constants";
+
+<Content>
+    <h2 className="subtitle" className={styles.localTitle}>
+        <span>RDF + JS + P2P = </span>
+        <BsHearts style={{fill: "rgb(232, 30, 30)"}}/>
+    </h2>
+
+    Although working on RDF locally is useful, it's even more useful when used by multiple actors in real-time.
+    Real-time functionality can be complex and offers a lot of challenges though, so it's probably best to use some
+    tool to handle it for us.
+
+    Currently there is only one demo for this section, but I hope to expand it with more in the future as I learn of
+    more peer-to-peer technologies offering real-time functionality with RDF.
+</Content>
+
+<DemoList list={P2P_DEMOS}/>

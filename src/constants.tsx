@@ -519,8 +519,8 @@ export const LIBRARIES: Array<Library> = [
 
 export interface Demo {
     href: string;
-    icon: string;
-    iconAlt: string;
+    icon?: string;
+    iconAlt?: string;
     library: Library;
     slogan: ReactNode;
     subtitle?: string;
@@ -532,8 +532,6 @@ export const LOCAL_DEMOS: Array<Demo> = [
     {
         title: "rdflib.js",
         href: "/rdflib#local",
-        icon: "/rdf.svg",
-        iconAlt: "Logo for Read-Write Linked Data",
         library: LIBRARY_RDFLIB,
         slogan: <>The <abbr title="Original">OG</abbr> JavaScript library to manage RDF data</>,
         text: "rdflib.js"
@@ -541,8 +539,6 @@ export const LOCAL_DEMOS: Array<Demo> = [
     {
         title: "LDO",
         href: "/ldo#local",
-        icon: "/o-team.png",
-        iconAlt: "Logo for O.team",
         library: LIBRARY_LDO,
         slogan: "The newest kid on the block, using ShEx-shapes to ease the flow of handling RDF data",
         text: "LDO"
@@ -550,8 +546,6 @@ export const LOCAL_DEMOS: Array<Demo> = [
     {
         title: "Inrupt JavaScript Client Libraries",
         href: "/inrupt#local",
-        icon: "/inrupt.webp",
-        iconAlt: "Logo for Inrupt",
         library: LIBRARY_INRUPT,
         slogan: "Inrupt's JS libraries can be used locally using N3.js",
         text: "Inrupt"
@@ -559,8 +553,6 @@ export const LOCAL_DEMOS: Array<Demo> = [
     {
         title: "Soukai",
         href: "/soukai#local",
-        icon: "/soukai.svg",
-        iconAlt: "Logo for Soukai",
         library: LIBRARY_SOUKAI,
         slogan: "A JavaScript-based Object Document Mapper that also works with RDF",
         text: "Soukai"
@@ -569,6 +561,16 @@ export const LOCAL_DEMOS: Array<Demo> = [
 
 export const NS = namespace();
 export const NAME_NODE = namedNode(NS.foaf("name"));
+
+export const P2P_DEMOS: Array<Demo> = [{
+    title: "m-ld",
+    href: "/m-ld#P2PDemo",
+    icon: "/m-ld.svg",
+    iconAlt: "Logo for m-ld",
+    library: LIBRARY_M_LD,
+    slogan: "m-ld is built for handling RDF graphs across peer-to-peer networks",
+    text: "m-ld"
+}];
 
 
 export const PROFILE_URI = "https://megothcapgemini.solidcommunity.net/profile/card#me";
@@ -671,8 +673,6 @@ export const SOLID_DEMOS: Array<Demo> = [
     {
         title: "rdflib.js",
         href: "/rdflib#solid",
-        icon: "/rdf.svg",
-        iconAlt: "Logo for Read-Write Linked Data",
         library: LIBRARY_RDFLIB,
         slogan: "rdflib.js serves handy helpers to handle resource communication with Solid servers",
         text: "rdflib.js"
@@ -680,8 +680,6 @@ export const SOLID_DEMOS: Array<Demo> = [
     {
         title: "@ldo/solid-react",
         href: "/ldo#solid-react",
-        icon: "/o-team.png",
-        iconAlt: "Logo for O.team",
         library: LIBRARY_LDO,
         slogan: "The creator behind LDO also offers a Solid/React integration",
         text: "@ldo/solid-react"
@@ -689,8 +687,6 @@ export const SOLID_DEMOS: Array<Demo> = [
     {
         title: "Inrupt JavaScript Client Libraries",
         href: "/inrupt#solid",
-        icon: "/inrupt.webp",
-        iconAlt: "Logo for Inrupt",
         library: LIBRARY_INRUPT,
         slogan: "Inrupt's JS libraries have been made with RDF and Solid in mind, and provide an extensive API to allow you to manage data",
         text: "Inrupt"
@@ -707,11 +703,16 @@ export const SOLID_DEMOS: Array<Demo> = [
     {
         title: "Comunica",
         href: "/comunica#solid",
-        icon: "/comunica.svg",
-        iconAlt: "Logo for Comunica",
         library: LIBRARY_COMUNICA,
         slogan: "Comunica allows you to execute SPARQL queries for resources on the web",
         text: "Comunica"
+    },
+    {
+        title: "m-ld",
+        href: "/m-ld#solid",
+        library: LIBRARY_M_LD,
+        slogan: "Although Solid is not supported directly by m-ld, I've constructed a demo where I use both m-ld and LDO to synchronize the RDF graph between the P2P network (using m-ld) and Solid (using @ldo/solid-react)",
+        text: "m-ld"
     },
 ];
 

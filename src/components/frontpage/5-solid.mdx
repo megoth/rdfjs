@@ -1,17 +1,21 @@
 import {GiTechnoHeart} from "react-icons/gi";
 import Content from "../content";
 import {NavLink} from "react-router-dom";
+import SolidWarning from "../solid-warning";
+import DemoList from "../demo-list";
+import {SOLID_DEMOS} from "../../constants";
+import styles from "./style.module.css";
 
 <Content id="solid">
-    <h2 className="subtitle is-3" style={{display: "flex", gap: "0.25rem", alignItems: "center"}}>
+    <h2 className="subtitle" className={styles.localTitle}>
         <span>RDF + JS + Solid =</span>
         <GiTechnoHeart style={{fill: "#7C4DFF"}}/>
     </h2>
 
-    In the first series of demos I've focused on working locally by storing the data in the browser.
-    But RDF is designed to live on the web and be, well, linked! (Hence the popular synonym Linked Data.) The problem
-    with this approach is that it requires us to synchronize our data with a web server. Meaning we need some sort of
-    authorization on the resources involved, which in turn might require some authentication.
+    In the first series of demos I've focused on working locally or in a peer-to-peer network. But RDF is designed to
+    live on the web and be, well, linked! (Hence the popular synonym Linked Data.) The problem with this approach is
+    that it requires us to synchronize our data with a web server. Meaning we need some sort of authorization on the
+    resources involved, which in turn might require some authentication.
 
     Luckily, all of this is solved by using <NavLink to="/solid">Solid</NavLink>! As promoted on
     [solidproject.org](https://solidproject.org/):
@@ -30,3 +34,7 @@ import {NavLink} from "react-router-dom";
     located in your WebID resource. This introduces some latency between client and server, and you'll experience some
     loading states when retrieving and posting data.
 </Content>
+
+<SolidWarning/>
+
+<DemoList list={SOLID_DEMOS}/>

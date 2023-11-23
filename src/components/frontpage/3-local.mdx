@@ -1,17 +1,26 @@
 import Content from "../content";
 import {FaShieldHeart} from "react-icons/fa6";
 import styles from "./style.module.css";
+import DemoList from "../demo-list";
+import {LOCAL_DEMOS} from "../../constants";
 
 <Content>
-    <h2 className="subtitle is-3" className={styles.localTitle}>
+    <h2 className="subtitle" className={styles.localTitle}>
         <span>RDF + JS + `localStorage` = </span>
         <FaShieldHeart style={{fill: "rgb(232, 30, 30)"}}/>
     </h2>
 
     I'll start by showing how RDF can be manipulated locally in your browser. For most libraries I've implemented the
-    same demo - a simple form that takes your name and saves it to `localStorage` when you submit the form. The demo will
-    then retrieve that name when the demo is later reloaded.
+    same demo - a simple form that takes your name and saves it to `localStorage` when you submit the form. The demo
+    will then retrieve that name when the demo is later reloaded.
 
     Please click on one of the demos listed below to see how the feature is implemented with that library. You can
     also navigate to the demos via the libraries listed at the top.
+</Content>
+
+<DemoList list={LOCAL_DEMOS}/>
+
+<Content>
+    Note that each demo uses its own isolated storage, so none of these local demos "bleed" into each
+    other.
 </Content>

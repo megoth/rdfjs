@@ -1,34 +1,21 @@
 import Intro from "./1-intro.mdx";
 import Guides from "./2-guides.mdx";
 import Local from "./3-local.mdx";
-import Solid from "./4-solid.mdx";
-import Reviews from "./5.0-reviews.mdx";
-import SolidWarning from "../solid-warning";
-import DemoList from "../demo-list";
-import {LOCAL_DEMOS, SOLID_DEMOS} from "../../constants";
-import Demo from "./6-demo.mdx";
-import About from "./7-about.mdx";
-import Content from "../content";
+import P2P from "./4-p2p.mdx";
+import Solid from "./5-solid.mdx";
+import Reviews from "./6-reviews.mdx";
+import Demo from "./7-demo.mdx";
+import About from "./8-about.mdx";
 
 export default function Frontpage() {
-    return (
-        <>
-            <Intro/>
-            <Guides/>
-            <Local/>
-            <DemoList list={LOCAL_DEMOS}/>
-            <Content>
-                <p>
-                    Note that each demo uses its own isolated storage, so none of these local demos "bleed" into each
-                    other.
-                </p>
-            </Content>
-            <Solid/>
-            <SolidWarning/>
-            <DemoList list={SOLID_DEMOS}/>
-            <Reviews/>
-            <Demo/>
-            <About/>
-        </>
-    );
+    return <>
+        <Intro/>
+        <Guides/>
+        <Local/>
+        <P2P/>
+        <Solid/>
+        <Reviews/>
+        <Demo/>
+        <About/>
+    </>;
 }
