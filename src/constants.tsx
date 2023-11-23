@@ -414,7 +414,7 @@ export interface Library {
     iconPreferredHeight: number;
     name: string;
     published: boolean;
-    recommendation: string;
+    recommendation?: string;
     review?: Array<RatingScore>;
     text: string;
     websiteName: string;
@@ -434,6 +434,19 @@ export const LIBRARY_COMUNICA: Library = {
     text: "Comunica",
     websiteName: "Official website",
     websiteUrl: "https://comunica.dev/"
+};
+export const LIBRARY_LDFLEX: Library = {
+    creator: "Ruben Verborgh",
+    creatorUrl: "https://ruben.verborgh.org/",
+    href: "/ldflex",
+    icon: "/ldflex.png",
+    iconAlt: "Logo for LDflex",
+    iconPreferredHeight: 200,
+    name: "LDflex",
+    published: true,
+    text: "LDflex",
+    websiteName: "Official website",
+    websiteUrl: "https://ldflex.github.io/LDflex/"
 };
 export const LIBRARY_LDO: Library = {
     creator: "Jackson Morgan",
@@ -512,6 +525,7 @@ export const LIBRARIES: Array<Library> = [
     LIBRARY_RDFLIB,
     LIBRARY_LDO,
     LIBRARY_INRUPT,
+    LIBRARY_LDFLEX,
     LIBRARY_SOUKAI,
     LIBRARY_COMUNICA,
     LIBRARY_M_LD,
@@ -576,9 +590,16 @@ export const P2P_DEMOS: Array<Demo> = [{
 export const PROFILE_URI = "https://megothcapgemini.solidcommunity.net/profile/card#me";
 export const PROFILE_NODE = namedNode(PROFILE_URI);
 
+export const PROFILE_CONTEXT = {
+    "@context": {
+        "@vocab": "http://xmlns.com/foaf/0.1/",
+        "@foaf": "http://xmlns.com/foaf/0.1/",
+    },
+};
 export const PROFILE_JSON = {
+    ...PROFILE_CONTEXT,
     "@id": PROFILE_URI,
-    name: "Soukai Test"
+    name: "Test"
 };
 
 export const PROFILE_TURTLE = `@prefix foaf: <http://xmlns.com/foaf/0.1/> .
@@ -718,6 +739,7 @@ export const SOLID_DEMOS: Array<Demo> = [
 
 export const STORAGE_KEYS = {
     "PROFILE_INRUPT": "profileInrupt",
+    "PROFILE_LDFLEX": "profileLDflex",
     "PROFILE_LDO": "profileLdo",
     "PROFILE_RDFLIB": "profileRdflib",
     "PROFILE_SOUKAI": "profileSoukai",

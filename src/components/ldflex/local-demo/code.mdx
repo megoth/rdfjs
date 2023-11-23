@@ -1,0 +1,18 @@
+import Content from "../../content";
+import Code from "../../code";
+import localDemoCode from "./index.tsx?raw";
+import {PROFILE_TURTLE} from "../../../constants";
+import {NavLink} from "react-router-dom";
+
+<Content>
+    This demo saves the underlying turtle in `localStorage`. It no turtle is found, a default one is used:
+</Content>
+
+<Code language="turtle" id="DefaultTurtle" code={PROFILE_TURTLE} noCopy={true}/>
+
+<Content>
+    (If the above code doesn't make sense for you, you might want to consider reading the <NavLink to={"/rdf"}>guide on
+    RDF</NavLink>.)
+</Content>
+
+<Code language="tsx" id="LDOLocalDemo" code={localDemoCode} className="line-numbers" />
