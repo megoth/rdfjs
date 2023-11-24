@@ -1,8 +1,6 @@
 import {useEffect, useMemo, useState} from "react";
-import grapoi from 'grapoi'
 import Demo, {FormData} from "../../demo";
 import Loading from "../../loading";
-import N3 from "n3";
 import {PROFILE_TURTLE, PROFILE_URI, STORAGE_KEYS} from "../../../constants.tsx";
 import rdf from 'rdf-ext'
 import {prefixes} from '@zazuko/rdf-vocabularies'
@@ -12,23 +10,19 @@ const foaf = rdf.namespace(prefixes.foaf);
 
 export default function GrapoiLocalDemo() {
     const [turtle, setTurtle] = useLocalStorage(STORAGE_KEYS.PROFILE_GRAPOI, PROFILE_TURTLE);
-    const [dataset, setDataset] = useState<ReturnType<typeof rdf.dataset> | null>(null);
     const [error, setError] = useState<Error | null>(null);
-    const profile = useMemo(
-        () => dataset && grapoi({dataset, factory: rdf, term: rdf.namedNode(PROFILE_URI)}),
-        [dataset]
-    );
+    const [profile, setProfile] = useState<ReturnType<typeof rdf.grapoi>>(null);
     const name = useMemo(() => profile && profile.out(foaf.name).value, [profile])
 
     useEffect(() => {
-        const parser = new N3.Parser({baseIRI: PROFILE_URI, format: "text/turtle"});
-        try {
-            const quads = parser.parse(turtle);
-            setDataset(rdf.dataset(quads, rdf.namedNode(PROFILE_URI)));
-        } catch (error) {
-            const message = error && typeof error === "string" ? error as string : "Error occurred while parsing";
-            setError(new Error(message));
-        }
+        rdf.io.dataset.fromText('text/turtle', turtle, {bareIRI: PROFILE_URI}).then((dataset) => {
+            if (!dataset) return;
+            setProfile(rdf.grapoi({
+                dataset,
+                factory: rdf,
+                term: rdf.namedNode(PROFILE_URI),
+            }))
+        })
     }, [turtle]);
 
     if (!profile) {
@@ -37,19 +31,10 @@ export default function GrapoiLocalDemo() {
 
     const onSubmit = async (data: FormData) => {
         setError(null);
-        if (!dataset) return;
-        profile.deleteOut(foaf.name, [rdf.literal(name)]);
-        profile.addOut(foaf.name, data.name);
-        const writer = new N3.Writer();
-        for (const {subject, predicate, object, graph} of dataset) {
-            writer.addQuad(subject, predicate, object, graph);
-        }
-        return new Promise((resolve) => writer.end((error, result) => {
-            if (error) setError(error);
-            setTurtle(result);
-            resolve(result);
-        }));
+        if (name) profile.deleteOut(foaf.name, [rdf.literal(name)]);
+        profile.addOut(foaf.name, rdf.literal(data.name));
+        setTurtle(await rdf.io.dataset.toText('text/turtle', profile.dataset));
     };
 
-    return <Demo error={error} name={name} onSubmit={onSubmit}/>
+    return <Demo error={error} name={name || "Not set"} onSubmit={onSubmit}/>
 }

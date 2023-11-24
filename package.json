@@ -27,7 +27,7 @@
     "ldo": "^1.0.3",
     "ldo-solid-profile": "^0.0.13",
     "memory-level": "^1.0.0",
-    "rdf-ext": "^2.4.0",
+    "rdf-ext": "^2.5.0",
     "rdf-sparql-builder": "^0.2.2",
     "rdflib": "^2.2.32",
     "react": "^18.2.0",

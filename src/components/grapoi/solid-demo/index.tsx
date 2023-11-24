@@ -42,30 +42,14 @@ export default function GrapoiSolidDemo() {
     const onSubmit = async (data: FormData) => {
         setError(null);
         if (!webId || !dataset) return;
-        // profile.out(foaf.name).replace(literal(data.name));
-        profile.deleteOut(foaf.name, [rdf.literal(name)]);
-        profile.addOut(foaf.name, data.name);
-        // profile.replace(foaf.name)
-        // console.log(profile);
-        // const writer = new N3.Writer();
+        if (name) profile.deleteOut(foaf.name, [rdf.literal(name)]);
+        profile.addOut(foaf.name, rdf.literal(data.name));
         for (const {subject, predicate, object, graph} of dataset) {
             console.log(predicate.value, object.value);
-            if (!predicate.equals(rdf.namedNode(foaf.name))) return;
+            if (!predicate.equals(foaf.name)) return;
             console.log(subject, predicate, object, graph);
         }
-        // return new Promise((resolve) => writer.end((error, body) => {
-        //     if (error) setError(error);
-        //     console.log(body);
-        //     resolve(body);
-        //     // return fetch(webId, {
-        //     //     method: "PUT",
-        //     //     headers: {
-        //     //         "Content-Type": "text/turtle"
-        //     //     },
-        //     //     body,
-        //     // }).catch(setError).then(resolve);
-        // }));
     };
 
-    return <Demo error={error} name={name} onSubmit={onSubmit}/>
+    return <Demo error={error} name={name || "Not set"} onSubmit={onSubmit}/>
 }

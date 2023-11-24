@@ -24,6 +24,31 @@ declare module '@zazuko/rdf-vocabularies' {
 }
 
 declare module 'grapoi' {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    export default (...args: Array<unknown>) => unknown;
+    import {Literal, NamedNode} from "@rdfjs/types";
+
+    class Grapoi {
+        addOut(term: NamedNode, value: Literal): Grapoi
+        deleteOut(term: NamedNode, values: Array<Literal>): Grapoi
+        out(term: NamedNode): Grapoi
+        value: string
+    }
+    export default function (...args: Array<unknown>): Grapoi;
+}
+
+declare module 'rdf-ext' {
+    import {Literal, NamedNode, Quad} from "@rdfjs/types";
+
+    export function dataset(...args: Array<unknown>): Iterable<Quad>;
+
+    export module io {
+        export module dataset {
+            export function fromText(...args: Array<unknown>): Promise<unknown>
+            export function toText(format: string, dataset: unknown): Promise<string>
+        }
+    }
+
+    export function grapoi(...args: Array<unknown>): import('grapoi');
+    export function literal(value: string): Literal;
+    export function namedNode(uri: string): NamedNode;
+    export function namespace(namespaceUri: string): Record<string, NamedNode>;
 }
