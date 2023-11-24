@@ -17,11 +17,7 @@ export default function GrapoiLocalDemo() {
     useEffect(() => {
         rdf.io.dataset.fromText('text/turtle', turtle, {bareIRI: PROFILE_URI}).then((dataset) => {
             if (!dataset) return;
-            setProfile(rdf.grapoi({
-                dataset,
-                factory: rdf,
-                term: rdf.namedNode(PROFILE_URI),
-            }))
+            setProfile(rdf.grapoi({dataset, term: rdf.namedNode(PROFILE_URI)}))
         })
     }, [turtle]);
 
