@@ -1,9 +1,50 @@
 import Content from "../../content";
 import Code from "../../code";
 import solidDemoCode from "./index.tsx?raw";
+import CodeStep from "../../code/step";
 
 <Content>
     This demo requires you to authenticate with a Solid account.
 </Content>
 
-<Code language="tsx" id="GrapoiSolidDemo" code={solidDemoCode} className="line-numbers" />
+<Content>
+    Ideally I would track the Grapoi object like I did in the local demo, but I'm opting out of `rdf.io.dataset.toURL`
+    since it uses a `PUT` request to store the local RDF graph. I'm more comfortable using a `PATCH` request (together
+    with a [SPARQL Update](https://www.w3.org/TR/sparql11-update/) query), so for this demo I'm constructing one
+    manually. For this reason I only need to track the changes to the name, and only use the Grapoi API to fetch the
+    initial name.
+</Content>
+
+<Code language="tsx" id="GrapoiSolidDemo" code={solidDemoCode} className="line-numbers">
+    <CodeStep lines={["11", "19", "37"]} title="Name tracking">
+        In addition to setting up the name state, we get an update when we load the WebID, and then later when the user
+        submits the form.
+    </CodeStep>
+    <CodeStep lines={["12", "20", "36", "40"]} title="Error handling">
+        I make sure to pass any error that occur to the `Demo` component.
+    </CodeStep>
+    <CodeStep lines={["16-20"]} title="Fetching and parsing RDF graph from WebID resource">
+        Using `rdf.io.dataset.fromURL` we get the dataset, which I then use to initiate a Grapoi object, which I then
+        use to get the name.
+
+        <div className="message is-info is-small">
+            <div className="message-body">
+                In order to make this demo work, I'm dependent on the WebID resource being publicly available. This is
+                the default case for WebID resources on most Solid servers, so that shouldn't be a problem, but ideally
+                we would pass on the [WHATWG Fetch](https://fetch.spec.whatwg.org/) function that `useSolidAuth`
+                provides us. This is in development by the RDF-Ext team.
+            </div>
+        </div>
+    </CodeStep>
+    <CodeStep lines={["23-25"]} title="Loading state">
+        While we wait for the name to be retrieved from the WebID resource, I display the `Loading` component.
+    </CodeStep>
+    <CodeStep lines={["30-36"]} title="Update online resource">
+        As mentioned earlier, I'm opting for writing a SPARQL UPDATE query in this demo, since I won't recommend using
+        the `PUT` request like RDF-Ext would normally do. But the RDF-Ext team reassures me that there are options being
+        worked on, and I'll update this demo as soon as possible.
+
+        That said, If you're comfortable writing updates to your online resources using the `PUT` request, you can try
+        using the `rdf.io.dataset.toURL` function.
+    </CodeStep>
+</Code>

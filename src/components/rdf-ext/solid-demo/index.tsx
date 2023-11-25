@@ -8,19 +8,19 @@ const ns = {foaf: rdf.namespace("http://xmlns.com/foaf/0.1/")};
 
 export default function GrapoiSolidDemo() {
     const {session: {webId}, fetch} = useSolidAuth();
-    const [error, setError] = useState<Error | null>(null);
     const [name, setName] = useState<string | null>(null);
+    const [error, setError] = useState<Error | null>(null);
 
     useEffect(() => {
         if (!webId) return;
         rdf.io.dataset.fromURL(webId).then((dataset) => {
             if (!dataset) return;
             const profile = rdf.grapoi({dataset, term: rdf.namedNode(webId)});
-            setName(profile.out(ns.foaf.name).value);
-        })
+            setName(profile.out(ns.foaf.name).value || "");
+        }).catch(setError);
     }, [webId]);
 
-    if (!name) {
+    if (name === null) {
         return <Loading/>
     }
 
@@ -33,7 +33,7 @@ export default function GrapoiSolidDemo() {
             body: `
 DELETE DATA { <${webId}> <${ns.foaf.name}> "${name}" . }
 INSERT DATA { <${webId}> <${ns.foaf.name}> "${data.name}" . }`
-        });
+        }).catch(setError);
         setName(data.name);
     };
 

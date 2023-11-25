@@ -25,9 +25,14 @@ declare module '@zazuko/rdf-vocabularies' {
 
 declare module 'rdf-ext' {
     import {Literal, NamedNode, Quad} from "@rdfjs/types";
+
+    export class Dataset {
+        toCanonical(): string
+    }
+
     export class Grapoi {
         addOut(term: NamedNode, value: string): Grapoi
-        dataset: unknown;
+        dataset: Dataset;
 
         deleteOut(term: NamedNode, values: Array<string>): Grapoi
 
