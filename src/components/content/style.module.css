@@ -9,6 +9,10 @@
         margin-bottom: 0.75rem;
     }
 
+    :global(ul ul) {
+        margin-top: 0;
+    }
+
     > :global(blockquote) > *:first-child {
         margin-top: 0;
     }

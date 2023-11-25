@@ -10,18 +10,17 @@ interface Props {
 }
 
 export default function DemoList({list}: Props) {
-    const demoList = list.filter(({library}) => library.published);
     return (
         <Columns>
-            {demoList.map(({
-                               title,
-                               subtitle,
-                               href,
-                               library,
-                               icon,
-                               iconAlt,
-                               slogan
-                           }) => (
+            {list.map(({
+                           title,
+                           subtitle,
+                           href,
+                           library,
+                           icon,
+                           iconAlt,
+                           slogan
+                       }) => (
                 <NavLink to={href} key={href}>
                     <Card>
                         <div className={clsx("card-content", styles.cardContent)}>

@@ -410,8 +410,6 @@ export interface Library {
     iconAlt: string;
     iconPreferredHeight: number;
     name: string;
-    published: boolean;
-    recommendation: string;
     review?: Array<RatingScore>;
     text: string;
     websiteName: string;
@@ -426,8 +424,6 @@ export const LIBRARY_COMUNICA: Library = {
     iconAlt: "Logo for Comunica",
     iconPreferredHeight: 240,
     name: "Comunica",
-    published: true,
-    recommendation: "Large systems based on SPARQL",
     text: "Comunica",
     websiteName: "Official website",
     websiteUrl: "https://comunica.dev/"
@@ -440,26 +436,10 @@ export const LIBRARY_LDO: Library = {
     iconAlt: "Logo for O.team",
     iconPreferredHeight: 192,
     name: "Linked Data Objects",
-    published: true,
-    recommendation: "Experimental apps",
     review: [4, 3, 3, 2, 3.5],
     text: "LDO",
     websiteName: "GitHub repo",
     websiteUrl: "https://github.com/o-development/ldo/"
-};
-export const LIBRARY_GRAPOI: Library = {
-    creator: "Thomas Bergwinkl (RDF-Ext)",
-    creatorUrl: "https://github.com/bergos/",
-    href: "/grapoi",
-    icon: "/rdf-ext.png",
-    iconAlt: "Logo for RDF-Ext",
-    iconPreferredHeight: 200,
-    name: "grapoi",
-    published: true,
-    recommendation: "none yet",
-    text: "grapoi",
-    websiteName: "GitHub repo",
-    websiteUrl: "https://github.com/rdf-ext/grapoi"
 };
 export const LIBRARY_INRUPT: Library = {
     creator: "Inrupt",
@@ -469,8 +449,6 @@ export const LIBRARY_INRUPT: Library = {
     iconAlt: "Logo for Inrupt",
     iconPreferredHeight: 192,
     name: "Inrupt's JavaScript client libraries",
-    published: true,
-    recommendation: "Systems that need to be production-ready soon",
     review: [3, 4, 3, 3, 3],
     text: "Inrupt",
     websiteName: "Official documentation",
@@ -484,11 +462,21 @@ export const LIBRARY_M_LD: Library = {
     iconAlt: "Logo for m-ld",
     iconPreferredHeight: 192,
     name: "m-ld",
-    published: true,
-    recommendation: "None yet",
     text: "m-ld",
     websiteName: "Official website",
     websiteUrl: "https://m-ld.org/"
+};
+export const LIBRARY_RDF_EXT: Library = {
+    creator: "Thomas Bergwinkl",
+    creatorUrl: "https://github.com/bergos/",
+    href: "/rdf-ext",
+    icon: "/rdf-ext.png",
+    iconAlt: "Logo for RDF-Ext",
+    iconPreferredHeight: 200,
+    name: "RDF-Ext",
+    text: "RDF-Ext",
+    websiteName: "Official website",
+    websiteUrl: "https://rdf-ext.org/"
 };
 export const LIBRARY_RDFLIB: Library = {
     creator: "rdflib.js team",
@@ -498,8 +486,6 @@ export const LIBRARY_RDFLIB: Library = {
     iconAlt: "Logo for Read-Write Linked Data",
     iconPreferredHeight: 192,
     name: "rdflib.js",
-    published: true,
-    recommendation: "Low-level data management",
     review: [2, 2, 3, 4, 2.5],
     text: "rdflib.js",
     websiteName: "GitHub repo",
@@ -513,8 +499,6 @@ export const LIBRARY_SOUKAI: Library = {
     iconAlt: "Logo for Soukai",
     iconPreferredHeight: 192,
     name: "Soukai",
-    published: true,
-    recommendation: "Experimental apps",
     text: "Soukai",
     websiteName: "Official website",
     websiteUrl: "https://soukai.js.org/"
@@ -525,9 +509,9 @@ export const LIBRARIES: Array<Library> = [
     LIBRARY_INRUPT,
     LIBRARY_SOUKAI,
     LIBRARY_COMUNICA,
-    LIBRARY_GRAPOI,
+    LIBRARY_RDF_EXT,
     LIBRARY_M_LD,
-].filter(({published}) => published);
+];
 
 export interface Demo {
     href: string;
