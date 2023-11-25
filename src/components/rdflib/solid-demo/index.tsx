@@ -2,8 +2,8 @@ import {Fetcher, graph, lit, namedNode, st, UpdateManager} from "rdflib";
 import {useEffect, useMemo, useState} from "react";
 import {useSolidAuth} from "@ldo/solid-react";
 import Demo, {FormData} from "../../demo";
-import {NAME_NODE} from "../../../constants";
 import Loading from "../../loading";
+import {FOAF} from "../../../namespaces.ts";
 
 export default function RdflibSolidDemo() {
     const {session: {webId}, fetch} = useSolidAuth();
@@ -17,14 +17,18 @@ export default function RdflibSolidDemo() {
 
     useEffect(() => {
         fetcher.load(profileNode.doc())
-            .then(() => setName(store.any(profileNode, NAME_NODE, null)?.value ?? ""))
+            .then(() => setName(store.any(profileNode, namedNode(FOAF.name), null)?.value ?? ""))
             .catch(setError);
     }, [store, profileNode, fetcher]);
 
+    if (name === undefined) {
+        return <Loading/>
+    }
+
     const onSubmit = async (data: FormData) => {
         setError(null);
-        const ins = [st(profileNode, NAME_NODE, lit(data.name), profileNode.doc())];
-        const del = store.statementsMatching(profileNode, NAME_NODE, null, profileNode.doc());
+        const ins = [st(profileNode, namedNode(FOAF.name), lit(data.name), profileNode.doc())];
+        const del = store.statementsMatching(profileNode, namedNode(FOAF.name), null, profileNode.doc());
         return new Promise((resolve) => updater.update(del, ins, (_uri, _success, errorBody, response) => {
             if (!_success) setError(new Error(errorBody));
             setName(data.name);
@@ -32,7 +36,5 @@ export default function RdflibSolidDemo() {
         }));
     };
 
-    return name !== undefined
-        ? <Demo error={error} name={name} onSubmit={onSubmit}/>
-        : <Loading/>
+    return <Demo error={error} name={name} onSubmit={onSubmit}/>
 }

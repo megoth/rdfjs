@@ -5,11 +5,9 @@ import {useSolidAuth} from "@ldo/solid-react";
 import Loading from "../loading";
 import {literal, namedNode} from '@rdfjs/data-model'
 import {DELETE, SELECT} from '@tpluscode/sparql-builder'
-import namespace from '@rdfjs/namespace'
-import {prefixes} from '@zazuko/rdf-vocabularies'
+import {FOAF} from "../../namespaces.ts";
 
 const engine = new QueryEngine();
-const foaf = namespace(prefixes.foaf)
 
 export default function SparqlBuilderDemo() {
     const {fetch, session: {webId}} = useSolidAuth();
@@ -19,7 +17,7 @@ export default function SparqlBuilderDemo() {
     useEffect(() => {
         if (!webId) return;
         const query = SELECT`?name`
-            .WHERE`${namedNode(webId)} ${foaf.name} ?name .`
+            .WHERE`${namedNode(webId)} ${FOAF.name} ?name .`
             .LIMIT(1)
             .build();
         engine.queryBindings(query, {
@@ -37,9 +35,9 @@ export default function SparqlBuilderDemo() {
     const onSubmit = async (data: FormData) => {
         setError(null);
         if (!webId) return;
-        const query = DELETE`${(namedNode(webId))} ${foaf.name} ${(literal(name))}`
-            .INSERT`${(namedNode(webId))} ${foaf.name} ${literal(data.name)}`
-            .WHERE`${(namedNode(webId))} ${foaf.name} ${(literal(name))}`
+        const query = DELETE`${(namedNode(webId))} ${FOAF.name} ${(literal(name))}`
+            .INSERT`${(namedNode(webId))} ${FOAF.name} ${literal(data.name)}`
+            .WHERE`${(namedNode(webId))} ${FOAF.name} ${(literal(name))}`
             .build();
         await engine.queryVoid(query, {
             fetch,

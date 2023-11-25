@@ -8,10 +8,7 @@ import {useLdo, useResource, useSolidAuth, useSubject} from "@ldo/solid-react";
 import {SolidProfileShapeType} from "ldo-solid-profile";
 import MLdInitStep from "../init-step";
 import MLdDemo from "../demo";
-import namespace from '@rdfjs/namespace'
-import {prefixes} from '@zazuko/rdf-vocabularies'
-
-const foaf = namespace(prefixes.foaf)
+import {FOAF} from "../../../namespaces.ts";
 
 export default function MldSolidDemo() {
     const {session: {webId}} = useSolidAuth();
@@ -38,7 +35,7 @@ export default function MldSolidDemo() {
             .then((peer) => Promise.all([
                 peer.write({
                     "@id": domainId,
-                    [foaf.name]: profile.name,
+                    [FOAF.name]: profile.name,
                 }),
                 peer.read(
                     () => undefined,
@@ -48,7 +45,7 @@ export default function MldSolidDemo() {
                         const p2pProfile = await state.get(domainId)
                         const oldProfile = profile || createData(SolidProfileShapeType, webId);
                         const updatedProfile = changeData(oldProfile, profileResource);
-                        updatedProfile.name = p2pProfile?.[foaf.name] as string;
+                        updatedProfile.name = p2pProfile?.[FOAF.name] as string;
                         await commitData(updatedProfile).catch(setError);
                         if (updatedProfile.name) notify(<>Name updated: <strong>{updatedProfile.name}</strong></>);
                     },

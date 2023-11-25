@@ -1,8 +1,5 @@
-import {namedNode} from "rdflib";
-import namespace from "solid-namespace";
 import {RatingScore} from "./components/rating";
 import {ReactNode} from "react";
-
 
 export interface Guide {
     href: string;
@@ -559,9 +556,6 @@ export const LOCAL_DEMOS: Array<Demo> = [
     },
 ];
 
-export const NS = namespace();
-export const NAME_NODE = namedNode(NS.foaf("name"));
-
 export const P2P_DEMOS: Array<Demo> = [{
     title: "m-ld",
     href: "/m-ld#P2PDemo",
@@ -574,7 +568,6 @@ export const P2P_DEMOS: Array<Demo> = [{
 
 
 export const PROFILE_URI = "https://megothcapgemini.solidcommunity.net/profile/card#me";
-export const PROFILE_NODE = namedNode(PROFILE_URI);
 
 export const PROFILE_JSON = {
     "@id": PROFILE_URI,
