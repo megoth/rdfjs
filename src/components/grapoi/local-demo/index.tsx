@@ -3,16 +3,14 @@ import Demo, {FormData} from "../../demo";
 import Loading from "../../loading";
 import {PROFILE_TURTLE, PROFILE_URI, STORAGE_KEYS} from "../../../constants.tsx";
 import rdf from 'rdf-ext'
-import {prefixes} from '@zazuko/rdf-vocabularies'
 import useLocalStorage from "use-local-storage";
-
-const foaf = rdf.namespace(prefixes.foaf);
+import {FOAF} from "../../../namespaces.ts";
 
 export default function GrapoiLocalDemo() {
     const [turtle, setTurtle] = useLocalStorage(STORAGE_KEYS.PROFILE_GRAPOI, PROFILE_TURTLE);
     const [error, setError] = useState<Error | null>(null);
-    const [profile, setProfile] = useState<ReturnType<typeof rdf.grapoi>>(null);
-    const name = useMemo(() => profile && profile.out(foaf.name).value, [profile])
+    const [profile, setProfile] = useState<rdf.Grapoi | null>(null);
+    const name = useMemo(() => profile && profile.out(FOAF.name).value, [profile])
 
     useEffect(() => {
         rdf.io.dataset.fromText('text/turtle', turtle, {bareIRI: PROFILE_URI}).then((dataset) => {
@@ -27,8 +25,8 @@ export default function GrapoiLocalDemo() {
 
     const onSubmit = async (data: FormData) => {
         setError(null);
-        if (name) profile.deleteOut(foaf.name, [rdf.literal(name)]);
-        profile.addOut(foaf.name, rdf.literal(data.name));
+        if (name) profile.deleteOut(FOAF.name, [name]);
+        profile.addOut(FOAF.name, data.name);
         setTurtle(await rdf.io.dataset.toText('text/turtle', profile.dataset));
     };
 

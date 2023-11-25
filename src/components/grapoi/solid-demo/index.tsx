@@ -3,9 +3,7 @@ import {useSolidAuth} from "@ldo/solid-react";
 import Demo, {FormData} from "../../demo";
 import Loading from "../../loading";
 import rdf from 'rdf-ext'
-import {prefixes} from '@zazuko/rdf-vocabularies'
-
-const foaf = rdf.namespace(prefixes.foaf);
+import {FOAF} from "../../../namespaces.ts";
 
 export default function GrapoiSolidDemo() {
     const {session: {webId}, fetch} = useSolidAuth();
@@ -17,7 +15,7 @@ export default function GrapoiSolidDemo() {
         rdf.io.dataset.fromURL(webId).then((dataset) => {
             if (!dataset) return;
             const profile = rdf.grapoi({dataset, term: rdf.namedNode(webId)});
-            setName(profile.out(foaf.name).value);
+            setName(profile.out(FOAF.name).value);
         })
     }, [webId]);
 
@@ -32,8 +30,8 @@ export default function GrapoiSolidDemo() {
             method: "PATCH",
             headers: {"Content-Type": "application/sparql-update"},
             body: `
-DELETE DATA { <${webId}> <${foaf.name}> "${name}" . }
-INSERT DATA { <${webId}> <${foaf.name}> "${data.name}" . }`
+DELETE DATA { <${webId}> <${FOAF.name.value}> "${name}" . }
+INSERT DATA { <${webId}> <${FOAF.name.value}> "${data.name}" . }`
         });
         setName(data.name);
     };
