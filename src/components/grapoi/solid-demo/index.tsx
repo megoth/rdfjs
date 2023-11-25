@@ -1,54 +1,42 @@
-import {useEffect, useMemo, useState} from "react";
-import grapoi from 'grapoi'
+import {useEffect, useState} from "react";
 import {useSolidAuth} from "@ldo/solid-react";
 import Demo, {FormData} from "../../demo";
 import Loading from "../../loading";
-import N3 from "n3";
-import {PROFILE_URI} from "../../../constants.tsx";
 import rdf from 'rdf-ext'
 import {prefixes} from '@zazuko/rdf-vocabularies'
+import {PROFILE_URI} from "../../../constants.tsx";
 
 const foaf = rdf.namespace(prefixes.foaf);
 
 export default function GrapoiSolidDemo() {
     const {session: {webId}, fetch} = useSolidAuth();
-    const [dataset, setDataset] = useState<ReturnType<typeof rdf.dataset> | null>(null);
     const [error, setError] = useState<Error | null>(null);
-    const profile = useMemo(
-        () => webId && dataset && grapoi({dataset, factory: rdf, term: rdf.namedNode(webId)}),
-        [dataset, webId]
-    );
-    const name = useMemo(() => profile && profile.out(foaf.name).value, [profile])
+    const [name, setName] = useState<string | null>(null);
 
     useEffect(() => {
         if (!webId) return;
-        fetch(webId).then(async (response) => {
-            const parser = new N3.Parser({baseIRI: PROFILE_URI, format: "text/turtle"});
-            try {
-                const turtle = await response.text();
-                const quads = parser.parse(turtle);
-                setDataset(rdf.dataset(quads, rdf.namedNode(webId)));
-            } catch (error) {
-                const message = error && typeof error === "string" ? error as string : "Error occurred while parsing";
-                setError(new Error(message));
-            }
-        }).catch(setError);
-    }, [fetch, webId]);
+        rdf.io.dataset.fromURL(webId).then((dataset) => {
+            if (!dataset) return;
+            const profile = rdf.grapoi({dataset, term: rdf.namedNode(PROFILE_URI)});
+            setName(profile.out(foaf.name).value);
+        })
+    }, [webId]);
 
-    if (!profile) {
+    if (!name) {
         return <Loading/>
     }
 
     const onSubmit = async (data: FormData) => {
         setError(null);
-        if (!webId || !dataset) return;
-        if (name) profile.deleteOut(foaf.name, [rdf.literal(name)]);
-        profile.addOut(foaf.name, rdf.literal(data.name));
-        for (const {subject, predicate, object, graph} of dataset) {
-            console.log(predicate.value, object.value);
-            if (!predicate.equals(foaf.name)) return;
-            console.log(subject, predicate, object, graph);
-        }
+        if (!webId) return;
+        await fetch(webId, {
+            method: "PATCH",
+            headers: {"Content-Type": "application/sparql-update"},
+            body: `
+DELETE DATA { <${webId}> <${foaf.name}> "${name}" . }
+INSERT DATA { <${webId}> <${foaf.name}> "${data.name}" . }`
+        });
+        setName(data.name);
     };
 
     return <Demo error={error} name={name || "Not set"} onSubmit={onSubmit}/>
