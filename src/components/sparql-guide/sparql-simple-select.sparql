@@ -1,2 +1,2 @@
 SELECT ?subject ?predidate ?object
-WHERE { ?subject ?predidate ?object }
+WHERE { ?subject ?predidate ?object . }
