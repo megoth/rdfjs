@@ -4,7 +4,6 @@ import Demo, {FormData} from "../../demo";
 import Loading from "../../loading";
 import rdf from 'rdf-ext'
 import {prefixes} from '@zazuko/rdf-vocabularies'
-import {PROFILE_URI} from "../../../constants.tsx";
 
 const foaf = rdf.namespace(prefixes.foaf);
 
@@ -17,7 +16,7 @@ export default function GrapoiSolidDemo() {
         if (!webId) return;
         rdf.io.dataset.fromURL(webId).then((dataset) => {
             if (!dataset) return;
-            const profile = rdf.grapoi({dataset, term: rdf.namedNode(PROFILE_URI)});
+            const profile = rdf.grapoi({dataset, term: rdf.namedNode(webId)});
             setName(profile.out(foaf.name).value);
         })
     }, [webId]);
