@@ -35,7 +35,7 @@ export default function MldSolidDemo() {
             .then((peer) => Promise.all([
                 peer.write({
                     "@id": domainId,
-                    [FOAF.name]: profile.name,
+                    [FOAF.name.value]: profile.name,
                 }),
                 peer.read(
                     () => undefined,
@@ -45,7 +45,7 @@ export default function MldSolidDemo() {
                         const p2pProfile = await state.get(domainId)
                         const oldProfile = profile || createData(SolidProfileShapeType, webId);
                         const updatedProfile = changeData(oldProfile, profileResource);
-                        updatedProfile.name = p2pProfile?.[FOAF.name] as string;
+                        updatedProfile.name = p2pProfile?.[FOAF.name.value] as string;
                         await commitData(updatedProfile).catch(setError);
                         if (updatedProfile.name) notify(<>Name updated: <strong>{updatedProfile.name}</strong></>);
                     },

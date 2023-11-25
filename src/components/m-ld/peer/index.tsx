@@ -52,14 +52,14 @@ export default function MLdPeer() {
             await peer.delete(domainId);
             await peer.write({
                 "@id": domainId,
-                [FOAF.name]: data.name,
+                [FOAF.name.value]: data.name,
             })
         } catch (error) {
             setError(extractError(error, "Error when updating name"));
         }
     }
 
-    const name = profile?.[FOAF.name]?.toString() || "";
+    const name = profile?.[FOAF.name.value]?.toString() || "";
 
     return error
         ? <div className={styles.container}>

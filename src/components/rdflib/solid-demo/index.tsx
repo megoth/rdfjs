@@ -17,7 +17,7 @@ export default function RdflibSolidDemo() {
 
     useEffect(() => {
         fetcher.load(profileNode.doc())
-            .then(() => setName(store.any(profileNode, namedNode(FOAF.name), null)?.value ?? ""))
+            .then(() => setName(store.any(profileNode, namedNode(FOAF.name.value), null)?.value ?? ""))
             .catch(setError);
     }, [store, profileNode, fetcher]);
 
@@ -27,8 +27,8 @@ export default function RdflibSolidDemo() {
 
     const onSubmit = async (data: FormData) => {
         setError(null);
-        const ins = [st(profileNode, namedNode(FOAF.name), lit(data.name), profileNode.doc())];
-        const del = store.statementsMatching(profileNode, namedNode(FOAF.name), null, profileNode.doc());
+        const ins = [st(profileNode, namedNode(FOAF.name.value), lit(data.name), profileNode.doc())];
+        const del = store.statementsMatching(profileNode, namedNode(FOAF.name.value), null, profileNode.doc());
         return new Promise((resolve) => updater.update(del, ins, (_uri, _success, errorBody, response) => {
             if (!_success) setError(new Error(errorBody));
             setName(data.name);

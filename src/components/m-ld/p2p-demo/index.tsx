@@ -27,13 +27,13 @@ export default function MldP2PDemo() {
             .then((peer) => Promise.all([
                 peer.write({
                     "@id": domainId,
-                    [FOAF.name]: "P2P test",
+                    [FOAF.name.value]: "P2P test",
                 }),
                 peer.read(
                     () => undefined,
                     async (_update, state) => {
                         const profile = await state.get(domainId);
-                        const name = profile?.[FOAF.name] as string;
+                        const name = profile?.[FOAF.name.value] as string;
                         if (name) notify(<>Name updated: <strong>{name}</strong></>);
                     },
                 )

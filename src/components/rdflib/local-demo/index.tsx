@@ -15,7 +15,7 @@ export default function RdflibLocalDemo() {
     useEffect(() => {
         parse(turtle, store, PROFILE_URI, "text/turtle", (error, updatedStore) => {
             if (error) setError(error);
-            setName(updatedStore?.any(namedNode(PROFILE_URI), namedNode(FOAF.name), null)?.value || "");
+            setName(updatedStore?.any(namedNode(PROFILE_URI), namedNode(FOAF.name.value), null)?.value || "");
         })
     }, [store, turtle]);
 
@@ -25,8 +25,8 @@ export default function RdflibLocalDemo() {
 
     const onSubmit = async (data: FormData): Promise<void> => {
         setError(null);
-        store.remove(store.match(namedNode(PROFILE_URI), namedNode(FOAF.name), null));
-        store.add(st(namedNode(PROFILE_URI), namedNode(FOAF.name), lit(data.name)));
+        store.remove(store.match(namedNode(PROFILE_URI), namedNode(FOAF.name.value), null));
+        store.add(st(namedNode(PROFILE_URI), namedNode(FOAF.name.value), lit(data.name)));
         return new Promise((resolve) => serialize(null, store, null, 'text/turtle', (error, result) => {
             if (error) return setError(error);
             setTurtle(result);
