@@ -1,10 +1,13 @@
 import {graph, lit, namedNode, parse, serialize, st} from "rdflib";
+import * as $rdf from "rdflib";
 import {PROFILE_TURTLE, PROFILE_URI, STORAGE_KEYS} from "../../../constants";
 import {useEffect, useMemo, useState} from "react";
 import useLocalStorage from "use-local-storage";
 import Demo, {FormData} from "../../demo";
 import Loading from "../../loading";
-import {FOAF} from "../../../namespaces.ts";
+import solidNamespace from "solid-namespace";
+
+const ns = solidNamespace($rdf);
 
 export default function RdflibLocalDemo() {
     const store = useMemo(() => graph(), []);
@@ -15,18 +18,18 @@ export default function RdflibLocalDemo() {
     useEffect(() => {
         parse(turtle, store, PROFILE_URI, "text/turtle", (error, updatedStore) => {
             if (error) setError(error);
-            setName(updatedStore?.any(namedNode(PROFILE_URI), namedNode(FOAF.name.value), null)?.value || "");
+            setName(updatedStore?.any(namedNode(PROFILE_URI), ns.foaf("name"), null)?.value || "");
         })
     }, [store, turtle]);
 
     if (name === undefined) {
-        return <Loading />
+        return <Loading/>
     }
 
     const onSubmit = async (data: FormData): Promise<void> => {
         setError(null);
-        store.remove(store.match(namedNode(PROFILE_URI), namedNode(FOAF.name.value), null));
-        store.add(st(namedNode(PROFILE_URI), namedNode(FOAF.name.value), lit(data.name)));
+        store.remove(store.match(namedNode(PROFILE_URI), ns.foaf("name"), null));
+        store.add(st(namedNode(PROFILE_URI), ns.foaf("name"), lit(data.name)));
         return new Promise((resolve) => serialize(null, store, null, 'text/turtle', (error, result) => {
             if (error) return setError(error);
             setTurtle(result);

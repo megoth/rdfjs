@@ -18,19 +18,19 @@ import CodeStep from "../../code/step";
 </Content>
 
 <Code language="tsx" id="RdflibLocalDemo" code={localDemoCode} className="line-numbers">
-    <CodeStep lines={["10"]} title="Store setup">
+    <CodeStep lines={["13"]} title="Store setup">
         Setting up the store that's going to contain our data.
     </CodeStep>
-    <CodeStep lines={["13", "17", "27", "37"]} title="Error handling">
+    <CodeStep lines={["16", "20", "30", "40"]} title="Error handling">
         We might expect two errors when working with this demo. First, when we parse the turtle (e.g. the text might
         invalid turtle). Second, something might go wrong when we serialize the RDF graph back into turtle text. Any
         error are passed onto the `Demo` component.
     </CodeStep>
-    <CodeStep lines={["16-19"]} title="Parsing turtle and loading name">
+    <CodeStep lines={["19-22"]} title="Parsing turtle and loading name">
         Loading existing data from either default turtle or saved turtle from `localStorage`. Until a name is found we
         show the `Loading` component.
     </CodeStep>
-    <CodeStep lines={["28-34"]} title="Updating turtle in `localStorage` and name">
+    <CodeStep lines={["31-37"]} title="Updating turtle in `localStorage` and name">
         Upon submitting the form, a new triple with the name is inserted while the old name is removed in
         another triple. The store is then serialized and `localStorage` is updated with the new Turtle string.
     </CodeStep>

@@ -8,20 +8,20 @@ import CodeStep from "../../code/step";
 </Content>
 
 <Code language="tsx" id="RdflibSolidDemo" code={solidDemoCode} className="line-numbers">
-    <CodeStep lines={["10-13"]} title="Store setup">
+    <CodeStep lines={["13-16"]} title="Store setup">
         When working with online resources we want to make use of `Fetcher` and `UpdateManager` to respectively
         load and update the resources.
     </CodeStep>
-    <CodeStep lines={["16", "21", "29", "39"]} title="Error handling">
+    <CodeStep lines={["19", "24", "32", "42"]} title="Error handling">
         There are a couple of scenarios where we can expect errors. The RDF resource might be corrupted, or the request
         caused in some unexpected error, and we should handle those. In our code the errors arise from retrieving and
         updating the data, so if any of these calls throw an error, we catch it and show it to the user.
     </CodeStep>
-    <CodeStep lines={["19-20"]} title="Loading data and setting name">
+    <CodeStep lines={["22-23"]} title="Loading data and setting name">
         Using the fetcher we load the resource, and once it's done fetching we find the name (if set). An
         important side-effect here is that `store` is updated as well with `fetcher.load`.
     </CodeStep>
-    <CodeStep lines={["30-36"]} title="Submitting data and updating name">
+    <CodeStep lines={["33-39"]} title="Submitting data and updating name">
         Upon submitting the form, a new triple with the name is inserted while the old name is removed in
         another triple. The updated store is then posted to the online resource, where rdflib.js will break
         down the updates into a [SPARQL Update](https://www.w3.org/TR/sparql11-update/) query. After
