@@ -10,7 +10,8 @@ declare module "rdf-sparql-builder" {
 }
 
 declare module 'solid-namespace' {
-    export default () => Record<string, (label: string) => string>;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    export default (factory: unknown) => Record<string, (label: string) => string>;
 }
 
 declare module '@tpluscode/sparql-builder' {
