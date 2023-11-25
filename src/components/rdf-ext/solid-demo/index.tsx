@@ -37,5 +37,5 @@ INSERT DATA { <${webId}> <${ns.foaf.name}> "${data.name}" . }`
         setName(data.name);
     };
 
-    return <Demo error={error} name={name || "Not set"} onSubmit={onSubmit}/>
+    return <Demo error={error} name={name || ""} onSubmit={onSubmit}/>
 }
