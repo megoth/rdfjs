@@ -22,8 +22,10 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "types": [
+      "./typings/cypress.d.ts",
       "./typings/shims.d.ts",
-      "./typings/rdf-ext.d.ts"
+      "./typings/rdf-ext.d.ts",
+      "./src"
     ]
   },
   "include": [

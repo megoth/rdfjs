@@ -18,7 +18,7 @@ export default function GuideList({exclude}: Props) {
     return (
         <Columns>
             {guides.map(({href, logo, logoAlt, name}) => (
-                <NavLink key={href} to={href} data-test-id="Guide">
+                <NavLink key={href} to={href} data-test="Guide">
                     <Card>
                         <div className="card-content">
                             <div className={clsx("media", styles.media)}>

@@ -22,7 +22,7 @@ export default function DemoList({list, ...props}: Props) {
                            iconAlt,
                            slogan
                        }) => (
-                <NavLink to={href} key={href} data-test-id="Demo">
+                <NavLink to={href} key={href} data-test="Demo">
                     <Card>
                         <div className={clsx("card-content", styles.cardContent)}>
                             <div className="media">

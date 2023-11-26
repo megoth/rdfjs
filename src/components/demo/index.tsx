@@ -40,7 +40,7 @@ export default function Demo({error, name, noNotify, onSubmit, ...props}: Props)
         || !name && new Error("No name found. We'll set the name for you when you submit.");
 
     return <Box {...props}>
-        <form onSubmit={handleSubmit(onSubmitIntermediate)} data-test-id="DemoForm">
+        <form onSubmit={handleSubmit(onSubmitIntermediate)} data-test="DemoForm">
             {compoundedError && <ErrorMessage error={compoundedError}/>}
             <div className="field">
                 <label className="label">Name</label>
@@ -48,7 +48,7 @@ export default function Demo({error, name, noNotify, onSubmit, ...props}: Props)
                     <input type="text" {...register("name", {required: true})}
                            className={clsx("input", {"is-danger": errors.name})} disabled={isSyncing}/>
                 </div>
-                {errors.name && <p className="help is-danger" data-test-id="DemoFormNameRequired">Name is required</p>}
+                {errors.name && <p className="help is-danger" data-test="DemoFormNameRequired">Name is required</p>}
             </div>
             <div className="control">
                 <button className="button is-primary" disabled={isSyncing}>Submit</button>

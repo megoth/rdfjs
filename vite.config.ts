@@ -22,8 +22,8 @@ const baseConfig = {
 // https://vitejs.dev/config/
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-export default defineConfig(({command}) => {
-    if (command === "serve") { //dev config
+export default defineConfig((config) => {
+    if (config?.command === "serve") { //dev config
         return {
             ...baseConfig,
             optimizeDeps: {
