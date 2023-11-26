@@ -1,5 +1,6 @@
 import {ReactNode} from "react";
-import Rating, {RatingScore} from "../rating";
+import Rating from "../rating";
+import {RatingScore} from "../../constants";
 
 interface Props {
     children: Array<[RatingScore, ReactNode]>;

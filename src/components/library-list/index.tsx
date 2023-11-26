@@ -17,7 +17,7 @@ export default function LibraryList({exclude}: Props) {
         <div className={clsx("menu", styles.libraryList)}>
             <Columns>
                 {libraries.map(({creator, href, icon, iconAlt, name}) => (
-                    <NavLink key={href} to={href}>
+                    <NavLink key={href} to={href} data-test-id="Library">
                         <Card className={clsx("card", styles.card)}>
                             <div className="card-image">
                                 <picture className={clsx("image", styles.image)}>

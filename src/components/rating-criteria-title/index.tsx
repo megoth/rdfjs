@@ -1,5 +1,5 @@
-import {RATING_CRITERIA} from "../../constants";
-import Rating, {RatingScore} from "../rating";
+import {RATING_CRITERIA, RatingScore} from "../../constants";
+import Rating from "../rating";
 import {clsx} from "clsx";
 import styles from "./style.module.css";
 

@@ -1,6 +1,3 @@
-import {RatingScore} from "./components/rating";
-import {ReactNode} from "react";
-
 export interface Guide {
     href: string;
     logo: string;
@@ -402,6 +399,8 @@ export const GUIDES = [
     CRDT_GUIDE,
 ];
 
+export type RatingScore = 1 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 4.5 | 5;
+
 export interface Library {
     creator: string;
     creatorUrl: string;
@@ -518,7 +517,7 @@ export interface Demo {
     icon?: string;
     iconAlt?: string;
     library: Library;
-    slogan: ReactNode;
+    slogan: string;
     subtitle?: string;
     text: string;
     title: string;
@@ -529,7 +528,7 @@ export const LOCAL_DEMOS: Array<Demo> = [
         title: "rdflib.js",
         href: "/rdflib#local",
         library: LIBRARY_RDFLIB,
-        slogan: <>The <abbr title="Original">OG</abbr> JavaScript library to manage RDF data</>,
+        slogan: "The <abbr title=\"Original\">OG</abbr> JavaScript library to manage RDF data",
         text: "rdflib.js"
     },
     {

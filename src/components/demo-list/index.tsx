@@ -4,14 +4,15 @@ import {clsx} from "clsx";
 import {NavLink} from "react-router-dom";
 import Card from "../card";
 import Columns from "../columns";
+import {HTMLAttributes} from "react";
 
-interface Props {
+interface Props extends HTMLAttributes<HTMLDivElement> {
     list: Array<Demo>
 }
 
-export default function DemoList({list}: Props) {
+export default function DemoList({list, ...props}: Props) {
     return (
-        <Columns>
+        <Columns {...props}>
             {list.map(({
                            title,
                            subtitle,
@@ -21,7 +22,7 @@ export default function DemoList({list}: Props) {
                            iconAlt,
                            slogan
                        }) => (
-                <NavLink to={href} key={href}>
+                <NavLink to={href} key={href} data-test-id="Demo">
                     <Card>
                         <div className={clsx("card-content", styles.cardContent)}>
                             <div className="media">
@@ -35,7 +36,7 @@ export default function DemoList({list}: Props) {
                                     {subtitle && <p className="subtitle is-6">{subtitle}</p>}
                                 </div>
                             </div>
-                            <div className="content">{slogan}</div>
+                            <div className="content" dangerouslySetInnerHTML={{__html: slogan}}/>
                         </div>
                         <div className="card-footer">
                             <div className={clsx("card-footer-item button is-info", styles.link)}>

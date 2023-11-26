@@ -21,7 +21,8 @@ export default function Notification({index, notification}: Props) {
 
     return (
         <div className={clsx("notification is-success is-light", {"is-hidden": hidden})}
-             key={`notification-${index}`}>
+             key={`notification-${index}`}
+             data-test-id="Notification">
             {notification.message}
         </div>
     )

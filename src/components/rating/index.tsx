@@ -2,8 +2,7 @@ import {BsFillHeartFill} from "react-icons/bs";
 import styles from "./style.module.css";
 import {Fragment, HTMLAttributes} from "react";
 import {clsx} from "clsx";
-
-export type RatingScore = 1 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 4.5 | 5;
+import {RatingScore} from "../../constants";
 
 interface Props extends HTMLAttributes<HTMLSpanElement> {
     rating?: RatingScore;
