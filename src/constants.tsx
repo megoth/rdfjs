@@ -553,6 +553,13 @@ export const LOCAL_DEMOS: Array<Demo> = [
         slogan: "A JavaScript-based Object Document Mapper that also works with RDF",
         text: "Soukai"
     },
+    {
+        title: "RDF-Ext",
+        href: "/rdf-ext#local",
+        library: LIBRARY_RDF_EXT,
+        slogan: "A JavaScript RDF SDK that allows us to parse and serialize locally",
+        text: "RDF-Ext"
+    },
 ];
 
 export const P2P_DEMOS: Array<Demo> = [{
@@ -691,6 +698,13 @@ export const SOLID_DEMOS: Array<Demo> = [
         library: LIBRARY_SOUKAI,
         slogan: "The creator of Soukai has also created a Solid engine that allows you to use Soukai with Solid",
         text: "Soukai Solid"
+    },
+    {
+        title: "RDF-Ext",
+        href: "/rdf-ext#solid",
+        library: LIBRARY_RDF_EXT,
+        slogan: "RDF-Ext also offers functionality to connect to online resources",
+        text: "RDF-Ext"
     },
     {
         title: "Comunica",
