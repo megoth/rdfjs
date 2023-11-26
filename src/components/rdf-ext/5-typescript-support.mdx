@@ -1,0 +1,18 @@
+import Content from "../content";
+import rdfExtTypesShim from "../../../typings/rdf-ext.d.ts?raw";
+import Code from "../code";
+
+<Content id="typescript-support">
+    <h2>TypeScript support</h2>
+
+    There is no out-of-the-box support for RDF-Ext. There's the community-managed
+    [@types/rdf-ext](https://www.npmjs.com/package/@types/rdf-ext), but it probably won't be as updated as the main
+    packages themselves.
+
+    In the following code I've displayed the shims I've created to make my code work while I've been experimenting with
+    the demos. It's far from complete, but should give you an idea of what to do if you want to work with RDF-Ext using
+    TypeScript yourself. Note that I've reused types from [@rdfjs/types](https://github.com/rdfjs/types) in this shim,
+    which is technically not correct, as RDF-Ext *extends* the RDF/JS data models, but it works for the demos.
+</Content>
+
+<Code language="typescript" code={rdfExtTypesShim}/>
