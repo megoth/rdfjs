@@ -11,26 +11,26 @@ import CodeStep from "../../code/step";
 </Content>
 
 <Code language="tsx" id="InruptSolidDemo" code={solidDemoCode} className="line-numbers">
-    <CodeStep lines={["14-15"]} title="Setting up dataset and session">
+    <CodeStep lines={["13-14"]} title="Setting up dataset and session">
         Like with the local demo we set up the `SolidDataset`, but this time we make use of `useSolidAuth` to
         retrieve data about the WebID.
     </CodeStep>
-    <CodeStep lines={["16-18"]} title="Getting profile and name">
+    <CodeStep lines={["15-17"]} title="Getting profile and name">
         This part is also similar to the local part, but since there are some more moving parts with the actual
         fetching of online resources we need to put in some more safeguards.
     </CodeStep>
-    <CodeStep lines={["19", "25", "33", "38", "42"]} title="Error handling">
+    <CodeStep lines={["18", "24", "32", "37", "41"]} title="Error handling">
         There are a couple of things that can go wrong when we interact with a RDF resource in a Solid Pod. First,
         something can go wrong when fetching and parsing the turtle text. Second, something can go wrong when we try
         to update the online resource. If there's any error we pass it on the `Demo` component.
     </CodeStep>
-    <CodeStep lines={["22-24"]} title="Fetching resource and parsing dataset">
+    <CodeStep lines={["21-23"]} title="Fetching resource and parsing dataset">
         Using `getSolidDataset` we have an easy, asynchronous function to get the dataset.
     </CodeStep>
-    <CodeStep lines={["28-30"]} title="Loading state">
+    <CodeStep lines={["27-29"]} title="Loading state">
         Again, similar approach like the local demo.
     </CodeStep>
-    <CodeStep lines={["34-39"]} title="Updating online resources upon submit">
+    <CodeStep lines={["33-37"]} title="Updating online resources upon submit">
         Once we submit a name we make sure to update the profile with the updated name, then update the dataset
         with the updated profile, and making a request using `saveSolidDatasetAt` to save the changes to the
         online resource. We then update our local copy of the dataset to make sure all is updated.

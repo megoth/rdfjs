@@ -10,13 +10,15 @@ export default function useSolidDataset(url: string | undefined, onError: (error
 
     useEffect(() => {
         if (!url) return;
-        getSolidDataset(url, {fetch}).then(setDataset)
+        getSolidDataset(url, {fetch})
+            .then(setDataset)
             .catch(onError)
     }, [fetch, onError, url]);
 
     const saveDataset: SaveFunction = async (updatedDataset) => {
         if (!url) return;
-        return saveSolidDatasetAt(url, updatedDataset, {fetch}).then(setDataset)
+        return saveSolidDatasetAt(url, updatedDataset, {fetch})
+            .then(setDataset)
             .catch(onError);
     };
 

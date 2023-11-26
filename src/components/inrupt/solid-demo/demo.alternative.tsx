@@ -5,7 +5,6 @@ import Demo, {FormData} from "../../demo";
 import Loading from "../../loading";
 import useSolidDataset from "./useSolidDataset.ts";
 import {useState} from "react";
-import {PROFILE_URI} from "../../../constants";
 import {literal} from "@rdfjs/data-model";
 
 export default function InruptSolidAlternativeDemo() {
@@ -13,7 +12,7 @@ export default function InruptSolidAlternativeDemo() {
     const {session: {webId}} = useSolidAuth();
     const [profileDataset, saveProfileDataset] = useSolidDataset(webId, setError);
     const profile = (profileDataset && webId && getThing(profileDataset, webId))
-        || createThing({url: webId || PROFILE_URI});
+        || webId && createThing({url: webId});
     const name = profile && getLiteral(profile, FOAF.name)?.value;
 
     if (!profileDataset && !error) {
@@ -21,7 +20,7 @@ export default function InruptSolidAlternativeDemo() {
     }
 
     const onSubmit = async (data: FormData) => {
-        if (!profileDataset) return;
+        if (!profile || !profileDataset) return;
         const updatedProfile = setLiteral(profile, FOAF.name, literal(data.name));
         const updatedDataset = setThing(profileDataset, updatedProfile);
         await saveProfileDataset(updatedDataset);
