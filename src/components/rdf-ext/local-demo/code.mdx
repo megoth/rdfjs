@@ -19,7 +19,7 @@ import CodeStep from "../../code/step";
 <Code language="tsx" id="RdfExtLocalDemo" code={localDemoCode} className="line-numbers">
     <CodeStep lines={["11-12"]} title="Prepare turtle and state object">
         I want to store any changes to the RDF graph as turtle in `localStorage`. The `useLocalStorage` hook helps me
-        with this. Also, I want to traverse the RDF graph using the [Grapoi API](https://rdf-ext.org/api/grapoi.html),
+        with this. Also, I want to traverse the RDF graph using the [grapoi API](https://rdf-ext.org/api/grapoi.html),
         a RDF-Ext module, so I keep track of it as well.
     </CodeStep>
     <CodeStep lines={["13"]} title="Derive name">
@@ -31,7 +31,7 @@ import CodeStep from "../../code/step";
     </CodeStep>
     <CodeStep lines={["17-20"]} title="Parsing turtle">
         By using `rdf.io.dataset.fromText` I can parse the turtle string into a RDF graph that can be used to initiate
-        the Grapoi object.
+        the grapoi object.
     </CodeStep>
     <CodeStep lines={["23-25"]} title="Loading state">
         It can take some time to parse the turtle string, so while we wait I show the `Loading` component.

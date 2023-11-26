@@ -23,7 +23,7 @@ declare module 'rdf-ext' {
         export module dataset {
             export function fromText(...args: Array<unknown>): Promise<unknown>
 
-            export function fromURL(url: string, options?: unknown): Promise<grapoi>
+            export function fromURL(url: string, options?: unknown): Promise<Grapoi>
 
             export function toText(format: string, dataset: unknown): Promise<string>
 

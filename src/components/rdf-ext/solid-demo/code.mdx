@@ -8,10 +8,10 @@ import CodeStep from "../../code/step";
 </Content>
 
 <Content>
-    Ideally I would track the Grapoi object like I did in the local demo, but I'm opting out of `rdf.io.dataset.toURL`
+    Ideally I would track the grapoi object like I did in the local demo, but I'm opting out of `rdf.io.dataset.toURL`
     since it uses a `PUT` request to store the local RDF graph. I'm more comfortable using a `PATCH` request (together
     with a [SPARQL Update](https://www.w3.org/TR/sparql11-update/) query), so for this demo I'm constructing one
-    manually. For this reason I only need to track the changes to the name, and only use the Grapoi API to fetch the
+    manually. For this reason I only need to track the changes to the name, and only use the grapoi API to fetch the
     initial name.
 </Content>
 
@@ -24,7 +24,7 @@ import CodeStep from "../../code/step";
         I make sure to pass any error that occur to the `Demo` component.
     </CodeStep>
     <CodeStep lines={["16-20"]} title="Fetching and parsing RDF graph from WebID resource">
-        Using `rdf.io.dataset.fromURL` we get the dataset, which I then use to initiate a Grapoi object, which I then
+        Using `rdf.io.dataset.fromURL` we get the dataset, which I then use to initiate a grapoi object, which I then
         use to get the name.
 
         <div className="message is-info is-small">
