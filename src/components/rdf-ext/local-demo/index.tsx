@@ -1,7 +1,7 @@
 import {useEffect, useMemo, useState} from "react";
 import Demo, {FormData} from "../../demo";
 import Loading from "../../loading";
-import {PROFILE_TURTLE, PROFILE_URI, STORAGE_KEYS} from "../../../constants.tsx";
+import {PROFILE_TURTLE, PROFILE_URI, STORAGE_KEYS} from "../../../constants";
 import rdf from 'rdf-ext'
 import useLocalStorage from "use-local-storage";
 

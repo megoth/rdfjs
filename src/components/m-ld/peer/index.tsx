@@ -6,7 +6,7 @@ import {MemoryLevel} from "memory-level";
 import Loading from "../../loading";
 import {useParams} from "react-router-dom";
 import styles from "./styles.module.css";
-import {Unpromise} from "../../../constants.tsx";
+import {Unpromise} from "../../../constants";
 import ErrorMessage from "../../error-message";
 import Content from "../../content";
 import {extractError} from "../../../libs/error.ts";
