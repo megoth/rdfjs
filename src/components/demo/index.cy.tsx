@@ -3,12 +3,17 @@ import {NotificationContextProvider} from "../../hooks/use-notification/provider
 
 describe('demo', () => {
     let spy: () => void;
+    const nameString = "Frodo";
 
     beforeEach(() => {
         spy = cy.spy();
         cy.mount(<NotificationContextProvider>
-            <Demo name="Test" onSubmit={spy}/>
+            <Demo name={nameString} onSubmit={spy}/>
         </NotificationContextProvider>)
+    })
+
+    it("should set input value", () => {
+        cy.get('[name="name"]').should('have.value', nameString)
     })
 
     describe('submit invalid form - empty name field', () => {
@@ -31,19 +36,19 @@ describe('demo', () => {
     })
 
     describe('submit valid form', () => {
-        const nameString = "Gandalf"
+        const updatedNameString = "Gandalf"
 
         beforeEach(() => {
-            cy.get('[data-test="DemoForm"] [name="name"]').clear().type(nameString)
+            cy.get('[data-test="DemoForm"] [name="name"]').clear().type(updatedNameString)
             cy.get('[data-test="DemoForm"]').submit()
         })
 
         it('provides the form data', () => {
-            expect(spy).to.be.calledWith({name: nameString})
+            expect(spy).to.be.calledWith({name: updatedNameString})
         })
 
         it('displays the updated name in a notification', () => {
-            cy.get('[data-test="Notification').should('have.text', `Name updated: ${nameString}`)
+            cy.get('[data-test="Notification').should('have.text', `Name updated: ${updatedNameString}`)
         })
     })
 })

@@ -37,5 +37,5 @@ export default function RdflibLocalDemo() {
         }));
     };
 
-    return <Demo error={error} name={name} onSubmit={onSubmit}/>
+    return <Demo id="LocalDemo" error={error} name={name} onSubmit={onSubmit}/>
 }

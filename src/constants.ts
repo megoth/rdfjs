@@ -573,15 +573,16 @@ export const P2P_DEMOS: Array<Demo> = [{
 
 
 export const PROFILE_URI = "https://megothcapgemini.solidcommunity.net/profile/card#me";
+export const PROFILE_NAME = "Test";
 
 export const PROFILE_JSON = {
     "@id": PROFILE_URI,
-    name: "Soukai Test"
+    name: PROFILE_NAME
 };
 
 export const PROFILE_TURTLE = `@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
-<${PROFILE_URI}> foaf:name "Test".`;
+<${PROFILE_URI}> foaf:name "${PROFILE_NAME}".`;
 
 interface Provider {
     label: string;
