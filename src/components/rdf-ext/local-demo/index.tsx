@@ -7,7 +7,7 @@ import useLocalStorage from "use-local-storage";
 
 const ns = {foaf: rdf.namespace("http://xmlns.com/foaf/0.1/")};
 
-export default function GrapoiLocalDemo() {
+export default function RDFExtLocalDemo() {
     const [turtle, setTurtle] = useLocalStorage(STORAGE_KEYS.PROFILE_GRAPOI, PROFILE_TURTLE);
     const [profile, setProfile] = useState<rdf.Grapoi | null>(null);
     const name = useMemo(() => profile && profile.out(ns.foaf.name).value, [profile])

@@ -6,7 +6,7 @@ import rdf from 'rdf-ext'
 
 const ns = {foaf: rdf.namespace("http://xmlns.com/foaf/0.1/")};
 
-export default function GrapoiSolidDemo() {
+export default function RDFExtSolidDemo() {
     const {session: {webId}, fetch} = useSolidAuth();
     const [name, setName] = useState<string | null>(null);
     const [error, setError] = useState<Error | null>(null);
