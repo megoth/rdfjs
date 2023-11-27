@@ -1,0 +1,44 @@
+import Content from "../../content";
+import Code from "../../code";
+import localDemoCode from "./index.tsx?raw";
+import {PROFILE_TURTLE} from "../../../constants";
+import {NavLink} from "react-router-dom";
+import CodeStep from "../../code/step";
+
+<Content>
+    This demo saves the underlying turtle in `localStorage`. It no turtle is found, a default one is used:
+</Content>
+
+<Code language="turtle" id="DefaultTurtle" code={PROFILE_TURTLE} noCopy={true}/>
+
+<Content>
+    (If the above code doesn't make sense for you, you might want to consider reading the <NavLink to={"/rdf"}>guide on
+    RDF</NavLink>.)
+</Content>
+
+<Code language="tsx" id="RdfExtLocalDemo" code={localDemoCode} className="line-numbers">
+    <CodeStep lines={["11-12"]} title="Prepare turtle and state object">
+        I want to store any changes to the RDF graph as turtle in `localStorage`. The `useLocalStorage` hook helps me
+        with this. Also, I want to traverse the RDF graph using the [grapoi API](https://rdf-ext.org/api/grapoi.html),
+        a RDF-Ext module, so I keep track of it as well.
+    </CodeStep>
+    <CodeStep lines={["13"]} title="Derive name">
+        By using the `Grapoi.out` function I get to the object of `foaf:name`; The object is a literal, and I get the
+        value by calling `[object].value`.
+    </CodeStep>
+    <CodeStep lines={["14", "20", "33", "36"]} title="Error handling">
+        I keep track of any errors that might occur and pass them to the `Demo` component.
+    </CodeStep>
+    <CodeStep lines={["17-20"]} title="Parsing turtle">
+        By using `rdf.io.dataset.fromText` I can parse the turtle string into a RDF graph that can be used to initiate
+        the grapoi object.
+    </CodeStep>
+    <CodeStep lines={["23-25"]} title="Loading state">
+        It can take some time to parse the turtle string, so while we wait I show the `Loading` component.
+    </CodeStep>
+    <CodeStep lines={["29-32"]} title={<>Update RDF graph and <code>localStorage</code></>}>
+        When the user submits the form I use `Grapoi.deleteOut` and `Grapoi.addOut` to replace the name in the
+        underlying RDF graph. I then serialize the graph using `rdf.io.dataset.toText` and storing the resulting string
+        in `localStorage`.
+    </CodeStep>
+</Code>

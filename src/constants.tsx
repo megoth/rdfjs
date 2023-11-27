@@ -410,8 +410,6 @@ export interface Library {
     iconAlt: string;
     iconPreferredHeight: number;
     name: string;
-    published: boolean;
-    recommendation: string;
     review?: Array<RatingScore>;
     text: string;
     websiteName: string;
@@ -426,8 +424,6 @@ export const LIBRARY_COMUNICA: Library = {
     iconAlt: "Logo for Comunica",
     iconPreferredHeight: 240,
     name: "Comunica",
-    published: true,
-    recommendation: "Large systems based on SPARQL",
     text: "Comunica",
     websiteName: "Official website",
     websiteUrl: "https://comunica.dev/"
@@ -440,8 +436,6 @@ export const LIBRARY_LDO: Library = {
     iconAlt: "Logo for O.team",
     iconPreferredHeight: 192,
     name: "Linked Data Objects",
-    published: true,
-    recommendation: "Experimental apps",
     review: [4, 3, 3, 2, 3.5],
     text: "LDO",
     websiteName: "GitHub repo",
@@ -455,8 +449,6 @@ export const LIBRARY_INRUPT: Library = {
     iconAlt: "Logo for Inrupt",
     iconPreferredHeight: 192,
     name: "Inrupt's JavaScript client libraries",
-    published: true,
-    recommendation: "Systems that need to be production-ready soon",
     review: [3, 4, 3, 3, 3],
     text: "Inrupt",
     websiteName: "Official documentation",
@@ -470,11 +462,21 @@ export const LIBRARY_M_LD: Library = {
     iconAlt: "Logo for m-ld",
     iconPreferredHeight: 192,
     name: "m-ld",
-    published: true,
-    recommendation: "None yet",
     text: "m-ld",
     websiteName: "Official website",
     websiteUrl: "https://m-ld.org/"
+};
+export const LIBRARY_RDF_EXT: Library = {
+    creator: "Thomas Bergwinkl",
+    creatorUrl: "https://github.com/bergos/",
+    href: "/rdf-ext",
+    icon: "/rdf-ext.png",
+    iconAlt: "Logo for RDF-Ext",
+    iconPreferredHeight: 200,
+    name: "RDF-Ext",
+    text: "RDF-Ext",
+    websiteName: "Official website",
+    websiteUrl: "https://rdf-ext.org/"
 };
 export const LIBRARY_RDFLIB: Library = {
     creator: "rdflib.js team",
@@ -484,8 +486,6 @@ export const LIBRARY_RDFLIB: Library = {
     iconAlt: "Logo for Read-Write Linked Data",
     iconPreferredHeight: 192,
     name: "rdflib.js",
-    published: true,
-    recommendation: "Low-level data management",
     review: [2, 2, 3, 4, 2.5],
     text: "rdflib.js",
     websiteName: "GitHub repo",
@@ -499,8 +499,6 @@ export const LIBRARY_SOUKAI: Library = {
     iconAlt: "Logo for Soukai",
     iconPreferredHeight: 192,
     name: "Soukai",
-    published: true,
-    recommendation: "Experimental apps",
     text: "Soukai",
     websiteName: "Official website",
     websiteUrl: "https://soukai.js.org/"
@@ -511,8 +509,9 @@ export const LIBRARIES: Array<Library> = [
     LIBRARY_INRUPT,
     LIBRARY_SOUKAI,
     LIBRARY_COMUNICA,
+    LIBRARY_RDF_EXT,
     LIBRARY_M_LD,
-].filter(({published}) => published);
+];
 
 export interface Demo {
     href: string;
@@ -553,6 +552,13 @@ export const LOCAL_DEMOS: Array<Demo> = [
         library: LIBRARY_SOUKAI,
         slogan: "A JavaScript-based Object Document Mapper that also works with RDF",
         text: "Soukai"
+    },
+    {
+        title: "RDF-Ext",
+        href: "/rdf-ext#local",
+        library: LIBRARY_RDF_EXT,
+        slogan: "A JavaScript RDF SDK that allows us to parse and serialize locally",
+        text: "RDF-Ext"
     },
 ];
 
@@ -694,6 +700,13 @@ export const SOLID_DEMOS: Array<Demo> = [
         text: "Soukai Solid"
     },
     {
+        title: "RDF-Ext",
+        href: "/rdf-ext#solid",
+        library: LIBRARY_RDF_EXT,
+        slogan: "RDF-Ext also offers functionality to connect to online resources",
+        text: "RDF-Ext"
+    },
+    {
         title: "Comunica",
         href: "/comunica#solid",
         library: LIBRARY_COMUNICA,
@@ -710,6 +723,7 @@ export const SOLID_DEMOS: Array<Demo> = [
 ];
 
 export const STORAGE_KEYS = {
+    "PROFILE_GRAPOI": "profileGrapoi",
     "PROFILE_INRUPT": "profileInrupt",
     "PROFILE_LDO": "profileLdo",
     "PROFILE_RDFLIB": "profileRdflib",

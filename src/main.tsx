@@ -25,6 +25,7 @@ import {NotificationContextProvider} from "./hooks/use-notification/provider.tsx
 import MLd from "./components/m-ld";
 import MLdPeer from "./components/m-ld/peer";
 import CRDTGuide from "./components/crdt-guide";
+import RdfExt from "./components/rdf-ext";
 
 const router = createBrowserRouter([
     {
@@ -62,6 +63,10 @@ const router = createBrowserRouter([
             {
                 path: "/m-ld",
                 element: <MLd/>,
+            },
+            {
+                path: "/rdf-ext",
+                element: <RdfExt/>,
             },
             {
                 path: "/rdflib",
