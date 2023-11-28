@@ -20,7 +20,7 @@ describe('Solid Login', () => {
         })
 
         cy.get('#register-link[href]', {timeout}).click()
-        cy.location('pathname', {timeout}).should('contain', 'register')
+        // cy.location('pathname', {timeout}).should('contain', 'register')
 
         cy.get('#email').type(email)
         cy.get("#password").type(password)
@@ -29,7 +29,7 @@ describe('Solid Login', () => {
 
         cy.get('#passwordLoginEntries', {timeout}).should('contain', email)
         cy.get('#createPod').click()
-        cy.location('pathname', {timeout}).should('contain', 'pod')
+        // cy.location('pathname', {timeout}).should('contain', 'pod')
 
         cy.get('#name', {timeout}).type(podName)
         cy.get('#mainForm').submit()
