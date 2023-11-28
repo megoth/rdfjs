@@ -20,7 +20,7 @@ describe('Solid Login', () => {
         })
 
         cy.get('#register-link[href]', {timeout}).click()
-        cy.location('pathname').should('contain', 'register')
+        cy.location('pathname', {timeout}).should('contain', 'register')
 
         cy.get('#email').type(email)
         cy.get("#password").type(password)
