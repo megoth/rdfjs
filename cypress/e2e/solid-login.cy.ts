@@ -8,20 +8,14 @@ describe('Solid Login', () => {
     before(() => Cypress.on('uncaught:exception', () => false))
     after(() => Cypress.on('uncaught:exception', () => true))
 
-    beforeEach(() => {
+    beforeEach('Creating Solid account', () => {
         email = `${uuid().substring(0, 13)}@test.com`
         password = uuid().substring(0, 13)
         podName = uuid().substring(0, 13)
 
-        cy.visit('/', {timeout})
-        cy.window().then(($win) => {
-            cy.stub($win, "prompt").returns(e2eServer)
-            cy.get('[data-test="CustomSolidProviderButton"]').click()
-        })
-
-        cy.get('#register-link[href]', {timeout}).click()
-        cy.wait(1000)
-        // cy.location('pathname', {timeout}).should('contain', 'register')
+        cy.visit(e2eServer, {timeout})
+        cy.get('#registration-link[href]', {timeout}).click()
+        cy.location('pathname', {timeout}).should('contain', 'register')
 
         cy.get('#email').type(email)
         cy.get("#password").type(password)
@@ -30,8 +24,7 @@ describe('Solid Login', () => {
 
         cy.get('#passwordLoginEntries', {timeout}).should('contain', email)
         cy.get('#createPod').click()
-        cy.wait(1000)
-        // cy.location('pathname', {timeout}).should('contain', 'pod')
+        cy.location('pathname', {timeout}).should('contain', 'pod')
 
         cy.get('#name', {timeout}).type(podName)
         cy.get('#mainForm').submit()
