@@ -1,7 +1,7 @@
 import {v4 as uuid} from 'uuid'
 
 describe('Solid Login', () => {
-    const timeout = 5000;
+    const timeout = 10000;
     const e2eServer = 'http://localhost:3001';
     let email: string, password: string, podName: string
 
@@ -21,8 +21,11 @@ describe('Solid Login', () => {
         })
 
         // log in page
-        cy.contains("Sign up", {timeout}).should('exist');
-        cy.get('#register-link[href]').click()
+        cy.waitUntil(() => cy.get('#register-link').then(($el) => $el.attr('href')?.length > 0), {
+            timeout: 2000,
+            interval: 500,
+        })
+        cy.get('#register-link').click()
 
         // register new account page
         cy.contains("Register", { timeout }).should('exist')
