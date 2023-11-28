@@ -35,7 +35,8 @@ export default function Login({className, login, redirectId, ...props}: Props) {
             <button type="button"
                     {...props}
                     className={clsx("button", className || "is-info")}
-                    onClick={onCustomProviderClick}>
+                    onClick={onCustomProviderClick}
+                    data-test="CustomSolidProviderButton">
                 Custom Solid Provider
             </button>
         </div>

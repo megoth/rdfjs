@@ -1,6 +1,7 @@
 import {ReactNode, useCallback, useState} from "react";
 import NotificationContext, {NotificationModel} from "./context.tsx";
 import NotificationList from "../../components/notification-list";
+import {v4 as uuid} from "uuid";
 
 interface Props {
     children: ReactNode;
@@ -21,7 +22,7 @@ export function NotificationContextProvider({children}: Props) {
     };
 
     const notify = useCallback((message: ReactNode) => setNotifications([...notifications, {
-        id: window.crypto.randomUUID(),
+        id: uuid(),
         message,
         hidden: false
     }]), [notifications]);

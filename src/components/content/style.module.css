@@ -9,7 +9,8 @@
         margin-bottom: 0.75rem;
     }
 
-    :global(ul ul) {
+    :global(> ul ul),
+    :global(> blockquote > ul ul) {
         margin-top: 0;
     }
 

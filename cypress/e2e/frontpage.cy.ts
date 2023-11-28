@@ -1,6 +1,6 @@
 import {GUIDES, LIBRARIES, LOCAL_DEMOS, P2P_DEMOS, SOLID_DEMOS} from "../../src/constants";
 
-describe('frontpage', () => {
+describe('Frontpage', () => {
     beforeEach(() => {
         cy.visit('/')
     })

@@ -8,6 +8,7 @@ import styles from "./style.module.css";
 import {BsFillClipboardCheckFill, BsFillClipboardPlusFill} from "react-icons/bs";
 import {MdOutlineClear} from "react-icons/md";
 import {IoExitOutline} from "react-icons/io5";
+import {v4 as uuid} from "uuid";
 
 interface CodeProps extends HTMLAttributes<HTMLPreElement> {
     buttons?: ReactNode;
@@ -33,7 +34,7 @@ export default function Code({buttons, children, className, code, noCopy, langua
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [_value, copy] = useCopyToClipboard();
     const {notify} = useNotification();
-    const id = useMemo(() => props.id || crypto.randomUUID(), [props.id]);
+    const id = useMemo(() => props.id || uuid(), [props.id]);
 
     useEffect(() => {
         setDataLine([]);
