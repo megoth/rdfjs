@@ -1,7 +1,7 @@
 import {v4 as uuid} from 'uuid'
 
 describe('Solid Login', () => {
-    const timeout = 60000;
+    const timeout = 5000;
     const e2eServer = 'http://localhost:3001';
     let email: string, password: string, podName: string
 
@@ -21,11 +21,11 @@ describe('Solid Login', () => {
         })
 
         // log in page
-        cy.get('#register-link[href]', {timeout}).should('exist')
+        cy.contains("Sign up", {timeout}).should('exist');
         cy.get('#register-link[href]').click()
 
         // register new account page
-        cy.get('#confirmPassword', {timeout}).should('exist')
+        cy.contains("Register", { timeout }).should('exist')
         cy.get('#email').type(email)
         cy.get("#password").type(password)
         cy.get('#confirmPassword').type(`${password}{enter}`)
@@ -39,12 +39,15 @@ describe('Solid Login', () => {
         cy.get('#name', {timeout}).type(`${podName}{enter}`)
 
         // user account page
-        cy.get('#response-account-link', {timeout}).should('exist')
-        cy.get('#response-account-link').click();
+        cy.contains('Your new Pod', {timeout}).should('exist')
+        cy.get('#response-account-link', {timeout}).click();
         cy.get('#logout').click()
 
         // back to frontpage
         cy.get('#register-link', {timeout}).should('exist')
+        cy.window().then(($win) => {
+            $win.localStorage.clear()
+        })
         cy.visit('/', {timeout})
     });
 
