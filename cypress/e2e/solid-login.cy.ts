@@ -22,6 +22,7 @@ describe('Solid Login', () => {
 
         // log in page
         cy.waitUntil(() => cy.get('#register-link').then(($el) => $el.attr('href')?.length > 0), {
+            errorMsg: "Unable to find Register link",
             timeout: 2000,
             interval: 500,
         })
