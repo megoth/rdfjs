@@ -21,37 +21,34 @@ describe('Solid Login', () => {
         })
 
         // log in page
-        cy.waitUntil(() => cy.get('#register-link').then(($el) => $el.attr('href')?.length > 0), {
-            errorMsg: "Unable to find Register link",
-            timeout: 2000,
-            interval: 500,
-        })
-        cy.get('#register-link').click()
+        cy.origin(e2eServer, {args: {timeout, email, password, podName}}, ({timeout, email, password, podName}) => {
+            cy.get('#register-link', {timeout}).click()
 
-        // register new account page
-        cy.contains("Register", { timeout }).should('exist')
-        cy.get('#email').type(email)
-        cy.get("#password").type(password)
-        cy.get('#confirmPassword').type(`${password}{enter}`)
+            // register new account page
+            cy.contains("Register", {timeout}).should('exist')
+            cy.get('#email').type(email)
+            cy.get("#password").type(password)
+            cy.get('#confirmPassword').type(`${password}{enter}`)
 
-        // user account overview
-        cy.get('#passwordLoginEntries', {timeout}).should('contain', email)
-        cy.get('#createPod').click()
+            // user account overview
+            cy.get('#passwordLoginEntries', {timeout}).should('contain', email)
+            cy.get('#createPod').click()
 
-        // create pod page
-        cy.contains("Choose a name for your pod", {timeout}).should('exist')
-        cy.get('#name', {timeout}).type(`${podName}{enter}`)
+            // create pod page
+            cy.contains("Choose a name for your pod", {timeout}).should('exist')
+            cy.get('#name', {timeout}).type(`${podName}{enter}`)
 
-        // user account page
-        cy.contains('Your new Pod', {timeout}).should('exist')
-        cy.get('#response-account-link', {timeout}).click();
-        cy.get('#logout').click()
+            // user account page
+            cy.contains('Your new Pod', {timeout}).should('exist')
+            cy.get('#response-account-link', {timeout}).click();
+            cy.get('#logout').click()
 
-        // back to frontpage
-        cy.get('#register-link', {timeout}).should('exist')
-        cy.window().then(($win) => {
-            $win.localStorage.clear()
-        })
+            // back to frontpage
+            cy.get('#register-link', {timeout}).should('exist')
+            cy.window().then(($win) => {
+                $win.localStorage.clear()
+            })
+        });
         cy.visit('/', {timeout})
     });
 
@@ -61,12 +58,14 @@ describe('Solid Login', () => {
             cy.get('[data-test="CustomSolidProviderButton"]').click()
         })
 
-        // log in page
-        cy.get('#email', {timeout}).type(email)
-        cy.get("#password").type(`${password}{enter}`)
+        cy.origin(e2eServer, {args: {timeout, email, password}}, ({timeout, email, password}) => {
+            // log in page
+            cy.get('#email', {timeout}).type(email)
+            cy.get("#password").type(`${password}{enter}`)
 
-        // authorize app page
-        cy.get('#authorize', {timeout}).click()
+            // authorize app page
+            cy.get('#authorize', {timeout}).click()
+        })
 
         // back to frontpage
         cy.get('#SolidWarning.is-success', {timeout}).should('exist')
