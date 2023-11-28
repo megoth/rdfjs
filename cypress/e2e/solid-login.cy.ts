@@ -13,32 +13,55 @@ describe('Solid Login', () => {
         password = uuid().substring(0, 13)
         podName = uuid().substring(0, 13)
 
-        cy.visit(e2eServer, {timeout})
-        cy.get('#registration-link[href]', {timeout}).click()
-        cy.location('pathname', {timeout}).should('contain', 'register')
-
-        cy.get('#email').type(email)
-        cy.get("#password").type(password)
-        cy.get('#confirmPassword').type(password)
-        cy.get('#mainForm').submit()
-
-        cy.get('#passwordLoginEntries', {timeout}).should('contain', email)
-        cy.get('#createPod').click()
-        cy.location('pathname', {timeout}).should('contain', 'pod')
-
-        cy.get('#name', {timeout}).type(podName)
-        cy.get('#mainForm').submit()
-    });
-
-    it('allows you to authenticate with a Solid account', () => {
+        // visit frontpage
         cy.visit('/', {timeout})
         cy.window().then(($win) => {
             cy.stub($win, "prompt").returns(e2eServer)
             cy.get('[data-test="CustomSolidProviderButton"]').click()
         })
 
-        cy.get('#webIdList', {timeout}).should('contain', '/profile/card#me')
+        // log in page
+        cy.get('#register-link[href]', {timeout}).should('exist')
+        cy.get('#register-link[href]').click()
+
+        // register new account page
+        cy.get('#confirmPassword', {timeout}).should('exist')
+        cy.get('#email').type(email)
+        cy.get("#password").type(password)
+        cy.get('#confirmPassword').type(`${password}{enter}`)
+
+        // user account overview
+        cy.get('#passwordLoginEntries', {timeout}).should('contain', email)
+        cy.get('#createPod').click()
+
+        // create pod page
+        cy.contains("Choose a name for your pod", {timeout}).should('exist')
+        cy.get('#name', {timeout}).type(`${podName}{enter}`)
+
+        // user account page
+        cy.get('#response-account-link', {timeout}).should('exist')
+        cy.get('#response-account-link').click();
+        cy.get('#logout').click()
+
+        // back to frontpage
+        cy.get('#register-link', {timeout}).should('exist')
+        cy.visit('/', {timeout})
+    });
+
+    it('allows you to authenticate with a Solid account', () => {
+        cy.window().then(($win) => {
+            cy.stub($win, "prompt").returns(e2eServer)
+            cy.get('[data-test="CustomSolidProviderButton"]').click()
+        })
+
+        // log in page
+        cy.get('#email', {timeout}).type(email)
+        cy.get("#password").type(`${password}{enter}`)
+
+        // authorize app page
         cy.get('#authorize', {timeout}).click()
+
+        // back to frontpage
         cy.get('#SolidWarning.is-success', {timeout}).should('exist')
         cy.get('#SolidWarning.is-success', {timeout}).should('contain', 'Stranger')
     })
