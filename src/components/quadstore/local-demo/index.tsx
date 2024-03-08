@@ -26,9 +26,7 @@ export default function QuadstoreLocalDemo() {
         const parser = new N3.Parser({baseIRI: PROFILE_URI, format: "text/turtle"});
         const quads = parser.parse(turtle);
         store.open().then(async () => {
-            await Promise.all(quads.map(async ({subject, predicate, object, graph}) => {
-                await store.put(df.quad(subject, predicate, object, graph));
-            }));
+            await store.multiPut(quads);
             const quadsStream = store.match(df.namedNode(PROFILE_URI), FOAF.name);
             quadsStream.on('data', quad => setName(quad.object.value));
         }).catch((error) => setError(extractError(error, "Error occurred while parsing")))
@@ -47,12 +45,10 @@ export default function QuadstoreLocalDemo() {
             .then(() => setName(data.name))
             .catch(setError);
         const writer = new N3.Writer();
-        await new Promise((resolve) => store.match()
+        await new Promise((resolve) => store.match() // get all quads
             .on("error", setError)
-            .on("data", ({subject, predicate, object, graph}) => {
-                writer.addQuad(subject, predicate, object, graph);
-            })
-            .on("end", () => resolve(undefined)));
+            .on("data", (quad) => writer.addQuad(quad))
+            .on("end", () => resolve(null)));
         return new Promise((resolve) => writer.end((error, result) => {
             if (error) throw extractError(error, "Error while serializing triples");
             setTurtle(result);

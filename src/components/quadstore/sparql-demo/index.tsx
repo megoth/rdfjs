@@ -27,9 +27,7 @@ export default function QuadstoreSPARQLDemo() {
         const parser = new N3.Parser({baseIRI: PROFILE_URI, format: "text/turtle"});
         const quads = parser.parse(turtle);
         store.open().then(async () => {
-            await Promise.all(quads.map(async ({subject, predicate, object, graph}) => {
-                await store.put(df.quad(subject, predicate, object, graph));
-            }));
+            await store.multiPut(quads);
             const bindingsStream = await engine.queryBindings(`
                 PREFIX foaf:  <http://xmlns.com/foaf/0.1/>
                 SELECT ?name WHERE {
@@ -54,9 +52,7 @@ export default function QuadstoreSPARQLDemo() {
         `).catch(setError);
         await new Promise((resolve) => store.match()
             .on("error", setError)
-            .on("data", ({subject, predicate, object, graph}) => {
-                writer.addQuad(subject, predicate, object, graph);
-            })
+            .on("data", (quad) => writer.addQuad(quad))
             .on("end", () => resolve(undefined)));
         await new Promise((resolve) => writer.end((error, result) => {
             if (error) throw extractError(error, "Error while serializing triples");

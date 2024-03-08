@@ -23,9 +23,7 @@ export default function QuadstoreSolidDemo() {
 
     useEffect(() => {
         const parser = new N3.Parser({baseIRI: webId, format: "text/turtle"});
-        if (!webId) {
-            return;
-        }
+        if (!webId) return;
         try {
             fetch(webId, {
                 method: "GET",
@@ -33,10 +31,8 @@ export default function QuadstoreSolidDemo() {
             }).then(async (response) => {
                 const turtle = await response.text();
                 const quads = parser.parse(turtle);
-                await store.open()
-                await Promise.all(quads.map(async ({subject, predicate, object, graph}) => {
-                    await store.put(df.quad(subject, predicate, object, graph));
-                }));
+                await store.open();
+                await store.multiPut(quads);
                 const quadsStream = store.match(df.namedNode(webId), FOAF.name);
                 quadsStream.on('data', quad => setName(quad.object.value));
             })
