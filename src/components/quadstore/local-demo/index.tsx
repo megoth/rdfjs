@@ -4,30 +4,27 @@ import useLocalStorage from "use-local-storage";
 import Demo, {FormData} from "../../demo";
 import Loading from "../../loading";
 import {MemoryLevel} from 'memory-level';
-import {DataFactory} from 'rdf-data-factory';
 import {Quadstore} from 'quadstore';
-import N3 from "n3";
+import {DataFactory, Parser, Writer} from "n3";
 import {extractError} from "../../../libs/error.ts";
 import {FOAF} from "../../../namespaces.ts";
 
-const backend = new MemoryLevel();
-const df = new DataFactory();
-
 export default function QuadstoreLocalDemo() {
+    const backend = new MemoryLevel();
     const store = useMemo(() => new Quadstore({
         backend,
-        dataFactory: df
-    }), [backend, df]);
+        dataFactory: DataFactory
+    }), [backend]);
     const [name, setName] = useState<string | undefined>();
     const [turtle, setTurtle] = useLocalStorage(STORAGE_KEYS.PROFILE_QUADSTORE, PROFILE_TURTLE);
     const [error, setError] = useState<Error | null>(null);
 
     useEffect(() => {
-        const parser = new N3.Parser({baseIRI: PROFILE_URI, format: "text/turtle"});
+        const parser = new Parser({baseIRI: PROFILE_URI, format: "text/turtle"});
         const quads = parser.parse(turtle);
         store.open().then(async () => {
             await store.multiPut(quads);
-            const quadsStream = store.match(df.namedNode(PROFILE_URI), FOAF.name);
+            const quadsStream = store.match(DataFactory.namedNode(PROFILE_URI), FOAF.name);
             quadsStream.on('data', quad => setName(quad.object.value));
         }).catch((error) => setError(extractError(error, "Error occurred while parsing")))
     }, [turtle]);
@@ -39,12 +36,12 @@ export default function QuadstoreLocalDemo() {
     const onSubmit = async (data: FormData) => {
         setError(null);
         await store.multiPatch(
-            [df.quad(df.namedNode(PROFILE_URI), FOAF.name, df.literal(name))],
-            [df.quad(df.namedNode(PROFILE_URI), FOAF.name, df.literal(data.name))]
+            [DataFactory.quad(DataFactory.namedNode(PROFILE_URI), FOAF.name, DataFactory.literal(name))],
+            [DataFactory.quad(DataFactory.namedNode(PROFILE_URI), FOAF.name, DataFactory.literal(data.name))]
         )
             .then(() => setName(data.name))
             .catch(setError);
-        const writer = new N3.Writer();
+        const writer = new Writer();
         await new Promise((resolve) => store.match() // get all quads
             .on("error", setError)
             .on("data", (quad) => writer.addQuad(quad))

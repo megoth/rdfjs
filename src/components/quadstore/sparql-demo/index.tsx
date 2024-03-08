@@ -4,27 +4,24 @@ import useLocalStorage from "use-local-storage";
 import Demo, {FormData} from "../../demo";
 import Loading from "../../loading";
 import {MemoryLevel} from 'memory-level';
-import {DataFactory} from 'rdf-data-factory';
 import {Quadstore} from 'quadstore';
-import N3 from "n3";
+import {DataFactory, Parser, Writer} from "n3";
 import {Engine} from 'quadstore-comunica';
 import {extractError} from "../../../libs/error.ts";
 
-const backend = new MemoryLevel();
-const df = new DataFactory();
-
 export default function QuadstoreSPARQLDemo() {
+    const backend = new MemoryLevel();
     const store = useMemo(() => new Quadstore({
         backend,
-        dataFactory: df
-    }), [backend, df]);
+        dataFactory: DataFactory
+    }), [backend]);
     const engine = new Engine(store);
     const [name, setName] = useState<string | undefined>();
     const [turtle, setTurtle] = useLocalStorage(STORAGE_KEYS.PROFILE_QUADSTORE, PROFILE_TURTLE);
     const [error, setError] = useState<Error | null>(null);
 
     useEffect(() => {
-        const parser = new N3.Parser({baseIRI: PROFILE_URI, format: "text/turtle"});
+        const parser = new Parser({baseIRI: PROFILE_URI, format: "text/turtle"});
         const quads = parser.parse(turtle);
         store.open().then(async () => {
             await store.multiPut(quads);
@@ -43,7 +40,7 @@ export default function QuadstoreSPARQLDemo() {
 
     const onSubmit = async (data: FormData): Promise<void> => {
         setError(null);
-        const writer = new N3.Writer();
+        const writer = new Writer();
         await engine.queryVoid(`
             PREFIX foaf:  <http://xmlns.com/foaf/0.1/>
             DELETE { <${PROFILE_URI}> foaf:name "${name}" }

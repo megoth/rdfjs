@@ -2,27 +2,24 @@ import {useEffect, useMemo, useState} from "react";
 import Demo, {FormData} from "../../demo";
 import Loading from "../../loading";
 import {MemoryLevel} from 'memory-level';
-import {DataFactory} from 'rdf-data-factory';
 import {Quadstore} from 'quadstore';
-import N3 from "n3";
+import {DataFactory, Parser} from "n3";
 import {extractError} from "../../../libs/error.ts";
 import {useSolidAuth} from "@ldo/solid-react";
 import {FOAF} from "../../../namespaces.ts";
 
-const backend = new MemoryLevel();
-const df = new DataFactory();
-
 export default function QuadstoreSolidDemo() {
     const {session: {webId}, fetch} = useSolidAuth();
+    const backend = new MemoryLevel();
     const store = useMemo(() => new Quadstore({
         backend,
-        dataFactory: df
-    }), [backend, df]);
+        dataFactory: DataFactory
+    }), [backend]);
     const [name, setName] = useState<string | undefined>();
     const [error, setError] = useState<Error | null>(null);
 
     useEffect(() => {
-        const parser = new N3.Parser({baseIRI: webId, format: "text/turtle"});
+        const parser = new Parser({baseIRI: webId, format: "text/turtle"});
         if (!webId) return;
         try {
             fetch(webId, {
@@ -33,7 +30,7 @@ export default function QuadstoreSolidDemo() {
                 const quads = parser.parse(turtle);
                 await store.open();
                 await store.multiPut(quads);
-                const quadsStream = store.match(df.namedNode(webId), FOAF.name);
+                const quadsStream = store.match(DataFactory.namedNode(webId), FOAF.name);
                 quadsStream.on('data', quad => setName(quad.object.value));
             })
         } catch (error) {
@@ -50,8 +47,8 @@ export default function QuadstoreSolidDemo() {
         if (!webId) return;
         await Promise.all([
             store.multiPatch(
-                [df.quad(df.namedNode(webId), FOAF.name, df.literal(name))],
-                [df.quad(df.namedNode(webId), FOAF.name, df.literal(data.name))]
+                [DataFactory.quad(DataFactory.namedNode(webId), FOAF.name, DataFactory.literal(name))],
+                [DataFactory.quad(DataFactory.namedNode(webId), FOAF.name, DataFactory.literal(data.name))]
             ),
             fetch(webId, {
                 method: "PATCH",
