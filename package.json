@@ -26,6 +26,8 @@
     "ldo": "^1.0.3",
     "ldo-solid-profile": "^0.0.13",
     "memory-level": "^1.0.0",
+    "quadstore": "^12.4.1",
+    "rdf-data-factory": "^1.1.2",
     "rdf-ext": "^2.5.0",
     "rdf-sparql-builder": "^0.2.2",
     "rdflib": "^2.2.32",

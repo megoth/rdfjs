@@ -1,0 +1,20 @@
+import Content from "../../content";
+import Code from "../../code";
+import demoCode from "./index.tsx?raw";
+import {PROFILE_TURTLE} from "../../../constants";
+import {NavLink} from "react-router-dom";
+
+<Content>
+    This demo loads and saves a given name to `localStorage`. If no data is saved in `localStorage` from before, it will
+    use a pre-set turtle that contains a simple profile with the name "Test".
+</Content>
+
+<Code language="turtle" id="ProfileTurtle" code={PROFILE_TURTLE} noCopy={true}/>
+
+<Content>
+    (If the above code doesn't make sense for you, you might want to consider reading the <NavLink to={"/rdf"}>guide on
+    RDF</NavLink>.)
+</Content>
+
+<Code language="tsx" id="QuadstoreLocalDemo" code={demoCode} className="line-numbers">
+</Code>

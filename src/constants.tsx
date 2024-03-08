@@ -491,6 +491,18 @@ export const LIBRARY_RDFLIB: Library = {
     websiteName: "GitHub repo",
     websiteUrl: "https://github.com/linkeddata/rdflib.js/"
 };
+export const LIBRARY_QUADSTORE: Library = {
+    creator: "Jacopo Scazzosi ",
+    creatorUrl: "https://github.com/jacoscaz",
+    href: "/quadstore",
+    icon: "/quadstore-logo.png",
+    iconAlt: "Logo for Quadstore",
+    iconPreferredHeight: 150,
+    name: "Quadstore",
+    text: "Quadstore",
+    websiteName: "GitHub repo",
+    websiteUrl: "https://github.com/jacoscaz/quadstore"
+};
 export const LIBRARY_SOUKAI: Library = {
     creator: "Noel De Martin",
     creatorUrl: "https://noeldemartin.com/",
@@ -509,6 +521,7 @@ export const LIBRARIES: Array<Library> = [
     LIBRARY_INRUPT,
     LIBRARY_SOUKAI,
     LIBRARY_COMUNICA,
+    LIBRARY_QUADSTORE,
     LIBRARY_RDF_EXT,
     LIBRARY_M_LD,
 ];
@@ -545,6 +558,13 @@ export const LOCAL_DEMOS: Array<Demo> = [
         library: LIBRARY_INRUPT,
         slogan: "Inrupt's JS libraries can be used locally using N3.js",
         text: "Inrupt"
+    },
+    {
+        title: "Quadstore",
+        href: "/quadstore#local",
+        library: LIBRARY_QUADSTORE,
+        slogan: "Quadstore can be used locally with N3.js",
+        text: "Quadstore"
     },
     {
         title: "Soukai",
@@ -726,6 +746,7 @@ export const STORAGE_KEYS = {
     "PROFILE_GRAPOI": "profileGrapoi",
     "PROFILE_INRUPT": "profileInrupt",
     "PROFILE_LDO": "profileLdo",
+    "PROFILE_QUADSTORE": "profileQuadstore",
     "PROFILE_RDFLIB": "profileRdflib",
     "PROFILE_SOUKAI": "profileSoukai",
 }
