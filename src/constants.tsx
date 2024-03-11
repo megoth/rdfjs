@@ -521,9 +521,9 @@ export const LIBRARIES: Array<Library> = [
     LIBRARY_INRUPT,
     LIBRARY_SOUKAI,
     LIBRARY_COMUNICA,
-    LIBRARY_QUADSTORE,
     LIBRARY_RDF_EXT,
     LIBRARY_M_LD,
+    LIBRARY_QUADSTORE,
 ];
 
 export interface Demo {
@@ -560,13 +560,6 @@ export const LOCAL_DEMOS: Array<Demo> = [
         text: "Inrupt"
     },
     {
-        title: "Quadstore",
-        href: "/quadstore#local",
-        library: LIBRARY_QUADSTORE,
-        slogan: "Quadstore can be used locally with N3.js",
-        text: "Quadstore"
-    },
-    {
         title: "Soukai",
         href: "/soukai#local",
         library: LIBRARY_SOUKAI,
@@ -579,6 +572,13 @@ export const LOCAL_DEMOS: Array<Demo> = [
         library: LIBRARY_RDF_EXT,
         slogan: "A JavaScript RDF SDK that allows us to parse and serialize locally",
         text: "RDF-Ext"
+    },
+    {
+        title: "Quadstore",
+        href: "/quadstore#local",
+        library: LIBRARY_QUADSTORE,
+        slogan: "Quadstore can be easily used locally using the BrowserLevel library",
+        text: "Quadstore"
     },
 ];
 
@@ -739,6 +739,13 @@ export const SOLID_DEMOS: Array<Demo> = [
         library: LIBRARY_M_LD,
         slogan: "Although Solid is not supported directly by m-ld, I've constructed a demo where I use both m-ld and LDO to synchronize the RDF graph between the P2P network (using m-ld) and Solid (using @ldo/solid-react)",
         text: "m-ld"
+    },
+    {
+        title: "Quadstore",
+        href: "/quadstore#solid",
+        library: LIBRARY_QUADSTORE,
+        slogan: "Solid is not supported directly by Quadstore, but it isn't to hard to integrate it into a Solid app. I've written a demo to show how this can be done by using N3.js to help with parsing.",
+        text: "Quadstore"
     },
 ];
 
