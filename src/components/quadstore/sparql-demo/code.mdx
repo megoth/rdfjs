@@ -1,13 +1,34 @@
 import Content from "../../content";
 import Code from "../../code";
 import demoCode from "./index.tsx?raw";
-import {PROFILE_TURTLE} from "../../../constants";
 import {NavLink} from "react-router-dom";
 import CodeStep from "../../code/step";
 
 <Content>
-    Lorem ipsum
+    This demo is very similar to the <NavLink to="#local">local demo</NavLink> except that it uses <NavLink
+    to="/sparql">SPARQL queries</NavLink> to find and update name to the underlying RDF graph. To enable this I pull in
+    [quadstore-comunica](https://www.npmjs.com/package/quadstore-comunica), which is a SPARQL query engine built
+    on <NavLink to="/comunica">the Comunica framework</NavLink> and implementing [the RDF/JS Query
+    specification](https://rdf.js.org/query-spec/).
 </Content>
 
 <Code language="tsx" id="QuadstoreSparqlDemo" code={demoCode} className="line-numbers">
+    <CodeStep lines={["11-16"]} title="Setting up backend, store, and engine">
+        As with the local demo, backend and store is set up using BrowserLevel and Quadstore. But in addition I also
+        pull in quadstore-comunica as SPARQL engine.
+    </CodeStep>
+    <CodeStep lines={["17", "22-27"]} title="Getting name from localStorage">
+        I want to retrieve name from 'localStorage' if possible, which is done after opening the store with
+        `store.open`. If no name is found I set the name to "Test" by default.
+    </CodeStep>
+    <CodeStep lines={["18", "28", "36", "42"]} title="Error handling">
+        I keep track of any errors that might occur and pass them to the `Demo` component.
+    </CodeStep>
+    <CodeStep lines={["31-33"]} title="Loading state">
+        It can take some time to get everything ready, so while we wait I show the `Loading` component.
+    </CodeStep>
+    <CodeStep lines={["35-44"]} title={<>Update RDF graph and <code>localStorage</code></>}>
+        When the user submits the form I use `engine.queryVoid` to replace the name in the underlying RDF graph.
+        Quadstore handles the persistent storage with `localStorage` using BrowserLevel.
+    </CodeStep>
 </Code>
