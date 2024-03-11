@@ -1,7 +1,12 @@
 import {RatingScore} from "./components/rating";
 import {ReactNode} from "react";
 
-export interface Guide {
+export interface MenuItem {
+    href: string;
+    name: string;
+}
+
+export interface Guide extends MenuItem {
     href: string;
     logo: string;
     logoAlt: string;
@@ -402,7 +407,7 @@ export const GUIDES = [
     CRDT_GUIDE,
 ];
 
-export interface Library {
+export interface Library extends MenuItem {
     creator: string;
     creatorUrl: string;
     href: string;
