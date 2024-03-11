@@ -21,6 +21,7 @@
     "@rdfjs/namespace": "^2.0.0",
     "@tpluscode/sparql-builder": "^0.3.31",
     "@zazuko/rdf-vocabularies": "^2023.1.19",
+    "browser-level": "^1.0.1",
     "bulma": "^0.9.4",
     "clsx": "^2.0.0",
     "ldo": "^1.0.3",

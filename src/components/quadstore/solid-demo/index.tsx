@@ -19,7 +19,6 @@ export default function QuadstoreSolidDemo() {
     const [error, setError] = useState<Error | null>(null);
 
     useEffect(() => {
-        const parser = new Parser({baseIRI: webId, format: "text/turtle"});
         if (!webId) return;
         try {
             fetch(webId, {
@@ -27,12 +26,16 @@ export default function QuadstoreSolidDemo() {
                 headers: {"Content-Type": "text/turtle"},
             }).then(async (response) => {
                 const turtle = await response.text();
+                const parser = new Parser({baseIRI: webId, format: "text/turtle"});
                 const quads = parser.parse(turtle);
                 await store.open();
                 await store.multiPut(quads);
-                const quadsStream = store.match(DataFactory.namedNode(webId), FOAF.name);
-                quadsStream.on('data', quad => setName(quad.object.value));
-            })
+                const {items} = await store.get({
+                    subject: DataFactory.namedNode(webId),
+                    predicate: FOAF.name
+                });
+                setName(items[0].object.value || "");
+            });
         } catch (error) {
             setError(extractError(error, "Error occurred while parsing"));
         }
