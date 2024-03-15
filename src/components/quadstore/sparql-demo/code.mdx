@@ -17,8 +17,8 @@ import CodeStep from "../../code/step";
         As with the local demo, backend and store is set up using BrowserLevel and Quadstore. But in addition I also
         pull in quadstore-comunica as SPARQL engine.
     </CodeStep>
-    <CodeStep lines={["17", "22-27"]} title="Getting name from localStorage">
-        I want to retrieve name from 'localStorage' if possible, which is done after opening the store with
+    <CodeStep lines={["17", "22-27"]} title="Getting name from storage">
+        I want to retrieve name from the IndexedDB API if possible, which is done after opening the store with
         `store.open`. If no name is found I set the name to "Test" by default.
     </CodeStep>
     <CodeStep lines={["18", "28", "36", "42"]} title="Error handling">
@@ -27,8 +27,8 @@ import CodeStep from "../../code/step";
     <CodeStep lines={["31-33"]} title="Loading state">
         It can take some time to get everything ready, so while we wait I show the `Loading` component.
     </CodeStep>
-    <CodeStep lines={["35-44"]} title={<>Update RDF graph and <code>localStorage</code></>}>
+    <CodeStep lines={["35-44"]} title="Update RDF graph and make it persistent">
         When the user submits the form I use `engine.queryVoid` to replace the name in the underlying RDF graph.
-        Quadstore handles the persistent storage with `localStorage` using BrowserLevel.
+        Quadstore handles the persistent storage with the IndexedDB API using BrowserLevel.
     </CodeStep>
 </Code>

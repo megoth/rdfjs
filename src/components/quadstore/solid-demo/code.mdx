@@ -16,9 +16,12 @@ import CodeStep from "../../code/step";
         from [@ldo/solid-react](https://ldo.js.org/api/solid-react/).
     </CodeStep>
     <CodeStep lines={["13-17"]} title="Setting up backend and store">
-        In this demo I use your Solid WebID resource as persistent storage, and I don't want to use `localStorage` like
-        I used in the previous demos. Instead I use [MemoryLevel](https://www.npmjs.com/package/memory-level) which
+        In this demo I use your Solid WebID resource as persistent storage, and I don't want to use the IndexedDB API
+        like I used in the previous demos. Instead I use [MemoryLevel](https://www.npmjs.com/package/memory-level) which
         stores data in the memory.
+
+        (Note: I could've stored name both locally and online, but I didn't want to handle the scenario where the
+        storages diverge.)
     </CodeStep>
     <CodeStep lines={["21-42"]} title="Parsing WebID resource and getting name">
         Quadstore doesn't provide API to parse <NavLink to="/rdf#serializations">RDF serializations</NavLink> itself, so

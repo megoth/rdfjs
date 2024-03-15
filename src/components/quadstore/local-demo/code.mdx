@@ -4,8 +4,9 @@ import demoCode from "./index.tsx?raw";
 import CodeStep from "../../code/step";
 
 <Content>
-    This demo loads and saves a given name to `localStorage`. If no name is retrieved from `localStorage`, it will
-    use a pre-set name "Test".
+    This demo loads and saves a given name locally (in
+    [IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API)). If no name is retrieved locally, it
+    will use a pre-set name "Test".
 </Content>
 
 <Code language="tsx" id="QuadstoreLocalDemo" code={demoCode} className="line-numbers">
@@ -15,9 +16,9 @@ import CodeStep from "../../code/step";
         [rdf-data-factory](https://www.npmjs.com/package/rdf-data-factory) (or other libraries built on [the RDF/JS Data
         Model specification](https://rdf.js.org/data-model-spec/)) if you prefer.
     </CodeStep>
-    <CodeStep lines={["16", "21-25"]} title="Getting name from localStorage">
-        I want to retrieve name from 'localStorage' if possible, which is done after opening the store with
-        `store.open`. If no name is found I set the name to "Test" by default.
+    <CodeStep lines={["16", "21-25"]} title="Getting name from storage">
+        I want to retrieve name from storage if possible, which is done after opening the store with `store.open`. If no
+        name is found I set the name to "Test" by default.
     </CodeStep>
     <CodeStep lines={["17", "26", "34", "38"]} title="Error handling">
         I keep track of any errors that might occur and pass them to the `Demo` component.
@@ -25,8 +26,8 @@ import CodeStep from "../../code/step";
     <CodeStep lines={["29-31"]} title="Loading state">
         It can take some time to get everything ready, so while we wait I show the `Loading` component.
     </CodeStep>
-    <CodeStep lines={["33-40"]} title={<>Update RDF graph and <code>localStorage</code></>}>
+    <CodeStep lines={["33-40"]} title="Update RDF graph and make it persistent">
         When the user submits the form I use `store.multiPatch` to replace the name in the underlying RDF graph.
-        Quadstore handles the persistent storage with `localStorage` using BrowserLevel.
+        Quadstore handles the persistent storage using BrowserLevel.
     </CodeStep>
 </Code>
