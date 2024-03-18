@@ -1,0 +1,19 @@
+.dropdownMenuRightAligned.dropdownMenuRightAligned {
+    left: initial;
+    right: 0;
+}
+
+.navbarItem {
+    & :global(.navbar-dropdown) {
+        display: none;
+    }
+    &:global(.is-active) :global(.navbar-dropdown) {
+        display: block;
+    }
+}
+
+.navbarLink {
+    background: transparent;
+    font-size: inherit;
+    border: 0;
+}

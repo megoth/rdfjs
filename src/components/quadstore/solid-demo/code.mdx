@@ -1,0 +1,42 @@
+import Content from "../../content";
+import Code from "../../code";
+import demoCode from "./index.tsx?raw";
+import {NavLink} from "react-router-dom";
+import CodeStep from "../../code/step";
+
+<Content>
+    This demo requires you to authenticate with a Solid account. It is similar to the <NavLink to="#local">Local
+    demo</NavLink>, but parses data from Turtle using N3.js and updates the online resource using [SPARQL
+    Update](https://www.w3.org/TR/sparql11-update/).
+</Content>
+
+<Code language="tsx" id="QuadstoreSolidDemo" code={demoCode} className="line-numbers">
+    <CodeStep lines={["12"]} title="Getting webId and fetch">
+        This demo requires logging in with a Solid account, and we retrieve the `webId` and `fetch` using `useSolidAuth`
+        from [@ldo/solid-react](https://ldo.js.org/api/solid-react/).
+    </CodeStep>
+    <CodeStep lines={["13-17"]} title="Setting up backend and store">
+        In this demo I use your Solid WebID resource as persistent storage, and I don't want to use the IndexedDB API
+        like I used in the previous demos. Instead I use [MemoryLevel](https://www.npmjs.com/package/memory-level) which
+        stores data in the memory.
+
+        (Note: I could've stored name both locally and online, but I didn't want to handle the scenario where the
+        storages diverge.)
+    </CodeStep>
+    <CodeStep lines={["21-42"]} title="Parsing WebID resource and getting name">
+        Quadstore doesn't provide API to parse <NavLink to="/rdf#serializations">RDF serializations</NavLink> itself, so
+        I use the Parser class in N3.js to handle it. The quads are described using RDF/JS Data Model standard, which
+        allows me to pass the quads from N3.js to Quadstore store using `store.multiPut`.
+    </CodeStep>
+    <CodeStep lines={["19", "39-41", "49", "63"]} title="Error handling">
+        I keep track of any errors that might occur and pass them to the `Demo` component.
+    </CodeStep>
+    <CodeStep lines={["44-46"]} title="Loading state">
+        It can take some time to fetch and parse the RDF from the WebID resource, so while we wait I show the `Loading`
+        component.
+    </CodeStep>
+    <CodeStep lines={["48-65"]} title="Update RDF graph and online resource">
+        When the user submits the form I use `store.multiPatch` to replace the name in the underlying RDF graph. Next, I
+        pass a SPARQL Update query (which is supported by Solid servers) to update the WebID resource.
+    </CodeStep>
+</Code>

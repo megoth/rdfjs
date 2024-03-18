@@ -1,0 +1,14 @@
+.container.container.container {
+    align-items: center;
+    display: flex;
+}
+
+.homeLink {
+    align-items: center;
+    display: flex;
+    gap: 0.25rem;
+}
+
+.navbarDivider {
+    flex-grow: 2;
+}

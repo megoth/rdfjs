@@ -1,7 +1,12 @@
 import {RatingScore} from "./components/rating";
 import {ReactNode} from "react";
 
-export interface Guide {
+export interface MenuItem {
+    href: string;
+    name: string;
+}
+
+export interface Guide extends MenuItem {
     href: string;
     logo: string;
     logoAlt: string;
@@ -402,7 +407,7 @@ export const GUIDES = [
     CRDT_GUIDE,
 ];
 
-export interface Library {
+export interface Library extends MenuItem {
     creator: string;
     creatorUrl: string;
     href: string;
@@ -491,6 +496,18 @@ export const LIBRARY_RDFLIB: Library = {
     websiteName: "GitHub repo",
     websiteUrl: "https://github.com/linkeddata/rdflib.js/"
 };
+export const LIBRARY_QUADSTORE: Library = {
+    creator: "Jacopo Scazzosi ",
+    creatorUrl: "https://github.com/jacoscaz",
+    href: "/quadstore",
+    icon: "/quadstore-logo.png",
+    iconAlt: "Logo for Quadstore",
+    iconPreferredHeight: 150,
+    name: "Quadstore",
+    text: "Quadstore",
+    websiteName: "GitHub repo",
+    websiteUrl: "https://github.com/jacoscaz/quadstore"
+};
 export const LIBRARY_SOUKAI: Library = {
     creator: "Noel De Martin",
     creatorUrl: "https://noeldemartin.com/",
@@ -511,6 +528,7 @@ export const LIBRARIES: Array<Library> = [
     LIBRARY_COMUNICA,
     LIBRARY_RDF_EXT,
     LIBRARY_M_LD,
+    LIBRARY_QUADSTORE,
 ];
 
 export interface Demo {
@@ -559,6 +577,13 @@ export const LOCAL_DEMOS: Array<Demo> = [
         library: LIBRARY_RDF_EXT,
         slogan: "A JavaScript RDF SDK that allows us to parse and serialize locally",
         text: "RDF-Ext"
+    },
+    {
+        title: "Quadstore",
+        href: "/quadstore#local",
+        library: LIBRARY_QUADSTORE,
+        slogan: "Quadstore can be easily used locally using the BrowserLevel library",
+        text: "Quadstore"
     },
 ];
 
@@ -720,12 +745,20 @@ export const SOLID_DEMOS: Array<Demo> = [
         slogan: "Although Solid is not supported directly by m-ld, I've constructed a demo where I use both m-ld and LDO to synchronize the RDF graph between the P2P network (using m-ld) and Solid (using @ldo/solid-react)",
         text: "m-ld"
     },
+    {
+        title: "Quadstore",
+        href: "/quadstore#solid",
+        library: LIBRARY_QUADSTORE,
+        slogan: "Solid is not supported directly by Quadstore, but it isn't to hard to integrate it into a Solid app. I've written a demo to show how this can be done by using N3.js to help with parsing.",
+        text: "Quadstore"
+    },
 ];
 
 export const STORAGE_KEYS = {
     "PROFILE_GRAPOI": "profileGrapoi",
     "PROFILE_INRUPT": "profileInrupt",
     "PROFILE_LDO": "profileLdo",
+    "PROFILE_QUADSTORE": "profileQuadstore",
     "PROFILE_RDFLIB": "profileRdflib",
     "PROFILE_SOUKAI": "profileSoukai",
 }
