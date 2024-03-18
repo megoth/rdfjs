@@ -24,7 +24,8 @@ export default function QuadstoreSPARQLDemo() {
                 SELECT ?name WHERE {
                     <${PROFILE_URI}> foaf:name ?name .
                 } LIMIT 1`);
-            bindingsStream.on("data", (binding) => setName(binding.get("name").value || "Test"));
+            bindingsStream.on("data", (binding) => setName(binding.get("name")?.value || "Test"));
+            bindingsStream.on("end", () => setName(name || "Test"));
         }).catch(setError);
     }, []);
 

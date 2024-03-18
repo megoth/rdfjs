@@ -22,7 +22,7 @@ export default function QuadstoreLocalDemo() {
                 subject: DataFactory.namedNode(PROFILE_URI),
                 predicate: FOAF.name
             });
-            setName(items[0].object.value || "Test");
+            setName(items[0]?.object?.value || "Test");
         }).catch(setError)
     }, []);
 

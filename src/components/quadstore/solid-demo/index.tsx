@@ -34,7 +34,7 @@ export default function QuadstoreSolidDemo() {
                     subject: DataFactory.namedNode(webId),
                     predicate: FOAF.name
                 });
-                setName(items[0].object.value || "");
+                setName(items[0]?.object?.value || "");
             });
         } catch (error) {
             setError(extractError(error, "Error occurred while parsing"));
