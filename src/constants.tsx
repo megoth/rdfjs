@@ -434,17 +434,17 @@ export const LIBRARY_COMUNICA: Library = {
     websiteUrl: "https://comunica.dev/"
 };
 export const LIBRARY_LDO: Library = {
-    creator: "Jackson Morgan",
+    creator: "O.team (Jackson Morgan)",
     creatorUrl: "https://www.o.team/",
     href: "/ldo",
-    icon: "/o-team.png",
-    iconAlt: "Logo for O.team",
+    icon: "/ldo.png",
+    iconAlt: "Logo for LDO project",
     iconPreferredHeight: 192,
     name: "Linked Data Objects",
     review: [4, 3, 3, 2, 3.5],
     text: "LDO",
-    websiteName: "GitHub repo",
-    websiteUrl: "https://github.com/o-development/ldo/"
+    websiteName: "Official website",
+    websiteUrl: "https://ldo.js.org/"
 };
 export const LIBRARY_INRUPT: Library = {
     creator: "Inrupt",
