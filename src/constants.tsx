@@ -459,6 +459,18 @@ export const LIBRARY_INRUPT: Library = {
     websiteName: "Official documentation",
     websiteUrl: "https://docs.inrupt.com/developer-tools/javascript/client-libraries/"
 };
+export const LIBRARY_LDKIT: Library = {
+    creator: "Karel Klíma",
+    creatorUrl: "https://www.karelklima.cz/",
+    href: "/ldkit",
+    icon: "/ldkit.png",
+    iconAlt: "Logo for LDkit",
+    iconPreferredHeight: 96,
+    name: "LDkit",
+    text: "LDkit",
+    websiteName: "Official website",
+    websiteUrl: "https://ldkit.io/"
+};
 export const LIBRARY_M_LD: Library = {
     creator: "George Svarovsky",
     creatorUrl: "https://github.com/gsvarovsky",
@@ -529,6 +541,7 @@ export const LIBRARIES: Array<Library> = [
     LIBRARY_RDF_EXT,
     LIBRARY_M_LD,
     LIBRARY_QUADSTORE,
+    LIBRARY_LDKIT,
 ];
 
 export interface Demo {
@@ -757,6 +770,7 @@ export const SOLID_DEMOS: Array<Demo> = [
 export const STORAGE_KEYS = {
     "PROFILE_GRAPOI": "profileGrapoi",
     "PROFILE_INRUPT": "profileInrupt",
+    "PROFILE_LDKIT": "profileLDkit",
     "PROFILE_LDO": "profileLdo",
     "PROFILE_QUADSTORE": "profileQuadstore",
     "PROFILE_RDFLIB": "profileRdflib",
