@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useEffect, useMemo, useState} from "react";
 import {N3} from "ldkit/rdf"
 import {foaf} from "ldkit/namespaces";
 import useLocalStorage from "use-local-storage";
@@ -8,30 +8,34 @@ import Demo, {FormData} from "../../demo";
 import Loading from "../../loading";
 import {QueryEngine} from "@comunica/query-sparql";
 import {createLens} from "ldkit";
-import PersonSchema from "../Person.ts";
+import PersonSchema, {type Person} from "../Person.ts";
 
 const profile = new N3.NamedNode(PROFILE_URI);
 const source = new N3.Store();
 
-export default function SoukaiLocalDemo() {
+export default function LDkitLocalDemo() {
     const [turtle, setTurtle] = useLocalStorage(STORAGE_KEYS.PROFILE_LDKIT, PROFILE_TURTLE);
     const [error, setError] = useState<Error | null>(null);
-    const [name, setName] = useState<string | null>(null);
+    const [person, setPerson] = useState<Person | null>(null);
+
+    const Persons = useMemo(() => {
+        const engine = new QueryEngine();
+        return createLens(PersonSchema, {
+            source,
+            engine,
+            logQuery: console.log, // All SPARQL queries will be logged to the console
+        })
+    }, []);
 
     useEffect(() => {
         try {
             const parser = new N3.Parser({baseIRI: PROFILE_URI, format: "text/turtle"});
             source.addQuads(parser.parse(turtle));
 
-            const engine = new QueryEngine();
-            const Persons = createLens(PersonSchema, {
-                source,
-                engine
-            })
-
             Persons.findByIri(PROFILE_URI).then((person) => {
                 console.log("PERSON", person);
-            })
+                setPerson(person);
+            });
             // engine.queryBindings(`
             // PREFIX foaf:  <http://xmlns.com/foaf/0.1/>
             // SELECT ?name WHERE {
@@ -43,17 +47,32 @@ export default function SoukaiLocalDemo() {
         } catch (error) {
             setError(extractError(error, "Error occurred while parsing"));
         }
-    }, [profile, turtle]);
+    }, [profile, turtle, setPerson, setError, Persons]);
 
-    if (!name) {
+    if (!person) {
         return <Loading/>
     }
 
     const onSubmit = async (data: FormData) => {
         setError(null);
+
         console.log("PARTS", profile, new N3.NamedNode(foaf.name));
-        source.removeMatches(profile, new N3.NamedNode(foaf.name));
-        source.addQuad(new N3.Quad(profile, new N3.NamedNode(foaf.name), new N3.Literal(data.name)));
+
+        console.log("DATA", data);
+
+        await Persons.update({
+            $id: PROFILE_URI,
+            name: data.name
+        });
+
+        const count = await Persons.count();
+        if (count < 1) {
+            // Workaround for possible bug in Comunica
+            await Persons.insert({
+                $id: PROFILE_URI,
+                name: data.name
+            });
+        }
 
         const writer = new N3.Writer();
         writer.addQuads(source.getQuads(null, null, null, null));
@@ -65,5 +84,5 @@ export default function SoukaiLocalDemo() {
         }));
     };
 
-    return <Demo error={error} name={name} onSubmit={onSubmit}/>
+    return <Demo error={error} name={person.name} onSubmit={onSubmit}/>
 }
