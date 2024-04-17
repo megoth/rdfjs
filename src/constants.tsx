@@ -615,7 +615,7 @@ export const PROFILE_URI = "https://megothcapgemini.solidcommunity.net/profile/c
 
 export const PROFILE_JSON = {
     "@id": PROFILE_URI,
-    name: "Soukai Test"
+    name: "Test"
 };
 
 export const PROFILE_TURTLE = `@prefix foaf: <http://xmlns.com/foaf/0.1/> .

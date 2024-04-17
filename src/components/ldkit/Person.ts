@@ -1,8 +1,7 @@
 import {type SchemaInterface} from "ldkit";
-import {foaf, rdfs} from "ldkit/namespaces";
+import {foaf} from "ldkit/namespaces";
 
 const PersonSchema = {
-    //"@type": foaf.Person,
     name: foaf.name,
 } as const;
 
