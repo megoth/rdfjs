@@ -23,8 +23,7 @@ export default function LDkitSolidDemo() {
                 logQuery: console.log, // All SPARQL queries will be logged to the console
             })
 
-            // const person = await Persons.findByIri(webId); // This does not work for some reason, possibly because of bug in Comunica
-            const person = await Persons.findOne();
+            const person = await Persons.findByIri(webId);
             console.log("SOLID PERSON", person);
             setPerson(person);
         }
