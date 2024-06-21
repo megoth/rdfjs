@@ -20,9 +20,7 @@ const Persons = createLens(PersonSchema, {
 
 async function emptyStore(store: N3.Store) {
     const stream = store.removeMatches(null, null, null, null);
-    return new Promise((resolve) => {
-        stream.on("end", resolve);
-    });
+    return new Promise((resolve) => stream.on("end", resolve));
 }
 
 export default function LDkitLocalDemo() {
@@ -31,17 +29,11 @@ export default function LDkitLocalDemo() {
     const [person, setPerson] = useState<Person | null>(null);
 
     useEffect(() => {
-        // run the update when the turtle content changes
-        const update = async () => {
+        (async () => {
             await emptyStore(source); // remove all contents of the data source
             source.addQuads(parser.parse(turtle)); // add new contents to the data source
-
-            const person = await Persons.findByIri(PROFILE_URI); // load the profile
-            console.log("PERSON", person);
-            setPerson(person);
-        };
-
-        update().catch((error) => setError(extractError(error, "Error occurred while updating")));
+            setPerson(await Persons.findByIri(PROFILE_URI)); // load the profile
+        })().catch((error) => setError(extractError(error, "Error occurred while updating")));
     }, [turtle, setPerson, setError]);
 
     if (!person) {
@@ -51,15 +43,13 @@ export default function LDkitLocalDemo() {
     const onSubmit = async (data: FormData) => {
         setError(null);
 
-        console.log("DATA", data);
-
         await Persons.update({
             $id: PROFILE_URI,
             name: data.name
         });
 
-        const verify = await Persons.findByIri(PROFILE_URI)
-        if (verify === null) {
+        const existingPerson = await Persons.findByIri(PROFILE_URI)
+        if (existingPerson === null) {
             // Workaround for bug in Comunica: https://github.com/comunica/comunica/issues/1301
             await Persons.insert({
                 $id: PROFILE_URI,
@@ -72,7 +62,6 @@ export default function LDkitLocalDemo() {
         return new Promise((resolve) => writer.end((error, result) => {
             if (error) setError(error);
             setTurtle(result);
-            console.log("TURTLE", result);
             resolve(result);
         }));
     };
