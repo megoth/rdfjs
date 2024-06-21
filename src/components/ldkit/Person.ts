@@ -1,8 +1,10 @@
-import {foaf, rdfs} from "ldkit/namespaces";
+import {type SchemaInterface} from "ldkit";
+import {foaf} from "ldkit/namespaces";
 
 const PersonSchema = {
-    "@type": foaf.Person,
-    name: rdfs.label,
+    name: foaf.name,
 } as const;
+
+export type Person = SchemaInterface<typeof PersonSchema>;
 
 export default PersonSchema;
