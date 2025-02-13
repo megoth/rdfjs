@@ -615,12 +615,15 @@ export const PROFILE_URI = "https://megothcapgemini.solidcommunity.net/profile/c
 
 export const PROFILE_JSON = {
     "@id": PROFILE_URI,
+    "@type": "http://xmlns.com/foaf/0.1/Person",
     name: "Test"
 };
 
 export const PROFILE_TURTLE = `@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
-<${PROFILE_URI}> foaf:name "Test".`;
+<${PROFILE_URI}> a foaf:Person ;
+  foaf:name "Test".
+`;
 
 interface Provider {
     label: string;

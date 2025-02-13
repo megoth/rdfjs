@@ -1,12 +1,12 @@
 import {useEffect, useState} from "react";
+import {createLens} from "ldkit";
 import {N3} from "ldkit/rdf"
 import useLocalStorage from "use-local-storage";
+import {QueryEngine} from "@comunica/query-sparql";
 import {PROFILE_TURTLE, PROFILE_URI, STORAGE_KEYS} from "../../../constants.tsx";
 import {extractError} from "../../../libs/error.ts";
 import Demo, {FormData} from "../../demo";
 import Loading from "../../loading";
-import {QueryEngine} from "@comunica/query-sparql";
-import {createLens} from "ldkit";
 import PersonSchema, {type Person} from "../Person.ts";
 
 const parser = new N3.Parser({baseIRI: PROFILE_URI, format: "text/turtle"});

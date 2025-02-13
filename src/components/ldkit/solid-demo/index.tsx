@@ -1,17 +1,13 @@
 import {useSolidAuth} from "@ldo/solid-react";
 import {useEffect, useState} from "react";
 import {QueryEngine} from "@comunica/query-sparql";
-import {createLens, createNamespace} from "ldkit";
+import {createLens} from "ldkit";
+import {foaf} from "ldkit/namespaces";
 import PersonSchema, {type Person} from "../Person.ts";
 import Demo, {FormData} from "../../demo";
 import Loading from "../../loading";
 
 const engine = new QueryEngine();
-const foaf = createNamespace({
-    iri: "http://xmlns.com/foaf/0.1/",
-    prefix: "foaf:",
-    terms: ["name"],
-} as const);
 
 export default function LDkitSolidDemo() {
     const {session: {webId}, fetch} = useSolidAuth();

@@ -5,7 +5,42 @@ import CodeStep from "../code/step";
 
 <Content>
     <h2 className="subtitle">Models</h2>
+
+    LDkit relies on data schemas to describe models, which are similar to data models used in various ORM libraries.
+
+    When defining a schema, you can specify:
+
+    - one or more entity RDF types
+    - property data type (and corresponding TypeScript native type)
+    - whether a property is optional or required
+    - whether a property is an array
+    - whether to retrieve multi-language string literals
+    - nested schemas within other schemas
+
+    For more information, check [Schema](https://ldkit.io/docs/components/schema) in LDkit's documentation.
+</Content>
+
+<Content>
+    For the demo I've defined a simple schema called `PersonSchema`, which is described below:
 </Content>
 
 <Code id="PersonModel" language="typescript" code={PersonSchema} className="line-numbers">
+    <CodeStep lines={["2"]} title="Namespaces">
+        LDkit provides a list of namespaces so you don't need to define them yourself. See [LDkit's documentation on
+        Namespaces](https://ldkit.io/docs/components/namespaces) for more info.
+    </CodeStep>
+    <CodeStep lines={["5"]} title="@type">
+        Although not required, it's [recommended to set `@type` for optimal
+        performance](https://ldkit.io/docs/components/schema#entity-type).
+    </CodeStep>
+    <CodeStep lines={["6"]} title="Other properties">
+        For our model, we only need to define `name` (which we simply reuse the definition for `foaf:name`
+    </CodeStep>
+    <CodeStep lines={["9"]} title="Exporting TypeScript type definition">
+        It's usually useful to expose the type of the Schema using TypeScript's `type` syntax, and LDkit provides
+        `SchemaInterface` to do this.
+    </CodeStep>
+    <CodeStep lines={["11"]} title="Exporting schema">
+        Lastly we export the schema itself so that it can be used in the demos.
+    </CodeStep>
 </Code>
