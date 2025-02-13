@@ -598,6 +598,13 @@ export const LOCAL_DEMOS: Array<Demo> = [
         slogan: "Quadstore can be easily used locally using the BrowserLevel library",
         text: "Quadstore"
     },
+    {
+        title: "LDkit",
+        href: "/ldkit#local",
+        library: LIBRARY_LDKIT,
+        slogan: "LDkit allow you to parse, traverse, update, and serialize locally",
+        text: "LDkit"
+    },
 ];
 
 export const P2P_DEMOS: Array<Demo> = [{
@@ -766,6 +773,13 @@ export const SOLID_DEMOS: Array<Demo> = [
         href: "/quadstore#solid",
         library: LIBRARY_QUADSTORE,
         slogan: "Solid is not supported directly by Quadstore, but it isn't to hard to integrate it into a Solid app. I've written a demo to show how this can be done by using N3.js to help with parsing.",
+        text: "Quadstore"
+    },
+    {
+        title: "LDkit",
+        href: "/ldkit#solid",
+        library: LIBRARY_LDKIT,
+        slogan: "LDkit does not support Solid out of the box, but it's not to much work to integrate it into a Solid app.",
         text: "Quadstore"
     },
 ];
