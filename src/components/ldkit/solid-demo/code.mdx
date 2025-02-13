@@ -1,0 +1,30 @@
+import Content from "../../content";
+import Code from "../../code";
+import solidDemoCode from "./index.tsx?raw";
+import CodeStep from "../../code/step";
+
+<Content>
+    This demo requires you to authenticate yourself using a Solid account.
+</Content>
+
+<Code language="tsx" id="LDkitSolidDemo" code={solidDemoCode} className="line-numbers">
+    <CodeStep lines={["12", "25", "43", "46"]} title="Tracking name">
+        We want to track the changes in name of the person model. The model is updated once we fetch the Solid profile
+        and every time we submit the form.
+    </CodeStep>
+    <CodeStep lines={["13", "26", "34", "42", "46"]} title="Error handling">
+        I keep track of any errors that might occur and pass them to the `Demo` component.
+    </CodeStep>
+    <CodeStep lines={["14"]} title="Setting up engine">
+        By using the `useMemo` hook we ensure that we only set up the engine once. In a proper React application you
+        would probably handle this as a global variable, maybe using the `Context` API.
+    </CodeStep>
+    <CodeStep lines={["19-24"]} title="Loading profile">
+        LDkit isn't designed particularly with Solid in mind, but it supports fetching any RDF-resource. We can create
+        the `Persons` lens by passing it the `webId` variable and `fetch` function, which allows it to fetch the Solid
+        profile we want to get the name from.
+    </CodeStep>
+    <CodeStep lines={["36-42"]} title="Updating profile">
+        We have to update the Solid profile "manually", i.e. write the SPARQL query we want to post to the Solid server.
+    </CodeStep>
+</Code>

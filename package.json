@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@comunica/query-sparql": "^2.9.0",
+    "@comunica/query-sparql": "^4.1.0",
     "@esbuild-plugins/node-globals-polyfill": "^0.2.3",
     "@esbuild-plugins/node-modules-polyfill": "^0.2.2",
     "@inrupt/solid-client": "^1.30.2",
@@ -24,6 +24,7 @@
     "browser-level": "^1.0.1",
     "bulma": "^0.9.4",
     "clsx": "^2.0.0",
+    "ldkit": "^2.0.0",
     "ldo": "^1.0.3",
     "ldo-solid-profile": "^0.0.13",
     "memory-level": "^1.0.0",

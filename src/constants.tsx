@@ -459,6 +459,18 @@ export const LIBRARY_INRUPT: Library = {
     websiteName: "Official documentation",
     websiteUrl: "https://docs.inrupt.com/developer-tools/javascript/client-libraries/"
 };
+export const LIBRARY_LDKIT: Library = {
+    creator: "Karel Klíma",
+    creatorUrl: "https://www.karelklima.cz/",
+    href: "/ldkit",
+    icon: "/ldkit.png",
+    iconAlt: "Logo for LDkit",
+    iconPreferredHeight: 96,
+    name: "LDkit",
+    text: "LDkit",
+    websiteName: "Official website",
+    websiteUrl: "https://ldkit.io/"
+};
 export const LIBRARY_M_LD: Library = {
     creator: "George Svarovsky",
     creatorUrl: "https://github.com/gsvarovsky",
@@ -529,6 +541,7 @@ export const LIBRARIES: Array<Library> = [
     LIBRARY_RDF_EXT,
     LIBRARY_M_LD,
     LIBRARY_QUADSTORE,
+    LIBRARY_LDKIT,
 ];
 
 export interface Demo {
@@ -585,6 +598,13 @@ export const LOCAL_DEMOS: Array<Demo> = [
         slogan: "Quadstore can be easily used locally using the BrowserLevel library",
         text: "Quadstore"
     },
+    {
+        title: "LDkit",
+        href: "/ldkit#local",
+        library: LIBRARY_LDKIT,
+        slogan: "LDkit allow you to parse, traverse, update, and serialize locally",
+        text: "LDkit"
+    },
 ];
 
 export const P2P_DEMOS: Array<Demo> = [{
@@ -602,12 +622,15 @@ export const PROFILE_URI = "https://megothcapgemini.solidcommunity.net/profile/c
 
 export const PROFILE_JSON = {
     "@id": PROFILE_URI,
-    name: "Soukai Test"
+    "@type": "http://xmlns.com/foaf/0.1/Person",
+    name: "Test"
 };
 
 export const PROFILE_TURTLE = `@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
-<${PROFILE_URI}> foaf:name "Test".`;
+<${PROFILE_URI}> a foaf:Person ;
+  foaf:name "Test".
+`;
 
 interface Provider {
     label: string;
@@ -752,11 +775,19 @@ export const SOLID_DEMOS: Array<Demo> = [
         slogan: "Solid is not supported directly by Quadstore, but it isn't to hard to integrate it into a Solid app. I've written a demo to show how this can be done by using N3.js to help with parsing.",
         text: "Quadstore"
     },
+    {
+        title: "LDkit",
+        href: "/ldkit#solid",
+        library: LIBRARY_LDKIT,
+        slogan: "LDkit does not support Solid out of the box, but it's not to much work to integrate it into a Solid app.",
+        text: "Quadstore"
+    },
 ];
 
 export const STORAGE_KEYS = {
     "PROFILE_GRAPOI": "profileGrapoi",
     "PROFILE_INRUPT": "profileInrupt",
+    "PROFILE_LDKIT": "profileLDkit",
     "PROFILE_LDO": "profileLdo",
     "PROFILE_QUADSTORE": "profileQuadstore",
     "PROFILE_RDFLIB": "profileRdflib",
