@@ -25,8 +25,8 @@ async function emptyStore(store: N3.Store) {
 
 export default function LDkitLocalDemo() {
     const [turtle, setTurtle] = useLocalStorage(STORAGE_KEYS.PROFILE_LDKIT, PROFILE_TURTLE);
-    const [error, setError] = useState<Error | null>(null);
     const [person, setPerson] = useState<Person | null>(null);
+    const [error, setError] = useState<Error | null>(null);
 
     useEffect(() => {
         (async () => {
@@ -42,21 +42,10 @@ export default function LDkitLocalDemo() {
 
     const onSubmit = async (data: FormData) => {
         setError(null);
-
         await Persons.update({
             $id: PROFILE_URI,
             name: data.name
         });
-
-        const existingPerson = await Persons.findByIri(PROFILE_URI)
-        if (existingPerson === null) {
-            // Workaround for bug in Comunica: https://github.com/comunica/comunica/issues/1301
-            await Persons.insert({
-                $id: PROFILE_URI,
-                name: data.name
-            });
-        }
-
         const writer = new N3.Writer();
         writer.addQuads(source.getQuads(null, null, null, null));
         return new Promise((resolve) => writer.end((error, result) => {

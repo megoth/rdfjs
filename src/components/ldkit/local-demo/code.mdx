@@ -2,13 +2,49 @@ import Content from "../../content";
 import Code from "../../code";
 import localDemoCode from "./index.tsx?raw";
 import CodeStep from "../../code/step";
-import {PROFILE_JSON} from "../../../constants";
+import {NavLink} from "react-router-dom";
+import {PROFILE_TURTLE} from "../../../constants";
 
 <Content>
-    TBD
+    This demo saves the underlying turtle in `localStorage`. It no turtle is found, a default one is used:
 </Content>
 
-<Code language="json" id="ProfileJsonLD" code={JSON.stringify(PROFILE_JSON, null, 2)} noCopy={true}/>
+<Code language="turtle" id="DefaultTurtle" code={PROFILE_TURTLE} noCopy={true}/>
+
+<Content>
+    (If the above code doesn't make sense for you, you might want to consider reading the <NavLink to={"/rdf"}>guide on
+    RDF</NavLink>.)
+</Content>
 
 <Code language="tsx" id="LDkitLocalDemo" code={localDemoCode} className="line-numbers">
+    <CodeStep lines={["12-19"]} title="Setting up LDkit">
+        You will probably want to handle the setting up of LDkit differently in your application, but it's a simple
+        setup that works for this demo. This way we ensure that the various parts are only created when the module is
+        loaded.
+
+        Note that on line 18 we pass `console.log` as the output for logs, which enables us to view the underlying
+        SPARQL queries that manipulates the store. In production you would probably turn this off.
+    </CodeStep>
+    <CodeStep lines={["21-24", "33"]} title={<>The <code>emptyStore</code> function</>}>
+        In order to ensure that we have the proper state after our underlying turtle change we empty the store. This
+        might be useful to you depending on how you handle persistence of your data.
+    </CodeStep>
+    <CodeStep lines={["27-28"]} title="Prepare turtle and model object">
+        I want to store any changes to the RDF graph as turtle in `localStorage`. The `useLocalStorage` hook helps me
+        with this. I also prepare the `person` variable for storing and handling the model `Person`.
+    </CodeStep>
+    <CodeStep lines={["29", "36", "44", "63", "69"]} title="Error handling">
+        I keep track of any errors that might occur and pass them to the `Demo` component.
+    </CodeStep>
+    <CodeStep lines={["34-35"]} title="Parsing turtle and updating model object">
+        Using the parser we parse the turtle and load the data into the store. When that's handled we update the person
+        state by finding the model object via the `Persons` lens.
+    </CodeStep>
+    <CodeStep lines={["39-41"]} title="Loading state">
+        It can take some time to parse the turtle string, so while we wait I show the `Loading` component.
+    </CodeStep>
+    <CodeStep lines={["45-55"]} title="Updating store and turtle">
+        When the form is submitted we update the underlying store using the `Persons` lens. After this we update the
+        turtle in localStorage.
+    </CodeStep>
 </Code>

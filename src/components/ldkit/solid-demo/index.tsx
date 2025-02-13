@@ -1,5 +1,5 @@
 import {useSolidAuth} from "@ldo/solid-react";
-import {useEffect, useState} from "react";
+import {useEffect, useMemo, useState} from "react";
 import {QueryEngine} from "@comunica/query-sparql";
 import {createLens} from "ldkit";
 import {foaf} from "ldkit/namespaces";
@@ -7,12 +7,11 @@ import PersonSchema, {type Person} from "../Person.ts";
 import Demo, {FormData} from "../../demo";
 import Loading from "../../loading";
 
-const engine = new QueryEngine();
-
 export default function LDkitSolidDemo() {
     const {session: {webId}, fetch} = useSolidAuth();
-    const [error, setError] = useState<Error | null>(null);
     const [person, setPerson] = useState<Person | null>(null);
+    const [error, setError] = useState<Error | null>(null);
+    const engine = useMemo(() => new QueryEngine(), []);
 
     useEffect(() => {
         (async () => {
@@ -25,7 +24,7 @@ export default function LDkitSolidDemo() {
             })
             setPerson(await Persons.findByIri(webId));
         })().catch(setError);
-    }, [fetch, webId, setPerson, setError]);
+    }, [fetch, webId, setPerson, setError, engine]);
 
     if (!person) {
         return <Loading/>

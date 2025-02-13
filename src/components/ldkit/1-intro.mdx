@@ -1,19 +1,27 @@
 import Content from "../content";
 
 <Content>
-    LDkit is Linked Data query toolkit for TypeScript developers.
+    LDKit is neatly described in [their About page](https://ldkit.io/docs/about-ldkit):
 
-    LDkit lets you access, display and modify any RDF data, and it works in browser, [Deno](https://deno.land/) and
-    [Node](https://nodejs.org/). It is sort of an ORM for graph databases.
+    <blockquote>
+        **LDkit** is Linked Data query toolkit for TypeScript developers.
 
-    <h2 className="subtitle">Typical use</h2>
+        LDkit lets you access, display and modify any RDF data, and it works in browser, [Deno](https://deno.land/) and
+        [Node](https://nodejs.org/). It is sort of an ORM for graph databases.
 
-    The typical LDkit workflow to access Linked Data comprises of these protocols:
+        <h2 className="subtitle">Typical use</h2>
 
-    - You define a data source and other settings through [Options](https://ldkit.io/docs/components/options).
-    - You define a [Namespace](https://ldkit.io/docs/components/namespaces) for the data to be retrieved, or use an
-    existing one.
-    - You define a data [Schema](https://ldkit.io/docs/components/schema) with the help of namespaces.
-    - You create a data [Lens](https://ldkit.io/docs/components/lens) and pass it the schema and options to query data.
-    - Optionally, you can tweak the [Query Engine](https://ldkit.io/docs/components/query-engine).
+        The typical LDkit workflow to access Linked Data comprises of these protocols:
+
+        - You define a data source and other settings through [Options](https://ldkit.io/docs/components/options).
+        - You define a [Namespace](https://ldkit.io/docs/components/namespaces) for the data to be retrieved, or use an
+        existing one.
+        - You define a data [Schema](https://ldkit.io/docs/components/schema) with the help of namespaces.
+        - You create a data [Lens](https://ldkit.io/docs/components/lens) and pass it the schema and options to query
+        data.
+        - Optionally, you can tweak the [Query Engine](https://ldkit.io/docs/components/query-engine).
+    </blockquote>
+
+    Their motivations are to simplify the development process of Linked Data-based apps, and I think their approach
+    should fit nicely into many types of projects.
 </Content>

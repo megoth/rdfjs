@@ -7,20 +7,23 @@ import CodeStep from "../code/step";
     <h2 className="subtitle">Models</h2>
 
     LDkit relies on data schemas to describe models, which are similar to data models used in various ORM libraries.
+    From [their documentation on schema](https://ldkit.io/docs/components/schema#schema-features):
 
-    When defining a schema, you can specify:
+    <blockquote>
+        When defining a schema, you can specify:
 
-    - one or more entity RDF types
-    - property data type (and corresponding TypeScript native type)
-    - whether a property is optional or required
-    - whether a property is an array
-    - whether to retrieve multi-language string literals
-    - nested schemas within other schemas
-
-    For more information, check [Schema](https://ldkit.io/docs/components/schema) in LDkit's documentation.
+        - one or more entity RDF types
+        - property data type (and corresponding TypeScript native type)
+        - whether a property is optional or required
+        - whether a property is an array
+        - whether to retrieve multi-language string literals
+        - nested schemas within other schemas
+    </blockquote>
 </Content>
 
 <Content>
+    <h3 className="subtitle is-5">The `Person` model</h3>
+
     For the demo I've defined a simple schema called `PersonSchema`, which is described below:
 </Content>
 
