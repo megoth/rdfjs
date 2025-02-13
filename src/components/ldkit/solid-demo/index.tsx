@@ -1,7 +1,7 @@
 import {useSolidAuth} from "@ldo/solid-react";
 import {useEffect, useMemo, useState} from "react";
 import {QueryEngine} from "@comunica/query-sparql";
-import {createLens} from "ldkit";
+import {createLens, type IQueryEngine} from "ldkit";
 import {foaf} from "ldkit/namespaces";
 import PersonSchema, {type Person} from "../Person.ts";
 import Demo, {FormData} from "../../demo";
@@ -11,7 +11,7 @@ export default function LDkitSolidDemo() {
     const {session: {webId}, fetch} = useSolidAuth();
     const [person, setPerson] = useState<Person | null>(null);
     const [error, setError] = useState<Error | null>(null);
-    const engine = useMemo(() => new QueryEngine(), []);
+    const engine = useMemo(() => new QueryEngine() as IQueryEngine, []);
 
     useEffect(() => {
         (async () => {

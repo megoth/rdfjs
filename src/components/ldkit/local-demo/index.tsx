@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {createLens} from "ldkit";
+import {createLens, type IQueryEngine} from "ldkit";
 import {N3} from "ldkit/rdf"
 import useLocalStorage from "use-local-storage";
 import {QueryEngine} from "@comunica/query-sparql";
@@ -11,7 +11,7 @@ import PersonSchema, {type Person} from "../Person.ts";
 
 const parser = new N3.Parser({baseIRI: PROFILE_URI, format: "text/turtle"});
 const source = new N3.Store();
-const engine = new QueryEngine();
+const engine = new QueryEngine() as IQueryEngine;
 const Persons = createLens(PersonSchema, {
     source,
     engine,
