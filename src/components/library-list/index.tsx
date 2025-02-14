@@ -7,9 +7,10 @@ import Columns from "../columns";
 
 export interface Props {
     exclude?: Library;
+    showDescription?: boolean;
 }
 
-export default function LibraryList({exclude}: Props) {
+export default function LibraryList({exclude, showDescription}: Props) {
     const libraries = exclude
         ? LIBRARIES.filter((library) => library !== exclude)
         : LIBRARIES;
@@ -32,7 +33,8 @@ export default function LibraryList({exclude}: Props) {
                                     </div>
                                 </div>
                             </div>
-                            <p className={clsx("notification is-info", styles.notification)}>{description}</p>
+                            {showDescription &&
+                                <p className={clsx("notification is-info", styles.notification)}>{description}</p>}
                         </Card>
                     </NavLink>
                 ))}
