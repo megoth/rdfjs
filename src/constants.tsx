@@ -459,6 +459,18 @@ export const LIBRARY_INRUPT: Library = {
     websiteName: "Official documentation",
     websiteUrl: "https://docs.inrupt.com/developer-tools/javascript/client-libraries/"
 };
+export const LIBRARY_LDFLEX: Library = {
+    creator: "Ruben Verborgh",
+    creatorUrl: "https://ruben.verborgh.org/",
+    href: "/ldflex",
+    icon: "/ldflex.png",
+    iconAlt: "Logo for LDflex",
+    iconPreferredHeight: 200,
+    name: "LDflex",
+    text: "LDflex",
+    websiteName: "Official website",
+    websiteUrl: "https://ldflex.github.io/LDflex/"
+};
 export const LIBRARY_LDKIT: Library = {
     creator: "Karel Klíma",
     creatorUrl: "https://www.karelklima.cz/",
@@ -542,6 +554,7 @@ export const LIBRARIES: Array<Library> = [
     LIBRARY_M_LD,
     LIBRARY_QUADSTORE,
     LIBRARY_LDKIT,
+    LIBRARY_LDFLEX,
 ];
 
 export interface Demo {
@@ -604,6 +617,13 @@ export const LOCAL_DEMOS: Array<Demo> = [
         library: LIBRARY_LDKIT,
         slogan: "LDkit allow you to parse, traverse, update, and serialize locally",
         text: "LDkit"
+    },
+    {
+        title: "LDflex",
+        href: "/ldflex#local",
+        library: LIBRARY_LDFLEX,
+        slogan: "You can use LDFlex with local storage",
+        text: "LDflex"
     },
 ];
 
@@ -766,14 +786,21 @@ export const SOLID_DEMOS: Array<Demo> = [
         title: "Quadstore",
         href: "/quadstore#solid",
         library: LIBRARY_QUADSTORE,
-        slogan: "Solid is not supported directly by Quadstore, but it isn't to hard to integrate it into a Solid app. I've written a demo to show how this can be done by using N3.js to help with parsing.",
+        slogan: "Solid is not supported directly by Quadstore, but it isn't to hard to integrate it into a Solid app. I've written a demo to show how this can be done by using N3.js to help with parsing",
         text: "Quadstore"
     },
     {
         title: "LDkit",
         href: "/ldkit#solid",
         library: LIBRARY_LDKIT,
-        slogan: "LDkit does not support Solid out of the box, but it's not to much work to integrate it into a Solid app.",
+        slogan: "LDkit does not support Solid out of the box, but it's not to much work to integrate it into a Solid app",
+        text: "Quadstore"
+    },
+    {
+        title: "LDflex",
+        href: "/ldflex#solid",
+        library: LIBRARY_LDFLEX,
+        slogan: "LDflex can easily be integrated with Solid",
         text: "Quadstore"
     },
 ];
@@ -781,6 +808,7 @@ export const SOLID_DEMOS: Array<Demo> = [
 export const STORAGE_KEYS = {
     "PROFILE_GRAPOI": "profileGrapoi",
     "PROFILE_INRUPT": "profileInrupt",
+    "PROFILE_LDFLEX": "profileLDflex",
     "PROFILE_LDKIT": "profileLDkit",
     "PROFILE_LDO": "profileLdo",
     "PROFILE_QUADSTORE": "profileQuadstore",
