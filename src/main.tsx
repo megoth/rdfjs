@@ -27,6 +27,7 @@ import MLdPeer from "./components/m-ld/peer";
 import CRDTGuide from "./components/crdt-guide";
 import RdfExt from "./components/rdf-ext";
 import Quadstore from "./components/quadstore";
+import LDflex from "./components/ldflex";
 import LDkit from "./components/ldkit";
 
 const router = createBrowserRouter([
@@ -57,6 +58,10 @@ const router = createBrowserRouter([
             {
                 path: "/javascript",
                 element: <JavascriptGuide/>,
+            },
+            {
+                path: "/ldflex",
+                element: <LDflex/>,
             },
             {
                 path: "/ldkit",
