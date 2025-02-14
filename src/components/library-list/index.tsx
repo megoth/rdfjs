@@ -16,7 +16,7 @@ export default function LibraryList({exclude}: Props) {
     return (
         <div className={clsx("menu", styles.libraryList)}>
             <Columns>
-                {libraries.map(({creator, href, icon, iconAlt, name}) => (
+                {libraries.map(({creator, description, href, icon, iconAlt, name}) => (
                     <NavLink key={href} to={href}>
                         <Card className={clsx("card", styles.card)}>
                             <div className="card-image">
@@ -32,6 +32,7 @@ export default function LibraryList({exclude}: Props) {
                                     </div>
                                 </div>
                             </div>
+                            <p className={clsx("notification is-info", styles.notification)}>{description}</p>
                         </Card>
                     </NavLink>
                 ))}

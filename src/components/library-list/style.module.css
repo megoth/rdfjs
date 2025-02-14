@@ -1,5 +1,14 @@
+.card > *:last-child {
+    flex-grow: 1;
+}
+
 .libraryList {
     margin-bottom: 2.5rem;
+}
+
+.notification.notification {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
 }
 
 .image.image.image.image.image {
@@ -9,14 +18,5 @@
         max-height: 8em;
         max-width: 100%;
         padding: 1.5em 1.5em 0;
-    }
-}
-
-.cardContent.cardContent {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    @media screen and (min-width: 570px) {
-        justify-content: center;
     }
 }

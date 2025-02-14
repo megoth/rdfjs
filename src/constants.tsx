@@ -410,6 +410,7 @@ export const GUIDES = [
 export interface Library extends MenuItem {
     creator: string;
     creatorUrl: string;
+    description: string;
     href: string;
     icon: string;
     iconAlt: string;
@@ -424,6 +425,7 @@ export interface Library extends MenuItem {
 export const LIBRARY_COMUNICA: Library = {
     creator: "IDLab at Ghent University",
     creatorUrl: "https://www.ugent.be/ea/idlab/en",
+    description: "A knowledge graph querying framework - Flexible SPARQL and GraphQL over decentralized RDF on the Web",
     href: "/comunica",
     icon: "/comunica.svg",
     iconAlt: "Logo for Comunica",
@@ -436,6 +438,7 @@ export const LIBRARY_COMUNICA: Library = {
 export const LIBRARY_LDO: Library = {
     creator: "O.team (Jackson Morgan)",
     creatorUrl: "https://www.o.team/",
+    description: "Solid and RDF without the Complexity",
     href: "/ldo",
     icon: "/ldo.png",
     iconAlt: "Logo for LDO project",
@@ -449,6 +452,7 @@ export const LIBRARY_LDO: Library = {
 export const LIBRARY_INRUPT: Library = {
     creator: "Inrupt",
     creatorUrl: "https://inrupt.com",
+    description: "Inrupt provides a suite of tools for working with RDF and Solid in JavaScript",
     href: "/inrupt",
     icon: "/inrupt.webp",
     iconAlt: "Logo for Inrupt",
@@ -462,6 +466,7 @@ export const LIBRARY_INRUPT: Library = {
 export const LIBRARY_LDFLEX: Library = {
     creator: "Ruben Verborgh",
     creatorUrl: "https://ruben.verborgh.org/",
+    description: "LDflex is a domain-specific language for querying Linked Data on the Web as if you were browsing a local JavaScript graph",
     href: "/ldflex",
     icon: "/ldflex.png",
     iconAlt: "Logo for LDflex",
@@ -474,6 +479,7 @@ export const LIBRARY_LDFLEX: Library = {
 export const LIBRARY_LDKIT: Library = {
     creator: "Karel Klíma",
     creatorUrl: "https://www.karelklima.cz/",
+    description: "Linked Data query toolkit for TypeScript developers",
     href: "/ldkit",
     icon: "/ldkit.png",
     iconAlt: "Logo for LDkit",
@@ -486,6 +492,7 @@ export const LIBRARY_LDKIT: Library = {
 export const LIBRARY_M_LD: Library = {
     creator: "George Svarovsky",
     creatorUrl: "https://github.com/gsvarovsky",
+    description: "With m-ld, information is available where it's used—on mobiles, in browsers, in microservices, anywhere—and it stays up-to-date, automatically",
     href: "/m-ld",
     icon: "/m-ld.svg",
     iconAlt: "Logo for m-ld",
@@ -498,6 +505,7 @@ export const LIBRARY_M_LD: Library = {
 export const LIBRARY_RDF_EXT: Library = {
     creator: "Thomas Bergwinkl",
     creatorUrl: "https://github.com/bergos/",
+    description: "RDF-Ext is a JavaScript library that extends the RDF/JS specs to handle RDF data in a developer-friendly way",
     href: "/rdf-ext",
     icon: "/rdf-ext.png",
     iconAlt: "Logo for RDF-Ext",
@@ -510,6 +518,7 @@ export const LIBRARY_RDF_EXT: Library = {
 export const LIBRARY_RDFLIB: Library = {
     creator: "rdflib.js team",
     creatorUrl: "https://github.com/linkeddata/rdflib.js/graphs/contributors",
+    description: "Javascript RDF library for browsers and Node.js",
     href: "/rdflib",
     icon: "/rdf.svg",
     iconAlt: "Logo for Read-Write Linked Data",
@@ -523,6 +532,7 @@ export const LIBRARY_RDFLIB: Library = {
 export const LIBRARY_QUADSTORE: Library = {
     creator: "Jacopo Scazzosi ",
     creatorUrl: "https://github.com/jacoscaz",
+    description: "Quadstore is a LevelDB-backed RDF graph database / triplestore for JavaScript runtimes (browsers, Node.js, Deno, Bun, ...) written in TypeScript.",
     href: "/quadstore",
     icon: "/quadstore-logo.png",
     iconAlt: "Logo for Quadstore",
@@ -535,6 +545,7 @@ export const LIBRARY_QUADSTORE: Library = {
 export const LIBRARY_SOUKAI: Library = {
     creator: "Noel De Martin",
     creatorUrl: "https://noeldemartin.com/",
+    description: "A refreshing javascript library to work with your non relational database",
     href: "/soukai",
     icon: "/soukai.svg",
     iconAlt: "Logo for Soukai",
