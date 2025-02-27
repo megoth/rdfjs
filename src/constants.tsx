@@ -652,12 +652,6 @@ export const PROVIDERS: Array<Provider> = [
         loginIri: "https://solidweb.me",
         signupIri: "https://solidweb.me/idp/register/",
     },
-    {
-        label: "inrupt.net",
-        logoSrc: "/logos/solid-emblem.svg",
-        loginIri: "https://inrupt.net/",
-        signupIri: "https://inrupt.net/register",
-    },
 ];
 
 export const RATING_CRITERIA: Array<[string, string]> = [
