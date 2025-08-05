@@ -1,17 +1,17 @@
 import {useResource, useSolidAuth, useSubject} from "@ldo/solid-react";
 import Login from "../login";
-import {SolidProfileShapeType} from "ldo-solid-profile";
 import Loading from "../loading";
 import LogoutButton from "../logout-button";
 import Content from "../content";
 import {hijackLogin} from "../../libs/location.ts";
 import {useHref, useLocation} from "react-router-dom";
+import {simpleSolidProfileShapeType} from "../../../.ldo/solidProfile.shapeTypes";
 
 export default function SolidWarning() {
     const {session: {isLoggedIn, webId}, login} = useSolidAuth();
     const routerLocation = useLocation();
     const profileResource = useResource(webId, {reloadOnMount: true});
-    const profile = useSubject(SolidProfileShapeType, webId);
+    const profile = useSubject(simpleSolidProfileShapeType, webId);
     const href = useHref(routerLocation.pathname);
     const onLogin = hijackLogin(login, routerLocation, location, href, "SolidWarning");
 

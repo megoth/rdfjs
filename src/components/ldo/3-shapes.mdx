@@ -1,26 +1,17 @@
 import Content from "../content";
 import Code from "../code";
-import profileShex from "../shex-guide/shex-advanced-example.shex?raw"
+import profileShex from "../../shapes/solidProfile.shex?raw"
 
 <Content>
     <h2 className="title">Shapes</h2>
 
-    In the demos shown below I've used shapes from my project
-    [ldo-solid-profile](https://github.com/megoth/ldo-solid-profile). It's a TypeScript project that publishes a NPM
-    package with the resulting files from [@ldo/cli](https://github.com/o-development/ldo/tree/main/packages/cli). It's
-    an attempt at creating a client-to-client standard that allow developers to agree on a fixed shape of the WebID
-    profile, what I call `SolidProfile`.
-
-    This is the code for that ShEx shape:
+    The ShEx shape that's used for the demos can be reviewed below:
 </Content>
 
 <Code id="ProfileTurtle" language="turtle" code={profileShex}/>
 
 <Content>
-    This can definitely be improved upon, but it is a starting point for something that is hopefully useful (I'm using
-    for the demos here at least, so I'm finding it useful).
-
-    But know that setting up LDO requires a bit of work, especially if you are amongst the first adopters. Until there's
-    a wide community of contributors of shapes, there's going to be an uphill battle for recruiting developers. But I
-    think the benefits of semantic technologies outweigh the challenges of adoption.
+    The shape describes a very simple version of the Solid profile, referring to only one property, `foaf:name`. The
+    full Solid profile [will be much more extensive](https://solid.github.io/webid-profile/), but for our purposes
+    we only need to refer a person's name.
 </Content>

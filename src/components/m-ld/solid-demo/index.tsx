@@ -5,16 +5,16 @@ import {MemoryLevel} from 'memory-level';
 import {IoRemotes, MeldIoConfig} from "@m-ld/m-ld/ext/socket.io";
 import useNotification from "../../../hooks/use-notification";
 import {useLdo, useResource, useSolidAuth, useSubject} from "@ldo/solid-react";
-import {SolidProfileShapeType} from "ldo-solid-profile";
 import MLdInitStep from "../init-step";
 import MLdDemo from "../demo";
 import {FOAF} from "../../../namespaces.ts";
+import {simpleSolidProfileShapeType} from "../../../../.ldo/solidProfile.shapeTypes";
 
 export default function MldSolidDemo() {
     const {session: {webId}} = useSolidAuth();
     const {commitData, changeData, createData} = useLdo();
     const profileResource = useResource(webId, {reloadOnMount: true});
-    const profile = useSubject(SolidProfileShapeType, webId);
+    const profile = useSubject(simpleSolidProfileShapeType, webId);
     const domainId = useMemo(() => uuid(), []);
     const domainUrl = useMemo(() => `${domainId}.public.gw.m-ld.org`, [domainId]);
     const [init, setInit] = useState<boolean>(false);
@@ -43,7 +43,7 @@ export default function MldSolidDemo() {
                         setError(null);
                         if (!webId || !profileResource) return setError(new Error("Unable to load profile"));
                         const p2pProfile = await state.get(domainId)
-                        const oldProfile = profile || createData(SolidProfileShapeType, webId);
+                        const oldProfile = profile || createData(simpleSolidProfileShapeType, webId);
                         const updatedProfile = changeData(oldProfile, profileResource);
                         updatedProfile.name = p2pProfile?.[FOAF.name.value] as string;
                         await commitData(updatedProfile).catch(setError);
